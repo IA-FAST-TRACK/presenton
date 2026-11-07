@@ -45,6 +45,15 @@ const config: Config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        brand: {
+          yellow: "var(--aft-yellow)",
+          "yellow-hover": "var(--aft-yellow-hover)",
+          "yellow-tint": "var(--aft-yellow-tint)",
+          "yellow-soft": "var(--aft-yellow-soft)",
+          ink: "var(--aft-ink)",
+          bg: "var(--aft-bg)",
+          cyan: "var(--aft-cyan)",
+        },
         chart: {
           "1": "hsl(var(--chart-1))",
           "2": "hsl(var(--chart-2))",
@@ -81,8 +90,13 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
+        // Legacy utility names, remapped in globals.css to the AI Fast Track
+        // typography (Space Grotesk headings, Inter body).
         syne: ["var(--font-syne)"],
         manrope: ["var(--font-manrope)"],
+        display: ["var(--font-syne)"],
+        body: ["var(--font-manrope)"],
+        "brand-mono": ["var(--font-brand-mono)"],
       },
     },
   },

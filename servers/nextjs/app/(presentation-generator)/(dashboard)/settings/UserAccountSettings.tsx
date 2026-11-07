@@ -24,12 +24,12 @@ export default function UserAccountSettings({
               Account
             </p>
             <div
-              className="flex w-full items-center gap-1.5 rounded-[6px] border border-[#D9D6FE] bg-[#F4F3FF] px-3 py-4"
+              className="flex w-full items-center gap-1.5 rounded-[6px] border border-[#FFED82] bg-[#FFFADC] px-3 py-4"
               aria-current="page"
             >
               <div className="flex h-[18px] w-[18px] items-center justify-center rounded-full border border-[#EDEEEF] bg-white">
                 <UserRound
-                  className="h-3 w-3 text-[#5146E5]"
+                  className="h-3 w-3 text-[#0A0A0A]"
                   aria-hidden="true"
                 />
               </div>
@@ -61,9 +61,9 @@ export default function UserAccountSettings({
 
             <div className="mt-6 rounded-[12px] border border-[#EDEEEF] bg-white p-6">
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[4px] bg-[#F4F3FF]">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[4px] bg-[#FFFADC]">
                   <UserRound
-                    className="h-5 w-5 text-[#5146E5]"
+                    className="h-5 w-5 text-[#0A0A0A]"
                     aria-hidden="true"
                   />
                 </div>
@@ -86,7 +86,7 @@ export default function UserAccountSettings({
                 </p>
                 <LogoutButton
                   label="Sign out"
-                  className="motion-press mt-4 inline-flex w-full items-center justify-center gap-2 rounded-[58px] border border-[#EDEEEF] bg-[#7C51F8] px-5 py-3 text-xs font-semibold text-white hover:bg-[#6d46e6] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                  className="motion-press mt-4 inline-flex w-full items-center justify-center gap-2 rounded-[58px] border border-[#EDEEEF] bg-[#FFDB05] px-5 py-3 text-xs font-semibold text-[#0A0A0A] hover:bg-[#E6C500] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 />
               </div>
             </div>

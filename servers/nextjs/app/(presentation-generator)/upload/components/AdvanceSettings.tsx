@@ -19,7 +19,7 @@ interface ConfigurationSelectsProps {
 }
 
 const toggleClassName =
-    'h-[22px] w-[36px] border-0 bg-[#D8D8DD] data-[state=checked]:bg-[#7A5AF8] ';
+    'h-[22px] w-[36px] border-0 bg-[#D8D8DD] data-[state=checked]:bg-[#FFDB05] ';
 
 const AdvanceSettings = ({
     config,
@@ -78,7 +78,7 @@ const AdvanceSettings = ({
                             type="button"
                             onClick={handleOpenAdvanced}
                             className={cn(
-                                "flex items-center justify-center rounded-full border bg-white text-[#1C1C27] transition hover:bg-[#F7F7FA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5141E5]/25",
+                                "flex items-center justify-center rounded-full border bg-white text-[#1C1C27] transition hover:bg-[#F7F7FA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/25",
                                 compact
                                     ? "h-[34px] w-[42px] border-[#EDEEEF] shadow-none"
                                     : "h-10 w-10 border-[#E4E5E8] shadow-sm min-[1800px]:h-11 min-[1800px]:w-11 min-[2200px]:h-12 min-[2200px]:w-12"
@@ -128,7 +128,7 @@ const AdvanceSettings = ({
                             onClick={handleSaveAdvanced}
                             style={{
                                 background:
-                                    'linear-gradient(270deg, #D5CAFC 2.4%, #E3D2EB 27.88%, #F4DCD3 69.23%, #FDE4C2 100%)',
+                                    'linear-gradient(270deg, #FFDB05 0%, #FFE45C 100%)',
                             }}
                             className="rounded-full px-[28px] py-[10px] font-syne text-xs font-semibold text-[#1E1D2B] shadow-none hover:opacity-95 min-[1800px]:px-8 min-[1800px]:py-3 min-[1800px]:text-sm"
                         >
@@ -136,7 +136,7 @@ const AdvanceSettings = ({
                         </Button>
                     </div>
 
-                    <div className="bg-[#ECE8F6] px-6 py-5 min-[1800px]:px-8 min-[1800px]:py-6">
+                    <div className="bg-[#FFFADC] px-6 py-5 min-[1800px]:px-8 min-[1800px]:py-6">
                         <div className="flex items-start gap-2">
                             <Pencil className="mt-[3px] h-3.5 w-3.5 text-[#1C1B24] min-[1800px]:h-4 min-[1800px]:w-4" />
                             <div className="w-full">

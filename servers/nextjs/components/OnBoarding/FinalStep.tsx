@@ -108,17 +108,17 @@ const FinalStep = () => {
                         <Switch
                             checked={trackingEnabled}
                             onCheckedChange={handleTrackingToggle}
-                            className='data-[state=checked]:bg-[#7C51F8]'
+                            className='data-[state=checked]:bg-[#FFDB05]'
                         />
                     </div>
                 )}
 
-                <button onClick={handleGoToUpload} className='bg-[#7C51F8] px-[23px] mt-8 py-[15px]  rounded-[70px] text-white text-lg font-syne font-semibold'>My First Presentation 🚀</button>
-                <button onClick={fireRealisticConfetti} className='mt-3 flex items-center gap-1.5 text-sm text-[#7A5AF8] font-syne font-medium hover:underline'>
+                <button onClick={handleGoToUpload} className='bg-[#FFDB05] px-[23px] mt-8 py-[15px]  rounded-[70px] text-[#0A0A0A] text-lg font-syne font-semibold'>My First Presentation 🚀</button>
+                <button onClick={fireRealisticConfetti} className='mt-3 flex items-center gap-1.5 text-sm text-[#0A0A0A] font-syne font-medium hover:underline'>
                     <PartyPopper className='w-4 h-4' /> Celebrate again!
                 </button>
             </div>
-            <button onClick={handleGoToDashboard} className='absolute uppercase bottom-20 text-[#7A5AF8] flex items-center gap-2 right-10  text-xs font-normal font-syne'>Go to your dashboard <ArrowRight className='w-4 h-4 text-[#7A5AF8]' /></button>
+            <button onClick={handleGoToDashboard} className='absolute uppercase bottom-20 text-[#0A0A0A] flex items-center gap-2 right-10  text-xs font-normal font-syne'>Go to your dashboard <ArrowRight className='w-4 h-4 text-[#0A0A0A]' /></button>
         </div>
     )
 }

@@ -46,8 +46,8 @@ const SlideThumbnail = memo(function SlideThumbnail({
       aria-current={active ? "true" : undefined}
       aria-label={`Slide ${index + 1}: ${readLayoutId(layout, index)}`}
       className={cn(
-        "group relative shrink-0 rounded-[11px] p-[5px] text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#7A5AF8] focus-visible:ring-offset-2",
-        active && "bg-[#EFEDFF]",
+        "group relative shrink-0 rounded-[11px] p-[5px] text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#0A0A0A] focus-visible:ring-offset-2",
+        active && "bg-[#FFFADC]",
       )}
       onClick={() => onSelect(index)}
       title={readLayoutId(layout, index)}
@@ -57,7 +57,7 @@ const SlideThumbnail = memo(function SlideThumbnail({
         className={cn(
           "absolute -left-2 bottom-[18px] z-10 flex h-[24.394px] w-[24.394px] items-center justify-center rounded-full border bg-white text-[12px] font-medium shadow-sm",
           active
-            ? "border-[#7A5AF8] bg-[#7A5AF8] text-white shadow-[0_3px_8px_rgba(122,90,248,0.32)]"
+            ? "border-[#0A0A0A] bg-[#FFDB05] text-[#0A0A0A] shadow-[0_3px_8px_rgba(255,219,5,0.32)]"
             : "border-[#ECECEC] text-[#191919]",
         )}
       >
@@ -68,7 +68,7 @@ const SlideThumbnail = memo(function SlideThumbnail({
         className={cn(
           "block overflow-hidden rounded-[9.68px] border bg-white transition-all",
           active
-            ? "border-[#7A5AF8] shadow-[0_0_0_2px_#D9D6FE,0_6px_14px_rgba(122,90,248,0.22)]"
+            ? "border-[#0A0A0A] shadow-[0_0_0_2px_#FFED82,0_6px_14px_rgba(255,219,5,0.22)]"
             : "border-[#E7E7E7] group-hover:border-[#CFCFCF]",
         )}
         style={{

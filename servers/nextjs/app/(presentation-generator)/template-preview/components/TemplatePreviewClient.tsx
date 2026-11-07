@@ -1253,7 +1253,7 @@ const GroupLayoutPreview = ({
               <p>No layouts available for this template.</p>
               {canEditTemplate ? (
                 <button
-                  className="rounded-[8px] border border-[#D9D6FE] bg-white px-4 py-2 text-[13px] font-medium text-[#7A5AF8] transition-colors hover:bg-[#F8F6FF]"
+                  className="rounded-[8px] border border-[#FFED82] bg-white px-4 py-2 text-[13px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#FFFADC]"
                   onClick={createBlankLayout}
                   type="button"
                 >

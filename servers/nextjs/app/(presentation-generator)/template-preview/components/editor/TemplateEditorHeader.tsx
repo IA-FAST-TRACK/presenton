@@ -87,7 +87,7 @@ export function TemplateEditorHeader({
         <button onClick={onBack} aria-label="Dashboard" type="button">
           <img
             src="/logo-with-bg.png"
-            alt="Presenton"
+            alt="AI Fast Track Presentaciones"
             className="h-10 w-10 cursor-pointer object-contain"
           />
         </button>
@@ -95,7 +95,7 @@ export function TemplateEditorHeader({
           className={cn(
             "group flex h-[38px] min-w-0 flex-1 items-center gap-[8px] rounded-[10px] border border-transparent px-[9px] transition-colors sm:max-w-[255px]",
             canEdit
-              ? "cursor-text hover:border-[#EDEEEF] hover:bg-[#FAFAFB] focus-within:border-[#B99CFF] focus-within:bg-white focus-within:shadow-[0_0_0_3px_rgba(124,81,248,0.10)]"
+              ? "cursor-text hover:border-[#EDEEEF] hover:bg-[#FAFAFB] focus-within:border-[#FFED82] focus-within:bg-white focus-within:shadow-[0_0_0_3px_rgba(255,219,5,0.10)]"
               : "cursor-default",
           )}
           title={canEdit ? "Edit template name" : "Default template"}
@@ -137,7 +137,7 @@ export function TemplateEditorHeader({
           {canEdit ? (
             <Edit3
               aria-hidden="true"
-              className="h-[15px] w-[15px] shrink-0 text-[#9B9B9B] transition-colors group-hover:text-[#7C51F8] group-focus-within:text-[#7C51F8]"
+              className="h-[15px] w-[15px] shrink-0 text-[#9B9B9B] transition-colors group-hover:text-[#0A0A0A] group-focus-within:text-[#0A0A0A]"
             />
           ) : null}
         </label>
@@ -198,7 +198,7 @@ export function TemplateEditorHeader({
             onClick={onClone}
             disabled={isCloning}
             aria-busy={isCloning}
-            className="shrink-0 whitespace-nowrap focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7C51F8]"
+            className="shrink-0 whitespace-nowrap focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0A0A0A]"
           >
             {isCloning ? "Copying…" : "Copy to custom"}
             {isCloning ? (

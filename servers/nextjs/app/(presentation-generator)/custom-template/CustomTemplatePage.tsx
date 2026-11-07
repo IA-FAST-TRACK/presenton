@@ -76,7 +76,7 @@ import {
 
 type StudioStep = 1 | 2 | 3;
 
-const pillGradient = "#7A5AF8";
+const pillGradient = "#FFDB05";
 
 const FONT_FALLBACK_OPTION_HEIGHT = 40;
 const FONT_FALLBACK_MAX_VISIBLE_ROWS = 7;
@@ -130,9 +130,9 @@ function GradientPillButton({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className={`inline-flex ${fullWidth ? "w-full" : ""} h-10 items-center justify-center gap-2 rounded-[12px] px-5 text-base font-medium text-white shadow-none transition disabled:cursor-not-allowed ${isMuted
+      className={`inline-flex ${fullWidth ? "w-full" : ""} h-10 items-center justify-center gap-2 rounded-[12px] px-5 text-base font-medium shadow-none transition disabled:cursor-not-allowed ${isMuted
         ? "bg-[#ECECF1] text-[#5C5E68] disabled:opacity-100"
-        : "disabled:opacity-60"
+        : "text-[#0A0A0A] disabled:opacity-60"
         } ${className}`}
       style={isMuted ? undefined : { background: pillGradient }}
     >
@@ -160,7 +160,7 @@ function UploadPanel({
       <section aria-label="Upload PowerPoint" aria-busy={isProcessing} className="rounded-xl border border-[#DBDBDB99] bg-white px-[9px] py-[11px] shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
         <input ref={inputRef} type="file" accept=".pptx" aria-label="PowerPoint file" className="hidden" disabled={isProcessing} onChange={(event) => { onFileInput(event); event.target.value = ""; }} />
         <div
-          className={`relative flex h-[127px] items-center overflow-hidden rounded-[10px] ${isDragging ? "bg-[#F3EFFF] ring-2 ring-[#7A5AF8]" : "bg-[#F9F9FA]"}`}
+          className={`relative flex h-[127px] items-center overflow-hidden rounded-[10px] ${isDragging ? "bg-[#FFFADC] ring-2 ring-[#0A0A0A]" : "bg-[#F9F9FA]"}`}
           onDragOver={(event) => { event.preventDefault(); if (!isProcessing) setIsDragging(true); }}
           onDragLeave={() => setIsDragging(false)}
           onDrop={(event) => { event.preventDefault(); setIsDragging(false); const file = event.dataTransfer.files?.[0]; if (file && !isProcessing) onFileDrop(file); }}
@@ -171,9 +171,9 @@ function UploadPanel({
               <p className="text-xs text-[#666] [font-family:var(--font-manrope)]">{formatFileSize(selectedFile.size)}<span className="px-2">·</span>{isProcessing ? "Processing" : "Ready"}</p>
             </div>
             <div className="flex h-full w-[62px] shrink-0 items-center justify-center rounded-lg border-4 border-[#F6F6F9] bg-white">
-              <button type="button" onClick={onRemove} disabled={isProcessing} aria-label="Remove file" className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F6F6F9] focus-visible:ring-2 focus-visible:ring-[#7A5AF8] disabled:opacity-50"><img src="/custom-template/processing-imgFrame.svg" alt="" /></button>
+              <button type="button" onClick={onRemove} disabled={isProcessing} aria-label="Remove file" className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F6F6F9] focus-visible:ring-2 focus-visible:ring-[#0A0A0A] disabled:opacity-50"><img src="/custom-template/processing-imgFrame.svg" alt="" /></button>
             </div>
-          </> : <button type="button" onClick={chooseFile} className="flex h-full w-full flex-col items-center justify-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7A5AF8]"><UploadIllustration /><span className="text-sm text-[#808080]">Drag &amp; Drop your files here</span></button>}
+          </> : <button type="button" onClick={chooseFile} className="flex h-full w-full flex-col items-center justify-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A0A0A]"><UploadIllustration /><span className="text-sm text-[#808080]">Drag &amp; Drop your files here</span></button>}
         </div>
         <div className="mt-2.5 flex items-center justify-between gap-3">
           <AttachmentButton onClick={chooseFile} disabled={isProcessing} />
@@ -392,7 +392,7 @@ function FontFallbackPicker({
                       key={option.family}
                       value={option.family}
                       onSelect={() => handleSelect(option)}
-                      className="absolute left-1 right-1 h-10 cursor-pointer justify-between rounded-lg px-3 font-syne text-sm font-medium text-[#242630] data-[selected=true]:bg-[#F6F5FF]"
+                      className="absolute left-1 right-1 h-10 cursor-pointer justify-between rounded-lg px-3 font-syne text-sm font-medium text-[#242630] data-[selected=true]:bg-[#FFFADC]"
                       style={{
                         top: optionIndex * FONT_FALLBACK_OPTION_HEIGHT + 4,
                         fontFamily: `"${option.family}"`,
@@ -400,7 +400,7 @@ function FontFallbackPicker({
                     >
                       <span className="min-w-0 truncate">{option.family}</span>
                       {isSelected ? (
-                        <Check className="h-4 w-4 shrink-0 text-[#5146E5]" />
+                        <Check className="h-4 w-4 shrink-0 text-[#0A0A0A]" />
                       ) : (
                         <span className="shrink-0 text-xs font-semibold text-[#8B8E99]">
                           Aa
@@ -550,7 +550,7 @@ function AnalyzePanel({
                 <button
                   type="button"
                   onClick={() => setResolvingFont(null)}
-                  className="h-9 rounded-full px-5 text-sm font-medium text-white"
+                  className="h-9 rounded-full px-5 text-sm font-medium text-[#0A0A0A]"
                   style={{ background: pillGradient }}
                 >
                   Save
@@ -577,7 +577,7 @@ function AnalyzePanel({
                     disabled={isUploading}
                     className="flex h-[78px] w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-[#DADDE6] bg-white text-sm font-medium text-[#606470] transition hover:border-[#B8BCC8] hover:bg-[#FAFBFC] disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F3EFFF] text-[#7A3DF0]">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FFFADC] text-[#0A0A0A]">
                       {resolvingFontUploaded ? (
                         <Check className="h-4 w-4" />
                       ) : (
@@ -729,7 +729,7 @@ function GeneratingSlidesOverlay() {
       <span className="relative z-20 flex items-center overflow-hidden rounded-[50px] bg-white px-4 py-2.5 text-sm font-medium text-[#666666] shadow-[0_2px_12px_rgba(16,24,40,0.08)]">
         <span aria-hidden className="generating-slides-background absolute" />
         <span className="relative z-10 flex items-center gap-2">
-          <Sparkles className="h-4 w-4 text-[#9034EA]" />
+          <Sparkles className="h-4 w-4 text-[#0A0A0A]" />
           Updating slides...
         </span>
       </span>
@@ -1048,7 +1048,7 @@ function ReviewPanel({
           className={`relative ${enableEditing ? "" : ""}`}
         >
           {enableEditing ? (
-            <div className="relative border border-[#7A5AF8] bg-white shadow-[0_2px_16px_rgba(16,24,40,0.08)]">
+            <div className="relative border border-[#0A0A0A] bg-white shadow-[0_2px_16px_rgba(16,24,40,0.08)]">
               <SelectionHandles />
               <div className="absolute left-1/2 top-2 z-30 -translate-x-1/2 rounded-[5px] border border-[#E6E7EC] bg-white px-2 py-1.5 shadow-[0_4px_12px_rgba(16,24,40,0.12)] sm:top-3 2xl:px-3 2xl:py-2">
                 <div className="flex items-center gap-1 2xl:gap-1.5">
@@ -1151,7 +1151,7 @@ function SaveTemplateModal({
             type="button"
             onClick={handleSubmit}
             disabled={isSaving || !name.trim()}
-            className="inline-flex h-8 2xl:h-9 min-w-[78px] 2xl:min-w-[88px] items-center justify-center rounded-[58px] px-5 2xl:px-6 text-[13px] 2xl:text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex h-8 2xl:h-9 min-w-[78px] 2xl:min-w-[88px] items-center justify-center rounded-[58px] px-5 2xl:px-6 text-[13px] 2xl:text-sm font-medium text-[#0A0A0A] disabled:cursor-not-allowed disabled:opacity-60"
             style={{ background: pillGradient }}
           >
             {isSaving ? <Loader2 className="h-4 w-4 2xl:h-5 2xl:w-5 animate-spin" /> : submitLabel}
@@ -1168,7 +1168,7 @@ function SaveTemplateModal({
               onChange={(event) => setName(event.target.value)}
               disabled={isSaving}
               placeholder="e.g. Modern Tech Pitch Deck"
-              className="h-9 2xl:h-10 w-full rounded-[5px] border border-[#E1E2E8] bg-white px-3 2xl:px-4 text-[13px] 2xl:text-[15px] text-black outline-none placeholder:text-[#8C8E96] focus:border-[#B9ABFF]"
+              className="h-9 2xl:h-10 w-full rounded-[5px] border border-[#E1E2E8] bg-white px-3 2xl:px-4 text-[13px] 2xl:text-[15px] text-black outline-none placeholder:text-[#8C8E96] focus:border-[#FFED82]"
             />
           </label>
           <label className="block">
@@ -1181,7 +1181,7 @@ function SaveTemplateModal({
               disabled={isSaving}
               placeholder="Briefly describe when or how this template should be used."
               rows={4}
-              className="h-[86px] 2xl:h-[100px] w-full resize-none rounded-[5px] border border-[#E1E2E8] bg-white px-3 2xl:px-4 py-3 2xl:py-3.5 text-[13px] 2xl:text-[15px] text-black outline-none placeholder:text-[#8C8E96] focus:border-[#B9ABFF]"
+              className="h-[86px] 2xl:h-[100px] w-full resize-none rounded-[5px] border border-[#E1E2E8] bg-white px-3 2xl:px-4 py-3 2xl:py-3.5 text-[13px] 2xl:text-[15px] text-black outline-none placeholder:text-[#8C8E96] focus:border-[#FFED82]"
             />
           </label>
         </div>

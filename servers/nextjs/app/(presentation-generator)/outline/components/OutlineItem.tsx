@@ -167,7 +167,7 @@ export function OutlineItem({
       style={style}
       className={`group relative mb-5 rounded-[12px] border bg-white px-5 py-8 font-syne transition-all duration-500 hover:shadow-[0_10px_24px_0_rgba(15,23,42,0.12)] sm:py-10 sm:pl-[30px] sm:pr-[66px] ${
         isEditingMarkdown
-          ? "border-[#BDB4FE] shadow-[0_6.6px_13.2px_0_rgba(0,0,0,0.10)]"
+          ? "border-[#FFED82] shadow-[0_6.6px_13.2px_0_rgba(0,0,0,0.10)]"
           : "border-transparent shadow-[0_6.6px_6.6px_rgba(0,0,0,0.10)]"
       } ${isDragging ? "opacity-50" : ""}`}
     >
@@ -214,7 +214,7 @@ export function OutlineItem({
               onKeyDown={handleMarkdownKeyDown}
               spellCheck={false}
               placeholder="Enter markdown content here..."
-              className="min-h-[140px] resize-y rounded-[8px] border-[#D8D8DF] bg-[#FBFBFC] px-3 py-3 font-mono text-[13px] leading-6 text-[#191919] shadow-none focus-visible:border-[#7A5AF8] focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/20"
+              className="min-h-[140px] resize-y rounded-[8px] border-[#D8D8DF] bg-[#FBFBFC] px-3 py-3 font-mono text-[13px] leading-6 text-[#191919] shadow-none focus-visible:border-[#0A0A0A] focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/20"
             />
           ) : (
             <div
@@ -228,7 +228,7 @@ export function OutlineItem({
                   handleStartMarkdownEdit();
                 }
               }}
-              className={`${outlineMarkdownClassName} min-h-[60px] w-full cursor-text rounded-[8px] px-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/25`}
+              className={`${outlineMarkdownClassName} min-h-[60px] w-full cursor-text rounded-[8px] px-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/25`}
               dangerouslySetInnerHTML={{ __html: previewHtml }}
             />
           )}

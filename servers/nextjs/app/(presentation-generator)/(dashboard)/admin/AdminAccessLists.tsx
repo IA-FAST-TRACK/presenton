@@ -86,7 +86,7 @@ function EmptyList({
         {filtered
           ? "Try another search or clear the filters to see all results."
           : noun === "users"
-            ? "Add a user to give them their own private Presenton workspace."
+            ? "Add a user to give them their own private Fast Track Presentaciones workspace."
             : "Generate a key to connect a REST API or MCP client to a user’s workspace."}
       </p>
       {filtered && <button type="button" onClick={onClearFilters}>Clear filters</button>}

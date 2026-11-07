@@ -400,7 +400,7 @@ export default function OnboardingPresentonAccount({
                 <button
                   type="button"
                   onClick={() => void onContinue()}
-                  className="inline-flex h-9 items-center justify-center gap-2 rounded-full bg-[#7C51F8] px-4 text-[11px] font-semibold text-white transition hover:bg-[#6D46E6]"
+                  className="inline-flex h-9 items-center justify-center gap-2 rounded-full bg-[#FFDB05] px-4 text-[11px] font-semibold text-[#0A0A0A] transition hover:bg-[#E6C500]"
                 >
                   Continue with Presenton
                   <ArrowRight className="h-3.5 w-3.5" />
@@ -438,7 +438,7 @@ export default function OnboardingPresentonAccount({
                 href={flow.verificationUri}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex shrink-0 items-end gap-0.5 text-[12px] font-normal leading-normal tracking-[-0.36px] text-[#7A5AF8] transition-colors hover:text-[#5F3BD0]"
+                className="inline-flex shrink-0 items-end gap-0.5 text-[12px] font-normal leading-normal tracking-[-0.36px] text-[#0A0A0A] transition-colors hover:text-[#0A0A0A]"
               >
                 Approval Page <ExternalLink className="h-3 w-3" />
               </a>
@@ -493,7 +493,7 @@ export default function OnboardingPresentonAccount({
               role="status"
               aria-live="polite"
             >
-              <Loader2 className="h-3.5 w-3.5 animate-spin text-[#7A5AF8]" />
+              <Loader2 className="h-3.5 w-3.5 animate-spin text-[#0A0A0A]" />
               Waiting for authorization…
             </div>
           </div>

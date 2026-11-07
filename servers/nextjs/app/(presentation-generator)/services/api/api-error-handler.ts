@@ -41,7 +41,7 @@ export async function apiFetch(input: RequestInfo | URL, init?: RequestInit): Pr
     throw new ApiResponseError(
       timeout
         ? "The request took too long to complete. Please try again."
-        : "Could not reach Presenton. Check your connection and that the server is running, then try again.",
+        : "Could not reach Fast Track Presentaciones. Check your connection and that the server is running, then try again.",
       { status: timeout ? 504 : 0, code: timeout ? "request_timeout" : "backend_unreachable", retryable: true },
     );
   }
@@ -58,7 +58,7 @@ export class ApiResponseHandler {
         // Invalid JSON must not become an empty successful object that causes
         // an unrelated rendering failure later.
         throw new ApiResponseError(
-          "Presenton returned an incomplete or invalid response. Please try again.",
+          "Fast Track Presentaciones returned an incomplete or invalid response. Please try again.",
           { status: 502, code: "invalid_response", retryable: true },
         );
       }

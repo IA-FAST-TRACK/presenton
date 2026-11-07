@@ -3185,7 +3185,7 @@ function TemplateV2KonvaSlideComponent({
       ) ? (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute z-20 border-2 border-[#7C51F8]"
+          className="pointer-events-none absolute z-20 border-2 border-[#0A0A0A]"
           style={{
             left: infographicCanvasSelection.target.box.x,
             top: infographicCanvasSelection.target.box.y,

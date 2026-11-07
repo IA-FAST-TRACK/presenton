@@ -336,17 +336,17 @@ export default function AuthGate() {
       <section className="relative z-10 w-full max-w-lg rounded-[20px] border border-[#EDEEEF] bg-[#F9F8F8] p-7 sm:p-10">
         <div className="mb-7">
           <div className="flex items-center gap-4">
-            <div className="flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-[4px] bg-[#F4F3FF] p-3">
+            <div className="flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-[4px] bg-[#FFFADC] p-3">
               <Image
                 src="/logo-with-bg.png"
                 alt=""
-                width={161}
+                width={166}
                 height={166}
                 className="h-10 w-auto object-contain"
               />
             </div>
             <div>
-              <p className="font-syne text-[10px] font-semibold uppercase tracking-[0.14em] text-[#7A5AF8]">
+              <p className="font-syne text-[10px] font-semibold uppercase tracking-[0.14em] text-[#0A0A0A]">
                 Secure instance
               </p>
               <h1 className="mt-1 font-syne text-xl font-normal leading-tight tracking-[-0.03em] text-black sm:text-[22px]">
@@ -381,7 +381,7 @@ export default function AuthGate() {
               title="Username cannot contain spaces"
               required
               spellCheck={false}
-              className="h-12 w-full rounded-lg border border-[#E1E1E5] bg-white px-4 text-sm text-[#191919] outline-none transition placeholder:text-[#9CA3AF] focus:border-[#7A5AF8] focus:ring-2 focus:ring-[#7A5AF8]/15"
+              className="h-12 w-full rounded-lg border border-[#E1E1E5] bg-white px-4 text-sm text-[#191919] outline-none transition placeholder:text-[#9CA3AF] focus:border-[#0A0A0A] focus:ring-2 focus:ring-[#0A0A0A]/15"
               disabled={isSubmitting}
             />
           </div>
@@ -402,7 +402,7 @@ export default function AuthGate() {
               minLength={isSetupMode ? 8 : 6}
               maxLength={128}
               required
-              className="h-12 w-full rounded-lg border border-[#E1E1E5] bg-white px-4 text-sm text-[#191919] outline-none transition placeholder:text-[#9CA3AF] focus:border-[#7A5AF8] focus:ring-2 focus:ring-[#7A5AF8]/15"
+              className="h-12 w-full rounded-lg border border-[#E1E1E5] bg-white px-4 text-sm text-[#191919] outline-none transition placeholder:text-[#9CA3AF] focus:border-[#0A0A0A] focus:ring-2 focus:ring-[#0A0A0A]/15"
               disabled={isSubmitting}
             />
           </div>
@@ -422,7 +422,7 @@ export default function AuthGate() {
                 minLength={8}
                 maxLength={128}
                 required
-                className="h-12 w-full rounded-lg border border-[#E1E1E5] bg-white px-4 text-sm text-[#191919] outline-none transition placeholder:text-[#9CA3AF] focus:border-[#7A5AF8] focus:ring-2 focus:ring-[#7A5AF8]/15"
+                className="h-12 w-full rounded-lg border border-[#E1E1E5] bg-white px-4 text-sm text-[#191919] outline-none transition placeholder:text-[#9CA3AF] focus:border-[#0A0A0A] focus:ring-2 focus:ring-[#0A0A0A]/15"
                 disabled={isSubmitting}
               />
             </div>
@@ -437,7 +437,7 @@ export default function AuthGate() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full rounded-[58px] border border-[#EDEEEF] bg-[#7C51F8] px-5 py-3 font-syne text-xs font-semibold text-white transition hover:bg-[#6d46e6] disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full rounded-[58px] border border-[#EDEEEF] bg-[#FFDB05] px-5 py-3 font-syne text-xs font-semibold text-[#0A0A0A] transition hover:bg-[#E6C500] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {isSubmitting
               ? isSetupMode

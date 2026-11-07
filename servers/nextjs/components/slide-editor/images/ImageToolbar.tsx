@@ -599,8 +599,8 @@ export function ImageToolbar({
                     update({ fit: option.value });
                   }}
                   className={cn(
-                    "flex w-full items-center rounded-[8px] px-3 py-2 text-left text-[13px] text-[#191919] hover:bg-[#F4F3FF]",
-                    fit === option.value && "bg-[#F4F1FF] text-[#7A5AF8]",
+                    "flex w-full items-center rounded-[8px] px-3 py-2 text-left text-[13px] text-[#191919] hover:bg-[#FFFADC]",
+                    fit === option.value && "bg-[#FFFADC] text-[#0A0A0A]",
                   )}
                 >
                   {option.label}
@@ -618,7 +618,7 @@ export function ImageToolbar({
           aria-label="Upload image"
           onClick={() => uploadInputRef.current?.click()}
           disabled={isUploadingImage}
-          className="rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#F4F3FF] disabled:cursor-wait disabled:opacity-50"
+          className="rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#FFFADC] disabled:cursor-wait disabled:opacity-50"
         >
           {isUploadingImage ? (
             <Loader2 size={16} strokeWidth={1.8} aria-hidden="true" className="animate-spin" />
@@ -635,7 +635,7 @@ export function ImageToolbar({
             setOpenPanel(null);
             setImagePickerOpen(true);
           }}
-          className="rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#F4F3FF]"
+          className="rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#FFFADC]"
         >
           <Image
             alt=""
@@ -657,8 +657,8 @@ export function ImageToolbar({
             aria-pressed={openPanel === "crop"}
             onClick={() => togglePanel("crop")}
             className={cn(
-              "rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#F4F3FF]",
-              openPanel === "crop" && "bg-[#F4F1FF] text-[#7C3AED]",
+              "rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#FFFADC]",
+              openPanel === "crop" && "bg-[#FFFADC] text-[#0A0A0A]",
             )}
           >
             <Crop size={16} strokeWidth={1.7} aria-hidden="true" />
@@ -671,8 +671,8 @@ export function ImageToolbar({
             aria-pressed={element.flip_h === true}
             onClick={() => update({ flip_h: !(element.flip_h ?? false) })}
             className={cn(
-              "rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#F4F3FF]",
-              element.flip_h === true && "bg-[#F4F1FF] text-[#7C3AED]",
+              "rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#FFFADC]",
+              element.flip_h === true && "bg-[#FFFADC] text-[#0A0A0A]",
             )}
           >
             <FlipHorizontal2 size={16} strokeWidth={1.7} aria-hidden="true" />
@@ -685,8 +685,8 @@ export function ImageToolbar({
             aria-pressed={element.flip_v === true}
             onClick={() => update({ flip_v: !(element.flip_v ?? false) })}
             className={cn(
-              "rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#F4F3FF]",
-              element.flip_v === true && "bg-[#F4F1FF] text-[#7C3AED]",
+              "rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#FFFADC]",
+              element.flip_v === true && "bg-[#FFFADC] text-[#0A0A0A]",
             )}
           >
             <FlipVertical2 size={16} strokeWidth={1.7} aria-hidden="true" />
@@ -700,8 +700,8 @@ export function ImageToolbar({
               aria-pressed={openPanel === "radius"}
               onClick={() => togglePanel("radius")}
               className={cn(
-                "rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#F4F3FF]",
-                openPanel === "radius" && "bg-[#F4F1FF] text-[#7C3AED]",
+                "rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#FFFADC]",
+                openPanel === "radius" && "bg-[#FFFADC] text-[#0A0A0A]",
               )}
             >
               <Scan size={16} strokeWidth={1.7} aria-hidden="true" />
@@ -734,7 +734,7 @@ export function ImageToolbar({
                     onPointerUp={(event) =>
                       commitRadius(Number(event.currentTarget.value))
                     }
-                    className="w-full cursor-pointer accent-[#7A5AF8]"
+                    className="w-full cursor-pointer accent-[#0A0A0A]"
                   />
                 </label>
               </Panel>
@@ -751,8 +751,8 @@ export function ImageToolbar({
             aria-pressed={openPanel === "opacity"}
             onClick={() => togglePanel("opacity")}
             className={cn(
-              "rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#F4F3FF]",
-              openPanel === "opacity" && "bg-[#F4F1FF] text-[#7C3AED]",
+              "rounded-[2px] border-0 bg-transparent p-1 text-[#05070A] hover:bg-[#FFFADC]",
+              openPanel === "opacity" && "bg-[#FFFADC] text-[#0A0A0A]",
             )}
           >
             <OpacitySwatchIcon />
@@ -773,7 +773,7 @@ export function ImageToolbar({
                 onPointerUp={(event) =>
                   update({ opacity: Number((event.target as HTMLInputElement).value) })
                 }
-                className="w-full cursor-pointer accent-[#7A5AF8]"
+                className="w-full cursor-pointer accent-[#0A0A0A]"
               />
             </Panel>
           ) : null}
@@ -923,7 +923,7 @@ function CropOverlay({
       {imageSource ? (
         <div
           aria-label={cropLabel}
-          className="pointer-events-auto absolute z-[2] cursor-grab touch-none select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED] focus-visible:ring-offset-2"
+          className="pointer-events-auto absolute z-[2] cursor-grab touch-none select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A] focus-visible:ring-offset-2"
           style={{
             height: imageFrame.height,
             left: imageFrame.left,
@@ -950,12 +950,12 @@ function CropOverlay({
               transform: transform || undefined,
             }}
           />
-          <div className="pointer-events-none absolute inset-0 border-2 border-[#7C3AED]" />
+          <div className="pointer-events-none absolute inset-0 border-2 border-[#0A0A0A]" />
         </div>
       ) : null}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute z-[4] border-2 border-[#7C3AED] shadow-[0_0_0_1px_rgba(255,255,255,0.85)]"
+        className="pointer-events-none absolute z-[4] border-2 border-[#0A0A0A] shadow-[0_0_0_1px_rgba(255,255,255,0.85)]"
         style={{
           borderRadius,
           height: frame.height,
@@ -971,7 +971,7 @@ function CropOverlay({
             type="button"
             title={handle.label}
             aria-label={handle.label}
-            className="pointer-events-auto absolute z-[5] rounded-full border border-[#D6D3E8] bg-white shadow-[0_1px_4px_rgba(17,24,39,0.24)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]"
+            className="pointer-events-auto absolute z-[5] rounded-full border border-[#D6D3E8] bg-white shadow-[0_1px_4px_rgba(17,24,39,0.24)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]"
             style={cropHandleStyle(handle.value, imageFrame)}
             onPointerCancel={(event) => onPointerCancel(event)}
             onPointerDown={(event) => onHandlePointerDown(handle.value, event)}
@@ -1095,7 +1095,7 @@ function CropActions({
         title="Reset crop"
         aria-label="Reset crop"
         onClick={onReset}
-        className="rounded-[6px] p-2 text-[#4B5563] hover:bg-[#F4F3FF] hover:text-[#191919]"
+        className="rounded-[6px] p-2 text-[#4B5563] hover:bg-[#FFFADC] hover:text-[#191919]"
       >
         <RotateCcw size={16} strokeWidth={1.8} />
       </button>
@@ -1113,7 +1113,7 @@ function CropActions({
         title="Close crop controls"
         aria-label="Close crop controls"
         onClick={onClose}
-        className="rounded-[6px] p-2 text-[#4B5563] hover:bg-[#F4F3FF] hover:text-[#191919]"
+        className="rounded-[6px] p-2 text-[#4B5563] hover:bg-[#FFFADC] hover:text-[#191919]"
       >
         <X size={17} strokeWidth={1.9} />
       </button>

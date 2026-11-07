@@ -27,11 +27,11 @@ const CreateCustomTemplate = ({
 
     if (libraryPage) {
       return (
-        <Card className="motion-card relative h-full min-w-0 overflow-hidden rounded-[10px] border-0 bg-[#F8FBFB] shadow-none after:pointer-events-none after:absolute after:inset-0 after:rounded-[10px] after:border after:border-[#EDEEEF] hover:after:border-[#D8D3FA]">
-          <button type="button" onClick={handleOpenTemplateBuilder} className="relative flex h-full min-h-[268px] w-full items-center justify-center overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7A5AF8]">
+        <Card className="motion-card relative h-full min-w-0 overflow-hidden rounded-[10px] border-0 bg-[#F8FBFB] shadow-none after:pointer-events-none after:absolute after:inset-0 after:rounded-[10px] after:border after:border-[#EDEEEF] hover:after:border-[#FFED82]">
+          <button type="button" onClick={handleOpenTemplateBuilder} className="relative flex h-full min-h-[268px] w-full items-center justify-center overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A0A0A]">
             <TemplateLibraryPattern />
             <span className="relative flex flex-col items-center gap-2.5 p-2.5">
-              <span className="flex items-center justify-center rounded-full bg-[#7A5AF8] p-1"><Plus aria-hidden="true" className="h-3.5 w-3.5 text-white" /></span>
+              <span className="flex items-center justify-center rounded-full bg-[#FFDB05] p-1"><Plus aria-hidden="true" className="h-3.5 w-3.5 text-[#0A0A0A]" /></span>
               <span className="font-manrope text-sm font-semibold leading-[19px] tracking-[0.14px] text-[#191919]">Create New Template</span>
             </span>
           </button>
@@ -72,7 +72,7 @@ const CreateCustomTemplate = ({
                 >
                     <div
                       className={cn(
-                        "flex items-center justify-center rounded-full bg-[#7A5AF8]",
+                        "flex items-center justify-center rounded-full bg-[#FFDB05]",
                         selectionPage ? "h-12 w-12" : "h-[36px] w-[36px]"
                       )}
                       style={{
@@ -106,11 +106,11 @@ const CreateCustomTemplate = ({
             >
                 <div
                   className={cn(
-                    "flex items-center justify-center rounded-lg bg-[#7A5AF8] p-2",
+                    "flex items-center justify-center rounded-lg bg-[#FFDB05] p-2",
                     selectionPage ? "h-[46px] w-[45px]" : "h-[45px] w-[45px]"
                   )}
                 >
-                    <Sparkles className="h-6 w-6 text-white" />
+                    <Sparkles className="h-6 w-6 text-[#0A0A0A]" />
                 </div>
                 <div className="flex min-w-0 flex-col gap-1">
                     <h4 className="text-sm font-semibold tracking-[0.14px] text-[#191919]">

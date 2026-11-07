@@ -40,7 +40,7 @@ export default function StreamingGenerationMetrics({
         <span
           aria-hidden="true"
           className={`h-1.5 w-1.5 rounded-full ${
-            metrics.estimated ? "animate-pulse bg-[#6847F4]" : "bg-emerald-500"
+            metrics.estimated ? "animate-pulse bg-[#FFDB05]" : "bg-emerald-500"
           }`}
         />
         <span className="whitespace-nowrap">
@@ -55,7 +55,7 @@ export default function StreamingGenerationMetrics({
             <span className="h-3.5 w-px bg-[#D8D8DF]" aria-hidden="true" />
             <span
               className={`whitespace-nowrap ${
-                thinkingPending ? "animate-pulse text-[#6847F4]" : ""
+                thinkingPending ? "animate-pulse text-[#0A0A0A]" : ""
               }`}
               title={
                 thinkingPending

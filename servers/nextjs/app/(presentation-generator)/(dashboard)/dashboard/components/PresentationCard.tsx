@@ -130,7 +130,7 @@ export const PresentationCard = ({
         suppressHydrationWarning={true}
         onClick={handlePreview}
         aria-disabled={isUnsupported}
-        title={isUnsupported ? "Unsupported in this version of Presenton" : undefined}
+        title={isUnsupported ? "Unsupported in this version of Fast Track Presentaciones" : undefined}
         className={`bg-[#F8FBFB] font-syne relative shadow-none sm:shadow-none presentation-card rounded-[12px] p-0 group slide-theme overflow-hidden flex flex-col ${
           isUnsupported
             ? "cursor-not-allowed border-[#EDEEEF]"
@@ -156,7 +156,7 @@ export const PresentationCard = ({
 
           {isUnsupported ? (
             <div className="flex flex-col items-center gap-2 px-5 text-center text-[#666666]">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F4F3FF] text-[#7A5AF8]">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FFFADC] text-[#0A0A0A]">
                 <Archive className="h-[18px] w-[18px]" aria-hidden="true" />
               </span>
               <p className="text-xs font-medium">Preview unavailable</p>
@@ -178,7 +178,7 @@ export const PresentationCard = ({
         <p
           className={`absolute left-2 top-2 z-40 rounded-full px-2.5 py-1 text-[11px] font-semibold capitalize shadow-sm backdrop-blur-sm ${
             presentationType === "smart"
-              ? "bg-[#F4F0FF]/95 text-[#6941C6]"
+              ? "bg-[#FFFADC]/95 text-[#0A0A0A]"
               : "bg-white/90 text-[#475467]"
           }`}
         >

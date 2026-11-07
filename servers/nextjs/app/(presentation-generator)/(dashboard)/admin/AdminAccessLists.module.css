@@ -41,7 +41,7 @@
 .owner { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .userRole, .adminRole, .expired, .active { display: inline-flex; flex: none; align-items: center; min-height: 22px; padding: 1px 7px; border-radius: 4px; font-size: 12px; line-height: 20px; font-weight: 500; white-space: nowrap; }
 .userRole { background: #f4f4f6; color: #585862; }
-.adminRole { background: #f3effc; color: #6840b5; }
+.adminRole { background: #fffadc; color: #0a0a0a; }
 .expired { color: #92400e; background: #fff7e7; }
 .active { color: #585862; background: #f4f4f6; }
 .protected { display: inline-flex; align-items: center; justify-content: flex-end; gap: 6px; font-size: 12px; color: #656570; white-space: nowrap; }
@@ -51,7 +51,7 @@
 .keyActions { display: flex; align-items: center; justify-content: flex-end; }
 .iconButton { display: inline-flex; height: 40px; width: 40px; flex: 0 0 40px; align-items: center; justify-content: center; border: 0; border-radius: 6px; background: transparent; color: #656570; cursor: pointer; }
 .iconButton:hover:not(:disabled) { color: #191923; background: #f4f3f7; }
-.iconButton:focus-visible, .loadError button:focus-visible, .empty button:focus-visible { outline: 2px solid #7147df; outline-offset: 2px; }
+.iconButton:focus-visible, .loadError button:focus-visible, .empty button:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; }
 .iconButton:disabled { cursor: wait; opacity: 0.5; }
 .menu { min-width: 180px; padding: 5px; border-color: #e5e4eb; border-radius: 8px; font-family: var(--font-manrope), sans-serif; }
 .menuItem { min-height: 40px; gap: 10px; border-radius: 4px; padding: 8px 10px; font-size: 13px; color: #191923; cursor: pointer; }
@@ -62,7 +62,7 @@
 .empty { padding: 48px 24px; text-align: center; }
 .empty h3 { margin: 0; font-size: 14px; line-height: 22px; font-weight: 600; }
 .empty p { max-width: 420px; margin: 6px auto 0; color: #656570; font-size: 13px; line-height: 21px; }
-.empty button, .loadError button { min-height: 40px; border: 0; background: transparent; color: #6840b5; font-size: 13px; font-weight: 600; cursor: pointer; }
+.empty button, .loadError button { min-height: 40px; border: 0; background: transparent; color: #0a0a0a; font-size: 13px; font-weight: 600; cursor: pointer; }
 .empty button { margin-top: 8px; }
 .loadError { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #ededf1; padding: 10px 24px; font-size: 13px; line-height: 20px; }
 .loadError > svg { flex: none; color: #b42318; }

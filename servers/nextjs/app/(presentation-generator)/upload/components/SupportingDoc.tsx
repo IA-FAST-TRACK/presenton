@@ -87,7 +87,7 @@ export default function SupportingDoc({
               className="inline-flex h-[30px] max-w-full items-center gap-2 rounded-md border border-[#EDEEEF] bg-[#F6F6F9] px-2 font-manrope text-[11px] text-[#333333]"
               data-testid="attached-file-item"
             >
-              <File className="h-3.5 w-3.5 shrink-0 text-[#7A5AF8]" />
+              <File className="h-3.5 w-3.5 shrink-0 text-[#0A0A0A]" />
               <span className="max-w-[180px] truncate" title={file.name}>
                 {file.name}
               </span>
@@ -108,7 +108,7 @@ export default function SupportingDoc({
       )}
 
       <div className="flex items-center justify-between gap-3">
-        <label className={`relative inline-flex h-[34px] w-[42px] items-center justify-center rounded-full border border-[#EDEEEF] bg-white hover:bg-[#F6F6F9] focus-within:ring-2 focus-within:ring-[#7A5AF8] ${disabled ? "cursor-not-allowed opacity-50" : "motion-press cursor-pointer"}`}>
+        <label className={`relative inline-flex h-[34px] w-[42px] items-center justify-center rounded-full border border-[#EDEEEF] bg-white hover:bg-[#F6F6F9] focus-within:ring-2 focus-within:ring-[#0A0A0A] ${disabled ? "cursor-not-allowed opacity-50" : "motion-press cursor-pointer"}`}>
           <Image src="/generate/paperclip.svg" alt="" width={14} height={14} />
           <span className="sr-only">{files.length ? `Attach more (${files.length})` : "Attach files"}</span>
           <input
@@ -127,7 +127,7 @@ export default function SupportingDoc({
           onClick={onSubmit}
           disabled={disabled}
           aria-label="Generate presentation"
-          className="motion-press group flex h-10 w-[60px] items-center justify-center rounded-full bg-[#7A5AF8] text-white shadow-sm hover:bg-[#6938EF] disabled:cursor-not-allowed disabled:opacity-50"
+          className="motion-press group flex h-10 w-[60px] items-center justify-center rounded-full bg-[#FFDB05] text-[#0A0A0A] shadow-sm hover:bg-[#E6C500] disabled:cursor-not-allowed disabled:opacity-50"
         >
           <Image src="/generate/submit-arrow.svg" alt="" width={16} height={16} className="motion-arrow" />
         </button>

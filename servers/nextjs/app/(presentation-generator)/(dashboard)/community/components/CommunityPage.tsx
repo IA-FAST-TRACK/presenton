@@ -247,7 +247,7 @@ export default function CommunityPage() {
         </h1>
         <Link
           href="/upload"
-          className="motion-press group inline-flex h-10 items-center gap-2 rounded-full bg-[linear-gradient(270deg,#D5CAFC_2.4%,#E3D2EB_27.88%,#F4DCD3_69.23%,#FDE4C2_100%)] px-4 font-syne text-sm font-medium text-[#191919] shadow-sm hover:shadow-md"
+          className="motion-press group inline-flex h-10 items-center gap-2 rounded-full bg-[linear-gradient(270deg,#FFDB05_0%,#FFE45C_100%)] px-4 font-syne text-sm font-medium text-[#191919] shadow-sm hover:shadow-md"
         >
           New presentation
           <ChevronRight className="motion-arrow h-4 w-4" />
@@ -308,7 +308,7 @@ export default function CommunityPage() {
               <button
                 type="button"
                 onClick={() => setRetryVersion((current) => current + 1)}
-                className="mt-4 rounded-full border border-[#E0DDFC] bg-white px-4 py-2 text-xs font-medium text-[#6847F4] transition hover:bg-[#F8F7FF]"
+                className="mt-4 rounded-full border border-[#FFED82] bg-white px-4 py-2 text-xs font-medium text-[#0A0A0A] transition hover:bg-[#FFFADC]"
               >
                 Try again
               </button>
@@ -408,7 +408,7 @@ function CommunityPresentationCard({
       <button
         type="button"
         onClick={onPreview}
-        className="group block aspect-[306/169] w-full overflow-hidden bg-[#F8FBFB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7A5AF8]/35"
+        className="group block aspect-[306/169] w-full overflow-hidden bg-[#F8FBFB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A0A0A]/35"
         aria-label={`Preview ${title}`}
       >
         {thumbnail ? (

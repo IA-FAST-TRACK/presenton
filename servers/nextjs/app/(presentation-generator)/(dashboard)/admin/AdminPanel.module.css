@@ -6,7 +6,7 @@
   font-family: var(--font-manrope), sans-serif;
   font-size: 14px;
   line-height: 1.5;
-  --admin-accent: #7147df;
+  --admin-accent: #0a0a0a;
 }
 .standalone { min-height: 100dvh; padding: 36px 32px; background: #f8f8fb; }
 .embedded { padding: 4px 0 24px; }
@@ -25,15 +25,15 @@
 .search { position: relative; flex: 1; min-width: 0; max-width: 320px; }
 .search > svg { position: absolute; left: 12px; top: 50%; color: #73717c; transform: translateY(-50%); pointer-events: none; }
 .search .input { padding-left: 38px; }
-.input { display: block; width: 100%; min-width: 0; height: 40px; padding: 0 12px; border: 1px solid #d9d9e1; border-radius: 7px; background: white; color: #191923; font: inherit; font-size: 14px; caret-color: var(--admin-accent, #7147df); }
+.input { display: block; width: 100%; min-width: 0; height: 40px; padding: 0 12px; border: 1px solid #d9d9e1; border-radius: 7px; background: white; color: #191923; font: inherit; font-size: 14px; caret-color: var(--admin-accent, #0a0a0a); }
 .input::placeholder { color: #6b6b76; opacity: 1; }
 .input:focus { border-color: #aaa9b5; outline: none; box-shadow: none; }
 .input:focus-visible { outline: 1px solid #656570; outline-offset: 2px; }
 :global(html[data-motion-input="pointer"]) .input:focus-visible { outline: none; }
-.primaryButton:focus-visible, .secondaryButton:focus-visible, .iconButton:focus-visible, .backButton:focus-visible { outline: 2px solid #7147df; outline-offset: 3px; }
+.primaryButton:focus-visible, .secondaryButton:focus-visible, .iconButton:focus-visible, .backButton:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 3px; }
 .primaryButton, .secondaryButton { display: inline-flex; flex: none; min-height: 40px; align-items: center; justify-content: center; gap: 8px; padding: 9px 16px; border: 1px solid transparent; border-radius: 8px; font-family: var(--font-manrope), sans-serif; font-size: 13px; line-height: 20px; font-weight: 600; white-space: nowrap; cursor: pointer; }
-.primaryButton { background: #7147df; color: #fff; }
-.primaryButton:hover:not(:disabled) { background: #6038c8; }
+.primaryButton { background: #ffdb05; color: #0a0a0a; }
+.primaryButton:hover:not(:disabled) { background: #e6c500; }
 .secondaryButton { border-color: #d9d9e1; background: #fff; color: #45434f; }
 .secondaryButton:hover:not(:disabled) { background: #f4f3f7; }
 .dangerButton { border-color: transparent; background: #b42318; color: #fff; }
@@ -54,7 +54,7 @@
 .passwordField { position: relative; }
 .passwordField .input { padding-right: 44px; }
 .passwordField button { position: absolute; top: 0; right: 0; display: flex; width: 40px; height: 40px; align-items: center; justify-content: center; border: 0; border-radius: 7px; background: transparent; color: #656570; cursor: pointer; }
-.passwordField button:focus-visible { outline: 2px solid #7147df; outline-offset: -3px; }
+.passwordField button:focus-visible { outline: 2px solid #0a0a0a; outline-offset: -3px; }
 .formHint { margin: 12px 0 0; color: #656570; font-size: 12px; }
 .scopeNote { display: flex; align-items: flex-start; gap: 8px; margin: 20px 0 0; color: #656570; font-size: 12px; line-height: 20px; }
 .scopeNote svg { flex: none; margin-top: 2px; }

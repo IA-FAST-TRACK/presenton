@@ -41,8 +41,8 @@ const DashboardSidebar = ({
             <div>
 
                 <Link href={`/dashboard`} className="flex items-center  pb-6 border-b border-[#E1E1E5]   gap-2    ">
-                    <div className="bg-[#7C51F8] rounded-full cursor-pointer p-1 flex justify-center items-center mx-auto">
-                        <img src="/logo-with-bg.png" alt="Presenton logo" className="h-[40px] object-contain w-full" />
+                    <div className="bg-[#0A0A0A] rounded-full cursor-pointer p-1 flex justify-center items-center mx-auto">
+                        <img src="/logo-with-bg.png" alt="AI Fast Track Presentaciones" className="h-[40px] object-contain w-full" />
                     </div>
                 </Link>
                 <nav className="pt-6 font-syne" aria-label="Dashboard sections">
@@ -59,7 +59,7 @@ const DashboardSidebar = ({
                             aria-label="Dashboard"
                             title="Dashboard"
                         >
-                            <LayoutDashboard className={["h-4 w-4", pathname === "/dashboard" ? "text-[#5146E5]" : "text-slate-600"].join(" ")} />
+                            <LayoutDashboard className={["h-4 w-4", pathname === "/dashboard" ? "text-[#0A0A0A]" : "text-slate-600"].join(" ")} />
                             <span className="text-[11px] text-slate-800">Dashboard</span>
                         </Link>
                         {showTemplates ? 
@@ -96,7 +96,7 @@ const DashboardSidebar = ({
                             aria-label="Community"
                             title="Community"
                         >
-                            <UsersRound className={`h-4 w-4 ${pathname === "/community" ? "text-[#5146E5]" : "text-slate-600"}`} />
+                            <UsersRound className={`h-4 w-4 ${pathname === "/community" ? "text-[#0A0A0A]" : "text-slate-600"}`} />
                             <span className="text-[11px] text-slate-800">Community</span>
                         </Link> : null}
 
@@ -115,7 +115,7 @@ const DashboardSidebar = ({
                 </Link>
                 <div className="py-2"/>
                 <Link
-                    href="https://docs.presenton.ai/help"
+                    href="https://aifasttrack.tech"
                     aria-label="Help"
                     target="_blank"
                     className="flex flex-col items-center gap-2 transition-colors"

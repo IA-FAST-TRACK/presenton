@@ -8,7 +8,7 @@ export default function SlidePreviewLoader({
   return (
     <div
       role="status"
-      className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-white text-[#6847F4]"
+      className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-white text-[#0A0A0A]"
     >
       <LoaderCircle
         aria-hidden="true"

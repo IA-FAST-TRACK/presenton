@@ -19,14 +19,14 @@ const OutlineStandardHeader = ({
         <Link
           href="/dashboard"
           aria-label="Go to dashboard"
-          className="shrink-0 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/30"
+          className="shrink-0 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/30"
         >
           <Image
             src="/logo-with-bg.png"
             alt=""
             width={32}
-            height={33}
-            className="h-[33px] w-[32px]"
+            height={32}
+            className="h-[32px] w-[32px]"
           />
         </Link>
         <h1 className="truncate text-base font-medium tracking-[0.16px] text-[#101323]">
@@ -37,7 +37,7 @@ const OutlineStandardHeader = ({
       <button
         type="button"
         onClick={onBack}
-        className="flex shrink-0 items-center gap-2 text-xs font-semibold uppercase tracking-[0.96px] text-[#333333] transition-colors hover:text-[#7A5AF8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/30"
+        className="flex shrink-0 items-center gap-2 text-xs font-semibold uppercase tracking-[0.96px] text-[#333333] transition-colors hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/30"
       >
         <ArrowLeft className="h-4 w-4" aria-hidden="true" />
         Back

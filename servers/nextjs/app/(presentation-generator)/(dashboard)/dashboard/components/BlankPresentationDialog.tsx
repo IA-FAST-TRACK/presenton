@@ -45,9 +45,9 @@ function ChoiceCard({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className="group flex min-h-44 flex-col items-start rounded-2xl border border-[#E5E7EB] bg-white p-5 text-left outline-none transition hover:-translate-y-0.5 hover:border-[#7A5AF8] hover:shadow-[0_16px_36px_rgba(34,31,54,0.10)] focus-visible:border-[#7A5AF8] focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/30 disabled:cursor-wait disabled:opacity-60"
+      className="group flex min-h-44 flex-col items-start rounded-2xl border border-[#E5E7EB] bg-white p-5 text-left outline-none transition hover:-translate-y-0.5 hover:border-[#0A0A0A] hover:shadow-[0_16px_36px_rgba(34,31,54,0.10)] focus-visible:border-[#0A0A0A] focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/30 disabled:cursor-wait disabled:opacity-60"
     >
-      <span className="mb-6 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#F0EDFF] text-[#6847F4] transition-colors group-hover:bg-[#E8E2FF]">
+      <span className="mb-6 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#FFFADC] text-[#0A0A0A] transition-colors group-hover:bg-[#FFFADC]">
         {icon}
       </span>
       <span className="font-syne text-base font-semibold text-[#191919]">
@@ -94,7 +94,7 @@ function TemplatePicker({
         <button
           type="button"
           onClick={onRetry}
-          className="rounded-lg border border-[#E5E7EB] px-4 py-2 text-sm font-medium text-[#6847F4] hover:bg-[#F0EDFF]"
+          className="rounded-lg border border-[#E5E7EB] px-4 py-2 text-sm font-medium text-[#0A0A0A] hover:bg-[#FFFADC]"
         >
           Try again
         </button>
@@ -150,7 +150,7 @@ function TemplatePicker({
 
       {isCreating && (
         <div role="status" className="absolute inset-0 z-50 flex items-center justify-center rounded-xl bg-white/70 backdrop-blur-[1px]">
-          <div className="flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white px-4 py-2 text-sm font-medium text-[#4F3BC8] shadow-sm">
+          <div className="flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white px-4 py-2 text-sm font-medium text-[#0A0A0A] shadow-sm">
             <Loader2 className="h-4 w-4 animate-spin" />
             Creating presentation...
           </div>
@@ -222,7 +222,7 @@ export function BlankPresentationDialog({
               />
             </div>
             {isCreating && (
-              <div role="status" className="flex items-center justify-center gap-2 text-sm text-[#4F3BC8]">
+              <div role="status" className="flex items-center justify-center gap-2 text-sm text-[#0A0A0A]">
                 <Loader2 className="h-4 w-4 animate-spin" />
                 Creating presentation...
               </div>
@@ -235,7 +235,7 @@ export function BlankPresentationDialog({
                 type="button"
                 disabled={isCreating}
                 onClick={() => setStep("choice")}
-                className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#64666F] transition-colors hover:text-[#6847F4] disabled:cursor-wait disabled:opacity-50"
+                className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#64666F] transition-colors hover:text-[#0A0A0A] disabled:cursor-wait disabled:opacity-50"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Back

@@ -542,7 +542,7 @@ export default function AdminPanel({ embedded = false, onBackToSettings }: Admin
         <header className={styles.header}>
           <div>
             <h1 className={styles.heading}>Administration</h1>
-            <p className={styles.description}>Manage who can sign in and which clients can connect to Presenton.</p>
+            <p className={styles.description}>Manage who can sign in and which clients can connect to Fast Track Presentaciones.</p>
           </div>
           <button
             ref={createAction}

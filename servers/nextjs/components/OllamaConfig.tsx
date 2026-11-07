@@ -148,7 +148,7 @@ export default function OllamaConfig({
         notify.success(
           "Using in-container Ollama",
           requestedUrl
-            ? "host.docker.internal did not respond, so Presenton switched Ollama URL to localhost."
+            ? "host.docker.internal did not respond, so Fast Track Presentaciones switched Ollama URL to localhost."
             : "host.docker.internal did not respond, so this check used localhost."
         );
       }
@@ -448,7 +448,7 @@ export default function OllamaConfig({
                           key={model.name}
                           value={model.name}
                           onSelect={() => handleModelSelect(model)}
-                          className="cursor-pointer rounded-lg py-2.5 aria-selected:bg-[#F6F4FF]"
+                          className="cursor-pointer rounded-lg py-2.5 aria-selected:bg-[#FFFADC]"
                         >
                           <Check
                             className={cn(

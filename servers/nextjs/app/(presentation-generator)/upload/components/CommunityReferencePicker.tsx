@@ -125,13 +125,13 @@ export default function CommunityReferencePicker({
             <input ref={searchRef} type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search by title or keyword" className="min-w-0 flex-1 bg-transparent font-syne text-base font-normal text-[#191919] outline-none placeholder:text-[#808080]" />
             <kbd className="hidden shrink-0 font-manrope text-[10px] text-[#CCCCCC] sm:block" aria-label="Command or Control K">⌘K</kbd>
           </label>
-          <Link href="/community" className="inline-flex items-center gap-1.5 whitespace-nowrap font-syne text-xs text-[#7A5AF8] hover:underline">Browse All <ArrowUpRight className="h-3.5 w-3.5" /></Link>
-          {selectedId !== null && <button type="button" onClick={() => onSelect(null)} className="text-xs text-[#7A5AF8] hover:underline">Clear selection</button>}
+          <Link href="/community" className="inline-flex items-center gap-1.5 whitespace-nowrap font-syne text-xs text-[#0A0A0A] hover:underline">Browse All <ArrowUpRight className="h-3.5 w-3.5" /></Link>
+          {selectedId !== null && <button type="button" onClick={() => onSelect(null)} className="text-xs text-[#0A0A0A] hover:underline">Clear selection</button>}
         </div>
       </div>
 
       {loading ? (
-        <div className="flex h-52 items-center justify-center text-[#7A5AF8]">
+        <div className="flex h-52 items-center justify-center text-[#0A0A0A]">
           <Loader2 className="h-5 w-5 animate-spin" />
         </div>
       ) : error ? (
@@ -149,7 +149,7 @@ export default function CommunityReferencePicker({
             <button
               type="button"
               onClick={() => load()}
-              className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#E0DDFC] bg-white px-4 py-2 text-xs font-medium text-[#6847F4] transition hover:bg-[#F8F7FF]"
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#FFED82] bg-white px-4 py-2 text-xs font-medium text-[#0A0A0A] transition hover:bg-[#FFFADC]"
             >
               <RefreshCw className="h-4 w-4" /> Try again
             </button>
@@ -172,8 +172,8 @@ export default function CommunityReferencePicker({
                 key={item.id}
                 className={`motion-card min-w-0 overflow-hidden rounded-xl border bg-white ${
                   selected
-                    ? "border-[#7A5AF8] ring-2 ring-[#7A5AF8]/15"
-                    : "border-[#EDEEEF] hover:border-[#D8D3FA]"
+                    ? "border-[#0A0A0A] ring-2 ring-[#0A0A0A]/15"
+                    : "border-[#EDEEEF] hover:border-[#FFED82]"
                 }`}
               >
                 <button
@@ -204,7 +204,7 @@ export default function CommunityReferencePicker({
                     </p>
                     <button type="button" onClick={() => setPreview(item)} aria-label={`Preview ${item.title || "community design"}`} className="flex h-[26px] w-[42px] shrink-0 items-center justify-center rounded-full border border-[#EDEEEF] hover:bg-[#F6F6F9]"><Eye className="h-3.5 w-3.5" /></button>
                     <div className="flex h-[26px] shrink-0 items-center rounded-full border border-[#EDEEEF] bg-white">
-                      <button type="button" aria-pressed={selected} onClick={() => onSelect(selected ? null : item)} className="flex items-center gap-1 rounded-l-full px-3 font-syne text-xs hover:bg-[#F6F6F9]">{selected && <Check className="h-3 w-3 text-[#7A5AF8]" />}{selected ? "Selected" : "Use"}</button>
+                      <button type="button" aria-pressed={selected} onClick={() => onSelect(selected ? null : item)} className="flex items-center gap-1 rounded-l-full px-3 font-syne text-xs hover:bg-[#F6F6F9]">{selected && <Check className="h-3 w-3 text-[#0A0A0A]" />}{selected ? "Selected" : "Use"}</button>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild><button type="button" aria-label={`Use options for ${item.title || "community design"}`} className="flex h-6 w-6 items-center justify-center rounded-r-full border-l border-[#EDEEEF] hover:bg-[#F6F6F9]"><ChevronDown className="h-3.5 w-3.5" /></button></DropdownMenuTrigger>
                         <DropdownMenuContent align="end"><DropdownMenuItem onSelect={() => onSelect(item)}>Use design</DropdownMenuItem><DropdownMenuItem disabled={!item.prompt?.trim()} onSelect={() => onUsePrompt(item.prompt || "")}>Use prompt</DropdownMenuItem></DropdownMenuContent>

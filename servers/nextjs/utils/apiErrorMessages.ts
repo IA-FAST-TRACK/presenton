@@ -146,7 +146,7 @@ export function statusErrorMessage(status: number, fallback: string): string {
     case 428: return "This installation needs initial setup. Ask an administrator to complete setup.";
     case 429: return "Too many requests. Please wait a moment and try again.";
     case 500: return "The server could not complete this request. Please try again.";
-    case 502: return "Presenton received an invalid response from a service. Please try again shortly.";
+    case 502: return "Fast Track Presentaciones received an invalid response from a service. Please try again shortly.";
     case 503: return "The service is temporarily unavailable. Please try again shortly.";
     case 408:
     case 504: return "The request took too long to complete. Please try again.";

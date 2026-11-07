@@ -626,7 +626,7 @@ const UploadPage = ({
       <div className="mx-auto max-w-[742px] space-y-[14px] px-4">
         <div data-generate-guide="setup" className="motion-enter motion-delay-1 flex min-h-[62px] w-full flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex flex-col gap-2">
-            <button type="button" onClick={() => setModeDialogOpen(true)} className="inline-flex items-center gap-1.5 self-start font-syne text-[13px] leading-[18px] text-[#4C4C4C] hover:text-[#7A5AF8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]">
+            <button type="button" onClick={() => setModeDialogOpen(true)} className="inline-flex items-center gap-1.5 self-start font-syne text-[13px] leading-[18px] text-[#4C4C4C] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]">
               <Image src="/generate/mode-info.svg" alt="" width={16} height={16} />
               Presentation Mode
               <Image src="/generate/mode-arrow.svg" alt="" width={14} height={14} />
@@ -634,7 +634,7 @@ const UploadPage = ({
             <div role="group" aria-label="Presentation mode" data-selection={generationMode === "standard" ? "1" : "0"} className="motion-segments inline-flex h-9 w-[188px] items-center rounded-xl border border-[#EDEEEF] bg-white p-1 font-manrope text-[13px] font-medium text-[#191919] [--motion-segment-inset:4px]">
               <span aria-hidden="true" className="motion-segment-indicator rounded-lg bg-[#F6F6F9]" />
               {(["smart", "standard"] as const).map((mode) => (
-                <button key={mode} type="button" aria-pressed={generationMode === mode} disabled={!isGenerationModeAvailable(presentationGenerationMode, mode)} onClick={() => handleGenerationModeChange(mode)} className={`h-7 flex-1 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8] disabled:cursor-not-allowed disabled:opacity-40 ${generationMode === mode ? "" : "hover:bg-[#FAFAFC]"}`}>
+                <button key={mode} type="button" aria-pressed={generationMode === mode} disabled={!isGenerationModeAvailable(presentationGenerationMode, mode)} onClick={() => handleGenerationModeChange(mode)} className={`h-7 flex-1 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A] disabled:cursor-not-allowed disabled:opacity-40 ${generationMode === mode ? "" : "hover:bg-[#FAFAFC]"}`}>
                   {mode === "smart" ? "Smart" : "Standard"}
                 </button>
               ))}

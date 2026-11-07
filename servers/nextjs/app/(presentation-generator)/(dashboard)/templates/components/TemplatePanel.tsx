@@ -121,7 +121,7 @@ const LayoutPreview = () => {
               style={{
                 borderRadius: "48px",
                 background:
-                  "linear-gradient(270deg, #D5CAFC 2.4%, #E3D2EB 27.88%, #F4DCD3 69.23%, #FDE4C2 100%)",
+                  "linear-gradient(270deg, #FFDB05 0%, #FFE45C 100%)",
               }}
             >
               <span className="hidden md:inline">New Template</span>
@@ -135,8 +135,8 @@ const LayoutPreview = () => {
       <section aria-label="Template library" className="motion-fade mx-auto flex min-w-0 flex-col gap-5 px-4 pb-8 pt-[19px] sm:pl-6 sm:pr-2">
         <p className="flex min-h-[26px] flex-wrap items-center gap-1.5 text-base font-medium text-[#191919]">
           <span>Choose a template or</span>
-          <Link href="/custom-template" onClick={() => trackEvent(MixpanelEvent.Templates_New_Template_Clicked)} className="inline-flex items-center gap-1.5 rounded outline-none hover:underline focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/30">
-            <CirclePlus aria-hidden="true" className="h-4 w-4 text-[#7A5AF8]" strokeWidth={1.67} />create your own.
+          <Link href="/custom-template" onClick={() => trackEvent(MixpanelEvent.Templates_New_Template_Clicked)} className="inline-flex items-center gap-1.5 rounded outline-none hover:underline focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/30">
+            <CirclePlus aria-hidden="true" className="h-4 w-4 text-[#0A0A0A]" strokeWidth={1.67} />create your own.
           </Link>
         </p>
         <TemplateLibraryControls tab={tab} onTabChange={handleTabChange} query={query} onQueryChange={setQuery} sort={sort} onSortChange={setSort} />

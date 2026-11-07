@@ -454,9 +454,9 @@ const NavButton = ({
       disabled={disabled}
       onClick={onClick}
       className={cn(
-        "group flex w-full flex-col items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7A5AF8]/40 text-[12px] font-normal leading-normal transition-colors",
+        "group flex w-full flex-col items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A0A0A]/40 text-[12px] font-normal leading-normal transition-colors",
         item.id === "images" ? "h-[52px] gap-2" : "h-12 gap-1",
-        active ? "text-[#7A5AF8]" : "text-black",
+        active ? "text-[#0A0A0A]" : "text-black",
         disabled && "cursor-not-allowed opacity-40",
       )}
       aria-pressed={active}
@@ -467,7 +467,7 @@ const NavButton = ({
           active && "border-[#EDEEEF] bg-white",
         )}
         style={{
-          boxShadow: active ? "0 6.6px 13.2px 0 rgba(124, 81, 248, 0.14)" : "",
+          boxShadow: active ? "0 6.6px 13.2px 0 rgba(255,219,5, 0.14)" : "",
         }}
       >
         <img
@@ -526,7 +526,7 @@ const PaletteCard = ({
     disabled={disabled}
     onClick={onClick}
     className={cn(
-      "group min-w-0 overflow-hidden rounded-[10px] border border-[#EDEEF0] bg-white text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#B9A8FA] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40",
+      "group min-w-0 overflow-hidden rounded-[10px] border border-[#EDEEF0] bg-white text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#FFED82] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40",
       disabled &&
         "cursor-not-allowed opacity-50 hover:translate-y-0 hover:border-[#EDEEF0] hover:shadow-sm",
     )}
@@ -644,7 +644,7 @@ function TextsPanel({
                     : undefined
                 }
                 className={cn(
-                  "group flex min-h-[52px] w-full items-center rounded-[13px] border border-[#E4E4E7] bg-white px-[clamp(14px,1.3vw,18px)] text-left font-normal text-[#18181B] transition-[border-color,background-color,box-shadow,transform] duration-150 hover:-translate-y-px hover:border-[#B9A8FA] hover:bg-[#FCFBFF] hover:shadow-[0_6px_16px_rgba(67,56,202,0.07)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40",
+                  "group flex min-h-[52px] w-full items-center rounded-[13px] border border-[#E4E4E7] bg-white px-[clamp(14px,1.3vw,18px)] text-left font-normal text-[#18181B] transition-[border-color,background-color,box-shadow,transform] duration-150 hover:-translate-y-px hover:border-[#FFED82] hover:bg-[#FCFBFF] hover:shadow-[0_6px_16px_rgba(67,56,202,0.07)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40",
                   option.textClassName,
                   disabled &&
                     "cursor-not-allowed opacity-50 hover:translate-y-0 hover:border-[#E4E4E7] hover:bg-white hover:shadow-none",
@@ -671,7 +671,7 @@ function TextsPanel({
           <button
             type="button"
             onClick={() => setCompositionsExpanded((expanded) => !expanded)}
-            className="flex min-h-[52px] w-full items-center gap-2 border-b border-transparent py-3 text-left transition-colors hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7A5AF8]/40"
+            className="flex min-h-[52px] w-full items-center gap-2 border-b border-transparent py-3 text-left transition-colors hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A0A0A]/40"
             aria-expanded={compositionsExpanded}
             aria-controls="text-compositions"
           >
@@ -711,7 +711,7 @@ function TextsPanel({
                       : undefined
                   }
                   className={cn(
-                    "group min-w-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40 focus-visible:ring-offset-2",
+                    "group min-w-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40 focus-visible:ring-offset-2",
                     disabled && "cursor-not-allowed opacity-50",
                   )}
                   aria-label={`Add ${item.label}`}
@@ -765,13 +765,13 @@ function ChartsPanel({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search Charts..."
-            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#7A5AF8] [&::-webkit-search-cancel-button]:hidden"
+            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#0A0A0A] [&::-webkit-search-cancel-button]:hidden"
           />
           {query ? (
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#F0EEFF] hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
               aria-label="Clear chart search"
             >
               <X className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
@@ -803,7 +803,7 @@ function ChartsPanel({
                     : undefined
                 }
                 className={cn(
-                  "group min-w-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40 focus-visible:ring-offset-2",
+                  "group min-w-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40 focus-visible:ring-offset-2",
                   disabled && "cursor-not-allowed opacity-50",
                 )}
                 aria-label={`Add ${item.label}`}
@@ -837,7 +837,7 @@ function ChartsPanel({
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="mt-3 rounded-[7px] bg-[#F0EEFF] px-3 py-1.5 text-[11px] font-medium text-[#6938EF] transition-colors hover:bg-[#E4E0FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              className="mt-3 rounded-[7px] bg-[#FFFADC] px-3 py-1.5 text-[11px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#FFFADC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
             >
               Clear search
             </button>
@@ -903,7 +903,7 @@ function ImagesPanel({
                 aria-label={`Add ${item.label}`}
                 title={item.label}
               >
-                <span className="block h-full w-full overflow-hidden rounded-[inherit] bg-[#F6F6F9] ring-1 ring-inset ring-transparent transition-[box-shadow,transform] duration-150 group-hover:-translate-y-0.5 group-hover:shadow-[0_7px_18px_rgba(39,39,42,0.12)] group-hover:ring-[#D8D0FF] group-focus-visible:ring-2 group-focus-visible:ring-inset group-focus-visible:ring-[#7A5AF8]/40">
+                <span className="block h-full w-full overflow-hidden rounded-[inherit] bg-[#F6F6F9] ring-1 ring-inset ring-transparent transition-[box-shadow,transform] duration-150 group-hover:-translate-y-0.5 group-hover:shadow-[0_7px_18px_rgba(39,39,42,0.12)] group-hover:ring-[#FFED82] group-focus-visible:ring-2 group-focus-visible:ring-inset group-focus-visible:ring-[#0A0A0A]/40">
                   <InsertPalettePreview
                     itemId={item.id}
                     kind="image"
@@ -962,13 +962,13 @@ function ShapesPanel({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search Elements..."
-            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#7A5AF8] [&::-webkit-search-cancel-button]:hidden"
+            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#0A0A0A] [&::-webkit-search-cancel-button]:hidden"
           />
           {query ? (
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#F0EEFF] hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
               aria-label="Clear element search"
             >
               <X className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
@@ -1000,7 +1000,7 @@ function ShapesPanel({
                         [group.label]: !expanded,
                       }))
                     }
-                    className="flex min-h-[46px] w-full items-center gap-2 py-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7A5AF8]/40"
+                    className="flex min-h-[46px] w-full items-center gap-2 py-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A0A0A]/40"
                     aria-expanded={expanded}
                     aria-controls={groupId}
                   >
@@ -1044,7 +1044,7 @@ function ShapesPanel({
                           aria-label={`Add ${item.label}`}
                           title={item.label}
                         >
-                          <span className="block aspect-video w-full overflow-hidden rounded-[inherit] transition-shadow group-hover:ring-1 group-hover:ring-inset group-hover:ring-[#D9D0FF] group-focus-visible:ring-2 group-focus-visible:ring-inset group-focus-visible:ring-[#7A5AF8]/40">
+                          <span className="block aspect-video w-full overflow-hidden rounded-[inherit] transition-shadow group-hover:ring-1 group-hover:ring-inset group-hover:ring-[#FFED82] group-focus-visible:ring-2 group-focus-visible:ring-inset group-focus-visible:ring-[#0A0A0A]/40">
                             <InsertPalettePreview
                               itemId={item.id}
                               kind="element"
@@ -1076,7 +1076,7 @@ function ShapesPanel({
           <button
             type="button"
             onClick={() => setQuery("")}
-            className="mt-3 rounded-[7px] bg-[#F0EEFF] px-3 py-1.5 text-[11px] font-medium text-[#6938EF] transition-colors hover:bg-[#E4E0FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+            className="mt-3 rounded-[7px] bg-[#FFFADC] px-3 py-1.5 text-[11px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#FFFADC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
           >
             Clear search
           </button>
@@ -1115,13 +1115,13 @@ function InfographicsPanel({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search Infographics..."
-            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#7A5AF8] [&::-webkit-search-cancel-button]:hidden"
+            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#0A0A0A] [&::-webkit-search-cancel-button]:hidden"
           />
           {query ? (
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#F0EEFF] hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
               aria-label="Clear infographic search"
             >
               <X className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
@@ -1153,7 +1153,7 @@ function InfographicsPanel({
                     : undefined
                 }
                 className={cn(
-                  "group min-w-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40 focus-visible:ring-offset-2",
+                  "group min-w-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40 focus-visible:ring-offset-2",
                   disabled && "cursor-not-allowed opacity-50",
                 )}
                 aria-label={`Add ${item.label}`}
@@ -1187,7 +1187,7 @@ function InfographicsPanel({
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="mt-3 rounded-[7px] bg-[#F0EEFF] px-3 py-1.5 text-[11px] font-medium text-[#6938EF] transition-colors hover:bg-[#E4E0FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              className="mt-3 rounded-[7px] bg-[#FFFADC] px-3 py-1.5 text-[11px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#FFFADC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
             >
               Clear search
             </button>
@@ -1582,7 +1582,7 @@ function BlockVariantButton({
       data-block-variant
       disabled={disabled}
       className={cn(
-        "template-block-variant group relative w-full overflow-hidden rounded-[8px] border border-transparent bg-[#F7F7FA] p-0 text-left transition-[border-color,box-shadow,transform] duration-150 hover:-translate-y-0.5 hover:border-[#B9A8FA] hover:shadow-[0_8px_20px_rgba(67,56,202,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40",
+        "template-block-variant group relative w-full overflow-hidden rounded-[8px] border border-transparent bg-[#F7F7FA] p-0 text-left transition-[border-color,box-shadow,transform] duration-150 hover:-translate-y-0.5 hover:border-[#FFED82] hover:shadow-[0_8px_20px_rgba(67,56,202,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40",
         disabled && "cursor-not-allowed opacity-50 hover:translate-y-0 hover:border-transparent hover:shadow-none",
       )}
       onClick={() => {
@@ -1593,7 +1593,7 @@ function BlockVariantButton({
     >
       <div className="relative">
         <BlockThumbnail block={block} />
-        <span className="absolute right-1.5 top-1.5 flex h-7 w-7 scale-90 items-center justify-center rounded-full border border-[#E4E1FE] bg-white text-[#6938EF] opacity-0 shadow-[0_6px_16px_rgba(16,24,40,0.18)] transition-[opacity,transform] duration-150 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100">
+        <span className="absolute right-1.5 top-1.5 flex h-7 w-7 scale-90 items-center justify-center rounded-full border border-[#FFED82] bg-white text-[#0A0A0A] opacity-0 shadow-[0_6px_16px_rgba(16,24,40,0.18)] transition-[opacity,transform] duration-150 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100">
           <Plus className="h-3.5 w-3.5" strokeWidth={2.2} aria-hidden />
         </span>
       </div>
@@ -1624,7 +1624,7 @@ function BlockGroupCard({
     <section className="border-b border-[#F0F1F3] last:border-b-0">
       <button
         type="button"
-        className="group sticky top-[117px] z-10 -mx-1 flex w-[calc(100%+8px)] items-center gap-2 border-b border-transparent bg-white/95 px-1 py-3 text-left backdrop-blur-sm transition-[border-color,box-shadow] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7A5AF8]/40"
+        className="group sticky top-[117px] z-10 -mx-1 flex w-[calc(100%+8px)] items-center gap-2 border-b border-transparent bg-white/95 px-1 py-3 text-left backdrop-blur-sm transition-[border-color,box-shadow] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A0A0A]/40"
         aria-controls={contentId}
         aria-expanded={expanded}
         onClick={() => {
@@ -1634,7 +1634,7 @@ function BlockGroupCard({
       >
         <FilledAccordionArrow
           expanded={expanded}
-          className="text-[#8B8B94] group-hover:text-[#5141E5]"
+          className="text-[#8B8B94] group-hover:text-[#0A0A0A]"
         />
         <span className="min-w-0 flex-1 truncate text-[13px] font-medium leading-5 text-[#191919]">
           <span className="font-normal text-[#A1A1AA]">Blocks/ </span>
@@ -1774,13 +1774,13 @@ export const BlocksPanel = ({
             value={blockPrompt}
             onChange={(event) => setBlockPrompt(event.target.value)}
             placeholder="Search Blocks..."
-            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#7A5AF8] [&::-webkit-search-cancel-button]:hidden"
+            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#0A0A0A] [&::-webkit-search-cancel-button]:hidden"
           />
           {blockPrompt ? (
             <button
               type="button"
               onClick={() => setBlockPrompt("")}
-              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#F0EEFF] hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
               aria-label="Clear block search"
             >
               <X className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
@@ -1849,7 +1849,7 @@ export const BlocksPanel = ({
               <button
                 type="button"
                 onClick={() => setBlockPrompt("")}
-                className="mt-3 rounded-[7px] bg-[#F0EEFF] px-3 py-1.5 text-[11px] font-medium text-[#6938EF] transition-colors hover:bg-[#E4E0FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+                className="mt-3 rounded-[7px] bg-[#FFFADC] px-3 py-1.5 text-[11px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#FFFADC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
               >
                 Clear search
               </button>
@@ -1906,7 +1906,7 @@ function PrimaryActionButton({
           active ? "border-[#EDEEEF] bg-white" : ""
         }`}
         style={{
-          boxShadow: active ? "0 6.6px 13.2px 0 rgba(124, 81, 248, 0.14)" : "",
+          boxShadow: active ? "0 6.6px 13.2px 0 rgba(255,219,5, 0.14)" : "",
         }}
       >
         <img
@@ -1916,7 +1916,7 @@ function PrimaryActionButton({
           src={iconSrc}
         />
       </span>
-      <span className="text-[12px] font-normal leading-normal text-[#7A5AF8]">
+      <span className="text-[12px] font-normal leading-normal text-[#0A0A0A]">
         {label}
       </span>
     </button>

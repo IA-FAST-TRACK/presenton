@@ -764,7 +764,7 @@ const HtmlSelectionEditor = ({
                 onClick={handleSubmitEdit}
                 style={{ cursor: "pointer" }}
                 disabled={updatingSelection}
-                className="px-4 py-1 rounded-md bg-[#5141e5] text-white hover:bg-[#4336c9] disabled:opacity-50 "
+                className="px-4 py-1 rounded-md bg-[#FFDB05] text-[#0A0A0A] hover:bg-[#E6C500] disabled:opacity-50 "
               >
                 {updatingSelection ? "Updating..." : "Apply"}
               </button>
