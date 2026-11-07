@@ -32,7 +32,7 @@ def test_empty_input_is_rejected_during_request_validation(fake_async_session):
         )
 
     assert exc.value.status_code == 400
-    assert "Either content or slides markdown or files is required" in exc.value.detail
+    assert "Se requiere contenido, markdown de diapositivas o archivos" in exc.value.detail
 
 
 def test_large_input_generates_prompt_without_randomness():

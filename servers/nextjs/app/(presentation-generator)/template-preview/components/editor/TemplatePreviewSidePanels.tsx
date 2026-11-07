@@ -66,13 +66,13 @@ const insertNavItems: Array<{
   label: string;
   Icon: RailIcon;
 }> = [
-  { id: "blocks", label: "Blocks", Icon: BlocksIcon },
-  { id: "texts", label: "Texts", Icon: Type },
-  { id: "charts", label: "Charts", Icon: BarChart3 },
-  { id: "infographics", label: "Infographics", Icon: Sparkles },
-  { id: "tables", label: "Tables", Icon: Rows3 },
-  { id: "images", label: "Images", Icon: ImageIcon },
-  { id: "elements", label: "Elements", Icon: Shapes },
+  { id: "blocks", label: "Bloques", Icon: BlocksIcon },
+  { id: "texts", label: "Textos", Icon: Type },
+  { id: "charts", label: "Gráficos", Icon: BarChart3 },
+  { id: "infographics", label: "Infografías", Icon: Sparkles },
+  { id: "tables", label: "Tablas", Icon: Rows3 },
+  { id: "images", label: "Imágenes", Icon: ImageIcon },
+  { id: "elements", label: "Elementos", Icon: Shapes },
 ];
 
 const templateNavItems: Array<{
@@ -80,8 +80,8 @@ const templateNavItems: Array<{
   label: string;
   Icon: RailIcon;
 }> = [
-  { id: "schema", label: "Schema", Icon: Edit3 },
-  { id: "layouts", label: "Layouts", Icon: List },
+  { id: "schema", label: "Esquema", Icon: Edit3 },
+  { id: "layouts", label: "Diseños", Icon: List },
 ];
 
 function ToolRailButton({
@@ -202,47 +202,47 @@ export function TemplateInsertPanel({
         />
       ) : activePanel === "texts" ? (
         <InsertPanel
-          title="Texts"
-          groups={[{ label: "Add", items: textItems }]}
+          title="Textos"
+          groups={[{ label: "Añadir", items: textItems }]}
           onItemSelect={onTextItemSelect}
           previewKind="text"
           theme={templateTheme}
         />
       ) : activePanel === "charts" ? (
         <InsertPanel
-          title="Charts"
-          groups={[{ label: "Chart Type", items: chartTypeItems }]}
+          title="Gráficos"
+          groups={[{ label: "Tipo de gráfico", items: chartTypeItems }]}
           onItemSelect={onChartItemSelect}
           previewKind="chart"
           theme={templateTheme}
         />
       ) : activePanel === "infographics" ? (
         <InsertPanel
-          title="Infographics"
-          groups={[{ label: "Layouts", items: infographicItems }]}
+          title="Infografías"
+          groups={[{ label: "Diseños", items: infographicItems }]}
           onItemSelect={onInfographicItemSelect}
           previewKind="infographic"
           theme={templateTheme}
         />
       ) : activePanel === "tables" ? (
         <InsertPanel
-          title="Tables"
-          groups={[{ label: "Table Type", items: tableTypeItems }]}
+          title="Tablas"
+          groups={[{ label: "Tipo de tabla", items: tableTypeItems }]}
           onItemSelect={onTableItemSelect}
           previewKind="table"
           theme={templateTheme}
         />
       ) : activePanel === "images" ? (
         <InsertPanel
-          title="Images"
-          groups={[{ label: "Add", items: imageItems }]}
+          title="Imágenes"
+          groups={[{ label: "Añadir", items: imageItems }]}
           onItemSelect={onImageItemSelect}
           previewKind="image"
           theme={templateTheme}
         />
       ) : activePanel === "elements" ? (
         <InsertPanel
-          title="Elements"
+          title="Elementos"
           groups={elementItemGroups}
           onItemSelect={onElementItemSelect}
           previewKind="element"
@@ -262,7 +262,7 @@ export function AiPanel({
   onPromptChange: (prompt: string) => void;
   onSubmit: () => void;
 }) {
-  const quickPrompts = ["Make it shorter", "Make it more engaging"];
+  const quickPrompts = ["Hazlo más breve", "Hazlo más atractivo"];
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -276,9 +276,9 @@ export function AiPanel({
       <div className="relative flex min-h-0 flex-1 flex-col px-3 pb-6 pt-[132px]">
         <div className="flex flex-1 items-start justify-center pt-[58px] text-center">
           <p className="text-[22.68px] font-normal leading-[24.3px] tracking-[-0.4536px] text-[#4C4C4C]">
-            What can I do
+            ¿Qué puedo hacer
             <br />
-            for your deck today?
+            hoy por tu presentación?
           </p>
         </div>
 
@@ -287,7 +287,7 @@ export function AiPanel({
             <Textarea
               value={prompt}
               onChange={(event) => onPromptChange(event.target.value)}
-              placeholder={"Ask anything.\nType / to get Quick prompts."}
+              placeholder={"Pregunta lo que quieras.\nEscribe / para ver las instrucciones rápidas."}
               className="min-h-[79px] resize-none border-0 bg-transparent p-0 text-[14px] font-normal leading-[18px] text-[#191919] shadow-none placeholder:text-[#999999] focus-visible:ring-0"
             />
             <div className="mt-2 flex h-[28px] items-center justify-between">
@@ -295,14 +295,14 @@ export function AiPanel({
                 <button
                   type="button"
                   className="flex h-[28px] w-[28px] items-center justify-center rounded-full border border-[#EDEEEF] text-[#191919]"
-                  title="Add"
+                  title="Añadir"
                 >
                   <Plus className="h-[14px] w-[14px]" />
                 </button>
                 <button
                   type="button"
                   className="flex h-[28px] w-[28px] items-center justify-center rounded-full border border-[#EDEEEF] text-[#191919]"
-                  title="AI options"
+                  title="Opciones de IA"
                 >
                   <Sparkles className="h-[13px] w-[13px] text-[#0A0A0A]" />
                 </button>
@@ -310,15 +310,15 @@ export function AiPanel({
                   type="button"
                   className="flex h-[28px] items-center gap-[6px] rounded-full border border-[#EDEEEF] px-[10px] text-[12px] font-medium text-[#191919]"
                 >
-                  <Sparkles className="h-[13px] w-[13px] text-[#0A0A0A]" />
-                  Prompt
+                  <Sparkles className="h-[13px] w-[13px] text-[#7A5AF8]" />
+                  Instrucciones
                 </button>
               </div>
               <button
                 type="submit"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-[#EFEFF2] text-[#191919] disabled:text-[#9A9A9A]"
                 disabled={!prompt.trim()}
-                title="Send"
+                title="Enviar"
               >
                 <ArrowUp className="h-4 w-4" />
               </button>
@@ -351,6 +351,11 @@ function DensitySelector({
   onDensityChange: (density: Density) => void;
 }) {
   const options: Exclude<Density, "">[] = ["Low", "Medium", "High"];
+  const optionLabels: Record<Exclude<Density, "">, string> = {
+    Low: "Baja",
+    Medium: "Media",
+    High: "Alta",
+  };
 
   return (
     <div className="mt-[12px] grid grid-cols-3 gap-[8px]">
@@ -367,12 +372,12 @@ function DensitySelector({
           onClick={() => onDensityChange(option)}
           title={
             density === option
-              ? `${option} content density selected`
-              : `Preview ${option.toLowerCase()} content density`
+              ? `Densidad de contenido ${optionLabels[option].toLowerCase()} seleccionada`
+              : `Previsualizar densidad de contenido ${optionLabels[option].toLowerCase()}`
           }
           type="button"
         >
-          {option}
+          {optionLabels[option]}
         </button>
       ))}
 
@@ -410,12 +415,14 @@ export function SchemaPanel({
   const fieldGroups = [
     {
       id: "non-decorative",
-      label: "Content",
+      label: "Contenido",
+      emptyText: "No hay elementos de contenido.",
       fields: fields.filter((field) => !field.decorative),
     },
     {
       id: "decorative",
-      label: "Decorative",
+      label: "Decorativos",
+      emptyText: "No hay elementos decorativos.",
       fields: fields.filter((field) => field.decorative),
     },
   ];
@@ -424,31 +431,31 @@ export function SchemaPanel({
     <aside className="hidden w-[299px] shrink-0 bg-[#FEFEFF] lg:flex lg:flex-col">
       <div className="px-3 pt-[33px]">
         <h2 className="text-[18px] font-medium text-[#101323]">
-          Schema Editor
+          Editor de esquema
         </h2>
         <div className="mt-[18px] flex items-center justify-between gap-3">
           <p className="text-[14px] font-normal text-[#191919]">
-            Content Density
+            Densidad del contenido
           </p>
           <button
-            aria-label="Reset content density preview"
-            className="flex h-7 items-center gap-1.5 rounded-[6px] border border-[#EDEEEF] bg-white px-2 text-[11px] font-medium text-[#667085] transition-colors hover:border-[#FFED82] hover:bg-[#FFFADC] hover:text-[#0A0A0A] disabled:cursor-not-allowed disabled:opacity-40"
+            aria-label="Restablecer la vista previa de densidad del contenido"
+            className="flex h-7 items-center gap-1.5 rounded-[6px] border border-[#EDEEEF] bg-white px-2 text-[11px] font-medium text-[#667085] transition-colors hover:border-[#D9D6FE] hover:bg-[#F8F6FF] hover:text-[#7A5AF8] disabled:cursor-not-allowed disabled:opacity-40"
             disabled={!canResetDensity}
             onClick={onDensityReset}
-            title="Restore the original slide content"
+            title="Restaurar el contenido original de la diapositiva"
             type="button"
           >
             <RotateCcw className="h-3 w-3" />
-            Reset
+            Restablecer
           </button>
         </div>
         <DensitySelector density={density} onDensityChange={onDensityChange} />
         <div className="mt-[10px] flex min-h-[62px] gap-[10px] rounded-[6px] bg-[#F3F6FB] px-[16px] py-[10px] text-[12px] leading-[14px] text-[#5F6470]">
           <Info className="mt-[2px] h-[14px] w-[14px] shrink-0 text-[#1F5FBF]" />
           <p>
-            Preview schema-driven text lengths and repeatable item counts
-            without changing your saved template. Reset restores the original
-            content.
+            Previsualiza las longitudes de texto definidas por el esquema y el número de elementos repetibles
+            sin cambiar tu plantilla guardada. Restablecer recupera el contenido
+            original.
           </p>
         </div>
       </div>
@@ -456,7 +463,7 @@ export function SchemaPanel({
       <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-6 pt-[40px]">
         {fields.length === 0 ? (
           <div className="rounded-[6px] border border-dashed border-[#DCDCE1] px-4 py-8 text-center text-[13px] text-[#808080]">
-            No schema elements were found for this layout.
+            No se han encontrado elementos de esquema para este diseño.
           </div>
         ) : (
           <div className="space-y-6">
@@ -472,7 +479,7 @@ export function SchemaPanel({
                 </div>
                 {group.fields.length === 0 ? (
                   <div className="rounded-[6px] border border-dashed border-[#E4E7EC] px-3 py-4 text-center text-[11px] text-[#98A2B3]">
-                    No {group.label.toLowerCase()} elements.
+                    {group.emptyText}
                   </div>
                 ) : (
                   <div className="space-y-[8px]">
@@ -529,16 +536,16 @@ function SchemaFieldRow({
         : Type;
   const typeLabel =
     field.type === "text-list"
-      ? "List"
+      ? "Lista"
       : field.type === "image"
         ? field.elementType === "icon"
-          ? "Icon"
-          : "Image"
+          ? "Icono"
+          : "Imagen"
         : field.type === "element"
           ? field.elementType
               .replace(/[_-]+/g, " ")
               .replace(/\b\w/g, (letter) => letter.toUpperCase())
-          : "String";
+          : "Texto";
 
   return (
     <div className="space-y-[3px]">
@@ -574,7 +581,7 @@ function SchemaFieldRow({
               className="shrink-0 text-[12px] font-normal tracking-[0.48px] text-[#808080]"
               style={{ fontFamily: "Outfit, var(--font-syne), sans-serif" }}
             >
-              ({field.maxChars} Characters)
+              ({field.maxChars} caracteres)
             </span>
           ) : null}
         </button>
@@ -584,13 +591,13 @@ function SchemaFieldRow({
         <div className="ml-[28.5px] flex flex-col gap-[2px]">
           <div className="flex h-[30px] items-center gap-[8px] rounded-[4px] border border-[#E7E8EC] bg-[#FEFEFF] px-[10px] text-[14px] font-normal tracking-[0.56px] text-[#17181E]">
             <span className="text-[16px] leading-none text-[#808080]">#</span>
-            <span>Type</span>
+            <span>Tipo</span>
             <span className="ml-auto text-[#191919]">{typeLabel}</span>
           </div>
           <div className="flex h-[36px] items-center rounded-[4px] border border-[#E7E8EC] bg-[#FEFEFF] px-[10px] text-[14px] font-normal tracking-[0.56px] text-[#17181E]">
-            <span>Decorative</span>
+            <span>Decorativo</span>
             <Switch
-              aria-label={`Set ${field.label} decorative`}
+              aria-label={`Marcar ${field.label} como decorativo`}
               checked={field.decorative}
               className="ml-auto data-[state=checked]:bg-[#FFDB05] data-[state=unchecked]:bg-[#D0D5DD]"
               onCheckedChange={onDecorativeChange}
@@ -598,14 +605,14 @@ function SchemaFieldRow({
           </div>
           {field.decorative ? (
             <div className="rounded-[4px] border border-[#E7E8EC] bg-[#F8F8FA] px-[10px] py-[8px] text-[11px] leading-4 tracking-normal text-[#667085]">
-              Decorative elements are read-only. Turn off Decorative to edit
-              their content or constraints.
+              Los elementos decorativos son de solo lectura. Desactiva Decorativo para editar
+              su contenido o sus restricciones.
             </div>
           ) : null}
           {field.type === "text" || field.type === "text-list" ? (
             <>
               <label className="flex h-[30px] items-center rounded-[4px] border border-[#E7E8EC] bg-[#FEFEFF] px-[10px] text-[14px] font-normal tracking-[0.56px] text-[#17181E]">
-                <span>Min Chars</span>
+                <span>Mín. caracteres</span>
                 <input
                   className={cn(
                     "ml-auto h-[24px] w-[76px] rounded-[4px] border border-transparent bg-transparent text-right text-[#191919] outline-none transition-colors focus:border-[#FFED82] focus:bg-[#FFFADC]",
@@ -622,7 +629,7 @@ function SchemaFieldRow({
                 />
               </label>
               <label className="flex h-[30px] items-center rounded-[4px] border border-[#E7E8EC] bg-[#FEFEFF] px-[10px] text-[14px] font-normal tracking-[0.56px] text-[#17181E]">
-                <span>Max Chars</span>
+                <span>Máx. caracteres</span>
                 <input
                   className={cn(
                     "ml-auto h-[24px] w-[76px] rounded-[4px] border border-transparent bg-transparent text-right text-[#191919] outline-none transition-colors focus:border-[#FFED82] focus:bg-[#FFFADC]",
@@ -642,7 +649,7 @@ function SchemaFieldRow({
           ) : null}
           {field.type !== "element" ? (
             <label className="flex flex-col gap-[6px] rounded-[4px] border border-[#E7E8EC] bg-[#FEFEFF] px-[10px] py-[8px] text-[14px] font-normal tracking-[0.56px] text-[#17181E]">
-              <span>{field.type === "image" ? "Prompt" : "Content"}</span>
+              <span>{field.type === "image" ? "Instrucciones" : "Contenido"}</span>
               {field.type === "image" ? (
                 <input
                   className={cn(
@@ -669,8 +676,8 @@ function SchemaFieldRow({
             </label>
           ) : (
             <p className="rounded-[4px] border border-[#E7E8EC] bg-[#F8F8FA] px-[10px] py-[8px] text-[11px] leading-4 tracking-normal text-[#667085]">
-              This element has no editable content. Its decorative role can
-              still be changed.
+              Este elemento no tiene contenido editable. Su función decorativa
+              se puede seguir cambiando.
             </p>
           )}
         </div>

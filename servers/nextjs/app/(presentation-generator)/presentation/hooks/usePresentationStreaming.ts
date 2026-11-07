@@ -192,7 +192,7 @@ export const usePresentationStreaming = (
       dispatch(setStreaming(false));
       setError(true);
       if (options.showToast !== false) {
-        notify.error("Presentation streaming failed", description);
+        notify.error("Error al generar la presentación", description);
       }
     };
 
@@ -308,7 +308,7 @@ export const usePresentationStreaming = (
           data = JSON.parse(event.data) as PresentationStreamData;
         } catch {
           if (!scheduleRetry("invalid SSE payload")) {
-            finalizeFailure("Failed to parse stream response.");
+            finalizeFailure("No se ha podido procesar la respuesta del servidor.");
           }
           return;
         }
@@ -547,7 +547,7 @@ export const usePresentationStreaming = (
                   continue;
                 }
                 shownAssetWarnings.add(detail);
-                notify.warning("Some images could not be generated", detail, {
+                notify.warning("No se han podido generar algunas imágenes", detail, {
                   duration: 12_000,
                 });
               }
@@ -614,7 +614,7 @@ export const usePresentationStreaming = (
             } catch (error) {
               console.error("Could not finalize presentation stream:", error);
               if (!scheduleRetry("failed to parse complete payload")) {
-                finalizeFailure("Failed to load the completed presentation.");
+                finalizeFailure("No se ha podido cargar la presentación completada.");
               }
             }
             accumulatedChunks = "";
@@ -650,21 +650,21 @@ export const usePresentationStreaming = (
               });
               finalizeFailure(
                 data.detail ||
-                  "Your ChatGPT session expired. Please sign in again from Settings.",
+                  "Tu sesión de ChatGPT ha caducado. Vuelve a iniciar sesión desde Ajustes.",
                 { showToast: false }
               );
               break;
             }
             const completedSlides = Number(data.completed_slides);
             const totalSlides = Number(data.total_slides);
-            const detail = extractApiErrorMessage(data, "The presentation could not be generated. Please try again.", data.status_code);
+            const detail = extractApiErrorMessage(data, "No se ha podido generar la presentación. Inténtalo de nuevo.", data.status_code);
             const detailWithProgress =
               Number.isFinite(completedSlides) && completedSlides > 0
                 ? `${detail} ${completedSlides}${
                     Number.isFinite(totalSlides) && totalSlides > 0
-                      ? ` of ${totalSlides}`
+                      ? ` de ${totalSlides}`
                       : ""
-                  } slides were saved and will be reused.`
+                  } diapositivas se han guardado y se reutilizarán.`
                 : detail;
             if (data.retryable === false) {
               finalizeFailure(detailWithProgress);
@@ -682,7 +682,7 @@ export const usePresentationStreaming = (
       eventSource.onerror = (error) => {
         console.error("EventSource failed:", error);
         if (!scheduleRetry("connection lost")) {
-          finalizeFailure("Failed to connect to the server. Please try again.");
+          finalizeFailure("No se ha podido conectar con el servidor. Inténtalo de nuevo.");
         }
       };
     };

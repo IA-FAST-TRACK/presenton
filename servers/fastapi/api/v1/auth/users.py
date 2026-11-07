@@ -220,7 +220,7 @@ async def get_current_admin(
     user: User = Depends(get_current_user),
 ) -> User:
     if not user.is_superuser:
-        raise HTTPException(status_code=403, detail="Admin access required")
+        raise HTTPException(status_code=403, detail="Se requiere acceso de administrador")
     return user
 
 

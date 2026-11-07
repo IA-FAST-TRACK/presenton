@@ -84,7 +84,7 @@ export function TemplateEditorHeader({
   return (
     <header className="flex h-[68px] shrink-0 items-center justify-between border-b border-[#EDEEEF] bg-white">
       <div className="flex h-full min-w-0 flex-1 items-center gap-[12px] px-5 text-left sm:w-[347px] sm:flex-none sm:px-[24px]">
-        <button onClick={onBack} aria-label="Dashboard" type="button">
+        <button onClick={onBack} aria-label="Panel" type="button">
           <img
             src="/logo-with-bg.png"
             alt="AI Fast Track Presentaciones"
@@ -98,10 +98,10 @@ export function TemplateEditorHeader({
               ? "cursor-text hover:border-[#EDEEEF] hover:bg-[#FAFAFB] focus-within:border-[#FFED82] focus-within:bg-white focus-within:shadow-[0_0_0_3px_rgba(255,219,5,0.10)]"
               : "cursor-default",
           )}
-          title={canEdit ? "Edit template name" : "Default template"}
+          title={canEdit ? "Editar el nombre de la plantilla" : "Plantilla predeterminada"}
         >
           <input
-            aria-label="Template name"
+            aria-label="Nombre de la plantilla"
             className="h-[24px] min-w-0 flex-1 truncate bg-transparent p-0 text-[16px] font-semibold leading-normal tracking-[0.16px] text-[#101323] outline-none placeholder:text-[#9B9B9B] disabled:opacity-60"
             aria-readonly={!canEdit}
             onBlur={() => {
@@ -128,7 +128,7 @@ export function TemplateEditorHeader({
                 event.currentTarget.blur();
               }
             }}
-            placeholder="Untitled Template"
+            placeholder="Plantilla sin título"
             readOnly={!canEdit}
             spellCheck={false}
             tabIndex={canEdit ? 0 : -1}
@@ -150,7 +150,7 @@ export function TemplateEditorHeader({
           title={activeLayoutToken}
           type="button"
         >
-          Copy ID
+          Copiar ID
           <Copy className="h-4 w-4" />
         </button>
         <div className="hidden h-[16.5px] w-px bg-[#EDEEEF] sm:block" />
@@ -161,7 +161,7 @@ export function TemplateEditorHeader({
                 className="flex h-[34px] w-[24px] items-center justify-center rounded-full text-[#101323] transition-colors hover:bg-[#F7F6F9] disabled:text-[#B9B9B9]"
                 disabled={!canUndo}
                 onClick={onUndo}
-                title="Undo"
+                title="Deshacer"
                 type="button"
               >
                 <Undo2 className="h-[14px] w-[14px]" />
@@ -170,7 +170,7 @@ export function TemplateEditorHeader({
                 className="flex h-[34px] w-[24px] items-center justify-center rounded-full text-[#101323] transition-colors hover:bg-[#F7F6F9] disabled:text-[#B9B9B9]"
                 disabled={!canRedo}
                 onClick={onRedo}
-                title="Redo"
+                title="Rehacer"
                 type="button"
               >
                 <Redo2 className="h-[14px] w-[14px]" />
@@ -184,11 +184,11 @@ export function TemplateEditorHeader({
             <button
               className="hidden h-[33px] items-center gap-[6px] rounded-[48px] px-[10px] py-[8px] text-[14px] font-medium text-red-600 transition-colors hover:bg-red-50 md:flex"
               onClick={onDelete}
-              title="Delete template"
+              title="Eliminar plantilla"
               type="button"
             >
               <Trash2 className="h-4 w-4" />
-              <span className="hidden xl:inline">Delete Template</span>
+              <span className="hidden xl:inline">Eliminar plantilla</span>
             </button>
             <div className="hidden h-[16.5px] w-px bg-[#EDEEEF] md:block" />
           </>
@@ -200,7 +200,7 @@ export function TemplateEditorHeader({
             aria-busy={isCloning}
             className="shrink-0 whitespace-nowrap focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0A0A0A]"
           >
-            {isCloning ? "Copying…" : "Copy to custom"}
+            {isCloning ? "Copiando…" : "Copiar a personalizadas"}
             {isCloning ? (
               <Loader2 aria-hidden="true" className="h-4 w-4 animate-spin" />
             ) : (
@@ -212,9 +212,9 @@ export function TemplateEditorHeader({
           <GradientActionButton
             onClick={onSave}
             disabled={isSaving}
-            title={hasUnsavedChanges ? "Save changes" : "Save template"}
+            title={hasUnsavedChanges ? "Guardar cambios" : "Guardar plantilla"}
           >
-            {isSaving ? "Saving" : "Save"}
+            {isSaving ? "Guardando" : "Guardar"}
             {isSaving ? (
               <Loader2 className="h-[15.4px] w-[15.4px] animate-spin" />
             ) : (

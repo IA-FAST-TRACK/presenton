@@ -9,10 +9,10 @@ const asset = (name: string) => `/custom-template/${name}`;
 export function TemplateCreationTitle({ activeStep }: { activeStep: 1 | 2 | 3 }) {
   return (
     <div className="px-4 pt-12 text-center font-syne sm:pt-[66px]">
-      <h1 className="text-[34px] font-medium leading-[1.2] tracking-[-0.58px] text-[#101323] sm:text-[48px] lg:text-[58px]">Create a New Template</h1>
-      <p className="mx-auto mt-1.5 max-w-[635px] text-base leading-[1.4] tracking-[0.2px] text-[#101323CC] sm:text-xl">Turn your PowerPoint into a reusable AI presentation template.</p>
-      <nav aria-label="Template creation progress" className="mt-7 flex items-center justify-center gap-[5px]">
-        {["Upload", "Analyze", "Preview"].map((label, index) => (
+      <h1 className="text-[34px] font-medium leading-[1.2] tracking-[-0.58px] text-[#101323] sm:text-[48px] lg:text-[58px]">Crear una nueva plantilla</h1>
+      <p className="mx-auto mt-1.5 max-w-[635px] text-base leading-[1.4] tracking-[0.2px] text-[#101323CC] sm:text-xl">Convierte tu PowerPoint en una plantilla de presentación con IA reutilizable.</p>
+      <nav aria-label="Progreso de creación de la plantilla" className="mt-7 flex items-center justify-center gap-[5px]">
+        {["Subir", "Analizar", "Vista previa"].map((label, index) => (
           <React.Fragment key={label}>
             {index > 0 && <img src={asset("steps-imgVector63.svg")} alt="" />}
             <div aria-current={activeStep === index + 1 ? "step" : undefined} className="flex items-center gap-1">
@@ -46,7 +46,7 @@ export function UploadIllustration() {
 }
 
 export function AttachmentButton({ onClick, disabled = false }: { onClick: () => void; disabled?: boolean }) {
-  return <button type="button" onClick={onClick} disabled={disabled} aria-label="Choose PowerPoint file" className="flex h-[34px] w-[42px] shrink-0 items-center justify-center rounded-full border border-[#EDEEEF] bg-white hover:bg-[#F9F9FA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A] disabled:opacity-50"><img src={asset("upload-imgFrame.svg")} alt="" /></button>;
+  return <button type="button" onClick={onClick} disabled={disabled} aria-label="Elegir archivo de PowerPoint" className="flex h-[34px] w-[42px] shrink-0 items-center justify-center rounded-full border border-[#EDEEEF] bg-white hover:bg-[#F9F9FA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8] disabled:opacity-50"><img src={asset("upload-imgFrame.svg")} alt="" /></button>;
 }
 
 export function ContinueButton({ onClick, disabled, label }: { onClick: () => void; disabled?: boolean; label: string }) {

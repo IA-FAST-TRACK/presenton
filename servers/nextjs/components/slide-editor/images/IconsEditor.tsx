@@ -29,12 +29,12 @@ const ICON_WEIGHT_PATTERN = ICON_WEIGHTS.join("|");
 const ICON_SEARCH_DEBOUNCE_MS = 500;
 
 const ICON_WEIGHT_LABELS: Record<IconWeight, string> = {
-  thin: "Thin",
-  light: "Light",
-  regular: "Regular",
-  bold: "Bold",
-  fill: "Fill",
-  duotone: "Duotone",
+  thin: "Fino",
+  light: "Ligero",
+  regular: "Normal",
+  bold: "Negrita",
+  fill: "Relleno",
+  duotone: "Bitono",
 };
 
 const normalizeIconWeight = (weight?: string | null): IconWeight => {
@@ -191,10 +191,10 @@ const IconsEditor = ({
         if (requestIdRef.current === requestId) {
           console.error("Error fetching icons:", error);
           notify.error(
-            "Could not load icons",
+            "No se han podido cargar los iconos",
             error instanceof Error
               ? error.message
-              : "Failed to fetch icons. Please try again."
+              : "No se han podido obtener los iconos. Inténtalo de nuevo."
           );
           setIcons([]);
         }
@@ -230,7 +230,7 @@ const IconsEditor = ({
     );
 
     if (!replacementIcon) {
-      notify.warning("Icon required", "Select an icon before replacing.");
+      notify.warning("Icono obligatorio", "Selecciona un icono antes de sustituirlo.");
       return;
     }
 
@@ -269,10 +269,10 @@ const IconsEditor = ({
             <header className="flex h-[85px] flex-none items-center border-b border-[#EDEEEF] bg-white px-6 shadow-[0_4px_7px_rgba(0,0,0,0.04)]">
               <div>
                 <DialogPrimitive.Title className="text-[18px] font-normal leading-normal">
-                  Change Icon
+                  Cambiar icono
                 </DialogPrimitive.Title>
                 <DialogPrimitive.Description className="mt-0.5 text-[14px] font-normal tracking-[-0.42px] text-[#808080]">
-                  Find a similar icon and customize its visual weight.
+                  Busca un icono similar y personaliza su grosor visual.
                 </DialogPrimitive.Description>
               </div>
             </header>
@@ -282,7 +282,7 @@ const IconsEditor = ({
                 <div className="flex items-center gap-4 sm:block">
                   <div>
                     <p className="mb-2 text-[12px] font-medium text-[#666]">
-                      Selected icon
+                      Icono seleccionado
                     </p>
                     <div className="flex size-[78px] items-center justify-center rounded-[14px] border border-[#E1E1E5] bg-white shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
                       {previewIconSource ? (
@@ -304,12 +304,12 @@ const IconsEditor = ({
                   <div className="min-w-0 flex-1 sm:mt-5">
                     <div className="mb-2.5 flex items-center gap-1.5">
                       <p className="text-[12px] font-medium text-[#666]">
-                        Icon weight
+                        Grosor del icono
                       </p>
                       <span
                         role="img"
-                        aria-label="Choose the visual weight used for icon search and replacement."
-                        title="Choose the visual weight used for icon search and replacement."
+                        aria-label="Elige el grosor visual que se usará para buscar y sustituir iconos."
+                        title="Elige el grosor visual que se usará para buscar y sustituir iconos."
                         className="inline-flex size-4 items-center justify-center text-[#A1A1AA]"
                       >
                         <Info className="size-3" />
@@ -366,14 +366,14 @@ const IconsEditor = ({
                 <div className="mt-4 flex items-center justify-between gap-3 border-t border-[#E1E1E5] pt-4">
                   <div>
                     <p className="text-[12px] font-medium text-[#191919]">
-                      Apply to presentation
+                      Aplicar a la presentación
                     </p>
                     <p className="mt-0.5 text-[10px] leading-4 text-[#808080]">
-                      Use this weight for every icon.
+                      Usa este grosor en todos los iconos.
                     </p>
                   </div>
                   <Switch
-                    aria-label="Apply icon weight to entire presentation"
+                    aria-label="Aplicar el grosor de icono a toda la presentación"
                     checked={applyStylesToPresentation}
                     onCheckedChange={setApplyStylesToPresentation}
                     className="h-5 w-9 flex-none data-[state=checked]:bg-[#FFDB05] data-[state=unchecked]:bg-[#DDDEE3]"
@@ -400,13 +400,13 @@ const IconsEditor = ({
                         autoFocus
                         value={searchQuery}
                         onChange={(event) => setSearchQuery(event.target.value)}
-                        placeholder="Search similar icons"
+                        placeholder="Buscar iconos similares"
                         className="h-full min-w-0 flex-1 bg-transparent text-[14px] font-normal outline-none placeholder:text-[#999]"
                       />
                     </label>
                     <button
                       type="submit"
-                      aria-label="Search icons"
+                      aria-label="Buscar iconos"
                       disabled={!activeQuery || loading}
                       className="flex w-[104px] items-center justify-center gap-1.5 rounded-[38.4px] bg-[#EDEEEF] px-3 text-[12px] text-[#191919] transition hover:bg-[#E1E1E5] disabled:cursor-not-allowed disabled:text-[#999]"
                     >
@@ -415,7 +415,7 @@ const IconsEditor = ({
                       ) : (
                         <Search className="size-3.5" />
                       )}
-                      Search
+                      Buscar
                     </button>
                   </form>
                 </div>
@@ -423,7 +423,7 @@ const IconsEditor = ({
                 <div className="flex min-h-0 flex-1 flex-col px-4 sm:px-5">
                   <div className="mb-2 flex flex-none items-center justify-between">
                     <p className="text-[12px] font-medium text-[#666]">
-                      Similar icons
+                      Iconos similares
                     </p>
                     {!loading && icons.length > 0 ? (
                       <p className="text-[11px] text-[#999]">
@@ -451,7 +451,7 @@ const IconsEditor = ({
                             <button
                               key={`${iconSrc}-${index}`}
                               type="button"
-                              aria-label={`Select icon ${index + 1}`}
+                              aria-label={`Seleccionar icono ${index + 1}`}
                               aria-pressed={isSelected}
                               onClick={() => setSelectedIconUrl(iconSrc)}
                               className={cn(
@@ -485,10 +485,10 @@ const IconsEditor = ({
                         <div>
                           <Search className="mx-auto mb-3 size-7 text-[#B7B8BE]" />
                           <p className="text-[13px] font-medium text-[#666]">
-                            No icons found
+                            No se han encontrado iconos
                           </p>
                           <p className="mt-1 text-[12px] text-[#808080]">
-                            Try a different search term.
+                            Prueba con otro término de búsqueda.
                           </p>
                         </div>
                       </div>
@@ -499,8 +499,8 @@ const IconsEditor = ({
                 <footer className="mt-3 flex h-[66px] flex-none items-center justify-between gap-3 border-t border-[#EDEEEF] px-4 sm:px-5">
                   <p className="hidden text-[11px] leading-4 text-[#808080] sm:block">
                     {applyStylesToPresentation
-                      ? "The selected weight will be applied to every icon."
-                      : "Only the selected icon will be replaced."}
+                      ? "El grosor seleccionado se aplicará a todos los iconos."
+                      : "Solo se sustituirá el icono seleccionado."}
                   </p>
                   <button
                     type="button"
@@ -512,7 +512,7 @@ const IconsEditor = ({
                     }}
                     className="ml-auto flex h-10 items-center justify-center gap-1.5 rounded-full px-5 text-[13px] font-semibold text-[#101323] shadow-none transition hover:brightness-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    Replace icon
+                    Sustituir icono
                     <ChevronRight className="size-4" aria-hidden="true" />
                   </button>
                 </footer>
@@ -521,7 +521,7 @@ const IconsEditor = ({
           </div>
 
           <DialogPrimitive.Close
-            aria-label="Close icon editor"
+            aria-label="Cerrar editor de iconos"
             className="absolute right-3 top-3 flex size-11 items-center justify-center rounded-full bg-white text-[#191919] shadow-sm transition hover:bg-[#F6F6F9] sm:-right-[68px] sm:top-0 sm:size-[52px]"
           >
             <X className="size-5" strokeWidth={1.5} aria-hidden="true" />

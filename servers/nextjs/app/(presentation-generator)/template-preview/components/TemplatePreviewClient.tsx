@@ -328,9 +328,9 @@ const GroupLayoutPreview = ({
         template_id: templateId,
         layout_index: layoutIndex,
       });
-      notify.success("Copied", "Template layout ID copied.");
+      notify.success("Copiado", "Se ha copiado el ID del diseño de la plantilla.");
     } catch {
-      notify.error("Copy failed", layoutToken);
+      notify.error("Error al copiar", layoutToken);
     }
   }, [editableLayouts, templateId]);
 
@@ -344,10 +344,10 @@ const GroupLayoutPreview = ({
       track(ANALYTICS_EVENTS.TEMPLATE_ID_COPIED, {
         template_id: templateId,
       });
-      notify.success("Copied", "Template ID copied.");
+      notify.success("Copiado", "Se ha copiado el ID de la plantilla.");
     } catch (copyError) {
       notify.error(
-        "Copy failed",
+        "Error al copiar",
         copyError instanceof Error ? copyError.message : templateId,
       );
     }
@@ -360,7 +360,7 @@ const GroupLayoutPreview = ({
       return;
     }
 
-    const nextName = templateNameDraft.trim() || "Untitled Template";
+    const nextName = templateNameDraft.trim() || "Plantilla sin título";
     if (nextName !== templateNameDraft) {
       setTemplateNameDraft(nextName);
     }
@@ -419,8 +419,8 @@ const GroupLayoutPreview = ({
     if (!nextDensity || !canEditTemplate || !activeLayout) return;
     if (!hasLayoutContentDensityTargets(activeLayout)) {
       notify.warning(
-        "No variable content",
-        "Add editable text or a repeatable schema array before testing content density.",
+        "No hay contenido variable",
+        "Añade texto editable o una matriz repetible en el esquema antes de probar la densidad del contenido.",
       );
       return;
     }
@@ -636,8 +636,8 @@ const GroupLayoutPreview = ({
       );
       if (targetIndex < 0) {
         notify.error(
-          "Slide unavailable",
-          "The blank slide is no longer available. Add a new one and try again.",
+          "Diapositiva no disponible",
+          "La diapositiva en blanco ya no está disponible. Añade una nueva e inténtalo de nuevo.",
         );
         setPromptLayoutId(null);
         return false;
@@ -651,7 +651,7 @@ const GroupLayoutPreview = ({
           prompt,
         });
         if (!isRecord(response.layout)) {
-          throw new Error("No generated layout was returned.");
+          throw new Error("No se ha devuelto ningún diseño generado.");
         }
         const generatedLayout = normalizeBackendAssetUrls(response.layout);
 
@@ -677,8 +677,8 @@ const GroupLayoutPreview = ({
         setPromptLayoutId(null);
         setHasUnsavedChanges(true);
         notify.success(
-          "Slide created",
-          `Slide ${targetIndex + 1} was generated. Save to keep it.`,
+          "Diapositiva creada",
+          `Se ha generado la diapositiva ${targetIndex + 1}. Guarda para conservarla.`,
         );
         track(ANALYTICS_EVENTS.TEMPLATE_PREVIEW_LAYOUT_RECONSTRUCTED, {
           template_id: templateId,
@@ -689,10 +689,10 @@ const GroupLayoutPreview = ({
         return true;
       } catch (generationError) {
         notify.error(
-          "Failed to create slide",
+          "No se ha podido crear la diapositiva",
           generationError instanceof Error
             ? generationError.message
-            : "Something went wrong while creating this slide.",
+            : "Algo ha salido mal al crear esta diapositiva.",
         );
         track(ANALYTICS_EVENTS.TEMPLATE_PREVIEW_LAYOUT_RECONSTRUCT_FAILED, {
           template_id: templateId,
@@ -751,8 +751,8 @@ const GroupLayoutPreview = ({
     if (!canEditTemplate) return;
     if (editableLayouts.length <= 1) {
       notify.warning(
-        "Cannot delete slide",
-        "A template needs at least one layout.",
+        "No se puede eliminar la diapositiva",
+        "Una plantilla necesita al menos un diseño.",
       );
       return;
     }
@@ -802,13 +802,13 @@ const GroupLayoutPreview = ({
         (item) => item.index === activeLayoutIndex,
       );
       if (!createdLayout) {
-        throw new Error("No reconstructed layout was returned.");
+        throw new Error("No se ha devuelto ningún diseño reconstruido.");
       }
 
       updateActiveLayout(normalizeBackendAssetUrls(createdLayout.layout));
       notify.success(
-        "Slide reconstructed",
-        `Slide ${activeLayoutIndex + 1} was reconstructed. Save to keep it.`,
+        "Diapositiva reconstruida",
+        `Se ha reconstruido la diapositiva ${activeLayoutIndex + 1}. Guarda para conservarla.`,
       );
       track(ANALYTICS_EVENTS.TEMPLATE_PREVIEW_LAYOUT_RECONSTRUCTED, {
         template_id: templateId,
@@ -817,10 +817,10 @@ const GroupLayoutPreview = ({
       });
     } catch (reconstructError) {
       notify.error(
-        "Failed to reconstruct slide",
+        "No se ha podido reconstruir la diapositiva",
         reconstructError instanceof Error
           ? reconstructError.message
-          : "Something went wrong while reconstructing this slide.",
+          : "Algo ha salido mal al reconstruir esta diapositiva.",
       );
       track(ANALYTICS_EVENTS.TEMPLATE_PREVIEW_LAYOUT_RECONSTRUCT_FAILED, {
         template_id: templateId,
@@ -850,8 +850,8 @@ const GroupLayoutPreview = ({
       if (!canEditTemplate || !activeLayout || typeof window === "undefined") {
         if (!activeLayout) {
           notify.warning(
-            "Create a layout first",
-            "Add a blank layout before inserting content.",
+            "Crea primero un diseño",
+            "Añade un diseño en blanco antes de insertar contenido.",
           );
         }
         return false;
@@ -876,8 +876,8 @@ const GroupLayoutPreview = ({
 
       if (!detail.handled) {
         notify.warning(
-          "Insert unavailable",
-          "Select the active layout and try again.",
+          "No se puede insertar",
+          "Selecciona el diseño activo e inténtalo de nuevo.",
         );
         return false;
       }
@@ -1021,8 +1021,8 @@ const GroupLayoutPreview = ({
         recordArray(block.raw, "elements").length === 0
       ) {
         notify.warning(
-          "Component unavailable",
-          "This merged component cannot be inserted yet.",
+          "Componente no disponible",
+          "Este componente combinado todavía no se puede insertar.",
         );
         return;
       }
@@ -1073,7 +1073,7 @@ const GroupLayoutPreview = ({
         had_unsaved_changes: hasUnsavedChanges,
       });
 
-      const nextTemplateName = templateNameDraft.trim() || "Untitled Template";
+      const nextTemplateName = templateNameDraft.trim() || "Plantilla sin título";
       if (nextTemplateName !== templateNameDraft) {
         setTemplateNameDraft(nextTemplateName);
       }
@@ -1090,8 +1090,8 @@ const GroupLayoutPreview = ({
       setHasUnsavedChanges(false);
       setSavedTemplateName(nextTemplateName);
       notify.success(
-        "Changes saved",
-        "Template JSON was updated.",
+        "Cambios guardados",
+        "Se ha actualizado el JSON de la plantilla.",
       );
       track(ANALYTICS_EVENTS.TEMPLATE_PREVIEW_TEMPLATE_SAVED, {
         template_id: templateId,
@@ -1100,10 +1100,10 @@ const GroupLayoutPreview = ({
       });
     } catch (saveError) {
       notify.error(
-        "Failed to save template",
+        "No se ha podido guardar la plantilla",
         saveError instanceof Error
           ? saveError.message
-          : "Something went wrong while saving the template.",
+          : "Algo ha salido mal al guardar la plantilla.",
       );
       track(ANALYTICS_EVENTS.TEMPLATE_PREVIEW_TEMPLATE_SAVE_FAILED, {
         template_id: templateId,
@@ -1127,12 +1127,12 @@ const GroupLayoutPreview = ({
     setIsCloning(true);
     try {
       const copiedTemplateId = await TemplateService.cloneTemplate(templateId);
-      notify.success("Template copied", "You can now edit your custom template.");
+      notify.success("Plantilla copiada", "Ya puedes editar tu plantilla personalizada.");
       router.push(`/template-preview?templateV2Id=${encodeURIComponent(copiedTemplateId)}`);
     } catch (copyError) {
       notify.error(
-        "Could not copy template",
-        copyError instanceof Error ? copyError.message : "Please try again.",
+        "No se ha podido copiar la plantilla",
+        copyError instanceof Error ? copyError.message : "Inténtalo de nuevo.",
       );
     } finally {
       setIsCloning(false);
@@ -1158,8 +1158,8 @@ const GroupLayoutPreview = ({
       if (result.success) {
         setIsDeleteDialogOpen(false);
         notify.success(
-          "Template deleted",
-          "The template was deleted successfully.",
+          "Plantilla eliminada",
+          "La plantilla se ha eliminado correctamente.",
         );
         track(ANALYTICS_EVENTS.TEMPLATE_PREVIEW_TEMPLATE_DELETED, {
           template_id: templateId,
@@ -1170,8 +1170,8 @@ const GroupLayoutPreview = ({
       }
 
       notify.error(
-        "Could not delete template",
-        result.message || "Something went wrong while deleting the template.",
+        "No se ha podido eliminar la plantilla",
+        result.message || "Algo ha salido mal al eliminar la plantilla.",
       );
       track(ANALYTICS_EVENTS.TEMPLATE_PREVIEW_TEMPLATE_DELETE_FAILED, {
         template_id: templateId,
@@ -1180,10 +1180,10 @@ const GroupLayoutPreview = ({
       });
     } catch (deleteError) {
       notify.error(
-        "Could not delete template",
+        "No se ha podido eliminar la plantilla",
         deleteError instanceof Error
           ? deleteError.message
-          : "Something went wrong while deleting the template.",
+          : "Algo ha salido mal al eliminar la plantilla.",
       );
       track(ANALYTICS_EVENTS.TEMPLATE_PREVIEW_TEMPLATE_DELETE_FAILED, {
         template_id: templateId,
@@ -1250,14 +1250,14 @@ const GroupLayoutPreview = ({
             !activeLayout ||
             !activePreviewLayout ? (
             <div className="flex flex-1 flex-col items-center justify-center gap-4 text-sm text-[#696969]">
-              <p>No layouts available for this template.</p>
+              <p>No hay diseños disponibles para esta plantilla.</p>
               {canEditTemplate ? (
                 <button
                   className="rounded-[8px] border border-[#FFED82] bg-white px-4 py-2 text-[13px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#FFFADC]"
                   onClick={createBlankLayout}
                   type="button"
                 >
-                  Create blank layout
+                  Crear diseño en blanco
                 </button>
               ) : null}
             </div>

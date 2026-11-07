@@ -42,13 +42,13 @@ export function InfographicItemToolbar({
     >
       <button
         type="button"
-        title="Delete infographic item"
+        title="Eliminar elemento de la infografía"
         disabled={!canDelete}
         onClick={onDelete}
         className="inline-flex h-8 items-center gap-1.5 rounded-[6px] px-2 text-[13px] font-medium hover:bg-[#F6F6F9] disabled:cursor-not-allowed disabled:opacity-40"
       >
         <Trash2 size={15} />
-        <span>Delete</span>
+        <span>Eliminar</span>
       </button>
       {canUngroup ? (
         <>

@@ -40,7 +40,7 @@ function stringifyDetail(detail: unknown): string {
 export function normalizeChatGptAuthMessage(message?: unknown): string {
   const raw = stringifyDetail(message).trim();
   if (!raw) {
-    return "Your ChatGPT session expired. Please sign in again from Settings.";
+    return "Tu sesión de ChatGPT ha caducado. Vuelve a iniciar sesión desde Configuración.";
   }
 
   const markerIndex = raw.indexOf(CHATGPT_AUTH_REQUIRED_MARKER);

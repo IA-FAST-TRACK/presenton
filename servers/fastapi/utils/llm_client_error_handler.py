@@ -22,7 +22,7 @@ def _is_codex_provider() -> bool:
 def _chatgpt_auth_required_exception() -> HTTPException:
     error = ProviderHTTPException(
         status_code=401,
-        detail=f"{CHATGPT_AUTH_REQUIRED_PREFIX} Your ChatGPT session expired. Please sign in again from Settings.",
+        detail=f"{CHATGPT_AUTH_REQUIRED_PREFIX} Tu sesión de ChatGPT ha caducado. Vuelve a iniciar sesión desde Configuración.",
         code="chatgpt_auth_required", retryable=False, source="llm",
     )
     error.headers = CHATGPT_AUTH_REQUIRED_HEADER

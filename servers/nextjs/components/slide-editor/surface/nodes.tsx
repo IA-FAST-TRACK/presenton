@@ -3826,8 +3826,8 @@ function RawGanttInfographic({
 }) {
   const columns = readArray(data?.columns).map(asRecord).filter(Boolean);
   const rows = readArray(data?.rows).map(asRecord).filter(Boolean);
-  const safeColumns = columns.length > 0 ? columns : [{ label: "Phase" }];
-  const safeRows = rows.length > 0 ? rows : [{ label: "Workstream", items: [] }];
+  const safeColumns = columns.length > 0 ? columns : [{ label: "Fase" }];
+  const safeRows = rows.length > 0 ? rows : [{ label: "Línea de trabajo", items: [] }];
   const darkBackground = isDarkInfographicColor(baseColor);
   const paddingX = darkBackground ? width * 0.07 : 0;
   const paddingY = darkBackground ? height * 0.065 : 0;
@@ -3851,7 +3851,7 @@ function RawGanttInfographic({
         y={paddingY}
         width={labelWidth - 8}
         height={headerHeight}
-        text="Process"
+        text="Proceso"
         fontFamily="Arial, Helvetica, sans-serif"
         fontSize={Math.max(10, Math.min(14, headerHeight * 0.38))}
         fontStyle="bold"
@@ -3876,7 +3876,7 @@ function RawGanttInfographic({
             y={paddingY}
             width={Math.max(1, columnWidth - 8)}
             height={headerHeight}
-            text={readString(column?.label) ?? `Phase ${index + 1}`}
+            text={readString(column?.label) ?? `Fase ${index + 1}`}
             fontFamily="Arial, Helvetica, sans-serif"
             fontSize={Math.max(9, Math.min(14, headerHeight * 0.36))}
             align="center"
@@ -3913,7 +3913,7 @@ function RawGanttInfographic({
               y={y}
               width={Math.max(1, labelWidth - 10)}
               height={rowHeight}
-              text={readString(row?.label) ?? `Workstream ${rowIndex + 1}`}
+              text={readString(row?.label) ?? `Línea de trabajo ${rowIndex + 1}`}
               fontFamily="Arial, Helvetica, sans-serif"
               fontSize={Math.max(8, Math.min(13, rowHeight * 0.3))}
               verticalAlign="middle"
@@ -3975,7 +3975,7 @@ function RawTimelineInfographic({
   width: number;
 }) {
   const items = readArray(data?.items).map(asRecord).filter(Boolean);
-  const safeItems = items.length > 0 ? items : [{ heading: "Milestone" }];
+  const safeItems = items.length > 0 ? items : [{ heading: "Hito" }];
   const darkBackground = isDarkInfographicColor(baseColor);
   const lineY = height * 0.39;
   const sidePadding = darkBackground ? width * 0.075 : width * 0.025;
@@ -4057,7 +4057,7 @@ function RawTimelineInfographic({
               width={itemWidth * 0.9}
               height={height * 0.13}
               text={
-                readString(item?.heading) ?? `Step ${index + 1}`
+                readString(item?.heading) ?? `Paso ${index + 1}`
               }
               fontFamily="Arial, Helvetica, sans-serif"
               fontSize={Math.max(11, Math.min(16, height * 0.065))}
@@ -4103,7 +4103,7 @@ function RawRoadmapInfographic({
   width: number;
 }) {
   const items = readArray(data?.items).map(asRecord).filter(Boolean).slice(0, 8);
-  const safeItems = items.length > 0 ? items : [{ heading: "Destination" }];
+  const safeItems = items.length > 0 ? items : [{ heading: "Destino" }];
   const darkBackground = isDarkInfographicColor(baseColor);
   const textColor =
     customTextColor ?? (darkBackground ? "#F0F1F4" : "#111111");
@@ -4196,7 +4196,7 @@ function RawRoadmapInfographic({
               y={labelY}
               width={labelWidth}
               height={height * 0.09}
-              text={readString(item?.heading) ?? `Stop ${index + 1}`}
+              text={readString(item?.heading) ?? `Parada ${index + 1}`}
               fontFamily="Arial, Helvetica, sans-serif"
               fontSize={Math.max(10, Math.min(16, height * 0.052))}
               fontStyle="bold"
@@ -4285,7 +4285,7 @@ function RawMilestoneTimelineInfographic({
               y={yearY}
               width={itemWidth * 0.96}
               height={height * 0.08}
-              text={readString(item?.heading) ?? `Milestone ${index + 1}`}
+              text={readString(item?.heading) ?? `Hito ${index + 1}`}
               fontFamily="Arial, Helvetica, sans-serif"
               fontSize={Math.max(10, Math.min(16, height * 0.052))}
               fontStyle="bold"
@@ -4351,7 +4351,7 @@ function RawStaircaseInfographic({
   width: number;
 }) {
   const items = readArray(data?.items).map(asRecord).filter(Boolean).slice(0, 7);
-  const safeItems = items.length > 0 ? items : [{ heading: "Step" }];
+  const safeItems = items.length > 0 ? items : [{ heading: "Paso" }];
   const darkBackground = isDarkInfographicColor(baseColor);
   const textColor =
     customTextColor ?? (darkBackground ? "#F0F1F4" : "#111111");
@@ -4419,7 +4419,7 @@ function RawStaircaseInfographic({
               y={y - height * 0.06}
               width={itemWidth * 0.92}
               height={height * 0.08}
-              text={readString(item?.heading) ?? `Step ${index + 1}`}
+              text={readString(item?.heading) ?? `Paso ${index + 1}`}
               fontFamily="Arial, Helvetica, sans-serif"
               fontSize={Math.max(9, Math.min(14, height * 0.038))}
               fontStyle="bold"
@@ -4706,7 +4706,7 @@ function infographicItems(data: RawElement | null, max = 8) {
 
 function RawSupplyChainInfographic({ baseColor, data, height, interactive, palette, textColor: customTextColor, width }: RawInfographicRendererProps) {
   const items = infographicItems(data, 7);
-  const safe = items.length ? items : [{ heading: "Sourcing" }];
+  const safe = items.length ? items : [{ heading: "Aprovisionamiento" }];
   const dark = isDarkInfographicColor(baseColor);
   const body = customTextColor ?? (dark ? "#F0F1F4" : "#111111");
   const lineColor = dark ? "#E0E0E0" : "#D2D2D2";
@@ -4762,7 +4762,7 @@ function RawSupplyChainInfographic({ baseColor, data, height, interactive, palet
 
 function RawStairStepBlocksInfographic({ baseColor, data, height, interactive, palette, textColor: customTextColor, width }: RawInfographicRendererProps) {
   const safe = infographicItems(data, 7);
-  const items = safe.length ? safe : [{ heading: "Foundation" }];
+  const items = safe.length ? safe : [{ heading: "Base" }];
   const dark = isDarkInfographicColor(baseColor);
   const body = customTextColor ?? (dark ? "#F0F1F4" : "#111111");
   const pad = width * .12;
@@ -4790,7 +4790,7 @@ function RawStairStepBlocksInfographic({ baseColor, data, height, interactive, p
 
 function RawMaturityModelInfographic({ data, height, interactive, palette, width }: RawInfographicRendererProps) {
   const safe = infographicItems(data, 7);
-  const items = safe.length ? safe : [{ heading: "Initial" }];
+  const items = safe.length ? safe : [{ heading: "Inicial" }];
   const rowH = height * .145;
   const gap = height * .022;
   return <Group listening={interactive}>
@@ -4815,7 +4815,7 @@ function RawMaturityModelInfographic({ data, height, interactive, palette, width
 
 function RawPillarFrameworkInfographic({ data, height, interactive, palette, textColor: customTextColor, width }: RawInfographicRendererProps) {
   const safe = infographicItems(data, 7);
-  const items = safe.length ? safe : [{ heading: "Customer" }];
+  const items = safe.length ? safe : [{ heading: "Cliente" }];
   const roofColor = withHash(readString(data?.card_color)) ?? "#D6D6D6";
   const roofTextColor =
     withHash(readString(data?.background_text_color)) ??
@@ -4849,7 +4849,7 @@ function RawPillarFrameworkInfographic({ data, height, interactive, palette, tex
 
 function RawTransformationHubInfographic({ baseColor, data, height, interactive, palette, textColor: customTextColor, width }: RawInfographicRendererProps) {
   const safe = infographicItems(data, 8);
-  const items = safe.length ? safe : [{ heading: "Strategy" },{ heading: "Process" }];
+  const items = safe.length ? safe : [{ heading: "Estrategia" },{ heading: "Procesos" }];
   const dark = isDarkInfographicColor(baseColor);
   const line = dark ? "#E0E0E0" : "#D2D2D2";
   const centerColor = withHash(readString(data?.card_color)) ?? "#D6D6D6";
@@ -4893,7 +4893,7 @@ function RawTransformationHubInfographic({ baseColor, data, height, interactive,
 }
 
 function RawDiagonalCirclesInfographic({ baseColor, data, height, interactive, palette, textColor: customTextColor, width }: RawInfographicRendererProps) {
-  const safe=infographicItems(data,7); const items=safe.length?safe:[{heading:"Strategy"}];
+  const safe=infographicItems(data,7); const items=safe.length?safe:[{heading:"Estrategia"}];
   const dark=isDarkInfographicColor(baseColor); const text=customTextColor??(dark?"#F0F1F4":"#111111");
   const r=Math.min(width/(items.length+3.8),height*.135); const startX=width*.215,startY=height*.7,dx=width*.125,dy=-height*.118;
   const lineColor=dark?"#E0E0E0":"#D2D2D2",arrowSize=Math.max(5,height*.014),textW=width*.205;
@@ -4913,7 +4913,7 @@ function RawDiagonalCirclesInfographic({ baseColor, data, height, interactive, p
 }
 
 function RawRiskMatrixInfographic({ baseColor, data, height, interactive, palette, textColor: customTextColor, width }: RawInfographicRendererProps) {
-  const raw=infographicItems(data,4); const defaults: RawElement[]=[{heading:"Identify"},{heading:"Prioritize"},{heading:"Assess"},{heading:"Respond"}]; const items=defaults.map((fallback,index)=>raw[index]??fallback);
+  const raw=infographicItems(data,4); const defaults: RawElement[]=[{heading:"Identificar"},{heading:"Priorizar"},{heading:"Evaluar"},{heading:"Responder"}]; const items=defaults.map((fallback,index)=>raw[index]??fallback);
   const dark=isDarkInfographicColor(baseColor), body=customTextColor??(dark?"#F0F1F4":"#111111");
   const q=height*.43,gap=height*.035,cx=width*.5,cy=height*.5, left=cx-q-gap*.5, top=cy-q-gap*.5;
   const pos=[[left,top],[cx+gap*.5,top],[left,cy+gap*.5],[cx+gap*.5,cy+gap*.5]];
@@ -4949,7 +4949,7 @@ function RawChevronProcessInfographic({
   width: number;
 }) {
   const items = readArray(data?.items).map(asRecord).filter(Boolean).slice(0, 8);
-  const safeItems = items.length > 0 ? items : [{ heading: "Stage" }];
+  const safeItems = items.length > 0 ? items : [{ heading: "Etapa" }];
   const darkBackground = isDarkInfographicColor(baseColor);
   const bodyColor = customTextColor ?? (darkBackground ? "#F0F1F4" : "#111111");
   const sidePadding = width * 0.035;
@@ -5022,7 +5022,7 @@ function RawChevronProcessInfographic({
               y={labelY}
               width={labelWidth}
               height={height * 0.07}
-              text={readString(item?.heading) ?? `Stage ${index + 1}`}
+              text={readString(item?.heading) ?? `Etapa ${index + 1}`}
               fontFamily="Arial, Helvetica, sans-serif"
               fontSize={Math.max(10, Math.min(14, height * 0.037))}
               fontStyle="bold"
@@ -5062,7 +5062,7 @@ function RawRadialCycleInfographic({
   width: number;
 }) {
   const items = readArray(data?.items).map(asRecord).filter(Boolean).slice(0, 8);
-  const safeItems = items.length > 0 ? items : [{ heading: "Stage" }];
+  const safeItems = items.length > 0 ? items : [{ heading: "Etapa" }];
   const centerX = width / 2;
   const centerY = height / 2;
   const orbitX = width * 0.315;
@@ -5135,7 +5135,7 @@ function RawRadialCycleInfographic({
               y={y - nodeRadius * 0.08}
               width={nodeRadius * 1.64}
               height={nodeRadius * 0.26}
-              text={readString(item?.heading) ?? `Stage ${index + 1}`}
+              text={readString(item?.heading) ?? `Etapa ${index + 1}`}
               fontFamily="Arial, Helvetica, sans-serif"
               fontSize={Math.max(10, nodeRadius * 0.16)}
               fontStyle="bold"
@@ -5255,7 +5255,7 @@ function RawConversionFunnelInfographic({
   width: number;
 }) {
   const items = readArray(data?.items).map(asRecord).filter(Boolean).slice(0, 8);
-  const safeItems = items.length > 0 ? items : [{ value: 50, heading: "Stage" }];
+  const safeItems = items.length > 0 ? items : [{ value: 50, heading: "Etapa" }];
   const darkBackground = isDarkInfographicColor(baseColor);
   const textColor = customTextColor ?? (darkBackground ? "#F0F1F4" : "#111111");
   const columnWidth = width / safeItems.length;
@@ -5307,7 +5307,7 @@ function RawConversionFunnelInfographic({
               y={height * 0.76}
               width={columnWidth * 0.78}
               height={height * 0.07}
-              text={readString(item?.heading) ?? `Stage ${index + 1}`}
+              text={readString(item?.heading) ?? `Etapa ${index + 1}`}
               fontFamily="Arial, Helvetica, sans-serif"
               fontSize={Math.max(9, Math.min(13, height * 0.038))}
               fontStyle="bold"
@@ -5349,7 +5349,7 @@ function RawVerticalFunnelInfographic({
   width: number;
 }) {
   const items = readArray(data?.items).map(asRecord).filter(Boolean).slice(0, 8);
-  const safeItems = items.length > 0 ? items : [{ value: 50, heading: "Stage" }];
+  const safeItems = items.length > 0 ? items : [{ value: 50, heading: "Etapa" }];
   const darkBackground = isDarkInfographicColor(baseColor);
   const textColor = customTextColor ?? (darkBackground ? "#F0F1F4" : "#111111");
   const top = height * 0.08;
@@ -5368,7 +5368,7 @@ function RawVerticalFunnelInfographic({
         const y1 = y0 + stageHeight;
         const topWidth = widthAt(valueAt(index));
         const bottomWidth = widthAt(valueAt(Math.min(index + 1, safeItems.length - 1)));
-        const heading = readString(item?.heading) ?? `Stage ${index + 1}`;
+        const heading = readString(item?.heading) ?? `Etapa ${index + 1}`;
         const description = readString(item?.description) ?? "";
         return (
           <InfographicItemGroup
@@ -5456,7 +5456,7 @@ function RawSegmentedWheelInfographic({
   const items = readArray(data?.items).map(asRecord).filter(Boolean).slice(0, 6);
   const safeItems = items.length >= 3
     ? items
-    : [{ heading: "Foundation" }, { heading: "Efficiency" }, { heading: "Growth" }];
+    : [{ heading: "Base" }, { heading: "Eficiencia" }, { heading: "Crecimiento" }];
   const darkBackground = isDarkInfographicColor(baseColor);
   const outsideTextColor = customTextColor ?? (darkBackground ? "#F0F1F4" : "#111111");
   const centerX = width * 0.5;
@@ -5531,7 +5531,7 @@ function RawSegmentedWheelInfographic({
               y={elbow.y - height * 0.015}
               width={labelWidth}
               height={height * 0.06}
-              text={readString(item?.heading) ?? `Segment ${index + 1}`}
+              text={readString(item?.heading) ?? `Segmento ${index + 1}`}
               fontFamily="Arial, Helvetica, sans-serif"
               fontSize={Math.max(10, Math.min(14, height * 0.032))}
               fontStyle="bold"
@@ -5579,9 +5579,9 @@ function RawCustomerJourneyInfographic({
     ? items
     : [
         { icon: null },
-        { heading: "Awareness" },
-        { heading: "Consideration" },
-        { heading: "Experience" },
+        { heading: "Reconocimiento" },
+        { heading: "Consideración" },
+        { heading: "Experiencia" },
       ];
   const startItem = safeItems[0];
   const stages = safeItems.slice(1);
@@ -5662,7 +5662,7 @@ function RawCustomerJourneyInfographic({
               y={headingY}
               width={textWidth}
               height={height * 0.055}
-              text={readString(item?.heading) ?? `Stage ${index + 1}`}
+              text={readString(item?.heading) ?? `Etapa ${index + 1}`}
               fontFamily="Arial, Helvetica, sans-serif"
               fontSize={Math.max(10, Math.min(14, height * 0.034))}
               fontStyle="bold"
@@ -5709,7 +5709,7 @@ function RawBeforeAfterInfographic({
   const evenItems = items.slice(0, items.length - (items.length % 2));
   const safeItems = evenItems.length >= 2
     ? evenItems
-    : [{ heading: "Before" }, { heading: "After" }];
+    : [{ heading: "Antes" }, { heading: "Después" }];
   const pairCount = safeItems.length / 2;
   const darkBackground = isDarkInfographicColor(baseColor);
   const textColor = customTextColor ?? (darkBackground ? "#F0F1F4" : "#111111");
@@ -5879,9 +5879,9 @@ function RawPyramidInfographic({
 }) {
   const items = readArray(data?.items).map(asRecord).filter(Boolean).slice(0, 4);
   const safeItems = items.length >= 3 ? items : [
-    { heading: "Foundation" },
-    { heading: "Efficiency" },
-    { heading: "Innovation" },
+    { heading: "Base" },
+    { heading: "Eficiencia" },
+    { heading: "Innovación" },
   ];
   const darkBackground = isDarkInfographicColor(baseColor);
   const outsideTextColor = customTextColor ?? (darkBackground ? "#F0F1F4" : "#111111");
@@ -5964,7 +5964,7 @@ function RawPyramidInfographic({
               y={y + height * 0.045}
               width={width * 0.18}
               height={height * 0.06}
-              text={readString(item?.heading) ?? `Level ${index + 1}`}
+              text={readString(item?.heading) ?? `Nivel ${index + 1}`}
               fontFamily="Arial, Helvetica, sans-serif"
               fontSize={Math.max(10, Math.min(15, height * 0.038))}
               fontStyle="bold"
@@ -5981,7 +5981,7 @@ function RawPyramidInfographic({
               y={calloutLayout.textY}
               width={calloutLayout.textWidth}
               height={height * 0.06}
-              text={readString(item?.heading) ?? `Level ${index + 1}`}
+              text={readString(item?.heading) ?? `Nivel ${index + 1}`}
               fontFamily="Arial, Helvetica, sans-serif"
               fontSize={Math.max(10, Math.min(14, height * 0.036))}
               fontStyle="bold"
@@ -6094,7 +6094,7 @@ function RawImpactEffortInfographic({
   const textColor = customTextColor ?? (dark ? "#F3F4F6" : "#111111");
   const axisColor = dark ? "#E4E4E7" : "#D1D1D1";
   const items = readArray(data?.items).map(asRecord).filter(Boolean).slice(0, 4);
-  const defaults = ["Quick Wins", "Strategic Priorities", "Deprioritize", "Fill-ins"];
+  const defaults = ["Victorias rápidas", "Prioridades estratégicas", "Despriorizar", "Tareas de relleno"];
   const cx = width * 0.49;
   const cy = height * 0.523;
   const axisHalfX = width * 0.226;
@@ -6118,12 +6118,12 @@ function RawImpactEffortInfographic({
       {[[cx + axisHalfX, cy, 0], [cx - axisHalfX, cy, 180], [cx, cy - axisHalfY, -90], [cx, cy + axisHalfY, 90]].map(([x, y, rotation], index) => (
         <Line key={`axis-arrow-${index}`} x={x} y={y} rotation={rotation} points={[-9, -6, 0, 0, -9, 6]} closed fill={axisColor} stroke={axisColor} />
       ))}
-      <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: "x_axis_label" })} x={cx + 16} y={cy + 7} width={80} text={readString(data?.x_axis_label) ?? "Impact"} fontSize={Math.max(9, height * 0.029)} fill={textColor} />
-      <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: "y_axis_label" })} x={cx - 28} y={cy - 55} width={70} text={readString(data?.y_axis_label) ?? "Effort"} rotation={-90} fontSize={Math.max(9, height * 0.029)} fill={textColor} />
-      <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: "low_label" })} x={cx - axisHalfX - 42} y={cy - 8} width={36} align="right" text={readString(data?.low_label) ?? "Low"} fontSize={Math.max(9, height * 0.029)} fill={textColor} />
-      <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: "high_label" })} x={cx + axisHalfX + 8} y={cy - 8} width={42} text={readString(data?.high_label) ?? "High"} fontSize={Math.max(9, height * 0.029)} fill={textColor} />
-      <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: "high_label" })} x={cx - 28} y={cy - axisHalfY - 22} width={56} align="center" text={readString(data?.high_label) ?? "High"} fontSize={Math.max(9, height * 0.029)} fill={textColor} />
-      <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: "low_label" })} x={cx - 28} y={cy + axisHalfY + 7} width={56} align="center" text={readString(data?.low_label) ?? "Low"} fontSize={Math.max(9, height * 0.029)} fill={textColor} />
+      <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: "x_axis_label" })} x={cx + 16} y={cy + 7} width={80} text={readString(data?.x_axis_label) ?? "Impacto"} fontSize={Math.max(9, height * 0.029)} fill={textColor} />
+      <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: "y_axis_label" })} x={cx - 28} y={cy - 55} width={70} text={readString(data?.y_axis_label) ?? "Esfuerzo"} rotation={-90} fontSize={Math.max(9, height * 0.029)} fill={textColor} />
+      <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: "low_label" })} x={cx - axisHalfX - 42} y={cy - 8} width={36} align="right" text={readString(data?.low_label) ?? "Bajo"} fontSize={Math.max(9, height * 0.029)} fill={textColor} />
+      <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: "high_label" })} x={cx + axisHalfX + 8} y={cy - 8} width={42} text={readString(data?.high_label) ?? "Alto"} fontSize={Math.max(9, height * 0.029)} fill={textColor} />
+      <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: "high_label" })} x={cx - 28} y={cy - axisHalfY - 22} width={56} align="center" text={readString(data?.high_label) ?? "Alto"} fontSize={Math.max(9, height * 0.029)} fill={textColor} />
+      <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: "low_label" })} x={cx - 28} y={cy + axisHalfY + 7} width={56} align="center" text={readString(data?.low_label) ?? "Bajo"} fontSize={Math.max(9, height * 0.029)} fill={textColor} />
       {positions.map((position, index) => {
         const item = items[index];
         const color = palette[index % Math.max(1, palette.length)] ?? "#24468E";
@@ -6168,7 +6168,7 @@ function RawComparisonMatrixInfographic(props: InfographicRendererProps) {
     .map(readString)
     .filter((value): value is string => Boolean(value));
   const items = readArray(data?.items).map(asRecord).filter(Boolean).slice(0, 6);
-  const safeCriteria = criteria.length > 0 ? criteria : ["Criterion"];
+  const safeCriteria = criteria.length > 0 ? criteria : ["Criterio"];
   const padding = width * 0.03;
   const top = height * 0.18;
   const tableHeight = height * 0.65;
@@ -6183,7 +6183,7 @@ function RawComparisonMatrixInfographic(props: InfographicRendererProps) {
   return (
     <Group listening={interactive}>
       <Rect x={padding} y={top} width={criteriaWidth - 4} height={tableHeight} fill={badgeColor} />
-      <Text x={padding} y={top + headerHeight * 0.36} width={criteriaWidth - 4} align="center" text="Criteria" fontStyle="bold" fontSize={Math.max(10, height * 0.035)} fill={iconColor} />
+      <Text x={padding} y={top + headerHeight * 0.36} width={criteriaWidth - 4} align="center" text="Criterios" fontStyle="bold" fontSize={Math.max(10, height * 0.035)} fill={iconColor} />
       {safeCriteria.map((criterion, rowIndex) => <Text {...infographicTargetAttrs({ kind: "text", itemPath: [], field: `criteria.${rowIndex}` })} key={`criterion-${rowIndex}`} x={padding + 5} y={top + headerHeight + rowIndex * rowHeight} width={criteriaWidth - 14} height={rowHeight} align="center" verticalAlign="middle" text={criterion} fontSize={Math.max(9, height * 0.027)} fill={iconColor} />)}
       {items.map((item, index) => {
         const x = padding + criteriaWidth + index * optionWidth;
@@ -6196,7 +6196,7 @@ function RawComparisonMatrixInfographic(props: InfographicRendererProps) {
             <Rect x={x + 2} y={top} width={optionWidth - 4} height={tableHeight} fill={color} />
             <Circle x={x + optionWidth / 2} y={top} radius={Math.min(optionWidth * 0.2, height * 0.075)} fill={badgeColor} stroke={color} strokeWidth={3} />
             <InfographicUrlIcon color={iconColor} icon={icon?.url ?? null} itemPath={[index]} x={x + optionWidth / 2} y={top} size={Math.min(optionWidth * 0.19, height * 0.065)} />
-            <Text x={x + 7} y={top + headerHeight * 0.35} width={optionWidth - 14} align="center" text={readString(item?.heading) ?? `Option ${index + 1}`} fontStyle="bold" fontSize={Math.max(9, height * 0.032)} fill={columnTextColor} />
+            <Text x={x + 7} y={top + headerHeight * 0.35} width={optionWidth - 14} align="center" text={readString(item?.heading) ?? `Opción ${index + 1}`} fontStyle="bold" fontSize={Math.max(9, height * 0.032)} fill={columnTextColor} />
             {safeCriteria.map((_, rowIndex) => <Fragment key={`value-${index}-${rowIndex}`}><Line points={[x + 2, top + headerHeight + rowIndex * rowHeight, x + optionWidth - 2, top + headerHeight + rowIndex * rowHeight]} stroke={dark ? "#FFFFFF" : "#D1D5DB"} opacity={0.35} /><Text {...infographicTargetAttrs({ kind: "text", itemPath: [index], field: `values.${rowIndex}` })} x={x + 5} y={top + headerHeight + rowIndex * rowHeight} width={optionWidth - 10} height={rowHeight} align="center" verticalAlign="middle" text={values[rowIndex] ?? ""} fontSize={Math.max(9, height * 0.026)} fill={columnTextColor} /></Fragment>)}
           </InfographicItemGroup>
         );
@@ -6307,7 +6307,7 @@ function RawMindMapInfographic({
     ? firstNested
     : topLevel
   ).slice(0, 8);
-  const safeItems = items.length > 0 ? items : [{ heading: "Core idea" }];
+  const safeItems = items.length > 0 ? items : [{ heading: "Idea central" }];
   const darkBackground = isDarkInfographicColor(baseColor);
   const layout = mindMapLayout(safeItems.length, width, height);
   const textColor =

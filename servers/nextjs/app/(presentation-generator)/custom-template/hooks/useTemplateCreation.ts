@@ -155,7 +155,7 @@ export const useTemplateCreation = () => {
 
             const data = await ApiResponseHandler.handleResponse(
                 response,
-                "Failed to check fonts in the presentation"
+                "No se han podido comprobar las fuentes de la presentación"
             );
 
             updateState({
@@ -172,7 +172,7 @@ export const useTemplateCreation = () => {
 
             return data;
         } catch (error) {
-            const errorMessage = error instanceof Error ? error.message : "Font check failed";
+            const errorMessage = error instanceof Error ? error.message : "Error al comprobar las fuentes";
             updateState({ error: errorMessage, isLoading: false });
             trackEvent(MixpanelEvent.CustomTemplate_Font_Check_Failed, {
                 file_size_bucket: bucketFileSize(pptxFile.size),
@@ -181,7 +181,7 @@ export const useTemplateCreation = () => {
                     : "",
                 error_message: sanitizeAnalyticsError(error, "Font check failed"),
             });
-            notify.error("Font check failed", errorMessage);
+            notify.error("Error al comprobar las fuentes", errorMessage);
             return null;
         }
     }, [updateState]);
@@ -191,7 +191,7 @@ export const useTemplateCreation = () => {
         // Check if font is already added
         const existingFont = uploadedFonts.find((f) => f.fontName === fontName);
         if (existingFont) {
-            notify.warning("Font already added", `Font "${fontName}" is already in your upload list.`);
+            notify.warning("Fuente ya añadida", `La fuente "${fontName}" ya está en tu lista de subida.`);
             return fontName;
         }
 
@@ -200,14 +200,14 @@ export const useTemplateCreation = () => {
         const fileExtension = file.name.toLowerCase().substring(file.name.lastIndexOf("."));
 
         if (!validExtensions.includes(fileExtension)) {
-            notify.error("Invalid font file", "Please upload .ttf, .otf, .woff, .woff2, or .eot files.");
+            notify.error("Archivo de fuente no válido", "Sube archivos .ttf, .otf, .woff, .woff2 o .eot.");
             return null;
         }
 
         // Validate file size (10MB limit)
         const maxSize = 10 * 1024 * 1024;
         if (file.size > maxSize) {
-            notify.error("File too large", "Font file size must be less than 10MB.");
+            notify.error("Archivo demasiado grande", "El tamaño del archivo de fuente debe ser inferior a 10 MB.");
             return null;
         }
 
@@ -220,14 +220,14 @@ export const useTemplateCreation = () => {
         };
 
         setUploadedFonts(prev => [...prev, newFont]);
-        notify.success("Font added", `Font "${fontName}" was added successfully.`);
+        notify.success("Fuente añadida", `La fuente "${fontName}" se ha añadido correctamente.`);
         return fontName;
     }, [uploadedFonts]);
 
     // Remove a font
     const removeFont = useCallback((fontName: string) => {
         setUploadedFonts(prev => prev.filter(font => font.fontName !== fontName));
-        notify.info("Font removed", "The font was removed from your upload list.");
+        notify.info("Fuente eliminada", "La fuente se ha eliminado de tu lista de subida.");
     }, []);
 
     // Get all unsupported fonts that need upload
@@ -298,7 +298,7 @@ export const useTemplateCreation = () => {
 
             const data = await ApiResponseHandler.handleResponse(
                 response,
-                "Failed to upload fonts and preview slides"
+                "No se han podido subir las fuentes ni previsualizar las diapositivas"
             );
 
             updateState({
@@ -315,7 +315,7 @@ export const useTemplateCreation = () => {
 
             return data;
         } catch (error) {
-            const errorMessage = error instanceof Error ? error.message : "Document preparation failed";
+            const errorMessage = error instanceof Error ? error.message : "Error al preparar el documento";
             updateState({ error: errorMessage, isLoading: false });
             trackEvent(MixpanelEvent.CustomTemplate_Preview_Failed, {
                 uploaded_font_count: uploadedFonts.length,
@@ -325,7 +325,7 @@ export const useTemplateCreation = () => {
                     "Document preparation failed"
                 ),
             });
-            notify.error("Document preparation failed", errorMessage);
+            notify.error("Error al preparar el documento", errorMessage);
             return null;
         }
     }, [getUnsupportedFonts, uploadedFonts, updateState]);
@@ -347,7 +347,7 @@ export const useTemplateCreation = () => {
 
         await ApiResponseHandler.handleResponse(
             response,
-            "Failed to save generated template layouts"
+            "No se han podido guardar los diseños generados de la plantilla"
         );
     }, []);
 
@@ -366,12 +366,12 @@ export const useTemplateCreation = () => {
 
         const data = await ApiResponseHandler.handleResponse(
             response,
-            `Failed to generate template layout for slide ${index + 1}`
+            `No se ha podido generar el diseño de la plantilla para la diapositiva ${index + 1}`
         );
         const layout = extractCreatedTemplateV2Layouts(data)
             .find((item) => item.index === index);
         if (!layout) {
-            throw new Error("No generated layout was returned for this slide.");
+            throw new Error("No se ha devuelto ningún diseño generado para esta diapositiva.");
         }
         return layout;
     }, []);
@@ -396,7 +396,7 @@ export const useTemplateCreation = () => {
                     index,
                     error: errorMessageFromUnknown(
                         error,
-                        "Template layout generation failed"
+                        "Error al generar el diseño de la plantilla"
                     ),
                 });
             }
@@ -408,7 +408,7 @@ export const useTemplateCreation = () => {
             } catch (error) {
                 const saveError = errorMessageFromUnknown(
                     error,
-                    "Failed to save generated template layouts"
+                    "No se han podido guardar los diseños generados de la plantilla"
                 );
                 return {
                     layouts: [],
@@ -439,7 +439,7 @@ export const useTemplateCreation = () => {
 
         await ApiResponseHandler.handleResponse(
             response,
-            "Failed to generate template blocks"
+            "No se han podido generar los bloques de la plantilla"
         );
     }, []);
 
@@ -496,11 +496,11 @@ export const useTemplateCreation = () => {
 
             const initData = await ApiResponseHandler.handleResponse(
                 initResponse,
-                "Failed to initialize template"
+                "No se ha podido inicializar la plantilla"
             );
             const templateId = readTemplateV2InitId(initData);
             if (!templateId) {
-                throw new Error("Template initialization did not return a template id");
+                throw new Error("La inicialización de la plantilla no ha devuelto un ID de plantilla");
             }
 
             updateState({
@@ -611,7 +611,7 @@ export const useTemplateCreation = () => {
                                 ...slide,
                                 processing: false,
                                 processed: false,
-                                error: "No generated layout was returned for this slide.",
+                                error: "No se ha devuelto ningún diseño generado para esta diapositiva.",
                             };
                         }
                         return templateV2SlideFromLayout(
@@ -637,7 +637,7 @@ export const useTemplateCreation = () => {
                 } catch (error) {
                     blocksError = errorMessageFromUnknown(
                         error,
-                        "Failed to generate template blocks"
+                        "No se han podido generar los bloques de la plantilla"
                     );
                     trackEvent(MixpanelEvent.CustomTemplate_Blocks_Generation_Failed, {
                         template_id: templateId,
@@ -665,24 +665,24 @@ export const useTemplateCreation = () => {
 
             if (failedCount > 0) {
                 notify.warning(
-                    "Some slides could not be generated",
-                    `${processedCount} of ${generatedSlides.length} slides were generated.`
+                    "No se han podido generar algunas diapositivas",
+                    `Se han generado ${processedCount} de ${generatedSlides.length} diapositivas.`
                 );
             } else if (blocksError) {
                 notify.warning(
-                    "Template generated",
-                    `Slides were saved, but template blocks were not generated. ${blocksError}`
+                    "Plantilla generada",
+                    `Las diapositivas se han guardado, pero no se han generado los bloques de la plantilla. ${blocksError}`
                 );
             } else {
                 notify.success(
-                    "Template generated",
-                    "The template was generated and saved successfully."
+                    "Plantilla generada",
+                    "La plantilla se ha generado y guardado correctamente."
                 );
             }
 
             return templateId;
         } catch (error) {
-            const errorMessage = error instanceof Error ? error.message : "Template generation failed";
+            const errorMessage = error instanceof Error ? error.message : "Error al generar la plantilla";
             updateState({ error: errorMessage, isLoading: false });
             trackEvent(MixpanelEvent.CustomTemplate_Creation_Failed, {
                 template_id: state.templateId,
@@ -703,7 +703,7 @@ export const useTemplateCreation = () => {
                     error: errorMessage,
                 }))
             );
-            notify.error("Generation failed", errorMessage);
+            notify.error("Error en la generación", errorMessage);
             return null;
         }
     }, [
@@ -720,7 +720,7 @@ export const useTemplateCreation = () => {
     ): Promise<string | null> => {
         const previewData = previewDataOverride ?? state.previewData;
         if (!previewData) {
-            notify.error("No preview data", "Prepare the document before continuing.");
+            notify.error("No hay datos de vista previa", "Prepara el documento antes de continuar.");
             return null;
         }
 
@@ -740,7 +740,7 @@ export const useTemplateCreation = () => {
     // Reconstruct a single slide (no auto-advance)
     const retrySlide = useCallback((slideIndex: number) => {
         if (!state.templateId) {
-            notify.error("Template unavailable", "Initialize the template before trying again.");
+            notify.error("Plantilla no disponible", "Inicializa la plantilla antes de volver a intentarlo.");
             return;
         }
 
@@ -778,7 +778,7 @@ export const useTemplateCreation = () => {
                 }
                 const layout = createdLayouts.find((item) => item.index === slideIndex)?.layout;
                 if (!layout) {
-                    throw new Error("No generated layout was returned for this slide.");
+                    throw new Error("No se ha devuelto ningún diseño generado para esta diapositiva.");
                 }
                 setSlides((current) =>
                     current.map((slide, index) =>
@@ -794,13 +794,13 @@ export const useTemplateCreation = () => {
                     duration_ms: Date.now() - startedAt,
                 });
                 notify.success(
-                    "Slide regenerated",
-                    `Slide ${slideIndex + 1} was regenerated successfully.`
+                    "Diapositiva regenerada",
+                    `La diapositiva ${slideIndex + 1} se ha regenerado correctamente.`
                 );
             } catch (error) {
                 const errorMessage = error instanceof Error
                     ? error.message
-                    : "Template layout generation failed";
+                    : "Error al generar el diseño de la plantilla";
                 setSlides((current) =>
                     current.map((slide, index) =>
                         index === slideIndex
@@ -823,7 +823,7 @@ export const useTemplateCreation = () => {
                         "Template layout generation failed"
                     ),
                 });
-                notify.error(`Slide ${slideIndex + 1} failed`, errorMessage);
+                notify.error(`Error en la diapositiva ${slideIndex + 1}`, errorMessage);
             }
         })();
     }, [

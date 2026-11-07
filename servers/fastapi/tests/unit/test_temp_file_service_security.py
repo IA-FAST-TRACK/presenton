@@ -37,7 +37,7 @@ def test_resolve_temp_path_rejects_paths_outside_managed_temp_dir(
         TEMP_FILE_SERVICE.resolve_temp_path(str(outside_file), must_exist=True)
 
     assert exc.value.status_code == 400
-    assert "temp directory" in exc.value.detail
+    assert "directorio temporal" in exc.value.detail
 
 
 def test_resolve_temp_path_rejects_symlink_escape(managed_temp_dir, tmp_path):
@@ -54,7 +54,7 @@ def test_resolve_temp_path_rejects_symlink_escape(managed_temp_dir, tmp_path):
         TEMP_FILE_SERVICE.resolve_temp_path(str(symlink_path), must_exist=True)
 
     assert exc.value.status_code == 400
-    assert "temp directory" in exc.value.detail
+    assert "directorio temporal" in exc.value.detail
 
 
 def test_resolve_temp_path_accepts_symlinked_parent_of_managed_dir(

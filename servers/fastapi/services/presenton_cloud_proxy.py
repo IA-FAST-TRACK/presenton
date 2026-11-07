@@ -425,7 +425,7 @@ async def maybe_proxy_presenton_cloud_request(
         error = community_http_error(
             404,
             code="community_disabled",
-            message="Community is disabled for this deployment.",
+            message="La comunidad está desactivada en este despliegue.",
             retryable=False,
         )
         return JSONResponse(
@@ -442,8 +442,8 @@ async def maybe_proxy_presenton_cloud_request(
                 status_code=409,
                 content={
                     "detail": (
-                        "Presenton cloud templates were requested but "
-                        "Presenton is not selected"
+                        "Se han solicitado plantillas de Presenton Cloud, pero "
+                        "Presenton no está seleccionado"
                     )
                 },
             )
@@ -455,7 +455,7 @@ async def maybe_proxy_presenton_cloud_request(
         return JSONResponse(
             status_code=503,
             content={
-                "detail": "Presenton is selected but the global provider is not connected"
+                "detail": "Presenton está seleccionado, pero el proveedor global no está conectado"
             },
         )
     assert provider is not None
@@ -472,7 +472,7 @@ async def maybe_proxy_presenton_cloud_request(
         error = community_http_error(
             422,
             code="community_references_disabled",
-            message="Community design references are disabled for this deployment.",
+            message="Las referencias de diseño de la comunidad están desactivadas en este despliegue.",
             retryable=False,
         )
         return JSONResponse(
@@ -570,12 +570,12 @@ async def maybe_proxy_presenton_cloud_request(
                 upstream.status_code,
                 response_body,
                 not_found_message=(
-                    "The requested community presentation was not found or is "
-                    "no longer shared."
+                    "La presentación de la comunidad solicitada no se ha encontrado o "
+                    "ya no está compartida."
                     if path.rstrip("/") != COMMUNITY_PRESENTATIONS_PATH
                     else (
-                        "The Community gallery endpoint was not found. "
-                        "Check the Presenton Cloud connection."
+                        "No se ha encontrado el endpoint de la galería de la comunidad. "
+                        "Revisa la conexión con Presenton Cloud."
                     )
                 ),
             )

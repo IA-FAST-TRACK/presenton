@@ -71,11 +71,11 @@ const LayoutPreview = () => {
       setRetryingTaskId(taskId);
       try {
         await retryTemplateTask(taskId);
-        toast.success("Template generation restarted");
+        toast.success("Se ha reiniciado la generación de la plantilla");
       } catch (error) {
-        toast.error("Could not retry template generation", {
+        toast.error("No se ha podido reintentar la generación de la plantilla", {
           description:
-            error instanceof Error ? error.message : "An unexpected error occurred",
+            error instanceof Error ? error.message : "Se ha producido un error inesperado",
         });
       } finally {
         setRetryingTaskId(null);
@@ -110,33 +110,33 @@ const LayoutPreview = () => {
       <div className="sticky top-0 right-0 z-50 py-[28px] px-6 backdrop-blur">
         <div className="flex xl:flex-row flex-col gap-6 xl:gap-0 items-center justify-between">
           <h3 className="text-[28px] tracking-[-0.84px] font-syne font-normal text-[#101828] flex items-center gap-2">
-            Templates
+            Plantillas
           </h3>
           <div className="flex gap-2.5 max-sm:w-full max-md:justify-center max-sm:flex-wrap">
             <Link
               href="/custom-template"
               onClick={() => trackEvent(MixpanelEvent.Templates_New_Template_Clicked)}
               className="motion-press group inline-flex items-center font-syne font-semibold gap-2 rounded-xl px-4 py-2.5 text-black text-sm shadow-sm hover:shadow-md"
-              aria-label="Create new template"
+              aria-label="Crear nueva plantilla"
               style={{
                 borderRadius: "48px",
                 background:
                   "linear-gradient(270deg, #FFDB05 0%, #FFE45C 100%)",
               }}
             >
-              <span className="hidden md:inline">New Template</span>
-              <span className="md:hidden">New</span>
+              <span className="hidden md:inline">Nueva plantilla</span>
+              <span className="md:hidden">Nueva</span>
               <ChevronRight className="motion-arrow w-4 h-4" />
             </Link>
           </div>
         </div>
       </div>
 
-      <section aria-label="Template library" className="motion-fade mx-auto flex min-w-0 flex-col gap-5 px-4 pb-8 pt-[19px] sm:pl-6 sm:pr-2">
+      <section aria-label="Biblioteca de plantillas" className="motion-fade mx-auto flex min-w-0 flex-col gap-5 px-4 pb-8 pt-[19px] sm:pl-6 sm:pr-2">
         <p className="flex min-h-[26px] flex-wrap items-center gap-1.5 text-base font-medium text-[#191919]">
-          <span>Choose a template or</span>
-          <Link href="/custom-template" onClick={() => trackEvent(MixpanelEvent.Templates_New_Template_Clicked)} className="inline-flex items-center gap-1.5 rounded outline-none hover:underline focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/30">
-            <CirclePlus aria-hidden="true" className="h-4 w-4 text-[#0A0A0A]" strokeWidth={1.67} />create your own.
+          <span>Elige una plantilla o</span>
+          <Link href="/custom-template" onClick={() => trackEvent(MixpanelEvent.Templates_New_Template_Clicked)} className="inline-flex items-center gap-1.5 rounded outline-none hover:underline focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/30">
+            <CirclePlus aria-hidden="true" className="h-4 w-4 text-[#7A5AF8]" strokeWidth={1.67} />crea la tuya.
           </Link>
         </p>
         <TemplateLibraryControls tab={tab} onTabChange={handleTabChange} query={query} onQueryChange={setQuery} sort={sort} onSortChange={setSort} />
@@ -145,7 +145,7 @@ const LayoutPreview = () => {
           {loading ? (
             <TemplateListLoadingState />
           ) : error ? (
-            <TemplateListEmptyState message={`Templates could not be loaded: ${error}`} />
+            <TemplateListEmptyState message={`No se han podido cargar las plantillas: ${error}`} />
           ) : tab === "custom" ? (
             <>
               <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -166,10 +166,10 @@ const LayoutPreview = () => {
                   />
                 ))}
               </div>
-              {normalizedQuery && visibleTemplates.length === 0 && visibleTasks.length === 0 && <TemplateListEmptyState message="No templates match your search." />}
+              {normalizedQuery && visibleTemplates.length === 0 && visibleTasks.length === 0 && <TemplateListEmptyState message="Ninguna plantilla coincide con tu búsqueda." />}
             </>
           ) : visibleTemplates.length === 0 ? (
-            <TemplateListEmptyState message={normalizedQuery ? "No templates match your search." : "No built-in templates available."} />
+            <TemplateListEmptyState message={normalizedQuery ? "Ninguna plantilla coincide con tu búsqueda." : "No hay plantillas integradas disponibles."} />
           ) : (
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
               {visibleTemplates.map((template) => (

@@ -51,7 +51,7 @@ function ensureSplashMaskReady(): Promise<void> {
 }
 
 export function PresentonSplashLoader({
-  message = "Preparing your workspace",
+  message = "Preparando tu espacio de trabajo",
   className,
 }: PresentonSplashLoaderProps) {
   const [isWordmarkReady, setIsWordmarkReady] = useState(false);

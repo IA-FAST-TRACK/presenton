@@ -39,7 +39,7 @@ export const suggestions: {
         </defs>
       </svg>
     ),
-    suggestion: "Generate a full presentation from my topic",
+    suggestion: "Genera una presentación completa a partir de mi tema",
   },
   {
     id: "improve",
@@ -71,7 +71,7 @@ export const suggestions: {
         </defs>
       </svg>
     ),
-    suggestion: "Improve this slide content",
+    suggestion: "Mejora el contenido de esta diapositiva",
   },
   {
     id: "rewrite",
@@ -86,7 +86,7 @@ export const suggestions: {
         />
       </svg>
     ),
-    suggestion: "Rewrite this content professionally",
+    suggestion: "Reescribe este contenido de forma profesional",
   },
   {
     id: "notes",
@@ -98,98 +98,98 @@ export const suggestions: {
         <path d="M4 8.5V7" stroke="#E17100" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
-    suggestion: "Add speaker notes to this slide",
+    suggestion: "Añade notas del orador a esta diapositiva",
   },
 ];
 
 export const outlineQuickPrompts = [
-  "Expand outline",
-  "Shorten outline",
-  "Reorder sections",
-  "Merge similar slides",
-  "Split large sections",
-  "Improve conclusion",
-  "Improve introduction",
+  "Amplía el esquema",
+  "Acorta el esquema",
+  "Reordena las secciones",
+  "Combina diapositivas similares",
+  "Divide las secciones largas",
+  "Mejora la conclusión",
+  "Mejora la introducción",
 ];
 
 export const presentationQuickPrompts = [
-  "Create an executive summary",
-  "Strengthen the story flow",
-  "Add data and citations",
-  "Create speaker notes",
+  "Crea un resumen ejecutivo",
+  "Refuerza el hilo narrativo",
+  "Añade datos y citas",
+  "Crea notas del orador",
 ];
 
 export const templateV2QuickPrompts = [
-  "Improve this slide's layout",
-  "Rewrite this slide for executives",
-  "Add a supporting visual",
-  "Make the deck visually consistent",
-  "Add data and source citations",
-  "Create speaker notes for this slide",
+  "Mejora el diseño de esta diapositiva",
+  "Reescribe esta diapositiva para directivos",
+  "Añade un elemento visual de apoyo",
+  "Haz que la presentación sea visualmente coherente",
+  "Añade datos y citas de fuentes",
+  "Crea notas del orador para esta diapositiva",
 ];
 
 export const editorQuickPrompts = [
-  "Rewrite for executives",
-  "Improve slide layout",
-  "Add data & citations",
-  "Create speaker notes",
-  "Make the deck consistent",
+  "Reescribe para directivos",
+  "Mejora el diseño de la diapositiva",
+  "Añade datos y citas",
+  "Crea notas del orador",
+  "Haz que la presentación sea coherente",
 ];
 
 export const outlineEditorQuickPrompts = [
-  "Strengthen the story flow",
-  "Make the outline concise",
-  "Reorder the sections",
-  "Merge similar slides",
-  "Improve the conclusion",
+  "Refuerza el hilo narrativo",
+  "Haz el esquema más conciso",
+  "Reordena las secciones",
+  "Combina diapositivas similares",
+  "Mejora la conclusión",
 ];
 
 export const quickPromptGroups = [
   {
-    label: "Popular",
+    label: "Populares",
     prompts: [
-      "Make it shorter",
-      "Make this smaller",
-      "Generate a new image and replace this one",
+      "Hazlo más breve",
+      "Hazlo más pequeño",
+      "Genera una imagen nueva y sustituye esta",
     ],
   },
   {
-    label: "Add Data",
-    prompts: ["Add data and citations", "Add a chart", "Add a table"],
+    label: "Añadir datos",
+    prompts: ["Añade datos y citas", "Añade un gráfico", "Añade una tabla"],
   },
   {
-    label: "Add Visuals",
+    label: "Añadir elementos visuales",
     prompts: [
-      "Generate a new image and replace this one",
-      "Add a chart",
-      "Add a table",
+      "Genera una imagen nueva y sustituye esta",
+      "Añade un gráfico",
+      "Añade una tabla",
     ],
   },
 ];
 
 export const outlineQuickPromptGroups = [
   {
-    label: "Popular",
+    label: "Populares",
     prompts: [
-      "Make the outline shorter",
-      "Expand the outline",
-      "Strengthen the story flow",
+      "Acorta el esquema",
+      "Amplía el esquema",
+      "Refuerza el hilo narrativo",
     ],
   },
   {
-    label: "Structure",
+    label: "Estructura",
     prompts: [
-      "Reorder the sections",
-      "Merge similar slides",
-      "Split large sections",
+      "Reordena las secciones",
+      "Combina diapositivas similares",
+      "Divide las secciones largas",
     ],
   },
   {
-    label: "Refine Content",
+    label: "Pulir el contenido",
     prompts: [
-      "Rewrite for executives",
-      "Improve the introduction",
-      "Improve the conclusion",
+      "Reescribe para directivos",
+      "Mejora la introducción",
+      "Mejora la conclusión",
     ],
   },
 ];

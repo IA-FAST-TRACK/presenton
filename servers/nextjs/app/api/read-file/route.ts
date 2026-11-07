@@ -27,7 +27,7 @@ export async function POST(request: Request) {
 
     console.error('Error reading file:', error);
     return NextResponse.json(
-      { error: 'Failed to read file' },
+      { error: 'No se ha podido leer el archivo' },
       { status: 500 }
     );
   }

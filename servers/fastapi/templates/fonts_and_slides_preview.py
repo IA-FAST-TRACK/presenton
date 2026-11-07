@@ -89,17 +89,17 @@ def _selected_google_font_maps(
     ):
         raise HTTPException(
             status_code=400,
-            detail="Both Google font replacement names and URLs must be provided together",
+            detail="Los nombres de sustitución de fuentes de Google y sus URL deben indicarse juntos",
         )
     if num_replacement_names != num_urls:
         raise HTTPException(
             status_code=400,
-            detail="Number of Google font replacement names must match number of Google font URLs",
+            detail="El número de nombres de sustitución de fuentes de Google debe coincidir con el número de URL de fuentes de Google",
         )
     if num_original_names and num_original_names != num_replacement_names:
         raise HTTPException(
             status_code=400,
-            detail="Number of Google font original names must match number of Google font replacements",
+            detail="El número de nombres originales de fuentes de Google debe coincidir con el número de sustituciones de fuentes de Google",
         )
 
     selected_fonts: Dict[str, str] = {}
@@ -148,9 +148,9 @@ CHART_DATALABELS_SCRIPT_PATH = (
 )
 MAX_TEMPLATE_PREVIEW_SLIDES = 50
 MAX_FONT_CHECK_UPLOAD_SIZE_BYTES = 100 * 1024 * 1024
-FONT_CHECK_UPLOAD_SIZE_ERROR = "File size must be less than 100MB."
+FONT_CHECK_UPLOAD_SIZE_ERROR = "El tamaño del archivo debe ser inferior a 100 MB."
 INVALID_PPTX_UPLOAD_ERROR = (
-    "The uploaded PowerPoint file is corrupted or unsupported."
+    "El archivo de PowerPoint subido está dañado o no es compatible."
 )
 PPT_NS = {
     "p": "http://schemas.openxmlformats.org/presentationml/2006/main",
@@ -790,7 +790,7 @@ async def render_pptx_slides_to_images(
 
     pptx_document = await EXPORT_TASK_SERVICE.convert_pptx_to_json(modified_pptx_path)
     if not pptx_document.layouts:
-        raise HTTPException(status_code=500, detail="PPTX-to-JSON returned no slides")
+        raise HTTPException(status_code=500, detail="La conversión de PPTX a JSON no ha devuelto ninguna diapositiva")
 
     slide_layouts = pptx_document.layouts
     if max_slides:
@@ -833,8 +833,8 @@ async def render_pptx_slides_to_images(
         raise HTTPException(
             status_code=500,
             detail=(
-                "PPTX preview renderer returned an unexpected slide count: "
-                f"expected {len(slide_layouts)}, got {len(rendered.paths)}"
+                "El renderizador de vista previa de PPTX ha devuelto un número inesperado de diapositivas: "
+                f"se esperaban {len(slide_layouts)}, se obtuvieron {len(rendered.paths)}"
             ),
         )
     logger.info(
@@ -1072,7 +1072,7 @@ def _resolve_template_preview_slide_cap(max_slides: Optional[int]) -> int:
     if max_slides < 1:
         raise HTTPException(
             status_code=400,
-            detail="max_slides must be greater than zero",
+            detail="max_slides debe ser mayor que cero",
         )
     return min(max_slides, MAX_TEMPLATE_PREVIEW_SLIDES)
 
@@ -1153,7 +1153,7 @@ def _trim_pptx_to_max_slides(
     except (KeyError, OSError, zipfile.BadZipFile, ET.ParseError, ValueError) as exc:
         raise HTTPException(
             status_code=400,
-            detail="Failed to prepare PPTX slide preview. The file may be corrupted or unsupported.",
+            detail="No se ha podido preparar la vista previa de las diapositivas del PPTX. Es posible que el archivo esté dañado o no sea compatible.",
         ) from exc
 
 
@@ -1168,7 +1168,7 @@ async def check_fonts_in_pptx_handler(pptx_file: UploadFile) -> FontCheckRespons
     filename = getattr(pptx_file, "filename", "") or ""
     if not filename.lower().endswith(".pptx"):
         raise HTTPException(
-            status_code=400, detail="Invalid file type. Expected PPTX file"
+            status_code=400, detail="Tipo de archivo no válido. Se esperaba un archivo PPTX"
         )
     _raise_if_font_check_upload_too_large(getattr(pptx_file, "size", None))
 
@@ -1334,12 +1334,12 @@ async def upload_fonts_and_preview_handler(
     ):
         raise HTTPException(
             status_code=400,
-            detail="Both font_files and original_font_names must be provided together",
+            detail="font_files y original_font_names deben indicarse juntos",
         )
     if num_font_files != num_original_names:
         raise HTTPException(
             status_code=400,
-            detail="Number of font files must match number of original font names",
+            detail="El número de archivos de fuente debe coincidir con el número de nombres de fuente originales",
         )
     selected_google_fonts, google_font_replacements = _selected_google_font_maps(
         google_font_original_names,
@@ -1352,7 +1352,7 @@ async def upload_fonts_and_preview_handler(
     filename = getattr(pptx_file, "filename", "") or ""
     if not filename.lower().endswith(".pptx"):
         raise HTTPException(
-            status_code=400, detail="Invalid file type. Expected PPTX file"
+            status_code=400, detail="Tipo de archivo no válido. Se esperaba un archivo PPTX"
         )
 
     logger = _PreviewLogger()
@@ -1735,7 +1735,7 @@ async def create_slide_previews(
     logger.info("Generated slide previews from PPTX-to-JSON with Chromium")
 
     if not screenshot_paths:
-        raise HTTPException(status_code=500, detail="Failed to generate slide images")
+        raise HTTPException(status_code=500, detail="No se han podido generar las imágenes de las diapositivas")
 
     slide_upload_pairs = [
         (os.path.join(session_dir, f"slide_{idx}.png"), screenshot_path)

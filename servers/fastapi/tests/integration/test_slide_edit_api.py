@@ -236,7 +236,7 @@ def test_slide_edit_rejects_unknown_slide(slide_edit_client):
     )
 
     assert response.status_code == 404
-    assert response.json()["detail"] == "Slide not found"
+    assert response.json()["detail"] == "Diapositiva no encontrada"
     harness.selector.assert_not_awaited()
     harness.editor.assert_not_awaited()
 

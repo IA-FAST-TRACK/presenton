@@ -1016,7 +1016,7 @@ function adaptChart(raw: UnknownRecord): SlideElement {
     ...baseElement(raw),
     type: "chart",
     chart_type: chartType,
-    data: data.length > 0 ? data : [{ label: "Data", value: 0 }],
+    data: data.length > 0 ? data : [{ label: "Datos", value: 0 }],
     title: truncateString(readString(raw.title) ?? "", 80) || null,
     title_color: readColor(readValue(raw, "title_color") ?? raw.titleColor),
     text_color: readColor(readValue(raw, "text_color") ?? raw.textColor),
@@ -1206,7 +1206,7 @@ function adaptInfographicData(
           80,
         ),
       }));
-    const safeColumns = columns.length > 0 ? columns : [{ label: "Phase 1" }];
+    const safeColumns = columns.length > 0 ? columns : [{ label: "Fase 1" }];
     const rows = readArray(data, "rows")
       .map(asRecord)
       .filter((item): item is UnknownRecord => Boolean(item))
@@ -1238,7 +1238,7 @@ function adaptInfographicData(
     return {
       type,
       columns: safeColumns,
-      rows: rows.length > 0 ? rows : [{ label: "Workstream", items: [] }],
+      rows: rows.length > 0 ? rows : [{ label: "Línea de trabajo", items: [] }],
     };
   }
 
@@ -1269,11 +1269,11 @@ function adaptInfographicData(
           ? items
           : type === "pyramid"
             ? [
-                { heading: "Foundation" },
-                { heading: "Efficiency" },
-                { heading: "Innovation" },
+                { heading: "Base" },
+                { heading: "Eficiencia" },
+                { heading: "Innovación" },
               ]
-            : [{ heading: "Milestone" }],
+            : [{ heading: "Hito" }],
     };
   }
 
@@ -1284,23 +1284,23 @@ function adaptInfographicData(
     return {
       type,
       center_image: truncateString(readString(data.center_image) ?? "", 2000) || null,
-      items: items.length > 0 ? items : [{ heading: "Step 1" }],
+      items: items.length > 0 ? items : [{ heading: "Paso 1" }],
     };
   }
 
   if (type === "pillar_framework") {
     const items = readArray(data, "items").map(adaptInfographicTextItem).filter((item): item is NonNullable<typeof item> => Boolean(item));
-    return { type, title: truncateString(readString(data.title) ?? "Growth & Transformation Framework", 120), items: items.length > 0 ? items : [{ heading: "Customer", focus: "Experience & Value" }] };
+    return { type, title: truncateString(readString(data.title) ?? "Marco de crecimiento y transformación", 120), items: items.length > 0 ? items : [{ heading: "Cliente", focus: "Experiencia y valor" }] };
   }
 
   if (type === "transformation_hub") {
     const items = readArray(data, "items").map(adaptInfographicTextItem).filter((item): item is NonNullable<typeof item> => Boolean(item));
-    return { type, center_label: truncateString(readString(data.center_label) ?? "Business Transformation", 120), items: items.length > 0 ? items : [{ heading: "Strategy" }, { heading: "Process" }] };
+    return { type, center_label: truncateString(readString(data.center_label) ?? "Transformación empresarial", 120), items: items.length > 0 ? items : [{ heading: "Estrategia" }, { heading: "Procesos" }] };
   }
 
   if (type === "risk_matrix") {
     const items = readArray(data, "items").map(adaptInfographicTextItem).filter((item): item is NonNullable<typeof item> => Boolean(item));
-    const defaults = ["Identify", "Prioritize", "Assess", "Respond"];
+    const defaults = ["Identificar", "Priorizar", "Evaluar", "Responder"];
     return { type, center_label: truncateString(readString(data.center_label) ?? "RISK", 4), items: defaults.map((heading, index) => items[index] ?? { heading }) };
   }
 
@@ -1322,7 +1322,7 @@ function adaptInfographicData(
       items:
         items.length > 0
           ? items
-          : [{ value: 50, heading: "Stage 1", description: null }],
+          : [{ value: 50, heading: "Etapa 1", description: null }],
     };
   }
 
@@ -1333,12 +1333,12 @@ function adaptInfographicData(
     const evenItems = items.slice(0, items.length - (items.length % 2));
     return {
       type,
-      before_label: truncateString(readString(data.before_label) ?? "Before", 80),
-      after_label: truncateString(readString(data.after_label) ?? "After", 80),
+      before_label: truncateString(readString(data.before_label) ?? "Antes", 80),
+      after_label: truncateString(readString(data.after_label) ?? "Después", 80),
       items:
         evenItems.length >= 2
           ? evenItems
-          : [{ heading: "Before" }, { heading: "After" }],
+          : [{ heading: "Antes" }, { heading: "Después" }],
     };
   }
 
@@ -1346,13 +1346,13 @@ function adaptInfographicData(
     const items = readArray(data, "items")
       .map(adaptInfographicTextItem)
       .filter((item): item is NonNullable<typeof item> => Boolean(item));
-    const defaults = ["Quick Wins", "Strategic Priorities", "Deprioritize", "Fill-ins"];
+    const defaults = ["Victorias rápidas", "Prioridades estratégicas", "Despriorizar", "Tareas de relleno"];
     return {
       type,
-      x_axis_label: truncateString(readString(data.x_axis_label) ?? "Impact", 80),
-      y_axis_label: truncateString(readString(data.y_axis_label) ?? "Effort", 80),
-      low_label: truncateString(readString(data.low_label) ?? "Low", 40),
-      high_label: truncateString(readString(data.high_label) ?? "High", 40),
+      x_axis_label: truncateString(readString(data.x_axis_label) ?? "Impacto", 80),
+      y_axis_label: truncateString(readString(data.y_axis_label) ?? "Esfuerzo", 80),
+      low_label: truncateString(readString(data.low_label) ?? "Bajo", 40),
+      high_label: truncateString(readString(data.high_label) ?? "Alto", 40),
       items: defaults.map((heading, index) => items[index] ?? { heading }),
     };
   }
@@ -1361,7 +1361,7 @@ function adaptInfographicData(
     const criteria = readArray(data, "criteria")
       .map((value) => truncateString(readString(value) ?? "", 80))
       .filter(Boolean);
-    const safeCriteria = criteria.length > 0 ? criteria : ["Criterion 1"];
+    const safeCriteria = criteria.length > 0 ? criteria : ["Criterio 1"];
     const items = readArray(data, "items")
       .map(asRecord)
       .filter((item): item is UnknownRecord => Boolean(item))
@@ -1377,7 +1377,7 @@ function adaptInfographicData(
     return {
       type,
       criteria: safeCriteria,
-      items: items.length > 0 ? items : [{ heading: "Option 1", values: safeCriteria.map(() => "") }],
+      items: items.length > 0 ? items : [{ heading: "Opción 1", values: safeCriteria.map(() => "") }],
     };
   }
 
@@ -1393,7 +1393,7 @@ function adaptInfographicData(
       }));
     return {
       type,
-      items: items.length > 0 ? items : [{ id: "node-1", parent_id: null, heading: type === "org_chart" ? "Leader" : "Decision", description: null }],
+      items: items.length > 0 ? items : [{ id: "node-1", parent_id: null, heading: type === "org_chart" ? "Responsable" : "Decisión", description: null }],
     };
   }
 
@@ -1404,7 +1404,7 @@ function adaptInfographicData(
     return {
       type,
       items:
-        items.length > 0 ? items : [{ heading: "Core idea", items: [] }],
+        items.length > 0 ? items : [{ heading: "Idea central", items: [] }],
     };
   }
 

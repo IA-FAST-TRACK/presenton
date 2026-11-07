@@ -59,8 +59,8 @@ export const PresentationCard = ({
     e.preventDefault();
     if (isUnsupported) {
       notify.warning(
-        "Unsupported presentation",
-        "This deck was created in an older Presenton version. Downgrade to a compatible version to open it."
+        "Presentación no compatible",
+        "Esta presentación se creó con una versión anterior de Presenton. Instala una versión compatible para abrirla."
       );
       return;
     }
@@ -86,13 +86,13 @@ export const PresentationCard = ({
         presentation_id: id,
         slide_count: presentation?.slides?.length || 0,
       });
-      notify.success("Presentation deleted", "The presentation was removed from your dashboard.");
+      notify.success("Presentación eliminada", "La presentación se ha quitado de tu panel.");
       setShowDeleteDialog(false);
       if (onDeleted) {
         onDeleted(id);
       }
     } else {
-      notify.error("Could not delete presentation", response?.message || "Something went wrong while deleting the presentation.");
+      notify.error("No se ha podido eliminar la presentación", response?.message || "Algo ha salido mal al eliminar la presentación.");
     }
     setIsDeleting(false);
   };
@@ -108,12 +108,12 @@ export const PresentationCard = ({
         duplicate_presentation_id: duplicated?.id,
         slide_count: presentation?.slides?.length || 0,
       });
-      notify.success("Presentation duplicated", "A copy was added to your dashboard.");
+      notify.success("Presentación duplicada", "Se ha añadido una copia a tu panel.");
       onDuplicated?.(duplicated);
     } catch (error) {
       notify.error(
-        "Could not duplicate presentation",
-        error instanceof Error ? error.message : "Something went wrong while duplicating the presentation."
+        "No se ha podido duplicar la presentación",
+        error instanceof Error ? error.message : "Algo ha salido mal al duplicar la presentación."
       );
     } finally {
       setIsDuplicating(false);
@@ -130,7 +130,7 @@ export const PresentationCard = ({
         suppressHydrationWarning={true}
         onClick={handlePreview}
         aria-disabled={isUnsupported}
-        title={isUnsupported ? "Unsupported in this version of Fast Track Presentaciones" : undefined}
+        title={isUnsupported ? "No compatible con esta versión de Presenton" : undefined}
         className={`bg-[#F8FBFB] font-syne relative shadow-none sm:shadow-none presentation-card rounded-[12px] p-0 group slide-theme overflow-hidden flex flex-col ${
           isUnsupported
             ? "cursor-not-allowed border-[#EDEEEF]"
@@ -159,7 +159,7 @@ export const PresentationCard = ({
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FFFADC] text-[#0A0A0A]">
                 <Archive className="h-[18px] w-[18px]" aria-hidden="true" />
               </span>
-              <p className="text-xs font-medium">Preview unavailable</p>
+              <p className="text-xs font-medium">Vista previa no disponible</p>
             </div>
           ) : useTemplateV2HtmlPreview ? (
             <TemplateV2HtmlSlidePreview
@@ -182,7 +182,7 @@ export const PresentationCard = ({
               : "bg-white/90 text-[#475467]"
           }`}
         >
-          {presentationType}
+          {presentationType === "smart" ? "Inteligente" : "Estándar"}
         </p>
         <p className="absolute right-2 top-2 z-40 rounded-full bg-white/90 px-2 py-0.5 text-xs font-medium text-[#191919] shadow-sm backdrop-blur-sm">
           {presentation.n_slides ?? presentation?.slides?.length ?? 0}
@@ -194,7 +194,7 @@ export const PresentationCard = ({
                 <MarkdownRenderer content={title} className="text-sm mb-0  font-syne text-[#191919] font-semibold  overflow-hidden line-clamp-1" />
               </div>
               <p className="text-[#808080] text-sm font-syne">
-                {new Date(presentation?.created_at).toLocaleDateString()}
+                {new Date(presentation?.created_at).toLocaleDateString("es-ES")}
               </p>
 
             </div>
@@ -214,7 +214,7 @@ export const PresentationCard = ({
                       void handleDuplicate();
                     }}
                   >
-                    <p>{isDuplicating ? "Duplicating..." : "Duplicate"}</p>
+                    <p>{isDuplicating ? "Duplicando..." : "Duplicar"}</p>
                     {isDuplicating ? (
                       <Loader2 className="h-4 w-4 animate-spin text-gray-500" />
                     ) : (
@@ -231,7 +231,7 @@ export const PresentationCard = ({
                     setShowDeleteDialog(true);
                   }}
                 >
-                  <p>Delete</p>
+                  <p>Eliminar</p>
                   <Trash className="h-4 w-4" />
                 </button>
               </PopoverContent>
@@ -256,13 +256,13 @@ export const PresentationCard = ({
         >
           <DialogHeader className="items-start space-y-3 p-6 text-left sm:text-left">
             <DialogTitle className="text-xl font-semibold leading-7 tracking-[-0.02em] text-neutral-900">
-              Delete presentation?
+              ¿Eliminar la presentación?
             </DialogTitle>
             <DialogDescription className="w-full break-words text-sm leading-6 text-neutral-500">
               <span className="font-medium text-neutral-800">
-                &ldquo;{title || "Untitled presentation"}&rdquo;
+                &ldquo;{title || "Presentación sin título"}&rdquo;
               </span>{" "}
-              will be permanently deleted. This action cannot be undone.
+              se eliminará de forma permanente. Esta acción no se puede deshacer.
             </DialogDescription>
           </DialogHeader>
 
@@ -273,7 +273,7 @@ export const PresentationCard = ({
               disabled={isDeleting}
               className="h-10 rounded-lg border border-neutral-200 bg-white px-4 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              Cancel
+              Cancelar
             </button>
             <button
               type="button"
@@ -284,10 +284,10 @@ export const PresentationCard = ({
               {isDeleting ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-                  Deleting...
+                  Eliminando...
                 </>
               ) : (
-                "Delete"
+                "Eliminar"
               )}
             </button>
           </DialogFooter>

@@ -550,7 +550,7 @@ const HtmlSelectionEditor = ({
   const handleSubmitEdit = useCallback(async () => {
     try {
       if (promptValue.trim().length === 0) {
-        toast.error("Please enter a prompt to edit the selection");
+        toast.error("Introduce unas instrucciones para editar la selección");
         return;
       }
       setUpdatingSelection(true);
@@ -582,15 +582,15 @@ const HtmlSelectionEditor = ({
       setSelectionRects([]);
       setInputPos(null);
 
-      toast.success("Selection edited successfully", {
-        description: "The selection has been edited successfully",
+      toast.success("Selección editada correctamente", {
+        description: "La selección se ha editado correctamente",
       });
     } catch (error: any) {
       setUpdatingSelection(false);
       console.error("error in editing selection HTML", error);
-      toast.error("Error editing selection HTML", {
+      toast.error("Error al editar el HTML de la selección", {
         description:
-          error?.message || "The selection has not been edited successfully",
+          error?.message || "No se ha podido editar la selección",
       });
     }
   }, [
@@ -627,11 +627,11 @@ const HtmlSelectionEditor = ({
                 e.stopPropagation();
                 activateEditor();
               }}
-              aria-label="Open AI Editor"
-              title="AI Edit"
+              aria-label="Abrir editor con IA"
+              title="Editar con IA"
             >
               <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-              <span>AI Edit</span>
+              <span>Editar con IA</span>
             </button>
           )}
           <div
@@ -673,7 +673,7 @@ const HtmlSelectionEditor = ({
                   className="inline-flex items-center bg-white/80 rounded-md px-2 py-1 gap-2 text-xs font-medium text-gray-900"
                 >
                   <Edit className="w-3.5 h-3.5 text-indigo-600" />
-                  <span>Double-click for AI edit</span>
+                  <span>Doble clic para editar con IA</span>
                 </div>
               </div>
             )}
@@ -722,7 +722,7 @@ const HtmlSelectionEditor = ({
             <div className="h-1 -mx-4 -mt-4 mb-3 bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-purple-500" />
             <div className="flex items-center gap-3">
               <p className="text-sm text-black font-syne font-semibold">
-                Edit selection
+                Editar selección
               </p>
             </div>
 
@@ -734,7 +734,7 @@ const HtmlSelectionEditor = ({
                 id="selection-editor-prompt"
                 name="selection-editor-prompt"
                 onChange={(e) => setPromptValue(e.target.value)}
-                placeholder="Explain the changes you want to make to the selection eg. make the heading larger"
+                placeholder="Explica los cambios que quieres hacer en la selección, p. ej., agranda el título"
                 className="w-full p-2 rounded-md border border-gray-200 bg-white text-black placeholder-gray-400 outline-none resize-y focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) {
@@ -758,7 +758,7 @@ const HtmlSelectionEditor = ({
                 style={{ cursor: "pointer" }}
                 className="px-4 py-1 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-50 "
               >
-                Cancel
+                Cancelar
               </button>
               <button
                 onClick={handleSubmitEdit}
@@ -766,7 +766,7 @@ const HtmlSelectionEditor = ({
                 disabled={updatingSelection}
                 className="px-4 py-1 rounded-md bg-[#FFDB05] text-[#0A0A0A] hover:bg-[#E6C500] disabled:opacity-50 "
               >
-                {updatingSelection ? "Updating..." : "Apply"}
+                {updatingSelection ? "Actualizando..." : "Aplicar"}
               </button>
             </div>
           </div>

@@ -90,8 +90,8 @@ describe("Blank slide prompt handoff", () => {
     };
 
     cy.mount(<Harness adapter={adapter} />);
-    cy.get('[aria-label="Editor tools"]').contains("button", "Texts").click();
-    cy.contains("Text Styles").should("be.visible");
+    cy.get('[aria-label="Editor tools"]').contains("button", "Textos").click();
+    cy.contains("Estilos de texto").should("be.visible");
     submitBlankPrompt("Create a slide about wind power");
     cy.get('[aria-label="Editor tools"]').contains("button", "AI")
       .should("have.attr", "aria-pressed", "true");

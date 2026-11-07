@@ -24,7 +24,7 @@ def test_get_presentation_title_handles_prefixed_page_heading():
 
 def test_get_presentation_title_for_empty_outline():
     outline = PresentationOutlineModel(slides=[])
-    assert get_presentation_title_from_presentation_outline(outline) == "Untitled Presentation"
+    assert get_presentation_title_from_presentation_outline(outline) == "Presentación sin título"
 
 
 def test_slide_outline_content_is_trimmed_to_word_limit():

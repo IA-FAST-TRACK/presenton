@@ -15,12 +15,12 @@ const renderQualitySelector = (llmConfig: LLMConfig, input_field_changed: (value
         return (
             <div className="w-[295px]">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                    GPT Image 2 Quality
+                    Calidad de GPT Image 2
                 </label>
                 <div className="">
                     <Select value={llmConfig.GPT_IMAGE_2_QUALITY || "medium"} onValueChange={(value) => input_field_changed(value, "gpt_image_2_quality")}>
                         <SelectTrigger className="w-full h-12 px-4 py-4 outline-none border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors hover:border-gray-400 justify-between">
-                            <SelectValue placeholder="Select a quality" />
+                            <SelectValue placeholder="Selecciona una calidad" />
                         </SelectTrigger>
                         <SelectContent>
                             {GPT_IMAGE_2_QUALITY_OPTIONS.map((option) => (
@@ -37,7 +37,7 @@ const renderQualitySelector = (llmConfig: LLMConfig, input_field_changed: (value
         return (
             <div className="w-[295px]">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                    GPT Image 2.5 Quality
+                    Calidad de GPT Image 2.5
                 </label>
                 <div className="">
                     <Select
@@ -47,7 +47,7 @@ const renderQualitySelector = (llmConfig: LLMConfig, input_field_changed: (value
                         <SelectTrigger
 
                             className="w-full h-12 px-4 py-4 outline-none border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors hover:border-gray-400 justify-between">
-                            <SelectValue placeholder="Select a quality" />
+                            <SelectValue placeholder="Selecciona una calidad" />
                         </SelectTrigger>
                         <SelectContent>
                             {GPT_IMAGE_2_5_QUALITY_OPTIONS.map((option) => (
@@ -69,9 +69,9 @@ const ImageSelectionConfig = ({ isImageGenerationDisabled, openImageProviderSele
         <div className='mt-7'>
             <div className="p-10 flex justify-between items-center bg-white rounded-[12px]">
                 <div>
-                    <h4 className="text-xl font-normal text-[#191919]">Image Generation Settings</h4>
+                    <h4 className="text-xl font-normal text-[#191919]">Ajustes de generación de imágenes</h4>
                     <p className="mt-2 text-sm max-w-[205px] text-gray-500">
-                        Choosing where images come from.
+                        Elige de dónde proceden las imágenes.
                     </p>
                 </div>
                 <div className='flex items-center gap-4'>
@@ -82,7 +82,7 @@ const ImageSelectionConfig = ({ isImageGenerationDisabled, openImageProviderSele
                             {/* Image Provider Selection */}
                             <div className="my-8">
                                 <label className="block text-sm font-medium text-gray-700 mb-3">
-                                    Select Image Provider
+                                    Seleccionar proveedor de imágenes
                                 </label>
                                 <div className="w-full">
                                     <Popover
@@ -101,7 +101,7 @@ const ImageSelectionConfig = ({ isImageGenerationDisabled, openImageProviderSele
                                                         {llmConfig.IMAGE_PROVIDER
                                                             ? IMAGE_PROVIDERS[llmConfig.IMAGE_PROVIDER]
                                                                 ?.label || llmConfig.IMAGE_PROVIDER
-                                                            : "Select image provider"}
+                                                            : "Selecciona un proveedor de imágenes"}
                                                     </span>
                                                 </div>
                                                 <ChevronsUpDown className="w-4 h-4 text-gray-500" />
@@ -113,9 +113,9 @@ const ImageSelectionConfig = ({ isImageGenerationDisabled, openImageProviderSele
                                             style={{ width: "var(--radix-popover-trigger-width)" }}
                                         >
                                             <Command>
-                                                <CommandInput placeholder="Search provider..." />
+                                                <CommandInput placeholder="Buscar proveedor..." />
                                                 <CommandList>
-                                                    <CommandEmpty>No provider found.</CommandEmpty>
+                                                    <CommandEmpty>No se ha encontrado ningún proveedor.</CommandEmpty>
                                                     <CommandGroup>
                                                         {Object.values(IMAGE_PROVIDERS).map(
                                                             (provider, index) => (
@@ -221,7 +221,7 @@ const ImageSelectionConfig = ({ isImageGenerationDisabled, openImageProviderSele
                                             <div className="space-y-4 w-[295px]">
                                                 <div>
                                                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                        Open WebUI URL
+                                                        URL de Open WebUI
                                                     </label>
                                                     <div className="relative">
                                                         <input
@@ -239,17 +239,17 @@ const ImageSelectionConfig = ({ isImageGenerationDisabled, openImageProviderSele
                                                     </div>
                                                     <p className="mt-2 text-sm text-gray-500 flex items-center gap-2">
                                                         <span className="block w-1 h-1 rounded-full bg-gray-400"></span>
-                                                        Image model is configured in Open WebUI admin settings
+                                                        El modelo de imagen se configura en los ajustes de administración de Open WebUI
                                                     </p>
                                                 </div>
                                                 <div>
                                                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                        API Key (optional)
+                                                        Clave API (opcional)
                                                     </label>
                                                     <div className="relative">
                                                         <input
                                                             type="text"
-                                                            placeholder="Open WebUI API key"
+                                                            placeholder="Clave API de Open WebUI"
                                                             className="w-full px-4 py-2.5 outline-none border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
                                                             value={llmConfig.OPEN_WEBUI_IMAGE_API_KEY || ""}
                                                             onChange={(e) => {
@@ -289,17 +289,17 @@ const ImageSelectionConfig = ({ isImageGenerationDisabled, openImageProviderSele
                                                     </div>
                                                     <p className="mt-2 text-sm text-gray-500 flex items-center gap-2">
                                                         <span className="block w-1 h-1 rounded-full bg-gray-400"></span>
-                                                        Use your machine IP address (not localhost) when
-                                                        running in Docker
+                                                        Usa la dirección IP de tu máquina (no localhost) si lo
+                                                        ejecutas en Docker
                                                     </p>
                                                 </div>
                                                 <div>
                                                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                        Workflow JSON
+                                                        JSON del flujo de trabajo
                                                     </label>
                                                     <div className="relative">
                                                         <textarea
-                                                            placeholder='Paste your ComfyUI workflow JSON here (export via "Export (API)" in ComfyUI)'
+                                                            placeholder='Pega aquí el JSON de tu flujo de trabajo de ComfyUI (expórtalo con "Export (API)" en ComfyUI)'
                                                             className="w-full px-4 py-2.5 outline-none border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors font-mono text-xs"
                                                             rows={6}
                                                             value={llmConfig.COMFYUI_WORKFLOW || ""}
@@ -312,8 +312,8 @@ const ImageSelectionConfig = ({ isImageGenerationDisabled, openImageProviderSele
                                                         />
                                                     </div>
                                                     <p className="mt-2 text-sm text-gray-500">
-                                                        Export your workflow from ComfyUI using &quot;Export
-                                                        (API)&quot; and paste the JSON here.
+                                                        Exporta tu flujo de trabajo desde ComfyUI con &quot;Export
+                                                        (API)&quot; y pega aquí el JSON.
                                                     </p>
                                                 </div>
                                             </div>
@@ -329,7 +329,7 @@ const ImageSelectionConfig = ({ isImageGenerationDisabled, openImageProviderSele
                                             <div className="relative">
                                                 <input
                                                     type="text"
-                                                    placeholder={`Enter your ${provider.apiKeyFieldLabel}`}
+                                                    placeholder={`Introduce tu ${provider.apiKeyFieldLabel}`}
                                                     className="w-full px-4 py-2.5 h-12 outline-none border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
                                                     value={getApiKeyValue(provider.apiKeyField || "")}
                                                     onChange={(e) =>

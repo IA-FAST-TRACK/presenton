@@ -76,16 +76,16 @@ const isImageGenerationDisabled = llmConfig?.DISABLE_IMAGE_GENERATION ?? false;
       } else {
         const message = await getApiErrorMessage(
           response,
-          "The server could not list models. Check your API key or endpoint and try again."
+          "El servidor no ha podido listar los modelos. Comprueba tu clave API o el endpoint e inténtalo de nuevo."
         );
         console.error('Failed to fetch models');
-        notify.error("Could not load models", message);
+        notify.error("No se han podido cargar los modelos", message);
         setAvailableModels([]);
         setModelsChecked(true);
       }
     } catch (error) {
       console.error('Error fetching models:', error);
-      notify.error("Could not load models", "The server could not list models. Check your API key or endpoint and try again.");
+      notify.error("No se han podido cargar los modelos", "El servidor no ha podido listar los modelos. Comprueba tu clave API o el endpoint e inténtalo de nuevo.");
       setAvailableModels([]);
       setModelsChecked(true);
     } finally {
@@ -99,9 +99,9 @@ const isImageGenerationDisabled = llmConfig?.DISABLE_IMAGE_GENERATION ?? false;
       <div className="mb-4 flex items-center justify-between bg-white p-10">
         <div className="">
 
-          <h3 className="text-xl font-normal text-[#191919]">OpenAI API key</h3>
+          <h3 className="text-xl font-normal text-[#191919]">Clave API de OpenAI</h3>
           <p className="mt-2 text-sm max-w-[205px] text-gray-500">
-            Your API key will be stored locally and never shared
+            Tu clave API se guardará localmente y nunca se compartirá
           </p>
         </div>
         <div className="flex items-center gap-4">
@@ -111,14 +111,14 @@ const isImageGenerationDisabled = llmConfig?.DISABLE_IMAGE_GENERATION ?? false;
             <div className="flex flex-col justify-start gap-2">
 
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                OpenAI API Key
+                Clave API de OpenAI
               </label>
               <input
                 type="text"
                 value={openaiApiKey}
                 onChange={(e) => onApiKeyChange(e.target.value)}
                 className="w-full px-2 py-3 outline-none border  border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
-                placeholder="Enter your API key"
+                placeholder="Introduce tu clave API"
               />
             </div>
 
@@ -137,10 +137,10 @@ const isImageGenerationDisabled = llmConfig?.DISABLE_IMAGE_GENERATION ?? false;
                 {modelsLoading ? (
                   <span className="flex items-center justify-center gap-2">
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    Checking for models...
+                    Buscando modelos...
                   </span>
                 ) : (
-                  "Check for available models"
+                  "Buscar modelos disponibles"
                 )}
               </button>
 
@@ -151,7 +151,7 @@ const isImageGenerationDisabled = llmConfig?.DISABLE_IMAGE_GENERATION ?? false;
             {modelsChecked && availableModels.length === 0 && (
               <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
                 <p className="text-sm text-yellow-800">
-                  No models found. Please make sure your API key is valid and has access to OpenAI models.
+                  No se han encontrado modelos. Asegúrate de que tu clave API es válida y tiene acceso a los modelos de OpenAI.
                 </p>
               </div>
             )}
@@ -160,7 +160,7 @@ const isImageGenerationDisabled = llmConfig?.DISABLE_IMAGE_GENERATION ?? false;
             {modelsChecked && availableModels.length > 0 ? (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-3">
-                  Select OpenAI Model
+                  Seleccionar modelo de OpenAI
                 </label>
                 <div className="w-full">
                   <Popover
@@ -178,7 +178,7 @@ const isImageGenerationDisabled = llmConfig?.DISABLE_IMAGE_GENERATION ?? false;
                           <span className="text-sm font-medium text-gray-900">
                             {openaiModel
                               ? availableModels.find(model => model === openaiModel) || openaiModel
-                              : "Select a model"}
+                              : "Selecciona un modelo"}
                           </span>
                         </div>
                         <ChevronsUpDown className="w-4 h-4 text-gray-500" />
@@ -190,9 +190,9 @@ const isImageGenerationDisabled = llmConfig?.DISABLE_IMAGE_GENERATION ?? false;
                       style={{ width: "var(--radix-popover-trigger-width)" }}
                     >
                       <Command>
-                        <CommandInput placeholder="Search models..." />
+                        <CommandInput placeholder="Buscar modelos..." />
                         <CommandList>
-                          <CommandEmpty>No model found.</CommandEmpty>
+                          <CommandEmpty>No se ha encontrado ningún modelo.</CommandEmpty>
                           <CommandGroup>
                             {availableModels.map((model, index) => (
                               <CommandItem
@@ -242,10 +242,10 @@ const isImageGenerationDisabled = llmConfig?.DISABLE_IMAGE_GENERATION ?? false;
       {/* Web Grounding Toggle - show at the end, below models dropdown */}
       <div className="bg-white flex justify-between items-center p-10 rounded-[12px]">
         <div>
-          <h4 className="text-xl font-normal text-[#191919]">Model Controls</h4>
+          <h4 className="text-xl font-normal text-[#191919]">Controles del modelo</h4>
           <p className="mt-2 text-sm max-w-[205px] text-gray-500">
 
-            Configure web access, image generation, and advanced AI features.
+            Configura el acceso web, la generación de imágenes y las funciones avanzadas de IA.
           </p>
         </div>
         <div className="flex items-center gap-4">
@@ -257,7 +257,7 @@ const isImageGenerationDisabled = llmConfig?.DISABLE_IMAGE_GENERATION ?? false;
                 onCheckedChange={(checked) => onInputChange(checked, "web_grounding")}
               />
               <label className="text-sm font-medium text-gray-700">
-                Enable Web Grounding
+                Activar búsqueda web
               </label>
             </div>
             <div className="flex items-center  mb-4 gap-2.5 ">
@@ -266,7 +266,7 @@ const isImageGenerationDisabled = llmConfig?.DISABLE_IMAGE_GENERATION ?? false;
                 onCheckedChange={(checked) => onInputChange(checked, "disable_image_generation")}
               />
               <label className="text-sm font-medium text-gray-700">
-                Disable Image Generation
+                Desactivar generación de imágenes
               </label>
             </div>
 

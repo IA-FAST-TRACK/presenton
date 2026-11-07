@@ -203,7 +203,7 @@ class DocumentsLoader:
         for file_path in self._file_paths:
             if not os.path.exists(file_path):
                 raise HTTPException(
-                    status_code=404, detail=f"File {file_path} not found"
+                    status_code=404, detail=f"Archivo {file_path} no encontrado"
                 )
 
             document = ""
@@ -262,7 +262,7 @@ class DocumentsLoader:
             if temp_dir is None:
                 raise HTTPException(
                     status_code=400,
-                    detail="temp_dir is required when load_images is true",
+                    detail="temp_dir es obligatorio cuando load_images es true",
                 )
             image_paths = await self.get_page_images_from_pdf_async(file_path, temp_dir)
 
@@ -336,7 +336,7 @@ class DocumentsLoader:
                     pass
             raise HTTPException(
                 status_code=500,
-                detail=f"Failed to parse document {os.path.basename(file_path)}: {exc}",
+                detail=f"No se ha podido analizar el documento {os.path.basename(file_path)}: {exc}",
             ) from exc
 
     @classmethod

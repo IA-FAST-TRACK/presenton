@@ -74,9 +74,9 @@ def test_list_models_returns_service_unavailable_when_ollama_is_unreachable(
 
     assert exc_info.value.status_code == 503
     assert exc_info.value.detail == (
-        "Could not connect to Ollama at http://ollama.example:11434. "
-        "Make sure Ollama is running and reachable from Presenton. "
-        "When Presenton runs in Docker, use host.docker.internal instead of localhost."
+        "No se ha podido conectar con Ollama en http://ollama.example:11434. "
+        "Asegúrate de que Ollama esté en ejecución y sea accesible desde Presenton. "
+        "Si Presenton se ejecuta en Docker, usa host.docker.internal en lugar de localhost."
     )
 
 
@@ -85,7 +85,7 @@ def test_list_models_rejects_invalid_ollama_url():
         asyncio.run(ollama.list_available_ollama_models("http://local\thost:11434"))
 
     assert exc_info.value.status_code == 400
-    assert exc_info.value.detail == "Invalid Ollama URL"
+    assert exc_info.value.detail == "URL de Ollama no válida"
 
 
 def test_list_models_rejects_invalid_ollama_payload(monkeypatch):
@@ -95,4 +95,4 @@ def test_list_models_rejects_invalid_ollama_payload(monkeypatch):
         asyncio.run(ollama.list_available_ollama_models("http://localhost:11434"))
 
     assert exc_info.value.status_code == 502
-    assert exc_info.value.detail == "Ollama returned an invalid models response"
+    assert exc_info.value.detail == "Ollama ha devuelto una respuesta de modelos no válida"

@@ -61,7 +61,7 @@ def normalize_image_generation_error(error: Exception) -> HTTPException:
         return error
 
     normalized = normalize_provider_error(
-        error, provider="OpenAI" if isinstance(error, OpenAIAPIError) else "image provider",
+        error, provider="OpenAI" if isinstance(error, OpenAIAPIError) else "Proveedor de imágenes",
         operation="image generation", source="image",
     )
     # Preserve legacy image-warning codes without copying arbitrary provider data.

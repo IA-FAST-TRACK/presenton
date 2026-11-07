@@ -79,8 +79,8 @@ def test_normalize_image_generation_error_preserves_openai_quota_status():
     normalized = normalize_image_generation_error(_quota_error())
 
     assert normalized.status_code == 429
-    assert "API quota is unavailable" in normalized.detail
-    assert "billing" in normalized.detail
+    assert "no hay cuota de API disponible" in normalized.detail
+    assert "facturación" in normalized.detail
 
 
 def test_normalize_openai_auth_error_hides_raw_provider_response():
@@ -105,7 +105,7 @@ def test_llm_error_handler_preserves_openai_quota_status():
     normalized = handle_llm_client_exceptions(_quota_error())
 
     assert normalized.status_code == 429
-    assert "API quota is unavailable" in normalized.detail
+    assert "no hay cuota de API disponible" in normalized.detail
 
 
 def test_llm_error_handler_hides_openai_auth_raw_provider_response():
@@ -128,7 +128,7 @@ def test_image_generation_service_raises_provider_error_instead_of_placeholder()
         asyncio.run(service.generate_image(ImagePrompt(prompt="business dashboard")))
 
     assert exc.value.status_code == 429
-    assert "billing" in exc.value.detail
+    assert "facturación" in exc.value.detail
 
 
 def test_image_generation_service_preserves_existing_http_exception():
@@ -266,8 +266,8 @@ def test_slide_asset_processing_can_fallback_with_visible_warning():
         {
             "status_code": 429,
             "detail": (
-                "OpenAI image generation failed because API quota is unavailable. "
-                "Check OpenAI API billing and the limits for the project that owns this API key."
+                "OpenAI image generation: error porque no hay cuota de API disponible. "
+                "Revisa la facturación de la API de OpenAI y los límites del proyecto al que pertenece esta clave API."
             ),
             "code": "insufficient_quota",
             "error_code": "provider_quota_exceeded",

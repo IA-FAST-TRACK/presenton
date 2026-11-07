@@ -56,7 +56,7 @@ def test_search_images_strict_mode_requires_api_key(fake_async_session):
         )
 
     assert response.status_code == 401
-    assert response.json()["detail"] == "Pexels API key is required"
+    assert response.json()["detail"] == "Se requiere la clave API de Pexels"
 
 
 def test_search_images_uses_configured_key_for_redacted_runtime_secret(
@@ -212,7 +212,7 @@ def test_upload_image_rejects_non_image_bytes(tmp_path, fake_async_session):
         )
 
     assert response.status_code == 400
-    assert response.json()["detail"] == "Uploaded file is not a valid image"
+    assert response.json()["detail"] == "El archivo subido no es una imagen válida"
     assert fake_async_session.added == []
     assert fake_async_session.commit_count == 0
     assert list(tmp_path.iterdir()) == []
@@ -256,7 +256,7 @@ def test_upload_image_rejects_unsupported_extension(tmp_path, fake_async_session
         )
 
     assert response.status_code == 400
-    assert "Invalid image file type" in response.json()["detail"]
+    assert "Tipo de archivo de imagen no válido" in response.json()["detail"]
     assert fake_async_session.added == []
     assert fake_async_session.commit_count == 0
     assert list(tmp_path.iterdir()) == []

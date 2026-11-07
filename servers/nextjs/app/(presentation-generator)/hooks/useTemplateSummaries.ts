@@ -138,9 +138,9 @@ export function useTemplateSummaries({
           const message =
             error instanceof Error
               ? error.message
-              : "The template service could not be reached. Please try again.";
+              : "No se ha podido conectar con el servicio de plantillas. Inténtalo de nuevo.";
           setError(message);
-          toast.error("Could not load templates", { description: message });
+          toast.error("No se han podido cargar las plantillas", { description: message });
         }
       } finally {
         if (!cancelled) {

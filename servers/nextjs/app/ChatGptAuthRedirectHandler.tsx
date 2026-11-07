@@ -23,9 +23,9 @@ export default function ChatGptAuthRedirectHandler() {
       handlingRef.current = true;
 
       notify.error(
-        "ChatGPT sign-in required",
+        "Es necesario iniciar sesión en ChatGPT",
         detail?.message ||
-          "Your ChatGPT session expired. Please sign in again from Settings.",
+          "Tu sesión de ChatGPT ha caducado. Vuelve a iniciar sesión desde Configuración.",
         { id: "chatgpt-auth-required", duration: 8000 }
       );
 

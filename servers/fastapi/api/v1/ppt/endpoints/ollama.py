@@ -37,7 +37,7 @@ def _require_provider_request_intent(request: Request) -> None:
             return
     elif request.headers.get("sec-fetch-site") == "same-origin":
         return
-    raise HTTPException(status_code=403, detail="Custom provider discovery requires a trusted Origin or Referer")
+    raise HTTPException(status_code=403, detail="La detección de proveedores personalizados requiere un encabezado Origin o Referer de confianza")
 
 
 @OLLAMA_ROUTER.get("/models/supported", response_model=List[OllamaModelMetadata])

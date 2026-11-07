@@ -91,7 +91,7 @@ const WebSearchProvider = ({
               });
               setWebSearchEnabled(checked);
             }}
-            aria-label="Enable web search"
+            aria-label="Activar búsqueda web"
           />
         </div>
         <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:gap-10">
@@ -100,16 +100,16 @@ const WebSearchProvider = ({
               <Search className="h-7 w-7 text-[#0A0A0A]" />
             </div>
             <h3 className="py-2.5 text-xl font-normal text-[#191919]">
-              Web Search Settings
+              Ajustes de búsqueda web
             </h3>
             <p className="text-sm text-gray-500">
-              Choose a provider to enable web search, or leave it disabled.
+              Elige un proveedor para activar la búsqueda web o déjala desactivada.
             </p>
           </div>
           {isWebSearchEnabled && <div className="w-full max-w-[720px] space-y-4">
                 <div className="ml-auto w-[222px]">
                   <label className="mb-2 block text-sm font-medium text-gray-700">
-                    Provider
+                    Proveedor
                   </label>
                   <div className="w-full">
                     <Popover open={openProviderSelect} onOpenChange={setOpenProviderSelect}>
@@ -123,16 +123,16 @@ const WebSearchProvider = ({
                           <span className="truncate text-sm font-medium text-gray-900">
                             {selected
                               ? WEB_SEARCH_PROVIDERS[selected]?.label || selected
-                              : "Select web search provider"}
+                              : "Selecciona un proveedor de búsqueda web"}
                           </span>
                           <ChevronUp className="h-4 w-4 text-gray-500" />
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="p-0" align="start" style={{ width: "320px" }}>
                         <Command>
-                          <CommandInput placeholder="Search provider..." />
+                          <CommandInput placeholder="Buscar proveedor..." />
                           <CommandList>
-                            <CommandEmpty>No provider found.</CommandEmpty>
+                            <CommandEmpty>No se ha encontrado ningún proveedor.</CommandEmpty>
                             <CommandGroup>
                               {WEB_SEARCH_PROVIDER_OPTIONS.map((option) => (
                                 <CommandItem
@@ -174,9 +174,9 @@ const WebSearchProvider = ({
                 </div>
 
                 {selected === "auto" && (
-                  <div className="rounded-lg border border-[#FFED82] bg-[#FFFADC] p-3 text-xs text-[#0A0A0A]">
-                    Model-native web grounding is preferred when available.
-                    Otherwise, external search fallback is used.
+                  <div className="rounded-lg border border-[#D9D6FE] bg-[#F4F3FF] p-3 text-xs text-[#5146E5]">
+                    Se da preferencia a la búsqueda web nativa del modelo cuando está disponible.
+                    En caso contrario, se recurre a una búsqueda externa.
                   </div>
                 )}
 
@@ -221,7 +221,7 @@ const WebSearchProvider = ({
                         type="button"
                         className="absolute inset-y-0 right-0 flex w-12 items-center justify-center rounded-r-lg text-gray-500 transition-colors hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-500"
                         onClick={() => setShowApiKey((value) => !value)}
-                        aria-label={showApiKey ? "Hide API key" : "Show API key"}
+                        aria-label={showApiKey ? "Ocultar clave API" : "Mostrar clave API"}
                         aria-pressed={showApiKey}
                       >
                         {showApiKey ? (
@@ -237,7 +237,7 @@ const WebSearchProvider = ({
                 {selected && selected !== "auto" && (
                   <div>
                     <label className="mb-2 block text-sm font-medium text-[#4C5554]">
-                      Maximum results
+                      Número máximo de resultados
                     </label>
                     <input
                       type="number"

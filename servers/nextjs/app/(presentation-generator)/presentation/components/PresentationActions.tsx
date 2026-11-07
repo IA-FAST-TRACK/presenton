@@ -211,13 +211,13 @@ function presentationActionsUiReducer(
 
 const insertActions: ActionItem[] = [
   { id: "ai", label: "AI", },
-  { id: "blocks", label: "Blocks", },
-  { id: "texts", label: "Texts", },
-  { id: "charts", label: "Charts", },
-  { id: "infograph", label: "Infograph",  },
-  { id: "tables", label: "Tables",  },
-  { id: "images", label: "Images", },
-  { id: "shapes", label: "Shapes", },
+  { id: "blocks", label: "Bloques", },
+  { id: "texts", label: "Textos", },
+  { id: "charts", label: "Gráficos", },
+  { id: "infograph", label: "Infografías",  },
+  { id: "tables", label: "Tablas",  },
+  { id: "images", label: "Imágenes", },
+  { id: "shapes", label: "Formas", },
 ];
 
 const actionIconSrc: Record<ActionId, string> = {
@@ -232,39 +232,39 @@ const actionIconSrc: Record<ActionId, string> = {
 };
 
 export const textItems = [
-  { id: "equation", label: "Equation", icon: Sigma },
-  { id: "equation-quadratic", label: "Quadratic", icon: Sigma },
-  { id: "equation-summation", label: "Summation", icon: Sigma },
+  { id: "equation", label: "Ecuación", icon: Sigma },
+  { id: "equation-quadratic", label: "Cuadrática", icon: Sigma },
+  { id: "equation-summation", label: "Sumatorio", icon: Sigma },
   { id: "equation-integral", label: "Integral", icon: Sigma },
-  { id: "equation-matrix", label: "Matrix", icon: Sigma },
-  { id: "title-block", label: "Title Block", icon: AlignCenter },
-  { id: "subtitle", label: "Subtitle", icon: AlignCenter },
-  { id: "bullet-list", label: "Bullet List", icon: List },
-  { id: "numbered-list", label: "Order List", icon: ListOrdered },
-  { id: "list-item", label: "List Item", icon: ListMinus },
-  { id: "quote", label: "Quote", icon: Quote },
-  { id: "body-text", label: "Body Text", icon: Columns2 },
+  { id: "equation-matrix", label: "Matriz", icon: Sigma },
+  { id: "title-block", label: "Bloque de título", icon: AlignCenter },
+  { id: "subtitle", label: "Subtítulo", icon: AlignCenter },
+  { id: "bullet-list", label: "Lista con viñetas", icon: List },
+  { id: "numbered-list", label: "Lista numerada", icon: ListOrdered },
+  { id: "list-item", label: "Elemento de lista", icon: ListMinus },
+  { id: "quote", label: "Cita", icon: Quote },
+  { id: "body-text", label: "Texto principal", icon: Columns2 },
 ] satisfies PaletteItem[];
 
 const textStyleOptions = [
   {
     itemId: "title-block",
-    label: "Add a heading",
+    label: "Añadir un título",
     textClassName: "text-[clamp(23px,2vw,28px)] leading-none",
   },
   {
     itemId: "subtitle",
-    label: "Add a subheading",
+    label: "Añadir un subtítulo",
     textClassName: "text-[clamp(17px,1.45vw,20px)] leading-6",
   },
   {
     itemId: "body-text",
-    label: "Add a body text",
+    label: "Añadir texto principal",
     textClassName: "text-[clamp(13px,1.05vw,15px)] leading-5",
   },
   {
     itemId: "bullet-list",
-    label: "Add a bullet point",
+    label: "Añadir una viñeta",
     textClassName: "text-[clamp(13px,1.05vw,15px)] leading-5",
     bullet: true,
   },
@@ -287,83 +287,83 @@ const textCompositionItems = textCompositionItemIds.flatMap((itemId) => {
 });
 
 export const chartTypeItems = [
-  { id: "bar", label: "Bar Chart", icon: BarChart3 },
-  { id: "horizontal_bar", label: "Horizontal Bar", icon: BarChart3 },
-  { id: "stacked_bar", label: "Stacked Bar", icon: BarChart3 },
+  { id: "bar", label: "Gráfico de barras", icon: BarChart3 },
+  { id: "horizontal_bar", label: "Barras horizontales", icon: BarChart3 },
+  { id: "stacked_bar", label: "Barras apiladas", icon: BarChart3 },
   {
     id: "horizontal_stacked_bar",
-    label: "Horizontal Stack Bar",
+    label: "Barras apiladas horizontales",
     icon: BarChart3,
   },
-  { id: "line", label: "Line Chart", icon: LineChart },
-  { id: "pie", label: "Pie Chart", icon: PieChart },
-  { id: "area", label: "Area Chart", icon: AreaChart },
-  { id: "donut", label: "Donut Chart", icon: PieChart },
-  { id: "scatter", label: "Scatter Chart", icon: Circle },
-  { id: "radar", label: "Radar Chart", icon: PieChart },
-  { id: "polar_area", label: "Polar Area", icon: PieChart },
+  { id: "line", label: "Gráfico de líneas", icon: LineChart },
+  { id: "pie", label: "Gráfico circular", icon: PieChart },
+  { id: "area", label: "Gráfico de áreas", icon: AreaChart },
+  { id: "donut", label: "Gráfico de anillo", icon: PieChart },
+  { id: "scatter", label: "Gráfico de dispersión", icon: Circle },
+  { id: "radar", label: "Gráfico radial", icon: PieChart },
+  { id: "polar_area", label: "Área polar", icon: PieChart },
 ] satisfies PaletteItem[];
 
 export const infographicItems = [
-  { id: "progress_bar", label: "Progress Bar", icon: ChartNoAxesGantt },
-  { id: "gauge", label: "Gauge Chart", icon: Gauge },
-  { id: "gantt", label: "Gantt Chart", icon: ChartNoAxesGantt },
-  { id: "timeline", label: "Timeline", icon: ArrowRight },
-  { id: "roadmap", label: "Roadmap", icon: Move },
-  { id: "milestone_timeline", label: "Milestones", icon: Flag },
-  { id: "staircase", label: "Staircase", icon: Rows3 },
-  { id: "supply_chain", label: "Supply Chain", icon: Move },
-  { id: "stair_step_blocks", label: "Step Blocks", icon: Rows3 },
-  { id: "maturity_model", label: "Maturity Model", icon: Rows3 },
-  { id: "pillar_framework", label: "Pillar Framework", icon: Columns2 },
-  { id: "transformation_hub", label: "Transformation Hub", icon: Shapes },
-  { id: "diagonal_circles", label: "Diagonal Circles", icon: Circle },
-  { id: "risk_matrix", label: "Risk Matrix", icon: Grid3X3 },
-  { id: "chevron_process", label: "Chevron Process", icon: ChevronsRight },
-  { id: "radial_cycle", label: "Radial Cycle", icon: Circle },
-  { id: "conversion_funnel", label: "Conversion Funnel", icon: AreaChart },
-  { id: "vertical_funnel", label: "Vertical Funnel", icon: AreaChart },
-  { id: "pyramid", label: "Pyramid", icon: Triangle },
-  { id: "segmented_wheel", label: "Segmented Wheel", icon: Circle },
-  { id: "customer_journey", label: "Customer Journey", icon: Move },
-  { id: "before_after", label: "Before & After", icon: Columns2 },
-  { id: "impact_effort_matrix", label: "Impact / Effort", icon: Grid3X3 },
-  { id: "comparison_matrix", label: "Comparison Matrix", icon: Table2 },
-  { id: "org_chart", label: "Organization Chart", icon: Rows3 },
-  { id: "decision_tree", label: "Decision Tree", icon: Shapes },
-  { id: "mind_map", label: "Mind Map", icon: Shapes },
+  { id: "progress_bar", label: "Barra de progreso", icon: ChartNoAxesGantt },
+  { id: "gauge", label: "Indicador", icon: Gauge },
+  { id: "gantt", label: "Diagrama de Gantt", icon: ChartNoAxesGantt },
+  { id: "timeline", label: "Cronología", icon: ArrowRight },
+  { id: "roadmap", label: "Hoja de ruta", icon: Move },
+  { id: "milestone_timeline", label: "Hitos", icon: Flag },
+  { id: "staircase", label: "Escalera", icon: Rows3 },
+  { id: "supply_chain", label: "Cadena de suministro", icon: Move },
+  { id: "stair_step_blocks", label: "Bloques escalonados", icon: Rows3 },
+  { id: "maturity_model", label: "Modelo de madurez", icon: Rows3 },
+  { id: "pillar_framework", label: "Marco de pilares", icon: Columns2 },
+  { id: "transformation_hub", label: "Núcleo de transformación", icon: Shapes },
+  { id: "diagonal_circles", label: "Círculos en diagonal", icon: Circle },
+  { id: "risk_matrix", label: "Matriz de riesgos", icon: Grid3X3 },
+  { id: "chevron_process", label: "Proceso en cheurones", icon: ChevronsRight },
+  { id: "radial_cycle", label: "Ciclo radial", icon: Circle },
+  { id: "conversion_funnel", label: "Embudo de conversión", icon: AreaChart },
+  { id: "vertical_funnel", label: "Embudo vertical", icon: AreaChart },
+  { id: "pyramid", label: "Pirámide", icon: Triangle },
+  { id: "segmented_wheel", label: "Rueda segmentada", icon: Circle },
+  { id: "customer_journey", label: "Recorrido del cliente", icon: Move },
+  { id: "before_after", label: "Antes y después", icon: Columns2 },
+  { id: "impact_effort_matrix", label: "Impacto / Esfuerzo", icon: Grid3X3 },
+  { id: "comparison_matrix", label: "Matriz comparativa", icon: Table2 },
+  { id: "org_chart", label: "Organigrama", icon: Rows3 },
+  { id: "decision_tree", label: "Árbol de decisión", icon: Shapes },
+  { id: "mind_map", label: "Mapa mental", icon: Shapes },
 ] satisfies PaletteItem[];
 
 export const tableTypeItems = [
-  { id: "simple-table", label: "Simple Table", icon: Table2 },
-  { id: "comparison-table", label: "Comparison Table", icon: Columns2 },
-  { id: "project-table", label: "Project Tracker", icon: Rows3 },
-  { id: "metrics-table", label: "Metrics Table", icon: Table2 },
+  { id: "simple-table", label: "Tabla simple", icon: Table2 },
+  { id: "comparison-table", label: "Tabla comparativa", icon: Columns2 },
+  { id: "project-table", label: "Seguimiento de proyectos", icon: Rows3 },
+  { id: "metrics-table", label: "Tabla de métricas", icon: Table2 },
 ] satisfies PaletteItem[];
 
 export const imageItems = [
-  { id: "image-frame-square", label: "Square Frame", icon: Image },
-  { id: "image-frame-rounded", label: "Rounded Frame", icon: Image },
-  { id: "image-frame-circle", label: "Circle Frame", icon: Circle },
-  { id: "image-frame-pentagon", label: "Pentagon Frame", icon: Pentagon },
-  { id: "image-frame-polaroid", label: "Polaroid Frame", icon: Image },
-  { id: "image-frame-torn", label: "Torn Paper Frame", icon: Image },
-  { id: "image-filmstrip", label: "Film Strip", icon: Image },
-  { id: "image-petal-grid", label: "Petal Collage", icon: Grid3X3 },
-  { id: "image-frame-clover", label: "Clover Frame", icon: Image },
-  { id: "image-circle-triptych", label: "Circle Triptych", icon: Circle },
-  { id: "image-starburst", label: "Starburst Frame", icon: Star },
-  { id: "image-triple-strip", label: "Three Image Strip", icon: Columns2 },
-  { id: "image-frame-stamp", label: "Postage Frame", icon: Image },
-  { id: "image-frame-torn-bottom", label: "Torn Bottom Frame", icon: Image },
-  { id: "image-collage", label: "Image Collage", icon: Grid3X3 },
-  { id: "image-vertical-stack", label: "Vertical Stack", icon: Rows3 },
-  { id: "image", label: "Full Image", icon: Image },
-  { id: "image-grid", label: "Image Grid", icon: Grid3X3 },
-  { id: "image-split", label: "Two Images", icon: Columns2 },
-  { id: "image-frame-ornate", label: "Corner Frame", icon: Image },
-  { id: "image-text", label: "Image + Text", icon: Columns2 },
-  { id: "image-caption", label: "Image + Caption", icon: Image },
+  { id: "image-frame-square", label: "Marco cuadrado", icon: Image },
+  { id: "image-frame-rounded", label: "Marco redondeado", icon: Image },
+  { id: "image-frame-circle", label: "Marco circular", icon: Circle },
+  { id: "image-frame-pentagon", label: "Marco pentagonal", icon: Pentagon },
+  { id: "image-frame-polaroid", label: "Marco Polaroid", icon: Image },
+  { id: "image-frame-torn", label: "Marco de papel rasgado", icon: Image },
+  { id: "image-filmstrip", label: "Tira de película", icon: Image },
+  { id: "image-petal-grid", label: "Collage de pétalos", icon: Grid3X3 },
+  { id: "image-frame-clover", label: "Marco de trébol", icon: Image },
+  { id: "image-circle-triptych", label: "Tríptico circular", icon: Circle },
+  { id: "image-starburst", label: "Marco de estrella", icon: Star },
+  { id: "image-triple-strip", label: "Tira de tres imágenes", icon: Columns2 },
+  { id: "image-frame-stamp", label: "Marco de sello", icon: Image },
+  { id: "image-frame-torn-bottom", label: "Marco con borde inferior rasgado", icon: Image },
+  { id: "image-collage", label: "Collage de imágenes", icon: Grid3X3 },
+  { id: "image-vertical-stack", label: "Pila vertical", icon: Rows3 },
+  { id: "image", label: "Imagen completa", icon: Image },
+  { id: "image-grid", label: "Cuadrícula de imágenes", icon: Grid3X3 },
+  { id: "image-split", label: "Dos imágenes", icon: Columns2 },
+  { id: "image-frame-ornate", label: "Marco con esquinas", icon: Image },
+  { id: "image-text", label: "Imagen + texto", icon: Columns2 },
+  { id: "image-caption", label: "Imagen + pie de foto", icon: Image },
 ] satisfies PaletteItem[];
 
 const compactImageCardClassNames: Record<string, string> = {
@@ -530,7 +530,7 @@ const PaletteCard = ({
       disabled &&
         "cursor-not-allowed opacity-50 hover:translate-y-0 hover:border-[#EDEEF0] hover:shadow-sm",
     )}
-    aria-label={`Add ${item.label}`}
+    aria-label={`Añadir ${item.label}`}
     title={item.label}
   >
     <div className="aspect-video w-full overflow-hidden bg-white">
@@ -623,7 +623,7 @@ function TextsPanel({
     <div className="h-full overflow-y-auto bg-white hide-scrollbar">
       <div className="px-[clamp(14px,1.4vw,20px)] pb-3 pt-[clamp(22px,2vw,28px)]">
         <h3 className="mb-5 text-[15px] font-medium leading-5 text-[#191919]">
-          Text Styles
+          Estilos de texto
         </h3>
 
         <div className="space-y-2">
@@ -680,10 +680,10 @@ function TextsPanel({
               className="text-[#A1A1AA]"
             />
             <span className="text-[15px] font-medium leading-5 text-[#27272A]">
-              Compositions
+              Composiciones
             </span>
             <span className="ml-auto text-[11px] font-normal tabular-nums text-[#A1A1AA]">
-              {textCompositionItems.length} Options
+              {textCompositionItems.length} opciones
             </span>
           </button>
         </div>
@@ -714,7 +714,7 @@ function TextsPanel({
                     "group min-w-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40 focus-visible:ring-offset-2",
                     disabled && "cursor-not-allowed opacity-50",
                   )}
-                  aria-label={`Add ${item.label}`}
+                  aria-label={`Añadir ${item.label}`}
                 >
                   <span className="block aspect-[4/3] w-full overflow-hidden bg-[#F6F6F9] transition-[box-shadow,transform] duration-150 group-hover:-translate-y-0.5 group-hover:shadow-[0_8px_20px_rgba(67,56,202,0.10)]">
                     <InsertPalettePreview
@@ -759,20 +759,20 @@ function ChartsPanel({
     <div className="h-full overflow-y-auto bg-white hide-scrollbar">
       <div className="sticky top-0 z-20 border-b border-[#F4F4F5] bg-white/95 px-[clamp(14px,1.4vw,20px)] pb-4 pt-5 backdrop-blur-sm">
         <label className="relative block">
-          <span className="sr-only">Search charts</span>
+          <span className="sr-only">Buscar gráficos</span>
           <input
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search Charts..."
-            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#0A0A0A] [&::-webkit-search-cancel-button]:hidden"
+            placeholder="Buscar gráficos..."
+            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#7A5AF8] [&::-webkit-search-cancel-button]:hidden"
           />
           {query ? (
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
-              aria-label="Clear chart search"
+              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#F0EEFF] hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              aria-label="Borrar la búsqueda de gráficos"
             >
               <X className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
             </button>
@@ -781,7 +781,7 @@ function ChartsPanel({
 
         <div className="mt-7 flex items-end justify-between gap-3">
           <h3 className="text-[17px] font-medium leading-6 text-[#191919]">
-            Charts
+            Gráficos
           </h3>
           <span className="text-[11px] tabular-nums text-[#A1A1AA]">
             {visibleItems.length}
@@ -806,7 +806,7 @@ function ChartsPanel({
                   "group min-w-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40 focus-visible:ring-offset-2",
                   disabled && "cursor-not-allowed opacity-50",
                 )}
-                aria-label={`Add ${item.label}`}
+                aria-label={`Añadir ${item.label}`}
               >
                 <span className="block aspect-video w-full overflow-hidden bg-[#F7F7FA] transition-[box-shadow,transform] duration-150 group-hover:-translate-y-0.5 group-hover:shadow-[0_8px_20px_rgba(67,56,202,0.10)]">
                   <InsertPalettePreview
@@ -829,17 +829,17 @@ function ChartsPanel({
               aria-hidden
             />
             <p className="mt-2 text-[12px] font-medium text-[#52525B]">
-              No matching charts
+              No hay gráficos que coincidan
             </p>
             <p className="mt-1 text-[11px] leading-4 text-[#A1A1AA]">
-              Try a different name or keyword.
+              Prueba con otro nombre o palabra clave.
             </p>
             <button
               type="button"
               onClick={() => setQuery("")}
               className="mt-3 rounded-[7px] bg-[#FFFADC] px-3 py-1.5 text-[11px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#FFFADC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
             >
-              Clear search
+              Borrar búsqueda
             </button>
           </div>
         )}
@@ -861,7 +861,7 @@ function ImagesPanel({
     <div className="h-full overflow-y-auto bg-white hide-scrollbar">
       <div className="sticky top-0 z-20 bg-white/95 px-4 pb-[10px] pt-8 backdrop-blur-sm">
         <h3 className="font-['Syne'] text-[14px] font-normal leading-normal text-[#191919]">
-          Images
+          Imágenes
         </h3>
       </div>
 
@@ -900,7 +900,7 @@ function ImagesPanel({
                   group.cardClassName(item),
                   disabled && "cursor-not-allowed opacity-50",
                 )}
-                aria-label={`Add ${item.label}`}
+                aria-label={`Añadir ${item.label}`}
                 title={item.label}
               >
                 <span className="block h-full w-full overflow-hidden rounded-[inherit] bg-[#F6F6F9] ring-1 ring-inset ring-transparent transition-[box-shadow,transform] duration-150 group-hover:-translate-y-0.5 group-hover:shadow-[0_7px_18px_rgba(39,39,42,0.12)] group-hover:ring-[#FFED82] group-focus-visible:ring-2 group-focus-visible:ring-inset group-focus-visible:ring-[#0A0A0A]/40">
@@ -956,20 +956,20 @@ function ShapesPanel({
     <div className="h-full overflow-y-auto bg-white hide-scrollbar">
       <div className="sticky top-0 z-30 border-b border-[#F4F4F5] bg-white/95 px-[clamp(14px,1.4vw,20px)] pb-4 pt-5 backdrop-blur-sm">
         <label className="relative block">
-          <span className="sr-only">Search elements</span>
+          <span className="sr-only">Buscar elementos</span>
           <input
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search Elements..."
-            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#0A0A0A] [&::-webkit-search-cancel-button]:hidden"
+            placeholder="Buscar elementos..."
+            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#7A5AF8] [&::-webkit-search-cancel-button]:hidden"
           />
           {query ? (
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
-              aria-label="Clear element search"
+              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#F0EEFF] hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              aria-label="Borrar la búsqueda de elementos"
             >
               <X className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
             </button>
@@ -977,7 +977,7 @@ function ShapesPanel({
         </label>
 
         <h3 className="mt-7 text-[17px] font-medium leading-6 text-[#191919]">
-          Shapes
+          Formas
         </h3>
       </div>
 
@@ -1041,7 +1041,7 @@ function ShapesPanel({
                             disabled &&
                               "cursor-not-allowed opacity-50",
                           )}
-                          aria-label={`Add ${item.label}`}
+                          aria-label={`Añadir ${item.label}`}
                           title={item.label}
                         >
                           <span className="block aspect-video w-full overflow-hidden rounded-[inherit] transition-shadow group-hover:ring-1 group-hover:ring-inset group-hover:ring-[#FFED82] group-focus-visible:ring-2 group-focus-visible:ring-inset group-focus-visible:ring-[#0A0A0A]/40">
@@ -1068,17 +1068,17 @@ function ShapesPanel({
             aria-hidden
           />
           <p className="mt-2 text-[12px] font-medium text-[#52525B]">
-            No matching shapes
+            No hay formas que coincidan
           </p>
           <p className="mt-1 text-[11px] leading-4 text-[#A1A1AA]">
-            Try a different name or category.
+            Prueba con otro nombre o categoría.
           </p>
           <button
             type="button"
             onClick={() => setQuery("")}
             className="mt-3 rounded-[7px] bg-[#FFFADC] px-3 py-1.5 text-[11px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#FFFADC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
           >
-            Clear search
+            Borrar búsqueda
           </button>
         </div>
       )}
@@ -1109,20 +1109,20 @@ function InfographicsPanel({
     <div className="h-full overflow-y-auto bg-white hide-scrollbar">
       <div className="sticky top-0 z-20 border-b border-[#F4F4F5] bg-white/95 px-[clamp(14px,1.4vw,20px)] pb-4 pt-5 backdrop-blur-sm">
         <label className="relative block">
-          <span className="sr-only">Search infographics</span>
+          <span className="sr-only">Buscar infografías</span>
           <input
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search Infographics..."
-            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#0A0A0A] [&::-webkit-search-cancel-button]:hidden"
+            placeholder="Buscar infografías..."
+            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#7A5AF8] [&::-webkit-search-cancel-button]:hidden"
           />
           {query ? (
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
-              aria-label="Clear infographic search"
+              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#F0EEFF] hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              aria-label="Borrar la búsqueda de infografías"
             >
               <X className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
             </button>
@@ -1131,7 +1131,7 @@ function InfographicsPanel({
 
         <div className="mt-7 flex items-end justify-between gap-3">
           <h3 className="text-[17px] font-medium leading-6 text-[#191919]">
-            Infographics
+            Infografías
           </h3>
           <span className="text-[11px] tabular-nums text-[#A1A1AA]">
             {visibleItems.length}
@@ -1156,7 +1156,7 @@ function InfographicsPanel({
                   "group min-w-0 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40 focus-visible:ring-offset-2",
                   disabled && "cursor-not-allowed opacity-50",
                 )}
-                aria-label={`Add ${item.label}`}
+                aria-label={`Añadir ${item.label}`}
               >
                 <span className="block aspect-video w-full overflow-hidden bg-[#F7F7FA] transition-[box-shadow,transform] duration-150 group-hover:-translate-y-0.5 group-hover:shadow-[0_8px_20px_rgba(67,56,202,0.10)]">
                   <InsertPalettePreview
@@ -1179,17 +1179,17 @@ function InfographicsPanel({
               aria-hidden
             />
             <p className="mt-2 text-[12px] font-medium text-[#52525B]">
-              No matching infographics
+              No hay infografías que coincidan
             </p>
             <p className="mt-1 text-[11px] leading-4 text-[#A1A1AA]">
-              Try a different name or keyword.
+              Prueba con otro nombre o palabra clave.
             </p>
             <button
               type="button"
               onClick={() => setQuery("")}
               className="mt-3 rounded-[7px] bg-[#FFFADC] px-3 py-1.5 text-[11px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#FFFADC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
             >
-              Clear search
+              Borrar búsqueda
             </button>
           </div>
         )}
@@ -1263,7 +1263,7 @@ function templateBlockFromComponent(
   const title =
     readRecordString(raw, "name") ??
     readRecordString(raw, "title") ??
-    (id ? humanizeIdentifier(id) : `Component ${index + 1}`);
+    (id ? humanizeIdentifier(id) : `Componente ${index + 1}`);
   const description = readRecordString(raw, "description") ?? "";
   const elementCount = readRecordArray(raw, "elements").length;
   const keyBase = id ?? title;
@@ -1588,8 +1588,8 @@ function BlockVariantButton({
       onClick={() => {
         if (!disabled) onInsertBlock(block);
       }}
-      aria-label={`Insert ${block.title}`}
-      title={`Add ${block.title}`}
+      aria-label={`Insertar ${block.title}`}
+      title={`Añadir ${block.title}`}
     >
       <div className="relative">
         <BlockThumbnail block={block} />
@@ -1637,11 +1637,11 @@ function BlockGroupCard({
           className="text-[#8B8B94] group-hover:text-[#0A0A0A]"
         />
         <span className="min-w-0 flex-1 truncate text-[13px] font-medium leading-5 text-[#191919]">
-          <span className="font-normal text-[#A1A1AA]">Blocks/ </span>
+          <span className="font-normal text-[#A1A1AA]">Bloques/ </span>
           {groupTitle || group.title}
         </span>
         <span className="shrink-0 text-[11px] font-normal tabular-nums text-[#A1A1AA]">
-          {variantCount} {variantCount === 1 ? "Layout" : "Layouts"}
+          {variantCount} {variantCount === 1 ? "diseño" : "diseños"}
         </span>
       </button>
 
@@ -1750,7 +1750,7 @@ export const BlocksPanel = ({
         if (cancelled) return;
         dispatchBlockState({
           type: "failed",
-          message: "Could not load template components.",
+          message: "No se han podido cargar los componentes de la plantilla.",
         });
         trackEvent(MixpanelEvent.Editor_Template_Blocks_Load_Failed, {
           presentation_id: presentationId,
@@ -1768,20 +1768,20 @@ export const BlocksPanel = ({
     <div className="h-full overflow-y-auto hide-scrollbar">
       <div className="sticky top-0 z-20 border-b border-[#F4F4F5] bg-white/95 px-[clamp(14px,1.4vw,20px)] pb-4 pt-5 backdrop-blur-sm">
         <label className="relative block">
-          <span className="sr-only">Search blocks</span>
+          <span className="sr-only">Buscar bloques</span>
           <input
             type="search"
             value={blockPrompt}
             onChange={(event) => setBlockPrompt(event.target.value)}
-            placeholder="Search Blocks..."
-            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#0A0A0A] [&::-webkit-search-cancel-button]:hidden"
+            placeholder="Buscar bloques..."
+            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#7A5AF8] [&::-webkit-search-cancel-button]:hidden"
           />
           {blockPrompt ? (
             <button
               type="button"
               onClick={() => setBlockPrompt("")}
-              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
-              aria-label="Clear block search"
+              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#F0EEFF] hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              aria-label="Borrar la búsqueda de bloques"
             >
               <X className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
             </button>
@@ -1790,12 +1790,12 @@ export const BlocksPanel = ({
 
         <div className="mt-5 flex items-end justify-between gap-3">
           <h3 className="text-[15px] font-semibold leading-5 text-[#101323]">
-            Blocks
+            Bloques
           </h3>
           {!loading && !error ? (
             <span className="text-[11px] tabular-nums text-[#A1A1AA]">
               {visibleLayoutCount}{" "}
-              {visibleLayoutCount === 1 ? "Layout" : "Layouts"}
+              {visibleLayoutCount === 1 ? "diseño" : "diseños"}
             </span>
           ) : null}
         </div>
@@ -1803,7 +1803,7 @@ export const BlocksPanel = ({
 
       <div className="px-[clamp(14px,1.4vw,20px)] pb-[clamp(24px,2.2vw,32px)] pt-2">
         {loading && (
-          <div className="space-y-4 py-2" aria-label="Loading block layouts">
+          <div className="space-y-4 py-2" aria-label="Cargando diseños de bloques">
             {[0, 1, 2].map((item) => (
               <div key={item} className="animate-pulse">
                 <div className="mb-3 flex items-center gap-2">
@@ -1823,14 +1823,14 @@ export const BlocksPanel = ({
           <div className="mt-4 rounded-[10px] border border-[#FEE4E2] bg-[#FFFBFA] p-4 text-center">
             <p className="text-[12px] font-medium text-[#B42318]">{error}</p>
             <p className="mt-1 text-[11px] leading-4 text-[#667085]">
-              Check your connection and try loading the layouts again.
+              Comprueba tu conexión e intenta cargar los diseños de nuevo.
             </p>
             <button
               type="button"
               onClick={() => setLoadAttempt((current) => current + 1)}
               className="mt-3 rounded-[7px] bg-[#FEF3F2] px-3 py-1.5 text-[11px] font-medium text-[#B42318] transition-colors hover:bg-[#FEE4E2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FDA29B]/50"
             >
-              Try again
+              Reintentar
             </button>
           </div>
         )}
@@ -1838,12 +1838,12 @@ export const BlocksPanel = ({
           <div className="mt-4 rounded-[10px] border border-dashed border-[#D4D4D8] bg-[#FAFAFA] px-4 py-8 text-center">
             <Search className="mx-auto h-5 w-5 text-[#A1A1AA]" strokeWidth={1.7} aria-hidden />
             <p className="mt-2 text-[12px] font-medium text-[#52525B]">
-              {searchActive ? "No matching blocks" : "No blocks available"}
+              {searchActive ? "No hay bloques que coincidan" : "No hay bloques disponibles"}
             </p>
             <p className="mt-1 text-[11px] leading-4 text-[#A1A1AA]">
               {searchActive
-                ? "Try a different title or keyword."
-                : "This template does not include reusable blocks."}
+                ? "Prueba con otro título o palabra clave."
+                : "Esta plantilla no incluye bloques reutilizables."}
             </p>
             {searchActive ? (
               <button
@@ -1851,7 +1851,7 @@ export const BlocksPanel = ({
                 onClick={() => setBlockPrompt("")}
                 className="mt-3 rounded-[7px] bg-[#FFFADC] px-3 py-1.5 text-[11px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#FFFADC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
               >
-                Clear search
+                Borrar búsqueda
               </button>
             ) : null}
           </div>
@@ -2059,8 +2059,8 @@ function ActionsPanel({
         {!aiOnly && activeAction === "tables" && (
           <InsertPanel
             disabled={editingDisabled}
-            title="Tables"
-            groups={[{ label: "Table Type", items: tableTypeItems }]}
+            title="Tablas"
+            groups={[{ label: "Tipo de tabla", items: tableTypeItems }]}
             onItemSelect={onTableItemSelect}
             previewKind="table"
             theme={templateTheme}
@@ -2231,7 +2231,7 @@ const PresentationActions = (props: PresentationActionsProps) => {
     if (editingDisabled) return false;
     if (typeof window === "undefined") return false;
     if (typeof props.currentSlide !== "number") {
-      notify.warning("Select a slide", "Choose a slide before adding content.");
+      notify.warning("Selecciona una diapositiva", "Elige una diapositiva antes de añadir contenido.");
       return false;
     }
     if (
@@ -2253,8 +2253,8 @@ const PresentationActions = (props: PresentationActionsProps) => {
 
     if (!detail.handled) {
       notify.warning(
-        "Insert unavailable",
-        "Content can be added only to slides imported through the slide editor.",
+        "No se puede insertar",
+        "Solo se puede añadir contenido a diapositivas importadas con el editor de diapositivas.",
       );
       return false;
     }
@@ -2396,8 +2396,8 @@ const PresentationActions = (props: PresentationActionsProps) => {
     const element = adaptTemplateV2ComponentToElement(block.raw, block.index);
     if (!element) {
       notify.warning(
-        "Component unavailable",
-        "This template component cannot be inserted yet.",
+        "Componente no disponible",
+        "Este componente de la plantilla todavía no se puede insertar.",
       );
       return;
     }

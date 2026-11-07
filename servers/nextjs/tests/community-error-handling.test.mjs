@@ -92,7 +92,7 @@ test("Community requests turn browser network failures into actionable errors", 
       communityErrors.CommunityPresentationApi.list(),
       (error) => {
         assert.ok(error instanceof communityErrors.ApiResponseError);
-        assert.match(error.message, /Could not reach the Fast Track Presentaciones server/);
+        assert.match(error.message, /No se ha podido conectar con el servidor de Presenton/);
         assert.equal(error.code, "community_backend_unreachable");
         assert.equal(error.retryable, true);
         return true;

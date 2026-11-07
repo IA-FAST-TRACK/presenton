@@ -29,15 +29,15 @@ const DashboardNav = () => {
                     {activeTab !== "playground" && activeTab !== "theme" && <Link
                         href="/generate"
                         className="group motion-press inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-black text-sm font-medium shadow-sm hover:shadow-md"
-                        aria-label="Create new presentation"
+                        aria-label="Crear nueva presentación"
                         style={{
                             borderRadius: "48px",
                             background: "linear-gradient(270deg, #FFDB05 0%, #FFE45C 100%)",
                         }}
                     >
 
-                        <span className="hidden md:inline">New presentation</span>
-                        <span className="md:hidden">New</span>
+                        <span className="hidden md:inline">Nueva presentación</span>
+                        <span className="md:hidden">Nueva</span>
                         <ChevronRight className="motion-arrow w-4 h-4" />
                     </Link>}
                     

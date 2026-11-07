@@ -16,7 +16,7 @@ export async function copyTextToClipboard(text: string): Promise<void> {
     typeof document === "undefined" ||
     typeof document.execCommand !== "function"
   ) {
-    throw new Error("Clipboard access is not available in this browser.");
+    throw new Error("El acceso al portapapeles no está disponible en este navegador.");
   }
 
   const textArea = document.createElement("textarea");
@@ -41,6 +41,6 @@ export async function copyTextToClipboard(text: string): Promise<void> {
   }
 
   if (!copied) {
-    throw new Error("Clipboard access is not available in this browser.");
+    throw new Error("El acceso al portapapeles no está disponible en este navegador.");
   }
 }

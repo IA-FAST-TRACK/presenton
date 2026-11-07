@@ -129,13 +129,13 @@ async def _generate_and_export_smart_presentation(
     if not completed:
         raise HTTPException(
             status_code=500,
-            detail=stream_error or "Smart generation did not complete",
+            detail=stream_error or "La generación Smart no se ha completado",
         )
 
     await sql_session.rollback()
     presentation = await sql_session.get(PresentationModel, presentation.id)
     if presentation is None:
-        raise HTTPException(status_code=404, detail="Presentation not found")
+        raise HTTPException(status_code=404, detail="Presentación no encontrada")
     exported = await export_presentation(
         presentation.id,
         presentation.title or str(presentation.id),
@@ -212,11 +212,11 @@ async def run_generate_smart_presentation_task(
                     if isinstance(exc, HTTPException)
                     else HTTPException(
                         status_code=500,
-                        detail="Smart presentation generation failed",
+                        detail="Error al generar la presentación Smart",
                     )
                 )
                 task.status = AsyncTaskStatus.ERROR
-                task.message = "Smart presentation generation failed"
+                task.message = "Error al generar la presentación Smart"
                 task.error = api_error.model_dump(mode="json")
                 task.updated_at = datetime.now()
                 sql_session.add(task)
@@ -257,7 +257,7 @@ async def generate_smart_presentation_sync(
         LOGGER.exception("[presentation.generate.smart] generation failed")
         raise HTTPException(
             status_code=500,
-            detail="Smart presentation generation failed",
+            detail="Error al generar la presentación Smart",
         ) from exc
 
 

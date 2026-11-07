@@ -135,7 +135,7 @@ test("backend reachability turns an HTML frontend response into a clear connecti
       (error) => {
         assert.ok(error instanceof connectivity.BackendConnectionError);
         assert.doesNotMatch(error.message, /<!DOCTYPE|Unexpected token/);
-        assert.match(error.message, /FastAPI backend/i);
+        assert.match(error.message, /backend de FastAPI/i);
         return true;
       },
     );

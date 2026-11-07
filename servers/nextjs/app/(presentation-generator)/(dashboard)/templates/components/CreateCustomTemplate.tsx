@@ -31,8 +31,8 @@ const CreateCustomTemplate = ({
           <button type="button" onClick={handleOpenTemplateBuilder} className="relative flex h-full min-h-[268px] w-full items-center justify-center overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A0A0A]">
             <TemplateLibraryPattern />
             <span className="relative flex flex-col items-center gap-2.5 p-2.5">
-              <span className="flex items-center justify-center rounded-full bg-[#FFDB05] p-1"><Plus aria-hidden="true" className="h-3.5 w-3.5 text-[#0A0A0A]" /></span>
-              <span className="font-manrope text-sm font-semibold leading-[19px] tracking-[0.14px] text-[#191919]">Create New Template</span>
+              <span className="flex items-center justify-center rounded-full bg-[#7A5AF8] p-1"><Plus aria-hidden="true" className="h-3.5 w-3.5 text-white" /></span>
+              <span className="font-manrope text-sm font-semibold leading-[19px] tracking-[0.14px] text-[#191919]">Crear nueva plantilla</span>
             </span>
           </button>
         </Card>
@@ -114,7 +114,7 @@ const CreateCustomTemplate = ({
                 </div>
                 <div className="flex min-w-0 flex-col gap-1">
                     <h4 className="text-sm font-semibold tracking-[0.14px] text-[#191919]">
-                      {selectionPage ? "Build Templates" : "Build Template"}
+                      {selectionPage ? "Crear plantillas" : "Crear plantilla"}
                     </h4>
                     <p
                       className={cn(
@@ -125,8 +125,8 @@ const CreateCustomTemplate = ({
                       )}
                     >
                       {selectionPage
-                        ? "Build Your Template"
-                        : "Build Your Own Template"}
+                        ? "Crea tu plantilla"
+                        : "Crea tu propia plantilla"}
                     </p>
                 </div>
             </div>

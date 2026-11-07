@@ -11,9 +11,9 @@ export interface ApiErrorMetadata {
 }
 
 const INVALID_API_KEY_MESSAGE =
-  "Invalid API key. Please verify your API key and try again.";
+  "Clave de API no válida. Comprueba tu clave de API e inténtalo de nuevo.";
 const SAFETY_BLOCK_MESSAGE =
-  "The request was blocked by the provider's safety system. Please revise it and try again.";
+  "El sistema de seguridad del proveedor ha bloqueado la solicitud. Revísala e inténtalo de nuevo.";
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -135,21 +135,21 @@ function looksLikeRawPayload(message: string): boolean {
 
 export function statusErrorMessage(status: number, fallback: string): string {
   switch (status) {
-    case 400: return "Please check your input and try again.";
-    case 401: return "Your session has expired. Please sign in again.";
-    case 403: return "You do not have permission to perform this action. Contact your administrator if you need access.";
-    case 404: return "The requested item was not found. It may have been deleted or moved.";
-    case 409: return "This item has changed or already exists. Refresh and try again.";
-    case 413: return "This request is too large. Try a smaller file or request.";
-    case 415: return "This file or request format is not supported.";
-    case 422: return "Please check the highlighted fields and try again.";
-    case 428: return "This installation needs initial setup. Ask an administrator to complete setup.";
-    case 429: return "Too many requests. Please wait a moment and try again.";
-    case 500: return "The server could not complete this request. Please try again.";
-    case 502: return "Fast Track Presentaciones received an invalid response from a service. Please try again shortly.";
-    case 503: return "The service is temporarily unavailable. Please try again shortly.";
+    case 400: return "Revisa los datos introducidos e inténtalo de nuevo.";
+    case 401: return "Tu sesión ha caducado. Vuelve a iniciar sesión.";
+    case 403: return "No tienes permiso para realizar esta acción. Ponte en contacto con tu administrador si necesitas acceso.";
+    case 404: return "No se ha encontrado el elemento solicitado. Es posible que se haya eliminado o movido.";
+    case 409: return "Este elemento ha cambiado o ya existe. Actualiza la página e inténtalo de nuevo.";
+    case 413: return "La solicitud es demasiado grande. Prueba con un archivo o una solicitud más pequeños.";
+    case 415: return "El formato de este archivo o solicitud no es compatible.";
+    case 422: return "Revisa los campos resaltados e inténtalo de nuevo.";
+    case 428: return "Esta instalación necesita una configuración inicial. Pide a un administrador que la complete.";
+    case 429: return "Demasiadas solicitudes. Espera un momento e inténtalo de nuevo.";
+    case 500: return "El servidor no ha podido completar la solicitud. Inténtalo de nuevo.";
+    case 502: return "Presenton ha recibido una respuesta no válida de un servicio. Inténtalo de nuevo en unos instantes.";
+    case 503: return "El servicio no está disponible temporalmente. Inténtalo de nuevo en unos instantes.";
     case 408:
-    case 504: return "The request took too long to complete. Please try again.";
+    case 504: return "La solicitud ha tardado demasiado en completarse. Inténtalo de nuevo.";
     default: return fallback;
   }
 }

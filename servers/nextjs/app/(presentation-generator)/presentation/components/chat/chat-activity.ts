@@ -2,27 +2,27 @@ import type { ChatStreamTrace } from "../../../services/api/chat";
 import type { AssistantActivity } from "./chat-types";
 
 const TOOL_LABELS: Record<string, string> = {
-  addOutline: "Outline adder",
-  updateOutline: "Outline editor",
-  deleteOutline: "Outline remover",
-  addNewSlide: "Blank slide adder",
-  addNewSlideLayout: "Layout slide adder",
-  getAvailableLayouts: "Layout finder",
-  getTemplateSummary: "Template reader",
-  readSourceDocuments: "Source document reader",
-  searchSlide: "Slide search",
-  getSlideAtIndex: "Slide reader",
-  saveSlide: "Slide saver",
-  updateSlide: "Slide updater",
-  deleteSlide: "Slide remover",
-  addElement: "Element adder",
-  updateElement: "Element updater",
-  deleteElement: "Element remover",
-  addComponent: "Component adder",
-  createComponent: "Component creator",
-  updateComponent: "Component updater",
-  deleteComponent: "Component remover",
-  generateAssets: "Asset generator",
+  addOutline: "Añadir al esquema",
+  updateOutline: "Editar el esquema",
+  deleteOutline: "Eliminar del esquema",
+  addNewSlide: "Añadir diapositiva en blanco",
+  addNewSlideLayout: "Añadir diapositiva con diseño",
+  getAvailableLayouts: "Buscar diseños",
+  getTemplateSummary: "Leer la plantilla",
+  readSourceDocuments: "Leer documentos de origen",
+  searchSlide: "Buscar diapositivas",
+  getSlideAtIndex: "Leer la diapositiva",
+  saveSlide: "Guardar la diapositiva",
+  updateSlide: "Actualizar la diapositiva",
+  deleteSlide: "Eliminar la diapositiva",
+  addElement: "Añadir elemento",
+  updateElement: "Actualizar elemento",
+  deleteElement: "Eliminar elemento",
+  addComponent: "Añadir componente",
+  createComponent: "Crear componente",
+  updateComponent: "Actualizar componente",
+  deleteComponent: "Eliminar componente",
+  generateAssets: "Generar recursos",
 };
 
 export const MUTATING_TOOLS = new Set([
@@ -73,29 +73,29 @@ const humanizeTraceMessage = (message: string, tool?: string) => {
 
   const lower = trimmed.toLowerCase();
   const exactMessages: Record<string, string> = {
-    "reading deck context": "Reviewing your presentation context.",
-    "reading the presentation outline": "Reading the presentation outline.",
-    "reading the outline draft": "Reading the outline draft.",
-    "adding an outline slide": "Adding an outline slide.",
-    "updating the outline slide": "Updating the outline slide.",
-    "deleting the outline slide": "Deleting the outline slide.",
-    "reordering outline slides": "Reordering outline slides.",
-    "searching relevant slides": "Searching slides for relevant content.",
-    "opening the requested slide": "Opening the selected slide.",
-    "checking available layouts": "Checking available layouts.",
-    "checking the layout schema": "Validating the slide schema.",
-    "generating slide assets": "Generating images and icons.",
-    "saving the slide": "Saving slide updates.",
-    "deleting the slide": "Deleting the slide.",
-    "applying presentation theme": "Applying the selected theme.",
-    "reading template structure": "Reading the template structure.",
-    "reading source documents": "Reading the source documents.",
-    "opening the requested template slide": "Opening the selected template slide.",
-    "searching template content": "Searching template content.",
-    "finding editable elements": "Finding editable elements.",
-    "updating template content": "Updating template content.",
-    "deleting the template component": "Deleting the selected component.",
-    "swapping component variant": "Swapping the component variant.",
+    "reading deck context": "Revisando el contexto de tu presentación.",
+    "reading the presentation outline": "Leyendo el esquema de la presentación.",
+    "reading the outline draft": "Leyendo el borrador del esquema.",
+    "adding an outline slide": "Añadiendo una diapositiva al esquema.",
+    "updating the outline slide": "Actualizando la diapositiva del esquema.",
+    "deleting the outline slide": "Eliminando la diapositiva del esquema.",
+    "reordering outline slides": "Reordenando las diapositivas del esquema.",
+    "searching relevant slides": "Buscando contenido relevante en las diapositivas.",
+    "opening the requested slide": "Abriendo la diapositiva seleccionada.",
+    "checking available layouts": "Comprobando los diseños disponibles.",
+    "checking the layout schema": "Validando el esquema de la diapositiva.",
+    "generating slide assets": "Generando imágenes e iconos.",
+    "saving the slide": "Guardando los cambios de la diapositiva.",
+    "deleting the slide": "Eliminando la diapositiva.",
+    "applying presentation theme": "Aplicando el tema seleccionado.",
+    "reading template structure": "Leyendo la estructura de la plantilla.",
+    "reading source documents": "Leyendo los documentos de origen.",
+    "opening the requested template slide": "Abriendo la diapositiva de plantilla seleccionada.",
+    "searching template content": "Buscando en el contenido de la plantilla.",
+    "finding editable elements": "Buscando elementos editables.",
+    "updating template content": "Actualizando el contenido de la plantilla.",
+    "deleting the template component": "Eliminando el componente seleccionado.",
+    "swapping component variant": "Cambiando la variante del componente.",
   };
   if (exactMessages[lower]) return exactMessages[lower];
 
@@ -107,13 +107,13 @@ const humanizeTraceMessage = (message: string, tool?: string) => {
       .filter(Boolean)
       .map((entry) => getToolLabel(entry));
     return toolNames.length === 0
-      ? "Planning the next step."
-      : "Choosing the best way to help.";
+      ? "Planificando el siguiente paso."
+      : "Eligiendo la mejor forma de ayudarte.";
   }
   if (lower.includes("found requested data")) {
     return tool === "getSlideAtIndex"
-      ? "Found the requested slide details."
-      : "Found the requested information.";
+      ? "Se han encontrado los detalles de la diapositiva solicitada."
+      : "Se ha encontrado la información solicitada.";
   }
   return trimmed;
 };
@@ -164,10 +164,10 @@ const humanActivityForTool = (
   switch (tool) {
     case "searchSlide":
       return isDone
-        ? "Found the relevant content."
-        : "Looking through the content.";
+        ? "Se ha encontrado el contenido relevante."
+        : "Revisando el contenido.";
     case "getSlideAtIndex":
-      return isDone ? "Checked the slide." : "Checking the slide.";
+      return isDone ? "Diapositiva revisada." : "Revisando la diapositiva.";
     case "addNewSlide":
     case "addNewSlideLayout":
     case "updateElement":
@@ -177,19 +177,19 @@ const humanActivityForTool = (
     case "createComponent":
     case "updateSlide":
     case "saveSlide":
-      return isDone ? "Applied the change." : "Applying the change.";
+      return isDone ? "Cambio aplicado." : "Aplicando el cambio.";
     case "deleteComponent":
     case "deleteElement":
     case "deleteSlide":
       return isDone
-        ? "Removed the selected item."
-        : "Removing the selected item.";
+        ? "Elemento seleccionado eliminado."
+        : "Eliminando el elemento seleccionado.";
     case "generateAssets":
       return isDone
-        ? "Prepared the visual assets."
-        : "Preparing visual assets.";
+        ? "Recursos visuales preparados."
+        : "Preparando los recursos visuales.";
     default:
-      return isDone ? "Finished that step." : "Working on it.";
+      return isDone ? "Paso completado." : "Trabajando en ello.";
   }
 };
 
@@ -232,7 +232,7 @@ export const formatTraceActivity = (
   }
   if (trace.tool && trace.status === "error") {
     return {
-      label: "I could not finish that step.",
+      label: "No he podido completar ese paso.",
       kind: trace.kind,
       round: trace.round,
       tool: trace.tool,
@@ -241,7 +241,7 @@ export const formatTraceActivity = (
   }
   if (trace.kind === "tool_plan" && Array.isArray(trace.tools) && trace.tools.length) {
     return {
-      label: "Planning the next step.",
+      label: "Planificando el siguiente paso.",
       kind: trace.kind,
       round: trace.round,
       state: "info",

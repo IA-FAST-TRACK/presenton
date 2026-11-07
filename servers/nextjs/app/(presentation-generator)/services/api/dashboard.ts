@@ -60,7 +60,7 @@ export class DashboardApi {
         return [];
       }
 
-      return await ApiResponseHandler.handleResponse(response, "Failed to fetch presentations");
+      return await ApiResponseHandler.handleResponse(response, "No se han podido obtener las presentaciones");
     } catch (error) {
       console.error("Error fetching presentations:", error);
       throw error;
@@ -81,7 +81,7 @@ export class DashboardApi {
         }
       );
 
-      return await ApiResponseHandler.handleResponse(response, "Presentation not found");
+      return await ApiResponseHandler.handleResponse(response, "No se ha encontrado la presentación");
     } catch (error) {
       console.error("Error fetching presentation:", error);
       throw error;
@@ -98,12 +98,12 @@ export class DashboardApi {
         }
       );
 
-      return await ApiResponseHandler.handleResponseWithResult(response, "Failed to delete presentation");
+      return await ApiResponseHandler.handleResponseWithResult(response, "No se ha podido eliminar la presentación");
     } catch (error) {
       console.error("Error deleting presentation:", error);
       return {
         success: false,
-        message: error instanceof Error ? error.message : "Failed to delete presentation",
+        message: error instanceof Error ? error.message : "No se ha podido eliminar la presentación",
       };
     }
   }
@@ -118,7 +118,7 @@ export class DashboardApi {
         }
       );
 
-      return await ApiResponseHandler.handleResponse(response, "Failed to duplicate presentation");
+      return await ApiResponseHandler.handleResponse(response, "No se ha podido duplicar la presentación");
     } catch (error) {
       console.error("Error duplicating presentation:", error);
       throw error;

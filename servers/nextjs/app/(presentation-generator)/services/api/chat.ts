@@ -120,13 +120,13 @@ async function streamChatMessage(
   if (!response.ok) {
     await ApiResponseHandler.handleResponse(
       response,
-      "Failed to stream chat message"
+      "No se ha podido transmitir el mensaje del chat"
     );
-    throw new Error("Failed to stream chat message");
+    throw new Error("No se ha podido transmitir el mensaje del chat");
   }
 
   if (!response.body) {
-    throw new ApiResponseError("The AI editor returned an empty response. Please try again.", { status: 502, code: "invalid_response", retryable: true });
+    throw new ApiResponseError("El editor con IA ha devuelto una respuesta vacía. Inténtalo de nuevo.", { status: 502, code: "invalid_response", retryable: true });
   }
 
   const reader = response.body.getReader();
@@ -161,10 +161,10 @@ async function streamChatMessage(
     try {
       parsedData = JSON.parse(dataLines.join("\n")) as ChatStreamData;
     } catch {
-      throw new ApiResponseError("The AI editor returned an invalid response. Refresh to check saved changes before trying again.", { status: 502, code: "invalid_response", retryable: false });
+      throw new ApiResponseError("El editor con IA ha devuelto una respuesta no válida. Actualiza la página para comprobar los cambios guardados antes de volver a intentarlo.", { status: 502, code: "invalid_response", retryable: false });
     }
     if (!parsedData || typeof parsedData !== "object") {
-      throw new ApiResponseError("The AI editor returned an invalid response. Please try again.", { status: 502, code: "invalid_response", retryable: false });
+      throw new ApiResponseError("El editor con IA ha devuelto una respuesta no válida. Inténtalo de nuevo.", { status: 502, code: "invalid_response", retryable: false });
     }
 
     const payloadType = parsedData.type;
@@ -207,7 +207,7 @@ async function streamChatMessage(
     if (payloadType === "error") {
       const status = typeof parsedData.status_code === "number" ? parsedData.status_code : 500;
       const metadata = extractApiErrorMetadata(parsedData, status);
-      const message = extractApiErrorMessage(parsedData, "The AI editor could not complete this request. Please try again.", status);
+      const message = extractApiErrorMessage(parsedData, "El editor con IA no ha podido completar esta solicitud. Inténtalo de nuevo.", status);
       if (isChatGptAuthRequiredMessage(message)) {
         const authMessage = normalizeChatGptAuthMessage(message);
         requestChatGptReauth({
@@ -322,10 +322,10 @@ async function streamChatMessage(
       return finalResponse;
     }
 
-    throw new ApiResponseError("The connection ended before the AI editor finished. Refresh to check saved changes before trying again.", { status: 0, code: "stream_interrupted", retryable: false });
+    throw new ApiResponseError("La conexión se ha cerrado antes de que el editor con IA terminara. Actualiza la página para comprobar los cambios guardados antes de volver a intentarlo.", { status: 0, code: "stream_interrupted", retryable: false });
   } catch (error) {
     if (error instanceof ApiResponseError || options?.signal?.aborted || (error instanceof Error && error.name === "AbortError")) throw error;
-    throw new ApiResponseError("The connection to the AI editor was interrupted. Refresh to check saved changes before trying again.", { status: 0, code: "stream_interrupted", retryable: false });
+    throw new ApiResponseError("Se ha interrumpido la conexión con el editor con IA. Actualiza la página para comprobar los cambios guardados antes de volver a intentarlo.", { status: 0, code: "stream_interrupted", retryable: false });
   } finally {
     try { await reader.cancel(); } catch { /* Transport may already be closed. */ }
     reader.releaseLock();
@@ -348,7 +348,7 @@ export class PresentationChatApi {
     });
     return await ApiResponseHandler.handleResponse(
       response,
-      "Failed to list chat conversations"
+      "No se han podido obtener las conversaciones del chat"
     );
   }
 
@@ -367,7 +367,7 @@ export class PresentationChatApi {
     });
     return await ApiResponseHandler.handleResponse(
       response,
-      "Failed to load chat history"
+      "No se ha podido cargar el historial del chat"
     );
   }
 
@@ -389,7 +389,7 @@ export class PresentationChatApi {
     });
     await ApiResponseHandler.handleResponse(
       response,
-      "Failed to delete chat conversation"
+      "No se ha podido eliminar la conversación del chat"
     );
   }
 
@@ -405,7 +405,7 @@ export class PresentationChatApi {
 
     return await ApiResponseHandler.handleResponse(
       response,
-      "Failed to send chat message"
+      "No se ha podido enviar el mensaje del chat"
     );
   }
 

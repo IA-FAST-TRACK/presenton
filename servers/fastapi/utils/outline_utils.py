@@ -20,7 +20,7 @@ def get_presentation_title_from_presentation_outline(
     presentation_outline: PresentationOutlineModel,
 ) -> str:
     if not presentation_outline.slides:
-        return "Untitled Presentation"
+        return "Presentación sin título"
 
     first_content = presentation_outline.slides[0].content or ""
 

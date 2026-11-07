@@ -3886,7 +3886,7 @@ function renderTextRunHtml(run: JsonRecord, font: JsonRecord): string {
   const displayMode = readBoolean(run.display_mode ?? run.displayMode) ?? false;
   const display = displayMode ? "block" : "inline-block";
   return `<span class="presenton-math" data-presenton-math="true" data-screenshot="true" data-screenshot-include-children="true" aria-label="${escapeAttribute(
-    `Mathematical expression: ${latex}`,
+    `Expresión matemática: ${latex}`,
   )}" style="${fontStyle(
     font,
     { includeLineHeight: false },

@@ -67,14 +67,14 @@ def _get_ollama_url(ollama_url: str | None = None) -> str:
         _ = parsed.port
         resolved_url = str(URL(value)).rstrip("/")
     except (ValueError, UnicodeError) as error:
-        raise HTTPException(status_code=400, detail="Invalid Ollama URL") from error
+        raise HTTPException(status_code=400, detail="URL de Ollama no válida") from error
     if not re.fullmatch(
         r"https?://(?:[A-Za-z0-9._~!$&'()*+,;=:%-]+@)?"
         r"(?:[A-Za-z0-9._~-]+|\[[0-9A-Fa-f:.]+(?:%[A-Za-z0-9._~-]+)?\])"
         r"(?::[0-9]+)?(?:/[A-Za-z0-9._~!$&'()*+,;=:@%/-]*)?",
         resolved_url,
     ):
-        raise HTTPException(status_code=400, detail="Invalid Ollama URL")
+        raise HTTPException(status_code=400, detail="URL de Ollama no válida")
     return resolved_url.rstrip("/")
 
 
@@ -83,9 +83,9 @@ def _ollama_unreachable_error(ollama_url: str | None = None) -> HTTPException:
     return HTTPException(
         status_code=503,
         detail=(
-            f"Could not connect to Ollama at {resolved_ollama_url}. "
-            "Make sure Ollama is running and reachable from Presenton. "
-            "When Presenton runs in Docker, use host.docker.internal instead of localhost."
+            f"No se ha podido conectar con Ollama en {resolved_ollama_url}. "
+            "Asegúrate de que Ollama esté en ejecución y sea accesible desde Presenton. "
+            "Si Presenton se ejecuta en Docker, usa host.docker.internal en lugar de localhost."
         ),
     )
 
@@ -121,7 +121,7 @@ async def list_available_ollama_models(
                 if 300 <= response.status < 400:
                     raise HTTPException(
                         status_code=502,
-                        detail="Ollama redirects are not allowed; configure the final API URL",
+                        detail="No se permiten redirecciones de Ollama; configura la URL final de la API",
                     )
                 if response.status == 200:
                     pulled_models = await response.json(content_type=None)
@@ -133,7 +133,7 @@ async def list_available_ollama_models(
                     if not isinstance(models, list):
                         raise HTTPException(
                             status_code=502,
-                            detail="Ollama returned an invalid models response",
+                            detail="Ollama ha devuelto una respuesta de modelos no válida",
                         )
                     return [
                         OllamaModelStatus(
@@ -154,12 +154,12 @@ async def list_available_ollama_models(
                 elif response.status == 403:
                     raise HTTPException(
                         status_code=403,
-                        detail="Forbidden: Please check your Ollama Configuration",
+                        detail="Prohibido: revisa la configuración de Ollama",
                     )
                 else:
                     raise HTTPException(
                         status_code=response.status,
-                        detail=f"Failed to list Ollama models: {response.status}",
+                        detail=f"No se han podido listar los modelos de Ollama: {response.status}",
                     )
     except HTTPException:
         raise
@@ -186,7 +186,7 @@ async def pull_ollama_model(
                 allow_redirects=False,
             ) as response:
                 if 300 <= response.status < 400:
-                    detail = "Ollama redirects are not allowed; configure the final API URL"
+                    detail = "No se permiten redirecciones de Ollama; configura la URL final de la API"
                     yield f"event: error\ndata: {json.dumps({'detail': detail})}\n\n"
                     return
                 if response.status != 200:

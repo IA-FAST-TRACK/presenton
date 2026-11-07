@@ -69,7 +69,7 @@ async def create_api_key(
 ):
     target = await session.get(User, body.user_id)
     if target is None or not target.is_active:
-        raise HTTPException(status_code=404, detail="Active user not found")
+        raise HTTPException(status_code=404, detail="Usuario activo no encontrado")
     api_key, token = await issue_api_key(
         session,
         user_id=target.id,
@@ -94,14 +94,14 @@ async def get_api_key_token(
 ):
     api_key = await session.get(ApiKey, api_key_id)
     if api_key is None:
-        raise HTTPException(status_code=404, detail="API key not found")
+        raise HTTPException(status_code=404, detail="Clave API no encontrada")
     if api_key.revoked_at is not None:
-        raise HTTPException(status_code=410, detail="API key has been revoked")
+        raise HTTPException(status_code=410, detail="La clave API ha sido revocada")
     token = reveal_api_key(api_key)
     if token is None:
         raise HTTPException(
             status_code=409,
-            detail="This API key cannot be revealed",
+            detail="Esta clave API no se puede mostrar",
         )
     response.headers["Cache-Control"] = "no-store"
     response.headers["Pragma"] = "no-cache"
@@ -119,7 +119,7 @@ async def revoke_api_key(
 ):
     api_key = await session.get(ApiKey, api_key_id)
     if api_key is None:
-        raise HTTPException(status_code=404, detail="API key not found")
+        raise HTTPException(status_code=404, detail="Clave API no encontrada")
     if api_key.revoked_at is None:
         api_key.revoked_at = get_current_utc_datetime()
         session.add(api_key)
@@ -138,7 +138,7 @@ async def require_settings_admin(
     if user is None:
         raise HTTPException(status_code=401, detail="Unauthorized")
     if not user.is_superuser:
-        raise HTTPException(status_code=403, detail="Admin access required")
+        raise HTTPException(status_code=403, detail="Se requiere acceso de administrador")
 
 
 @API_V1_ADMIN_ROUTER.get("/provider-settings")
@@ -191,13 +191,13 @@ async def create_user(
     if len(username) < 3:
         raise HTTPException(
             status_code=422,
-            detail="Username must be at least 3 characters",
+            detail="El nombre de usuario debe tener al menos 3 caracteres",
         )
     exists = await session.scalar(
         select(User.id).where(func.lower(User.username) == username.casefold())
     )
     if exists:
-        raise HTTPException(status_code=409, detail="Username already exists")
+        raise HTTPException(status_code=409, detail="El nombre de usuario ya existe")
     user = User(
         username=username,
         hashed_password=PASSWORD_HELPER.hash(body.password),
@@ -221,11 +221,11 @@ async def reset_user_password(
 ):
     user = await session.get(User, user_id)
     if user is None:
-        raise HTTPException(status_code=404, detail="User not found")
+        raise HTTPException(status_code=404, detail="Usuario no encontrado")
     if user.id == admin.id or user.is_superuser:
         raise HTTPException(
             status_code=403,
-            detail="The primary administrator password is managed through deployment settings",
+            detail="La contraseña del administrador principal se gestiona desde la configuración del despliegue",
         )
     user.hashed_password = PASSWORD_HELPER.hash(body.password)
     user.auth_version += 1
@@ -241,11 +241,11 @@ async def delete_user(
 ):
     user = await session.get(User, user_id)
     if user is None:
-        raise HTTPException(status_code=404, detail="User not found")
+        raise HTTPException(status_code=404, detail="Usuario no encontrado")
     if user.id == admin.id or user.is_superuser:
         raise HTTPException(
             status_code=403,
-            detail="The primary administrator account cannot be deleted",
+            detail="La cuenta del administrador principal no se puede eliminar",
         )
     await session.delete(user)
     await session.commit()

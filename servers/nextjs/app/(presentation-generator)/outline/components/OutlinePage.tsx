@@ -44,7 +44,7 @@ import TemplateSelection from "./TemplateSelection";
 
 const DEFAULT_OUTLINE_CONFIG: PresentationConfig = {
   slides: null,
-  language: LanguageType.Auto,
+  language: LanguageType.Spanish,
   prompt: "",
   tone: ToneType.Default,
   verbosity: VerbosityType.Standard,
@@ -156,7 +156,7 @@ const OutlinePage: React.FC = () => {
   const outlineStreamFinished =
     !isTemplateStage &&
     !outlineControlsBusy &&
-    (outlines.length > 0 || streamState.statusMessage === "Outline ready");
+    (outlines.length > 0 || streamState.statusMessage === "Esquema listo");
 
   useEffect(() => {
     if (queryPresentationId && queryPresentationId !== storedPresentationId) {
@@ -226,7 +226,7 @@ const OutlinePage: React.FC = () => {
     }
 
     if (!hasSelectedTemplate) {
-      toast.error("Please select a template first");
+      toast.error("Selecciona primero una plantilla");
       return;
     }
 
@@ -235,17 +235,17 @@ const OutlinePage: React.FC = () => {
     }
 
     if (!draftConfig.language) {
-      toast.error("Please select language");
+      toast.error("Selecciona un idioma");
       return;
     }
 
     if (documentPaths.length > 0 && draftConfig.language === LanguageType.Auto) {
-      toast.error("Please choose a language before regenerating from documents");
+      toast.error("Elige un idioma antes de regenerar a partir de documentos");
       return;
     }
 
     if (!draftConfig.prompt.trim() && documentPaths.length === 0) {
-      toast.error("No Prompt or Document Provided");
+      toast.error("No se han proporcionado instrucciones ni documentos");
       return;
     }
 
@@ -302,11 +302,11 @@ const OutlinePage: React.FC = () => {
           "Failed to regenerate outline"
         ),
       });
-      toast.error("Outline Error", {
+      toast.error("Error en el esquema", {
         description:
           error instanceof Error
             ? error.message
-            : "Failed to regenerate outline.",
+            : "No se ha podido regenerar el esquema.",
       });
     } finally {
       setIsRegeneratingOutline(false);
@@ -366,7 +366,7 @@ const OutlinePage: React.FC = () => {
     return (
       <div className="min-h-screen bg-[#FEFEFF]">
         <OutlineStandardHeader
-          title="Outline Generation"
+          title="Generación del esquema"
           onBack={() => router.push("/dashboard")}
         />
         <EmptyStateView />
@@ -389,7 +389,7 @@ const OutlinePage: React.FC = () => {
       />
 
       <OutlineStandardHeader
-        title={isTemplateStage ? "Select Template" : "Outline Generation"}
+        title={isTemplateStage ? "Seleccionar plantilla" : "Generación del esquema"}
         onBack={() => {
           if (isTemplateStage) {
             router.push("/dashboard");
@@ -446,7 +446,7 @@ const OutlinePage: React.FC = () => {
             <aside className="mx-auto mb-28 mt-8 flex h-[600px] w-[calc(100%-2.5rem)] overflow-hidden border border-[#EDEEEF] bg-[#FEFEFF] sm:w-[calc(100%-5rem)] lg:fixed lg:bottom-0 lg:right-0 lg:top-[68px] lg:z-40 lg:mx-0 lg:mb-0 lg:mt-0 lg:h-auto lg:w-[369px] lg:border-0">
               <nav
                 className="flex w-[70px] shrink-0 flex-col items-center gap-5 px-1.5 py-2"
-                aria-label="Outline tools"
+                aria-label="Herramientas del esquema"
               >
                 <div className="flex w-full flex-col items-center rounded-[10px] bg-[#FFFADC]/60 py-7">
                   <div className="flex rounded-[10px] border border-[#EDEEEF] bg-white p-1.5 shadow-[0_6.6px_6.6px_rgba(255,219,5,0.14)]">
@@ -458,8 +458,8 @@ const OutlinePage: React.FC = () => {
                       className="h-[18px] w-[19px]"
                     />
                   </div>
-                  <span className="mt-1 text-xs font-normal text-[#0A0A0A]">
-                    AI
+                  <span className="mt-1 text-xs font-normal text-[#7A5AF8]">
+                    IA
                   </span>
                 </div>
                 <span

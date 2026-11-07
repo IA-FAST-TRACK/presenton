@@ -32,22 +32,22 @@ const COMPONENT_LAYER_ACTIONS: Array<{
 }> = [
   {
     action: "bring-to-front",
-    label: "Bring to Front",
+    label: "Traer al frente",
     shortcut: "Shift+Alt+K",
   },
   {
     action: "bring-forward",
-    label: "Bring Forward",
+    label: "Traer adelante",
     shortcut: "Alt+K",
   },
   {
     action: "send-backward",
-    label: "Send Backward",
+    label: "Enviar atrás",
     shortcut: "Alt+J",
   },
   {
     action: "send-to-back",
-    label: "Send Back",
+    label: "Enviar al fondo",
     shortcut: "Shift+Alt+J",
   },
 ];
@@ -70,8 +70,8 @@ export function ComponentActionsMenu({
       <DropdownMenuTrigger asChild>
         <button
           type="button"
-          title="More"
-          aria-label="More"
+          title="Más"
+          aria-label="Más"
           className={cn(
             "grid h-8 w-8 place-items-center rounded-[4px] border-0 bg-transparent font-manrope text-black hover:bg-[#F6F6F9]",
             menuOpen && "bg-[#F6F6F9]",
@@ -98,7 +98,7 @@ export function ComponentActionsMenu({
         <ComponentActionsMenuItem
           strong
           icon={Copy}
-          label="Duplicate"
+          label="Duplicar"
           onClick={actions.onDuplicate}
         />
         {COMPONENT_LAYER_ACTIONS.map(({ action, label, shortcut }) => {
@@ -121,7 +121,7 @@ export function ComponentActionsMenu({
         <ComponentActionsMenuItem
           strong
           icon={Trash2}
-          label="Delete Component"
+          label="Eliminar componente"
           onClick={actions.onDelete}
         />
       </DropdownMenuContent>
@@ -138,11 +138,11 @@ export function ComponentUngroupButton({
   return (
     <button
       type="button"
-      title="Ungroup"
+      title="Desagrupar"
       onClick={actions.onUngroup}
       className="inline-flex h-7 cursor-pointer items-center gap-1 rounded-[6px] px-2 font-manrope text-[14px] font-medium leading-4 text-[#191919] hover:bg-[#F6F6F9]"
     >
-      <span>Ungroup</span>
+      <span>Desagrupar</span>
     </button>
   );
 }

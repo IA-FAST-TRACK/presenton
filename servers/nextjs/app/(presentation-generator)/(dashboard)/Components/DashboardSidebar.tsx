@@ -9,16 +9,16 @@ import TemplateNavIcon from "./TemplateNavIcon";
 
 
 export const defaultNavItems = [
-    { key: "dashboard" as const, label: "Dashboard", icon: LayoutDashboard },
-    { key: "templates" as const, label: "Standard", icon: Star },
-    { key: "designs" as const, label: "Smart", icon: Brain },
-    { key: "community" as const, label: "Community", icon: UsersRound },
+    { key: "dashboard" as const, label: "Panel", icon: LayoutDashboard },
+    { key: "templates" as const, label: "Estándar", icon: Star },
+    { key: "designs" as const, label: "Inteligente", icon: Brain },
+    { key: "community" as const, label: "Comunidad", icon: UsersRound },
 
 
 
 ];
 export const BelongingNavItems = [
-    { key: "settings" as const, label: "Settings", icon: Settings },
+    { key: "settings" as const, label: "Ajustes", icon: Settings },
 
 ]
 
@@ -36,16 +36,16 @@ const DashboardSidebar = ({
     return (
         <aside
             className={`sticky top-0 flex h-screen w-[114px] shrink-0 flex-col justify-between border-r border-[#E1E1E5] bg-[#F6F6F9] px-4 py-8 backdrop-blur ${pathname === "/admin" ? "max-sm:w-[64px] max-sm:px-2 max-sm:[&_span]:hidden" : ""}`}
-            aria-label="Dashboard sidebar"
+            aria-label="Barra lateral del panel"
         >
             <div>
 
                 <Link href={`/dashboard`} className="flex items-center  pb-6 border-b border-[#E1E1E5]   gap-2    ">
-                    <div className="bg-[#0A0A0A] rounded-full cursor-pointer p-1 flex justify-center items-center mx-auto">
-                        <img src="/logo-with-bg.png" alt="AI Fast Track Presentaciones" className="h-[40px] object-contain w-full" />
+                    <div className="bg-[#7C51F8] rounded-full cursor-pointer p-1 flex justify-center items-center mx-auto">
+                        <img src="/logo-with-bg.png" alt="Logotipo de Presenton" className="h-[40px] object-contain w-full" />
                     </div>
                 </Link>
-                <nav className="pt-6 font-syne" aria-label="Dashboard sections">
+                <nav className="pt-6 font-syne" aria-label="Secciones del panel">
                     <div className="  space-y-6">
 
                         {/* Dashboard */}
@@ -56,11 +56,11 @@ const DashboardSidebar = ({
                                 "flex flex-col tex-center items-center gap-2  transition-colors",
                                 pathname === "/dashboard" ? "" : "ring-transparent",
                             ].join(" ")}
-                            aria-label="Dashboard"
-                            title="Dashboard"
+                            aria-label="Panel"
+                            title="Panel"
                         >
-                            <LayoutDashboard className={["h-4 w-4", pathname === "/dashboard" ? "text-[#0A0A0A]" : "text-slate-600"].join(" ")} />
-                            <span className="text-[11px] text-slate-800">Dashboard</span>
+                            <LayoutDashboard className={["h-4 w-4", pathname === "/dashboard" ? "text-[#5146E5]" : "text-slate-600"].join(" ")} />
+                            <span className="text-[11px] text-slate-800">Panel</span>
                         </Link>
                         {showTemplates ? 
                         // <Link
@@ -82,22 +82,22 @@ const DashboardSidebar = ({
               prefetch={false}
               href="/templates"
               className="flex flex-col text-center items-center gap-2 transition-colors"
-              aria-label="Standard templates"
-              title="Standard"
+              aria-label="Plantillas estándar"
+              title="Estándar"
             >
               <TemplateNavIcon active={pathname === "/templates"} />
-              <span className="text-[11px] text-slate-800">Templates</span>
+              <span className="text-[11px] text-slate-800">Plantillas</span>
             </Link>
                         : null}
                         {showCommunity ? <Link
                             prefetch={false}
                             href="/community"
                             className="flex flex-col items-center gap-2 text-center transition-colors"
-                            aria-label="Community"
-                            title="Community"
+                            aria-label="Comunidad"
+                            title="Comunidad"
                         >
-                            <UsersRound className={`h-4 w-4 ${pathname === "/community" ? "text-[#0A0A0A]" : "text-slate-600"}`} />
-                            <span className="text-[11px] text-slate-800">Community</span>
+                            <UsersRound className={`h-4 w-4 ${pathname === "/community" ? "text-[#5146E5]" : "text-slate-600"}`} />
+                            <span className="text-[11px] text-slate-800">Comunidad</span>
                         </Link> : null}
 
                     </div>
@@ -107,21 +107,21 @@ const DashboardSidebar = ({
             <div className="border-t border-[#E1E1E5] pt-5 font-syne">
                   <Link
                     href="/settings"
-                    aria-label="Settings"
+                    aria-label="Ajustes"
                     className="flex flex-col items-center gap-2 transition-colors"
                 >
                     <Settings className="h-4 w-4" />
-                    <span className="text-[11px] text-slate-800">Settings</span>
+                    <span className="text-[11px] text-slate-800">Ajustes</span>
                 </Link>
                 <div className="py-2"/>
                 <Link
-                    href="https://aifasttrack.tech"
-                    aria-label="Help"
+                    href="https://docs.presenton.ai/help"
+                    aria-label="Ayuda"
                     target="_blank"
                     className="flex flex-col items-center gap-2 transition-colors"
                 >
                     <HelpCircle className="h-4 w-4" />
-                    <span className="text-[11px] text-slate-800">Help</span>
+                    <span className="text-[11px] text-slate-800">Ayuda</span>
                 </Link>
             </div>
 

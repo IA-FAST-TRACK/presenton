@@ -36,7 +36,7 @@ const PREVIEW_WIDTH = 1280;
 const PREVIEW_HEIGHT = 720;
 const EMPTY_SLIDE_LAYOUT = {
   layoutId: BLANK_SLIDE_LAYOUT_ID,
-  layoutName: "Empty Slide",
+  layoutName: "Diapositiva vacía",
   sampleData: BLANK_TEMPLATE_V2_LAYOUT,
   isEmptySlide: true,
 };
@@ -106,8 +106,8 @@ const LayoutItem = memo(({ layout, onSelect }: LayoutItemProps) => {
     <div
       role="button"
       tabIndex={0}
-      aria-label={`Add ${layoutName || "slide"} layout`}
-      title={layoutName || "Slide layout"}
+      aria-label={`Añadir el diseño ${layoutName || "de diapositiva"}`}
+      title={layoutName || "Diseño de diapositiva"}
       onClick={selectLayout}
       onKeyDown={(event) => {
         if (event.key !== "Enter" && event.key !== " ") return;
@@ -133,7 +133,7 @@ const LayoutItem = memo(({ layout, onSelect }: LayoutItemProps) => {
                 <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#E2E2EA] bg-[#FAFAFB]">
                   <Plus className="h-4 w-4" />
                 </span>
-                <span className="text-sm font-medium">Empty Slide</span>
+                <span className="text-sm font-medium">Diapositiva vacía</span>
               </div>
             </div>
           ) : v2Layout ? (
@@ -197,8 +197,8 @@ const NewSlideV1 = ({
     (sampleData: any, id: string) => {
       if (slideCount >= MAX_NUMBER_OF_SLIDES) {
         notify.warning(
-          "Slide limit reached",
-          `You can have up to ${MAX_NUMBER_OF_SLIDES} slides.`
+          "Has alcanzado el límite de diapositivas",
+          `Puedes tener hasta ${MAX_NUMBER_OF_SLIDES} diapositivas.`
         );
         return;
       }
@@ -234,7 +234,7 @@ const NewSlideV1 = ({
         setShowNewSlideSelection(false);
       } catch (error: any) {
         console.error(error);
-        notify.error("Could not add slide", "Something went wrong while adding the new slide.");
+        notify.error("No se ha podido añadir la diapositiva", "Algo ha salido mal al añadir la nueva diapositiva.");
       }
     },
     [
@@ -282,14 +282,14 @@ const NewSlideV1 = ({
         if (isMounted) {
           setLayouts(layoutItems);
           if (layoutItems.length === 0) {
-            setLoadError("This template does not contain any usable layouts.");
+            setLoadError("Esta plantilla no contiene ningún diseño utilizable.");
           }
         }
       } catch (error) {
         console.error("Error loading slide layouts:", error);
         if (isMounted) {
           setLayouts([]);
-          setLoadError("Could not load layouts for this template.");
+          setLoadError("No se han podido cargar los diseños de esta plantilla.");
         }
       } finally {
         if (isMounted) setLoading(false);
@@ -308,8 +308,8 @@ const NewSlideV1 = ({
     ? [EMPTY_SLIDE_LAYOUT, ...layouts]
     : layouts;
   const layoutCountText = showEmptySlideLayout
-    ? `${selectableLayouts.length} Option${selectableLayouts.length === 1 ? "" : "s"}`
-    : `${layouts.length} Layout${layouts.length === 1 ? "" : "s"}`;
+    ? `${selectableLayouts.length} ${selectableLayouts.length === 1 ? "opción" : "opciones"}`
+    : `${layouts.length} ${layouts.length === 1 ? "diseño" : "diseños"}`;
 
 
   return (
@@ -321,7 +321,7 @@ const NewSlideV1 = ({
     >
       <button
         type="button"
-        aria-label="Close layout picker"
+        aria-label="Cerrar el selector de diseños"
         onClick={() => setShowNewSlideSelection(false)}
         className="absolute right-0 top-[-52px] z-50 flex h-10 w-10 items-center justify-center rounded-full border border-[#EDEEEF] bg-white text-[#191919] shadow-[0_6.6px_13.2px_rgba(0,0,0,0.10)] transition hover:bg-[#F7F6F9]"
       >
@@ -334,10 +334,10 @@ const NewSlideV1 = ({
             id="choose-slide-layout-title"
             className="text-base font-medium leading-tight text-[#191919]"
           >
-            Choose Slide Layout
+            Elige un diseño de diapositiva
           </h2>
           <p className="mt-1 text-xs font-normal leading-none text-[#7A7A85]">
-            {loading ? "Loading layouts" : layoutCountText}
+            {loading ? "Cargando diseños" : layoutCountText}
           </p>
         </div>
         {loading && (
@@ -367,7 +367,7 @@ const NewSlideV1 = ({
           </div>
         ) : (
           <div className="flex h-56 items-center justify-center rounded-lg border border-dashed border-[#D9D9E1] bg-[#FAFAFB] text-sm text-[#7A7A85]">
-            No layouts available.
+            No hay diseños disponibles.
           </div>
         )}
       </div>

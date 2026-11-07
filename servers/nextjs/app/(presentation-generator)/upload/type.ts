@@ -146,3 +146,18 @@ export enum VerbosityType {
   Text_Heavy = "text-heavy",
 }
 
+export const TONE_LABELS: Record<ToneType, string> = {
+  [ToneType.Default]: "Predeterminado",
+  [ToneType.Casual]: "Informal",
+  [ToneType.Professional]: "Profesional",
+  [ToneType.Funny]: "Divertido",
+  [ToneType.Educational]: "Educativo",
+  [ToneType.Sales_Pitch]: "Comercial",
+};
+
+export const VERBOSITY_LABELS: Record<VerbosityType, string> = {
+  [VerbosityType.Concise]: "Conciso",
+  [VerbosityType.Standard]: "Estándar",
+  [VerbosityType.Text_Heavy]: "Extenso",
+};
+

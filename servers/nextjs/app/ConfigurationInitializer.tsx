@@ -26,7 +26,7 @@ function ConfigurationLoadingScreen() {
       <div className="flex flex-col items-center gap-7 whitespace-nowrap text-center">
         <div aria-hidden="true" className="configuration-loader" />
         <p className="font-syne text-[18px] font-normal leading-normal tracking-[-0.54px] text-[#191919]">
-          Loading Fast Track Presentaciones...
+          Cargando Presenton...
         </p>
       </div>
 
@@ -113,10 +113,10 @@ export function ConfigurationInitializer({ children }: { children: React.ReactNo
         if (!isConfigured) {
           if (!cancelled) {
             notify.warning(
-              "Provider setup required",
+              "Es necesario configurar un proveedor",
               isAdmin
-                ? "Choose and configure a text provider before opening other pages."
-                : "Ask the administrator to configure the AI providers in Settings.",
+                ? "Elige y configura un proveedor de texto antes de abrir otras páginas."
+                : "Pide al administrador que configure los proveedores de IA en Configuración.",
               { id: "provider-setup-required" }
             );
             if (isAdmin) router.replace('/');
@@ -139,8 +139,8 @@ export function ConfigurationInitializer({ children }: { children: React.ReactNo
         if (!cancelled && !status?.linked) {
           dispatch(setLLMConfig({ ...config, LLM: '' }));
           notify.warning(
-            "Provider setup required",
-            "Presenton Cloud is disconnected. Choose a text provider to continue.",
+            "Es necesario configurar un proveedor",
+            "Presenton Cloud está desconectado. Elige un proveedor de texto para continuar.",
             { id: "provider-setup-required" }
           );
           router.replace('/');
@@ -149,20 +149,20 @@ export function ConfigurationInitializer({ children }: { children: React.ReactNo
         console.error('Failed to revalidate provider configuration:', error);
         if (!cancelled && isBackendConnectionError(error)) {
           notify.error(
-            "Cannot reach backend",
+            "No se puede conectar con el backend",
             error.message,
             { id: "backend-unreachable" }
           );
         } else if (!cancelled && selectedProvider === 'presenton') {
           notify.error(
-            "Could not verify Presenton Cloud",
-            "Your current page has been kept open. Try again after checking the backend service.",
+            "No se ha podido verificar Presenton Cloud",
+            "Se ha mantenido abierta la página actual. Inténtalo de nuevo después de comprobar el servicio de backend.",
             { id: "presenton-status-unavailable" }
           );
         } else if (!cancelled) {
           notify.error(
-            "Could not verify provider settings",
-            "Your current page has been kept open. Refresh after checking the backend service.",
+            "No se ha podido verificar la configuración del proveedor",
+            "Se ha mantenido abierta la página actual. Actualiza la página después de comprobar el servicio de backend.",
             { id: "configuration-unavailable" }
           );
         }
@@ -215,8 +215,8 @@ export function ConfigurationInitializer({ children }: { children: React.ReactNo
     } catch (error) {
       console.error('Failed to reach the FastAPI backend:', error);
       notify.error(
-        "Cannot reach backend",
-        error instanceof Error ? error.message : "Check the backend service and try again.",
+        "No se puede conectar con el backend",
+        error instanceof Error ? error.message : "Comprueba el servicio de backend e inténtalo de nuevo.",
         { id: "backend-unreachable" }
       );
       setIsLoading(false);
@@ -239,8 +239,8 @@ export function ConfigurationInitializer({ children }: { children: React.ReactNo
       dispatch(setUserRole(null));
       dispatch(setLLMConfig({}));
       notify.error(
-        "Could not load configuration",
-        "Your current page has been kept open. Refresh after checking the backend service.",
+        "No se ha podido cargar la configuración",
+        "Se ha mantenido abierta la página actual. Actualiza la página después de comprobar el servicio de backend.",
         { id: "configuration-unavailable" }
       );
       setIsLoading(false);
@@ -257,8 +257,8 @@ export function ConfigurationInitializer({ children }: { children: React.ReactNo
       } catch (e) {
         console.error('Failed to fetch user config:', e);
         notify.error(
-          "Could not load provider settings",
-          "Your current page has been kept open. Refresh after checking the backend service.",
+          "No se ha podido cargar la configuración del proveedor",
+          "Se ha mantenido abierta la página actual. Actualiza la página después de comprobar el servicio de backend.",
           { id: "configuration-unavailable" }
         );
         setIsLoading(false);
@@ -285,10 +285,10 @@ export function ConfigurationInitializer({ children }: { children: React.ReactNo
           console.error('Failed to fetch Presenton cloud status:', error);
           const backendUnavailable = isBackendConnectionError(error);
           notify.error(
-            backendUnavailable ? "Cannot reach backend" : "Could not verify Presenton Cloud",
+            backendUnavailable ? "No se puede conectar con el backend" : "No se ha podido verificar Presenton Cloud",
             backendUnavailable
               ? error.message
-              : "Your current page has been kept open. Refresh after checking the backend service.",
+              : "Se ha mantenido abierta la página actual. Actualiza la página después de comprobar el servicio de backend.",
             { id: backendUnavailable ? "backend-unreachable" : "presenton-status-unavailable" }
           );
           setIsLoading(false);
@@ -313,8 +313,8 @@ export function ConfigurationInitializer({ children }: { children: React.ReactNo
           } catch (error) {
             const backendUnavailable = isBackendConnectionError(error);
             notify.error(
-              backendUnavailable ? "Cannot reach backend" : "Could not connect to Ollama",
-              error instanceof Error ? error.message : "Check the Ollama URL and try again.",
+              backendUnavailable ? "No se puede conectar con el backend" : "No se ha podido conectar con Ollama",
+              error instanceof Error ? error.message : "Comprueba la URL de Ollama e inténtalo de nuevo.",
               { id: backendUnavailable ? "backend-unreachable" : "ollama-unreachable" }
             );
             setIsLoading(false);
@@ -354,8 +354,8 @@ export function ConfigurationInitializer({ children }: { children: React.ReactNo
         dispatch(setLLMConfig(runtimeConfig));
         if (!runtime.configured) {
           notify.error(
-            "Instance not configured",
-            "Ask the administrator to configure the AI providers in Settings."
+            "Instancia no configurada",
+            "Pide al administrador que configure los proveedores de IA en Configuración."
           );
           setIsLoading(false);
           return;
@@ -363,8 +363,8 @@ export function ConfigurationInitializer({ children }: { children: React.ReactNo
       } catch (error) {
         console.error("Failed to fetch runtime configuration:", error);
         notify.error(
-          "Could not load provider settings",
-          "Your current page has been kept open. Refresh after checking the backend service.",
+          "No se ha podido cargar la configuración del proveedor",
+          "Se ha mantenido abierta la página actual. Actualiza la página después de comprobar el servicio de backend.",
           { id: "configuration-unavailable" }
         );
         setIsLoading(false);

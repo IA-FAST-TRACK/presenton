@@ -202,28 +202,28 @@ const PresentonMode = ({
     const currentOllamaUrl = llmConfig.OLLAMA_URL || '';
     const providerApiKeyLabel =
         llmConfig.LLM === 'custom'
-            ? 'Custom LLM API Key'
+            ? 'Clave API del LLM personalizado'
             : llmConfig.LLM === 'deepseek'
-                ? 'DeepSeek API Key'
+                ? 'Clave API de DeepSeek'
             : llmConfig.LLM === 'vertex'
-                ? 'Vertex API Key'
+                ? 'Clave API de Vertex'
                 : llmConfig.LLM === 'azure'
-                    ? 'Azure OpenAI API Key'
+                    ? 'Clave API de Azure OpenAI'
                     : llmConfig.LLM === 'bedrock'
-                        ? 'Bedrock API Key (optional)'
+                        ? 'Clave API de Bedrock (opcional)'
                     : llmConfig.LLM === 'openrouter'
-                        ? 'OpenRouter API Key'
+                        ? 'Clave API de OpenRouter'
                         : llmConfig.LLM === 'fireworks'
-                            ? 'Fireworks API Key'
+                            ? 'Clave API de Fireworks'
                             : llmConfig.LLM === 'together'
-                                ? 'Together API Key'
+                                ? 'Clave API de Together'
                         : llmConfig.LLM === 'cerebras'
-                            ? 'Cerebras API Key'
+                            ? 'Clave API de Cerebras'
                             : llmConfig.LLM === 'litellm'
-                                ? 'LiteLLM API key (optional)'
+                                ? 'Clave API de LiteLLM (opcional)'
                                 : llmConfig.LLM === 'lmstudio'
-                                    ? 'LM Studio API key (optional)'
-                                : `${llmConfig.LLM} API Key`;
+                                    ? 'Clave API de LM Studio (opcional)'
+                                : `Clave API de ${LLM_PROVIDERS[llmConfig.LLM || ""]?.label || llmConfig.LLM}`;
 
     useEffect(() => {
         if (currentDeepseekBaseUrl) setDeepseekAdvancedOpen(true);
@@ -428,7 +428,7 @@ const PresentonMode = ({
             } else {
                 const message = await getApiErrorMessage(
                     response,
-                    `The server could not list ${LLM_PROVIDERS[llmConfig.LLM!]?.label} models. Check your API key or endpoint and try again.`
+                    `El servidor no ha podido listar los modelos de ${LLM_PROVIDERS[llmConfig.LLM!]?.label}. Comprueba tu clave API o el endpoint e inténtalo de nuevo.`
                 );
                 console.error('Failed to fetch models');
                 setAvailableModels([]);
@@ -436,18 +436,18 @@ const PresentonMode = ({
                 // Keep setup usable by revealing the creatable model input.
                 setModelsChecked(true);
                 notify.error(
-                    "Could not load models",
-                    `${message} You can enter a model ID manually.`
+                    "No se han podido cargar los modelos",
+                    `${message} Puedes introducir manualmente el ID de un modelo.`
                 );
             }
         } catch (error) {
             console.error('Error fetching models:', error);
             const message = error instanceof Error
                 ? error.message
-                : "The server could not list models. Check your API key or endpoint and try again.";
+                : "El servidor no ha podido listar los modelos. Comprueba tu clave API o el endpoint e inténtalo de nuevo.";
             notify.error(
-                llmConfig.LLM === "ollama" ? "Could not connect to Ollama" : "Could not load models",
-                `${message} You can enter a model ID manually.`
+                llmConfig.LLM === "ollama" ? "No se ha podido conectar con Ollama" : "No se han podido cargar los modelos",
+                `${message} Puedes introducir manualmente el ID de un modelo.`
             );
             setAvailableModels([]);
             setModelsChecked(true);
@@ -464,7 +464,7 @@ const PresentonMode = ({
             return (
                 <div className="w-full ">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                        GPT Image 2 Quality
+                        Calidad de GPT Image 2
                     </label>
                     <div className="">
                         <Select value={llmConfig.GPT_IMAGE_2_QUALITY || 'medium'} onValueChange={(value) => {
@@ -478,7 +478,7 @@ const PresentonMode = ({
                             }));
                         }}>
                             <SelectTrigger className="w-full h-12 px-4 py-4 outline-none border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors hover:border-gray-400 justify-between">
-                                <SelectValue placeholder="Select a quality" />
+                                <SelectValue placeholder="Selecciona una calidad" />
                             </SelectTrigger>
                             <SelectContent>
                                 {GPT_IMAGE_2_QUALITY_OPTIONS.map((option) => (
@@ -496,7 +496,7 @@ const PresentonMode = ({
             return (
                 <div className="w-full">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                        GPT Image 2.5 Quality
+                        Calidad de GPT Image 2.5
                     </label>
                     <div className="">
                         <Select
@@ -515,7 +515,7 @@ const PresentonMode = ({
                             <SelectTrigger
 
                                 className="w-full h-12 px-4 py-4 outline-none border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors hover:border-gray-400 justify-between">
-                                <SelectValue placeholder="Select a quality" />
+                                <SelectValue placeholder="Selecciona una calidad" />
                             </SelectTrigger>
                             <SelectContent>
                                 {GPT_IMAGE_2_5_QUALITY_OPTIONS.map((option) => (
@@ -541,9 +541,9 @@ const PresentonMode = ({
             <div className="col-span-full rounded-[10px] border border-[#EDEEEF] bg-[#FBFBFD] p-4 shadow-[0_12px_28px_rgba(16,19,35,0.04)]">
                 <div className="mb-4 flex items-start justify-between gap-3">
                     <div>
-                        <p className="text-sm font-semibold text-[#191919]">{provider.label} setup</p>
+                        <p className="text-sm font-semibold text-[#191919]">Configuración de {provider.label}</p>
                         <p className="mt-1 text-xs leading-5 text-gray-500">
-                            Configure the selected image provider before continuing.
+                            Configura el proveedor de imágenes seleccionado antes de continuar.
                         </p>
                     </div>
                     {provider.getApiKeyUrl && (
@@ -552,7 +552,7 @@ const PresentonMode = ({
                             target="_blank"
                             className="flex shrink-0 items-center gap-1 rounded-full border border-[#EDEEEF] bg-white px-3 py-1.5 text-xs font-medium text-[#666666] transition-colors hover:border-[#FFED82] hover:text-[#0A0A0A]"
                         >
-                            Get API Key <ArrowUpRight className="h-3.5 w-3.5" />
+                            Obtener clave API <ArrowUpRight className="h-3.5 w-3.5" />
                         </a>
                     )}
                 </div>
@@ -587,7 +587,7 @@ const PresentonMode = ({
                         <>
                             <div>
                                 <label className="mb-2 block text-sm font-medium text-gray-700">
-                                    ComfyUI Server URL
+                                    URL del servidor de ComfyUI
                                 </label>
                                 <input
                                     type="text"
@@ -604,11 +604,11 @@ const PresentonMode = ({
                             </div>
                             <div>
                                 <label className="mb-2 block text-sm font-medium text-gray-700">
-                                    Workflow JSON
+                                    JSON del flujo de trabajo
                                 </label>
                                 <textarea
-                                    placeholder='Paste your ComfyUI workflow JSON here (export via "Export (API)" in ComfyUI)'
-                                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 font-mono text-xs outline-none transition-colors focus:border-[#0A0A0A] focus:ring-2 focus:ring-[#0A0A0A]/20"
+                                    placeholder='Pega aquí el JSON de tu flujo de trabajo de ComfyUI (expórtalo con "Export (API)" en ComfyUI)'
+                                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 font-mono text-xs outline-none transition-colors focus:border-[#7A5AF8] focus:ring-2 focus:ring-[#7A5AF8]/20"
                                     rows={3}
                                     value={llmConfig.COMFYUI_WORKFLOW || ""}
                                     onChange={(e) => {
@@ -624,7 +624,7 @@ const PresentonMode = ({
                         <>
                             <div>
                                 <label className="mb-2 block text-sm font-medium text-gray-700">
-                                    Open WebUI URL
+                                    URL de Open WebUI
                                 </label>
                                 <input
                                     type="text"
@@ -641,13 +641,13 @@ const PresentonMode = ({
                             </div>
                             <div>
                                 <label className="mb-2 block text-sm font-medium text-gray-700">
-                                    API Key (optional)
+                                    Clave API (opcional)
                                 </label>
                                 <div className="relative">
                                     <input
                                         type={showApiKey ? "text" : "password"}
-                                        placeholder="API key"
-                                        className="h-12 w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-12 outline-none transition-colors focus:border-[#0A0A0A] focus:ring-2 focus:ring-[#0A0A0A]/20"
+                                        placeholder="Clave API"
+                                        className="h-12 w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-12 outline-none transition-colors focus:border-[#7A5AF8] focus:ring-2 focus:ring-[#7A5AF8]/20"
                                         value={llmConfig.OPEN_WEBUI_IMAGE_API_KEY || ""}
                                         onChange={(e) => {
                                             setLlmConfig(prev => ({
@@ -674,8 +674,8 @@ const PresentonMode = ({
                             <div className="relative">
                                 <input
                                     type={showApiKey ? "text" : "password"}
-                                    placeholder={`Enter your ${provider.apiKeyFieldLabel}`}
-                                    className="h-12 w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-12 outline-none transition-colors focus:border-[#0A0A0A] focus:ring-2 focus:ring-[#0A0A0A]/20"
+                                    placeholder={`Introduce tu ${provider.apiKeyFieldLabel}`}
+                                    className="h-12 w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-12 outline-none transition-colors focus:border-[#7A5AF8] focus:ring-2 focus:ring-[#7A5AF8]/20"
                                     value={getFieldValue(provider.apiKeyField)}
                                     onChange={(e) => {
                                         setLlmConfig((prev) => ({
@@ -727,7 +727,7 @@ const PresentonMode = ({
                         provider: "codex",
                         validation_error: "Please sign in to ChatGPT to continue.",
                     });
-                    notify.error("Sign in required", "Please sign in to ChatGPT to continue.");
+                    notify.error("Debes iniciar sesión", "Inicia sesión en ChatGPT para continuar.");
                     return;
                 }
             }
@@ -739,7 +739,7 @@ const PresentonMode = ({
                     web_search_provider: llmConfig.WEB_SEARCH_PROVIDER || "auto",
                     validation_error: validationError,
                 });
-                notify.warning("Cannot save yet", validationError);
+                notify.warning("Aún no se puede guardar", validationError);
                 return;
             }
             setSavingConfig(true);
@@ -750,7 +750,7 @@ const PresentonMode = ({
                 !(await isOllamaModelAvailable(llmConfig.OLLAMA_MODEL, currentOllamaUrl))
             ) {
                 throw new Error(
-                    `The selected model "${llmConfig.OLLAMA_MODEL}" is not available at ${currentOllamaUrl || "the default Ollama URL"}. Check models and select an available model.`
+                    `El modelo seleccionado "${llmConfig.OLLAMA_MODEL}" no está disponible en ${currentOllamaUrl || "la URL predeterminada de Ollama"}. Comprueba los modelos y selecciona uno disponible.`
                 );
             }
             await handleSaveLLMConfig(llmConfig);
@@ -789,7 +789,7 @@ const PresentonMode = ({
                 web_search_provider: llmConfig.WEB_GROUNDING ? (llmConfig.WEB_SEARCH_PROVIDER || "auto") : "disabled",
             });
 
-            notify.success("Configuration saved", "Your configuration was saved successfully.");
+            notify.success("Configuración guardada", "Tu configuración se ha guardado correctamente.");
             trackEvent(MixpanelEvent.Onboarding_Step_Continued, {
                 from_step: "web_search",
                 to_step: "finish",
@@ -800,7 +800,7 @@ const PresentonMode = ({
             setStep(3)
             // router.push("/upload");
         } catch (error) {
-            notify.error("Could not save configuration", error instanceof Error ? error.message : "Failed to save configuration");
+            notify.error("No se ha podido guardar la configuración", error instanceof Error ? error.message : "Error al guardar la configuración");
 
         }
         finally {
@@ -812,7 +812,7 @@ const PresentonMode = ({
         if (llmConfig.LLM === 'codex') {
             const isAuthenticated = await checkCurrentAuthStatus();
             if (!isAuthenticated) {
-                notify.error("Sign in required", "Please sign in to ChatGPT to continue.");
+                notify.error("Debes iniciar sesión", "Inicia sesión en ChatGPT para continuar.");
                 return false;
             }
         }
@@ -827,7 +827,7 @@ const PresentonMode = ({
                 provider: llmConfig.LLM || "",
                 validation_error: validationError,
             });
-            notify.warning("Cannot continue yet", validationError);
+            notify.warning("Aún no se puede continuar", validationError);
             return false;
         }
         return true;
@@ -860,7 +860,7 @@ const PresentonMode = ({
                     image_provider: llmConfig.IMAGE_PROVIDER || "",
                     validation_error: validationError,
                 });
-                notify.warning("Cannot continue yet", validationError);
+                notify.warning("Aún no se puede continuar", validationError);
                 return;
             }
             trackEvent(MixpanelEvent.Onboarding_Step_Continued, {
@@ -902,8 +902,8 @@ const PresentonMode = ({
                 : null;
             if (!statusPayload?.linked) {
                 notify.warning(
-                    "Connect Presenton first",
-                    "Sign in to Presenton Cloud before continuing."
+                    "Conecta primero Presenton",
+                    "Inicia sesión en Presenton Cloud antes de continuar."
                 );
                 return;
             }
@@ -921,8 +921,8 @@ const PresentonMode = ({
             router.push('/upload');
         } catch (error) {
             notify.error(
-                "Could not select Presenton",
-                error instanceof Error ? error.message : "Please try again."
+                "No se ha podido seleccionar Presenton",
+                error instanceof Error ? error.message : "Inténtalo de nuevo."
             );
         } finally {
             setSavingConfig(false);
@@ -939,7 +939,7 @@ const PresentonMode = ({
         return (
             <div className="col-span-full rounded-[10px] border border-[#EDEEEF] bg-[#FBFBFD] p-4 shadow-[0_12px_28px_rgba(16,19,35,0.04)]">
                 <div className="mb-4">
-                    <p className="text-sm font-semibold text-[#191919]">{selectedWebProvider.label} setup</p>
+                    <p className="text-sm font-semibold text-[#191919]">Configuración de {selectedWebProvider.label}</p>
                     <p className="mt-1 text-xs leading-5 text-gray-500">
                         {selectedWebProvider.description}
                     </p>
@@ -947,8 +947,8 @@ const PresentonMode = ({
 
                 <div className="space-y-4">
                     {selectedWebProvider.value === "auto" && (
-                        <div className="rounded-lg border border-[#FFED82] bg-[#FFFADC] p-3 text-xs leading-5 text-[#0A0A0A]">
-                            Presenton will use model-native web grounding when available. If the selected text model does not support it, web search stays off until you choose an external provider.
+                        <div className="rounded-lg border border-[#D9D6FE] bg-[#F4F3FF] p-3 text-xs leading-5 text-[#5146E5]">
+                            Presenton usará la búsqueda web nativa del modelo cuando esté disponible. Si el modelo de texto seleccionado no la admite, la búsqueda web permanecerá desactivada hasta que elijas un proveedor externo.
                         </div>
                     )}
 
@@ -977,8 +977,8 @@ const PresentonMode = ({
                                     type={showApiKey ? "text" : "password"}
                                     value={getFieldValue(selectedWebProvider.apiKeyField)}
                                     onChange={(event) => setLlmConfig(prev => ({ ...prev, [selectedWebProvider.apiKeyField!]: event.target.value }))}
-                                    className="h-12 w-full rounded-lg border border-gray-300 px-4 pr-12 outline-none transition-colors focus:border-[#0A0A0A] focus:ring-2 focus:ring-[#0A0A0A]/20"
-                                    placeholder={`Enter your ${selectedWebProvider.apiKeyLabel}`}
+                                    className="h-12 w-full rounded-lg border border-gray-300 px-4 pr-12 outline-none transition-colors focus:border-[#7A5AF8] focus:ring-2 focus:ring-[#7A5AF8]/20"
+                                    placeholder={`Introduce tu ${selectedWebProvider.apiKeyLabel}`}
                                 />
                                 <button
                                     type="button"
@@ -994,7 +994,7 @@ const PresentonMode = ({
                     {selectedWebProvider.value !== "auto" && (
                         <div>
                             <label className="mb-2 block text-sm font-medium text-gray-700">
-                                Maximum results
+                                Número máximo de resultados
                             </label>
                             <input
                                 type="number"
@@ -1095,14 +1095,14 @@ const PresentonMode = ({
             <div className=''>
 
                 <h2 className='mb-4 text-black text-[26px] font-normal font-syne '>
-                    {providerStep === 1 ? "Choose how you want to create" : providerStep === 2 ? "Choose your image provider" : "Configure web search"}
+                    {providerStep === 1 ? "Elige cómo quieres crear" : providerStep === 2 ? "Elige tu proveedor de imágenes" : "Configura la búsqueda web"}
                 </h2>
                 <p className='text-[#000000CC] text-xl font-normal font-syne'>
                     {providerStep === 1
-                        ? "Use your Presenton account, or configure your own AI providers."
+                        ? "Usa tu cuenta de Presenton o configura tus propios proveedores de IA."
                         : providerStep === 2
-                            ? "Choose how Presenton creates visuals, or continue without image generation."
-                            : "Add current web context to presentations, or continue with web search disabled."}
+                            ? "Elige cómo crea Presenton los elementos visuales o continúa sin generación de imágenes."
+                            : "Añade contexto web actual a las presentaciones o continúa con la búsqueda web desactivada."}
                 </p>
             </div>
 
@@ -1112,7 +1112,7 @@ const PresentonMode = ({
                     <div className="my-8 flex items-center gap-4" aria-hidden="true">
                         <div className="h-px flex-1 bg-[#E8E6EC]" />
                         <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#938D9B]">
-                            Or configure your own providers
+                            O configura tus propios proveedores
                         </span>
                         <div className="h-px flex-1 bg-[#E8E6EC]" />
                     </div>
@@ -1124,7 +1124,7 @@ const PresentonMode = ({
                 providerStep === 1 ? 'mb-6' : 'my-[54px]'
             )}>
                 <Info className='w-4 h-4 shrink-0 fill-[#003399] stroke-white' />
-                <p className='text-sm text-[#5F6062] font-medium'>Your own provider keys and local generation setup stay on this machine.</p>
+                <p className='text-sm text-[#5F6062] font-medium'>Las claves de tus proveedores y la configuración de generación local se quedan en este equipo.</p>
             </div>
 
             {providerStep === 1 && <>
@@ -1142,9 +1142,9 @@ const PresentonMode = ({
                     </div>
                     <div className='w-full'>
 
-                        <h3 className="text-xl font-normal text-[#191919] pb-1.5">Text Generation Settings</h3>
+                        <h3 className="text-xl font-normal text-[#191919] pb-1.5">Ajustes de generación de texto</h3>
                         <p className=" text-sm  text-gray-500">
-                            Choosing where text content comes from
+                            Elige de dónde procede el contenido de texto
                         </p>
                     </div>
                 </div>
@@ -1164,15 +1164,15 @@ const PresentonMode = ({
                         </TabsTrigger>
                         <TabsTrigger value="other" className="h-12 gap-2 rounded-[8px] border border-transparent px-4 text-sm font-semibold text-[#5F6062] transition-all hover:text-[#191919] data-[state=active]:border-[#FFED82] data-[state=active]:bg-white data-[state=active]:text-[#191919] data-[state=active]:shadow-[0_8px_24px_rgba(16,19,35,0.08)]">
                             <Blocks className="h-4 w-4" />
-                            AI Providers
+                            Proveedores de IA
                         </TabsTrigger>
                     </TabsList>
                     <p className="mt-3 text-xs leading-relaxed text-gray-500">
                         {textProviderTab === "chatgpt"
-                            ? "Connect your ChatGPT account and choose a supported model."
+                            ? "Conecta tu cuenta de ChatGPT y elige un modelo compatible."
                             : textProviderTab === "local"
-                                ? "Run models on your machine with Ollama or LM Studio."
-                                : "Connect hosted AI providers using an API key or custom endpoint."}
+                                ? "Ejecuta modelos en tu equipo con Ollama o LM Studio."
+                                : "Conecta proveedores de IA alojados mediante una clave API o un endpoint personalizado."}
                     </p>
                     <TabsContent value="chatgpt" className="mt-6">
                         <CodexConfig
@@ -1188,7 +1188,7 @@ const PresentonMode = ({
                         />
                         {chatGptAuthenticated && (llmConfig.LLM === "codex" || llmConfig.LLM === "chatgpt") && (
                             <div className="mt-5">
-                                <label className="mb-2 block text-sm font-medium text-gray-700">ChatGPT model</label>
+                                <label className="mb-2 block text-sm font-medium text-gray-700">Modelo de ChatGPT</label>
                                 <Select
                                     value={llmConfig.CODEX_MODEL || ""}
                                     onValueChange={(value) => {
@@ -1201,7 +1201,7 @@ const PresentonMode = ({
                                     }}
                                 >
                                     <SelectTrigger className="h-12 w-full rounded-lg border-gray-300">
-                                        <SelectValue placeholder="Select a model" />
+                                        <SelectValue placeholder="Selecciona un modelo" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         {CODEX_MODELS.map((model) => (
@@ -1243,7 +1243,7 @@ const PresentonMode = ({
                     <div className="flex w-full flex-col justify-start">
 
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Select Text Provider
+                            Seleccionar proveedor de texto
                         </label>
                         <Popover
                             open={openProviderSelect}
@@ -1261,7 +1261,7 @@ const PresentonMode = ({
                                             {llmConfig.LLM && OTHER_PROVIDER_VALUES.has(llmConfig.LLM)
                                                 ? LLM_PROVIDERS[llmConfig.LLM]
                                                     ?.label || llmConfig.LLM
-                                                : "Select text provider"}
+                                                : "Selecciona un proveedor de texto"}
                                         </span>
                                     </div>
                                     <ChevronUp className="w-4 h-4 text-gray-500" />
@@ -1273,9 +1273,9 @@ const PresentonMode = ({
 
                             >
                                 <Command>
-                                    <CommandInput placeholder="Search provider..." />
+                                    <CommandInput placeholder="Buscar proveedor..." />
                                     <CommandList className='hide-scrollbar'>
-                                        <CommandEmpty>No provider found.</CommandEmpty>
+                                        <CommandEmpty>No se ha encontrado ningún proveedor.</CommandEmpty>
                                         <CommandGroup >
                                             {OTHER_PROVIDERS.map(
                                                 (provider, index) => (
@@ -1349,10 +1349,10 @@ const PresentonMode = ({
                                 <>
                                     <div className='flex items-center justify-between mb-2'>
 
-                                        <label className="block text-sm font-medium capitalize text-gray-700 ">
+                                        <label className="block text-sm font-medium text-gray-700 ">
                                             {providerApiKeyLabel}
                                         </label>
-                                        {llmConfig.LLM && LLM_PROVIDERS[llmConfig.LLM!]?.getApiKeyUrl && <a href={LLM_PROVIDERS[llmConfig.LLM!]?.getApiKeyUrl || ""} target='_blank' className='text-[#666666] text-xs font-normal flex items-center gap-1'>Get API Key <ArrowUpRight className='w-3.5 h-3.5' /></a>}
+                                        {llmConfig.LLM && LLM_PROVIDERS[llmConfig.LLM!]?.getApiKeyUrl && <a href={LLM_PROVIDERS[llmConfig.LLM!]?.getApiKeyUrl || ""} target='_blank' className='text-[#666666] text-xs font-normal flex items-center gap-1'>Obtener clave API <ArrowUpRight className='w-3.5 h-3.5' /></a>}
                                     </div>
 
                                     <div className="grid">
@@ -1364,7 +1364,7 @@ const PresentonMode = ({
                                                 [currentApiKeyField]: e.target.value
                                             }))}
                                             className="col-start-1 row-start-1 h-12 w-full rounded-lg border border-gray-300 py-3 pl-3 pr-12 outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
-                                            placeholder={`Enter your ${providerApiKeyLabel}`}
+                                            placeholder={`Introduce tu ${providerApiKeyLabel.charAt(0).toLowerCase()}${providerApiKeyLabel.slice(1)}`}
                                         />
                                         <button
                                             type="button"
@@ -1385,7 +1385,7 @@ const PresentonMode = ({
                                         CUSTOM_LLM_URL: e.target.value
                                     }))}
                                     className="w-full mt-2 px-2 py-3 outline-none border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
-                                    placeholder="OpenAI-compatible URL"
+                                    placeholder="URL compatible con OpenAI"
                                 />
                             )}
                             {llmConfig.LLM === 'deepseek' && (
@@ -1399,7 +1399,7 @@ const PresentonMode = ({
                                             type="button"
                                             className="flex w-full min-w-0 items-center justify-between gap-2 rounded-lg border border-gray-200 bg-[#F9F9FA] px-3 py-2.5 text-left text-sm font-medium text-gray-800 transition-colors hover:bg-gray-100"
                                         >
-                                            <span>Advanced settings</span>
+                                            <span>Ajustes avanzados</span>
                                             <ChevronDown
                                                 className={cn(
                                                     "h-4 w-4 shrink-0 text-gray-600 transition-transform duration-200",
@@ -1412,7 +1412,7 @@ const PresentonMode = ({
                                     <CollapsibleContent className="space-y-3 overflow-hidden">
                                         <div className="space-y-1.5 border-t border-gray-100 pt-3">
                                             <label className="block text-sm font-medium text-gray-700">
-                                                DeepSeek base URL (optional)
+                                                URL base de DeepSeek (opcional)
                                             </label>
                                             <input
                                                 type="text"
@@ -1431,7 +1431,7 @@ const PresentonMode = ({
                             {llmConfig.LLM === 'litellm' && (
                                 <>
                                     <label className="mt-3 block text-sm font-medium text-gray-700 mb-2">
-                                        LiteLLM base URL
+                                        URL base de LiteLLM
                                     </label>
                                     <input
                                         type="text"
@@ -1441,17 +1441,17 @@ const PresentonMode = ({
                                             LITELLM_BASE_URL: e.target.value
                                         }))}
                                         className="w-full px-2 py-3 outline-none border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
-                                        placeholder="e.g. http://host.docker.internal:4000/v1"
+                                        placeholder="p. ej., http://host.docker.internal:4000/v1"
                                     />
                                     <p className="mt-1.5 text-xs text-gray-500">
-                                        OpenAI-compatible root (usually ends with /v1); /v1 is added if omitted. API key above is optional for local proxies with no auth.
+                                        Raíz compatible con OpenAI (suele terminar en /v1); se añade /v1 si se omite. La clave API de arriba es opcional para proxies locales sin autenticación.
                                     </p>
                                 </>
                             )}
                             {llmConfig.LLM === 'lmstudio' && (
                                 <>
                                     <label className="mt-3 block text-sm font-medium text-gray-700 mb-2">
-                                        LM Studio base URL
+                                        URL base de LM Studio
                                     </label>
                                     <input
                                         type="text"
@@ -1464,14 +1464,14 @@ const PresentonMode = ({
                                         placeholder="http://localhost:1234/v1"
                                     />
                                     <p className="mt-1.5 text-xs text-gray-500">
-                                        Defaults to localhost:1234/v1, and /v1 is added automatically when omitted.
+                                        Por defecto, localhost:1234/v1; /v1 se añade automáticamente si se omite.
                                     </p>
                                 </>
                             )}
                             {llmConfig.LLM === 'fireworks' && (
                                 <>
                                     <label className="mt-3 block text-sm font-medium text-gray-700 mb-2">
-                                        Fireworks base URL (optional)
+                                        URL base de Fireworks (opcional)
                                     </label>
                                     <input
                                         type="text"
@@ -1488,7 +1488,7 @@ const PresentonMode = ({
                             {llmConfig.LLM === 'together' && (
                                 <>
                                     <label className="mt-3 block text-sm font-medium text-gray-700 mb-2">
-                                        Together base URL (optional)
+                                        URL base de Together (opcional)
                                     </label>
                                     <input
                                         type="text"
@@ -1540,10 +1540,10 @@ const PresentonMode = ({
                                 {modelsLoading ? (
                                     <span className="flex items-center justify-center gap-2">
                                         <Loader2 className="w-4 h-4 animate-spin" />
-                                        Checking for models...
+                                        Buscando modelos...
                                     </span>
                                 ) : (
-                                    "Validate & Load Models"
+                                    "Validar y cargar modelos"
                                 )}
                             </button>
                         )}
@@ -1560,7 +1560,7 @@ const PresentonMode = ({
                             <CreatableModelInput
                                 value={currentModel}
                                 options={availableModels}
-                                providerLabel={LLM_PROVIDERS[llmConfig.LLM!]?.label || llmConfig.LLM || "Provider"}
+                                providerLabel={LLM_PROVIDERS[llmConfig.LLM!]?.label || llmConfig.LLM || "proveedor"}
                                 onChange={(value) => {
                                     if (!currentModelField) return;
                                     setLlmConfig(prev => ({ ...prev, [currentModelField]: value }));
@@ -1584,7 +1584,7 @@ const PresentonMode = ({
             {providerStep === 2 && <>
             {/* Image Provider */}
             <div className={`p-3 border border-[#EDEEEF] rounded-[11px] relative mt-5 bg-white ${llmConfig.DISABLE_IMAGE_GENERATION ? "bg-[#F9FAFB]" : ""}`}>
-                <ToolTip content="Enable/Disable Image Generation" className='flex justify-end items-center absolute top-3 right-3'>
+                <ToolTip content="Activar/desactivar la generación de imágenes" className='flex justify-end items-center absolute top-3 right-3'>
                     <div className='flex justify-end items-center'>
                         <Switch
                             checked={!llmConfig.DISABLE_IMAGE_GENERATION}
@@ -1611,9 +1611,9 @@ const PresentonMode = ({
                     </div>
                     <div>
 
-                        <h3 className="text-xl font-normal text-[#191919] ">Image Generation Settings</h3>
+                        <h3 className="text-xl font-normal text-[#191919] ">Ajustes de generación de imágenes</h3>
                         <p className=" text-sm  text-gray-500">
-                            Choosing where images come from
+                            Elige de dónde proceden las imágenes
                         </p>
                     </div>
                 </div>
@@ -1622,7 +1622,7 @@ const PresentonMode = ({
                         {/* Image Provider Selection */}
                         <div className="w-full">
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Select Image Provider
+                                Seleccionar proveedor de imágenes
                             </label>
                             <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-3">
                                 {imageProviderRows.map((row, rowIndex) => (
@@ -1672,7 +1672,7 @@ const PresentonMode = ({
 
             {providerStep === 3 && (
                 <div className={`relative rounded-[11px] border border-[#EDEEEF] p-3 ${llmConfig.WEB_GROUNDING ? "bg-white" : "bg-[#F9FAFB]"}`}>
-                    <ToolTip content="Enable/Disable Web Search" className='absolute right-3 top-3 flex items-center justify-end'>
+                    <ToolTip content="Activar/desactivar la búsqueda web" className='absolute right-3 top-3 flex items-center justify-end'>
                         <div className='flex items-center justify-end'>
                             <Switch
                                 checked={!!llmConfig.WEB_GROUNDING}
@@ -1695,13 +1695,13 @@ const PresentonMode = ({
                             <Search className="h-9 w-9 text-[#0A0A0A]" />
                         </div>
                         <div>
-                            <h3 className="text-xl font-normal text-[#191919]">Web Search Settings</h3>
-                            <p className="text-sm text-gray-500">Bring current information into generated presentations</p>
+                            <h3 className="text-xl font-normal text-[#191919]">Ajustes de búsqueda web</h3>
+                            <p className="text-sm text-gray-500">Incorpora información actualizada a las presentaciones generadas</p>
                         </div>
                     </div>
                     {llmConfig.WEB_GROUNDING && <div className="space-y-4">
                             <div>
-                                <label className="mb-2 block text-sm font-medium text-gray-700">Select Web Search Provider</label>
+                                <label className="mb-2 block text-sm font-medium text-gray-700">Seleccionar proveedor de búsqueda web</label>
                                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                                     {webSearchProviderRows.map((row, rowIndex) => (
                                         <React.Fragment key={`web-search-provider-row-${rowIndex}`}>
@@ -1765,11 +1765,11 @@ const PresentonMode = ({
                     className='border font-syne border-[#EDEEEF] bg-[#FFDB05]  rounded-[58px] px-5 py-2.5 text-[#0A0A0A] text-xs  font-semibold'>
                     {providerStep === 1
                         ? llmConfig.LLM === "presenton"
-                            ? "Continue with Presenton"
-                            : "Continue to image provider"
+                            ? "Continuar con Presenton"
+                            : "Continuar al proveedor de imágenes"
                         : providerStep === 2
-                            ? llmConfig.DISABLE_IMAGE_GENERATION ? "Disable image generation & Continue" : "Continue to web search"
-                            : llmConfig.WEB_GROUNDING ? "Save & Finish" : "Disable web search & Finish"}
+                            ? llmConfig.DISABLE_IMAGE_GENERATION ? "Desactivar generación de imágenes y continuar" : "Continuar a la búsqueda web"
+                            : llmConfig.WEB_GROUNDING ? "Guardar y finalizar" : "Desactivar búsqueda web y finalizar"}
                 </button>
             </div>
         </div>

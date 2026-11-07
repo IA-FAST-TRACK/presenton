@@ -157,7 +157,7 @@ class ExportTaskService:
         if not app_data_directory:
             raise HTTPException(
                 status_code=500,
-                detail="APP_DATA_DIRECTORY must be set for PPTX-to-HTML export",
+                detail="APP_DATA_DIRECTORY debe estar configurado para la exportación de PPTX a HTML",
             )
         env["APP_DATA_DIRECTORY"] = app_data_directory
 
@@ -188,8 +188,8 @@ class ExportTaskService:
                 raise HTTPException(
                     status_code=500,
                     detail=(
-                        "The pinned Electron Chromium runtime is unavailable. "
-                        "Refusing to download or launch a different browser version."
+                        "El entorno de ejecución Chromium de Electron fijado no está disponible. "
+                        "No se descargará ni se iniciará una versión distinta del navegador."
                     ),
                 )
 
@@ -203,7 +203,7 @@ class ExportTaskService:
         if not os.path.isfile(self.entrypoint_path):
             raise HTTPException(
                 status_code=500,
-                detail=f"Export runtime not found at {self.entrypoint_path}",
+                detail=f"No se ha encontrado el entorno de exportación en {self.entrypoint_path}",
             )
         package_entrypoint = os.path.join(
             self.export_dir,
@@ -216,7 +216,7 @@ class ExportTaskService:
         if not os.path.isfile(package_entrypoint):
             raise HTTPException(
                 status_code=500,
-                detail=f"Export package not found at {package_entrypoint}",
+                detail=f"No se ha encontrado el paquete de exportación en {package_entrypoint}",
             )
 
     @staticmethod
@@ -236,7 +236,7 @@ class ExportTaskService:
 
         raise HTTPException(
             status_code=500,
-            detail="PPTX-to-HTML task completed without a valid output path",
+            detail="La tarea de PPTX a HTML ha terminado sin una ruta de salida válida",
         )
 
     @staticmethod
@@ -272,7 +272,7 @@ class ExportTaskService:
         except OSError as exc:
             raise HTTPException(
                 status_code=500,
-                detail=f"Export completed but output permissions could not be updated: {exc}",
+                detail=f"La exportación ha terminado, pero no se han podido actualizar los permisos de salida: {exc}",
             ) from exc
 
     @staticmethod
@@ -326,7 +326,7 @@ class ExportTaskService:
                 raise HTTPException(
                     status_code=500,
                     detail=(
-                        "Export task failed. "
+                        "La tarea de exportación ha fallado. "
                         f"returncode={result['returncode']} "
                         f"stderr={_snippet(result['stderr'])} stdout={_snippet(result['stdout'])}"
                     ),
@@ -343,12 +343,12 @@ class ExportTaskService:
         except json.JSONDecodeError as exc:
             raise HTTPException(
                 status_code=500,
-                detail="Export task produced invalid JSON output",
+                detail="La tarea de exportación ha producido una salida JSON no válida",
             ) from exc
         except OSError as exc:
             raise HTTPException(
                 status_code=500,
-                detail=f"Failed to run export task: {exc}",
+                detail=f"No se ha podido ejecutar la tarea de exportación: {exc}",
             ) from exc
         finally:
             shutil.rmtree(temp_dir, ignore_errors=True)
@@ -405,7 +405,7 @@ class ExportTaskService:
             await asyncio.gather(stdout_task, stderr_task, return_exceptions=True)
             raise HTTPException(
                 status_code=500,
-                detail=f"Export task timed out after {timeout} seconds",
+                detail=f"La tarea de exportación ha superado el tiempo límite de {timeout} segundos",
             ) from exc
 
         LOGGER.info(
@@ -443,7 +443,7 @@ class ExportTaskService:
                 "fastapiUrl": fastapi_url or None,
                 "cookieHeader": cookie_header or None,
             },
-            "Export task did not produce a response file",
+            "La tarea de exportación no ha generado un archivo de respuesta",
         )
 
         output_path = self._resolve_output_path(response_data)
@@ -458,7 +458,7 @@ class ExportTaskService:
         self, pptx_path: str, get_fonts: bool = False
     ) -> PptxToHtmlDocument:
         if not os.path.isfile(pptx_path):
-            raise HTTPException(status_code=400, detail=f"PPTX not found: {pptx_path}")
+            raise HTTPException(status_code=400, detail=f"PPTX no encontrado: {pptx_path}")
 
         try:
             response_data = await self._run_task(
@@ -467,7 +467,7 @@ class ExportTaskService:
                     "pptx_path": pptx_path,
                     "get_fonts": get_fonts,
                 },
-                "PPTX-to-HTML export task did not produce a response file",
+                "La tarea de exportación de PPTX a HTML no ha generado un archivo de respuesta",
             )
 
             output_path = self._resolve_output_path(response_data)
@@ -499,8 +499,8 @@ class ExportTaskService:
                     raise HTTPException(
                         status_code=500,
                         detail=(
-                            "PPTX-to-HTML export returned an asset directory "
-                            "outside its conversion directory"
+                            "La exportación de PPTX a HTML ha devuelto un directorio de recursos "
+                            "fuera de su directorio de conversión"
                         ),
                     )
                 output_data[directory_key] = resolved_directory
@@ -515,7 +515,7 @@ class ExportTaskService:
         except json.JSONDecodeError as exc:
             raise HTTPException(
                 status_code=500,
-                detail="PPTX-to-HTML export produced invalid JSON output",
+                detail="La exportación de PPTX a HTML ha producido una salida JSON no válida",
             ) from exc
 
     async def render_html_to_image(
@@ -527,7 +527,7 @@ class ExportTaskService:
         if width <= 0 or height <= 0:
             raise HTTPException(
                 status_code=400,
-                detail="HTML-to-image dimensions must be positive",
+                detail="Las dimensiones de HTML a imagen deben ser positivas",
             )
 
         response_data = await self._run_task(
@@ -537,7 +537,7 @@ class ExportTaskService:
                 "width": width,
                 "height": height,
             },
-            "HTML-to-image export task did not produce a response file",
+            "La tarea de exportación de HTML a imagen no ha generado un archivo de respuesta",
         )
 
         output_path = self._resolve_output_path(response_data)
@@ -555,7 +555,7 @@ class ExportTaskService:
         if width <= 0 or height <= 0:
             raise HTTPException(
                 status_code=400,
-                detail="JSON-to-image dimensions must be positive",
+                detail="Las dimensiones de JSON a imagen deben ser positivas",
             )
 
         task_payload: dict[str, Any] = {
@@ -569,7 +569,7 @@ class ExportTaskService:
 
         response_data = await self._run_task(
             task_payload,
-            "JSON-to-image export task did not produce a response file",
+            "La tarea de exportación de JSON a imagen no ha generado un archivo de respuesta",
         )
 
         output_path = self._resolve_output_path(response_data)
@@ -587,12 +587,12 @@ class ExportTaskService:
         if not data:
             raise HTTPException(
                 status_code=400,
-                detail="At least one JSON slide is required",
+                detail="Se requiere al menos una diapositiva JSON",
             )
         if width <= 0 or height <= 0:
             raise HTTPException(
                 status_code=400,
-                detail="JSON-to-images dimensions must be positive",
+                detail="Las dimensiones de JSON a imágenes deben ser positivas",
             )
 
         task_payload: dict[str, Any] = {
@@ -606,13 +606,13 @@ class ExportTaskService:
 
         response_data = await self._run_task(
             task_payload,
-            "JSON-to-images export task did not produce response files",
+            "La tarea de exportación de JSON a imágenes no ha generado archivos de respuesta",
         )
         raw_paths = response_data.get("file_paths")
         if not isinstance(raw_paths, list) or len(raw_paths) != len(data):
             raise HTTPException(
                 status_code=500,
-                detail="JSON-to-images export task produced invalid output",
+                detail="La tarea de exportación de JSON a imágenes ha producido un resultado no válido",
             )
 
         output_paths = [
@@ -632,12 +632,12 @@ class ExportTaskService:
         if not htmls:
             raise HTTPException(
                 status_code=400,
-                detail="At least one HTML document is required",
+                detail="Se requiere al menos un documento HTML",
             )
         if width <= 0 or height <= 0:
             raise HTTPException(
                 status_code=400,
-                detail="HTML-to-image dimensions must be positive",
+                detail="Las dimensiones de HTML a imagen deben ser positivas",
             )
 
         try:
@@ -648,7 +648,7 @@ class ExportTaskService:
                     "width": width,
                     "height": height,
                 },
-                "HTML-to-images export task did not produce a response file",
+                "La tarea de exportación de HTML a imágenes no ha generado un archivo de respuesta",
             )
         except HTTPException as exc:
             if "Invalid task type" in str(exc.detail):
@@ -673,7 +673,7 @@ class ExportTaskService:
         if not isinstance(raw_paths, list) or len(raw_paths) != len(htmls):
             raise HTTPException(
                 status_code=500,
-                detail="HTML-to-images export task produced invalid output",
+                detail="La tarea de exportación de HTML a imágenes ha producido un resultado no válido",
             )
 
         output_paths = [
@@ -686,7 +686,7 @@ class ExportTaskService:
 
     async def convert_pptx_to_json(self, pptx_path: str) -> PptxToJsonDocument:
         if not os.path.isfile(pptx_path):
-            raise HTTPException(status_code=400, detail=f"PPTX not found: {pptx_path}")
+            raise HTTPException(status_code=400, detail=f"PPTX no encontrado: {pptx_path}")
 
         task_payload: dict[str, Any] = {
             "type": "pptx-to-json",
@@ -696,7 +696,7 @@ class ExportTaskService:
         try:
             response_data = await self._run_task(
                 task_payload,
-                "PPTX-to-JSON export task did not produce a response file",
+                "La tarea de exportación de PPTX a JSON no ha generado un archivo de respuesta",
             )
 
             output_path = self._resolve_output_path(response_data)
@@ -717,12 +717,12 @@ class ExportTaskService:
         except json.JSONDecodeError as exc:
             raise HTTPException(
                 status_code=500,
-                detail="PPTX-to-JSON export produced invalid JSON output",
+                detail="La exportación de PPTX a JSON ha producido una salida JSON no válida",
             ) from exc
         except ValidationError as exc:
             raise HTTPException(
                 status_code=500,
-                detail="PPTX-to-JSON export produced invalid output",
+                detail="La exportación de PPTX a JSON ha producido un resultado no válido",
             ) from exc
 
     @staticmethod
@@ -738,7 +738,7 @@ class ExportTaskService:
         if not app_data:
             raise HTTPException(
                 status_code=500,
-                detail="APP_DATA_DIRECTORY is required for conversion artifacts",
+                detail="APP_DATA_DIRECTORY es obligatorio para los artefactos de conversión",
             )
 
         expected_root = os.path.realpath(os.path.join(app_data, root_name))
@@ -778,7 +778,7 @@ class ExportTaskService:
         if not app_data:
             raise HTTPException(
                 status_code=500,
-                detail="APP_DATA_DIRECTORY is required for exported files",
+                detail="APP_DATA_DIRECTORY es obligatorio para los archivos exportados",
             )
         exports_root = os.path.realpath(os.path.join(app_data, "exports"))
         resolved_output = os.path.realpath(output_path)
@@ -795,7 +795,7 @@ class ExportTaskService:
         if not source_is_export and source_parent != resolved_destination_dir:
             raise HTTPException(
                 status_code=500,
-                detail="Export task returned an output outside its asset directory",
+                detail="La tarea de exportación ha devuelto una salida fuera de su directorio de recursos",
             )
         destination = os.path.join(destination_dir, os.path.basename(output_path))
         os.makedirs(destination_dir, exist_ok=True)
@@ -820,7 +820,7 @@ class ExportTaskService:
         if not app_data:
             raise HTTPException(
                 status_code=500,
-                detail="APP_DATA_DIRECTORY is required for conversion artifacts",
+                detail="APP_DATA_DIRECTORY es obligatorio para los artefactos de conversión",
             )
         source_root = os.path.realpath(os.path.join(app_data, root_name))
         owner_root = os.path.realpath(
@@ -830,7 +830,7 @@ class ExportTaskService:
         if source_parent not in {source_root, owner_root} or session_id == "users":
             raise HTTPException(
                 status_code=500,
-                detail="Conversion task returned an output outside its asset directory",
+                detail="La tarea de conversión ha devuelto una salida fuera de su directorio de recursos",
             )
         target_dir = os.path.join(
             owner_root,

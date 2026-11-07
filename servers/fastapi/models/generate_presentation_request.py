@@ -23,8 +23,8 @@ class GeneratePresentationRequest(BaseModel):
         description="Number of slides to generate. If omitted, model auto-detects slide count.",
     )
     language: Optional[str] = Field(
-        default=None,
-        description="Language for the presentation. If omitted, model auto-detects language.",
+        default="Spanish (Español)",
+        description="Language for the presentation. Defaults to Spanish (Español).",
     )
     template: str = Field(
         default="general", description="Template to use for the presentation"
@@ -49,7 +49,7 @@ class GeneratePresentationRequest(BaseModel):
 class GenerateSmartPresentationRequest(BaseModel):
     content: str = Field(default="", description="Prompt for the presentation")
     n_slides: Optional[int] = Field(default=None, ge=1)
-    language: Optional[str] = None
+    language: Optional[str] = "Spanish (Español)"
     instructions: Optional[str] = None
     tone: Tone = Tone.DEFAULT
     verbosity: Verbosity = Verbosity.STANDARD

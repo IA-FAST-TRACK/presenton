@@ -559,59 +559,59 @@ function createInfographicToolbarItem(
 
   switch (type) {
     case "gantt":
-      return { label: `Workstream ${index + 1}`, items: [] };
+      return { label: `Línea de trabajo ${index + 1}`, items: [] };
     case "org_chart":
     case "decision_tree": {
       const root = readInfographicRecord(items[0]);
       return {
         id: `node-${Date.now().toString(36)}-${index + 1}`,
         parent_id: typeof root?.id === "string" ? root.id : null,
-        heading: "New item",
-        description: type === "org_chart" ? "Role" : null,
+        heading: "Nuevo elemento",
+        description: type === "org_chart" ? "Cargo" : null,
       };
     }
     case "comparison_matrix":
       return {
         icon,
-        heading: `Option ${index + 1}`,
+        heading: `Opción ${index + 1}`,
         values: readInfographicArray(data.criteria).map(() => ""),
       };
     case "mind_map":
       return {
         icon,
-        heading: `Node ${index + 1}`,
-        description: "Add a description.",
+        heading: `Nodo ${index + 1}`,
+        description: "Añade una descripción.",
         items: [],
       };
     case "before_after": {
       const pair = Math.floor(index / 2) + 1;
       return {
         icon,
-        heading: `${index % 2 === 0 ? "Before" : "After"} ${pair}`,
-        description: "Add a description.",
+        heading: `${index % 2 === 0 ? "Antes" : "Después"} ${pair}`,
+        description: "Añade una descripción.",
       };
     }
     case "conversion_funnel":
     case "vertical_funnel":
       return {
         value: Math.max(0, readInfographicNumber(previous?.value, 60) - 10),
-        heading: `Stage ${index + 1}`,
-        description: "Add a description.",
+        heading: `Etapa ${index + 1}`,
+        description: "Añade una descripción.",
       };
     case "pillar_framework":
       return {
         icon,
-        heading: `Pillar ${index + 1}`,
-        description: "Add a description.",
-        focus: "Focus area",
+        heading: `Pilar ${index + 1}`,
+        description: "Añade una descripción.",
+        focus: "Área de enfoque",
       };
     case "transformation_hub":
-      return { heading: `Capability ${index + 1}` };
+      return { heading: `Capacidad ${index + 1}` };
     default:
       return {
         icon: typeUsesToolbarIcons(type) ? icon : null,
         heading: toolbarItemHeading(type, index, previous),
-        description: "Add a description.",
+        description: "Añade una descripción.",
       };
   }
 }
@@ -625,22 +625,22 @@ function toolbarItemHeading(
     const previousHeading = Number(previous?.heading);
     return Number.isFinite(previousHeading)
       ? String(previousHeading + 1)
-      : `Milestone ${index + 1}`;
+      : `Hito ${index + 1}`;
   }
   if (type === "stair_step_blocks") {
-    return `Step ${String(index + 1).padStart(2, "0")}`;
+    return `Paso ${String(index + 1).padStart(2, "0")}`;
   }
-  if (type === "pillar_framework") return `Pillar ${index + 1}`;
-  if (type === "transformation_hub") return `Capability ${index + 1}`;
-  if (type === "conversion_funnel" || type === "vertical_funnel") return `Stage ${index + 1}`;
-  if (type === "roadmap") return `Stop ${index + 1}`;
-  if (type === "pyramid") return `Level ${index + 1}`;
-  if (type === "segmented_wheel") return `Segment ${index + 1}`;
-  if (type === "customer_journey") return `Stage ${index}`;
-  if (type === "diagonal_circles") return `Pillar ${index + 1}`;
-  if (type === "maturity_model") return `Level ${index + 1}`;
-  if (type === "supply_chain") return `Stage ${index + 1}`;
-  return `Step ${index + 1}`;
+  if (type === "pillar_framework") return `Pilar ${index + 1}`;
+  if (type === "transformation_hub") return `Capacidad ${index + 1}`;
+  if (type === "conversion_funnel" || type === "vertical_funnel") return `Etapa ${index + 1}`;
+  if (type === "roadmap") return `Parada ${index + 1}`;
+  if (type === "pyramid") return `Nivel ${index + 1}`;
+  if (type === "segmented_wheel") return `Segmento ${index + 1}`;
+  if (type === "customer_journey") return `Etapa ${index}`;
+  if (type === "diagonal_circles") return `Pilar ${index + 1}`;
+  if (type === "maturity_model") return `Nivel ${index + 1}`;
+  if (type === "supply_chain") return `Etapa ${index + 1}`;
+  return `Paso ${index + 1}`;
 }
 
 function typeUsesToolbarIcons(type: InfographicType) {

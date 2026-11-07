@@ -117,7 +117,7 @@ export const TemplateListCard = memo(function TemplateListCard({
       role="button"
       tabIndex={0}
       aria-pressed={isSelected}
-      aria-label={`${showArrow ? "Open" : "Select"} ${template.name} template`}
+      aria-label={`${showArrow ? "Abrir" : "Seleccionar"} la plantilla ${template.name}`}
       className={cn(
         "group relative overflow-hidden border bg-white shadow-none outline-none transition-all duration-200",
         selectionPage ? "rounded-[12px]" : "rounded-[22px]",
@@ -146,8 +146,8 @@ export const TemplateListCard = memo(function TemplateListCard({
         </span>
       )}
       {isSuggested && (
-        <span className="absolute right-3.5 top-[52px] z-50 rounded-full border border-[#FFED82] bg-white/95 px-2.5 py-1 font-syne text-[10px] font-semibold text-[#0A0A0A] shadow-sm backdrop-blur">
-          Suggested
+        <span className="absolute right-3.5 top-[52px] z-50 rounded-full border border-[#DDD7FF] bg-white/95 px-2.5 py-1 font-syne text-[10px] font-semibold text-[#6553E8] shadow-sm backdrop-blur">
+          Sugerida
         </span>
       )}
       <TemplatePreviewStage selectionPage={selectionPage}>
@@ -232,7 +232,7 @@ export const ProcessingTemplateListCard = memo(
     retrying?: boolean;
   }) {
     const failed = task.status === "error";
-    const templateName = task.data?.name?.trim() || "New template";
+    const templateName = task.data?.name?.trim() || "Nueva plantilla";
     const createdLayouts = task.data?.created_layouts ?? 0;
     const remainingLayouts = task.data?.remaining_layouts ?? 0;
     const totalLayouts = createdLayouts + remainingLayouts;
@@ -252,13 +252,13 @@ export const ProcessingTemplateListCard = memo(
       failed
         ? taskErrorDetail(task.error)
         : totalLayouts > 0
-        ? `${createdLayouts} of ${totalLayouts} layouts`
-        : "Preparing layouts";
+        ? `${createdLayouts} de ${totalLayouts} diseños`
+        : "Preparando diseños";
 
     return (
       <Card
         role="group"
-        aria-label={`${templateName} template ${failed ? "generation failed" : "is processing"}`}
+        aria-label={`Plantilla ${templateName}: ${failed ? "error en la generación" : "en proceso"}`}
         className={cn(
           "relative overflow-hidden rounded-[22px] border border-[#E8E9EC] bg-white",
           failed ? "shadow-sm" : "cursor-not-allowed opacity-90 shadow-sm"
@@ -291,7 +291,7 @@ export const ProcessingTemplateListCard = memo(
             ) : (
               <span className="h-1.5 w-1.5 rounded-full bg-[#FFDB05]" />
             )}
-            {failed ? "Failed" : `${progressPercent}%`}
+            {failed ? "Error" : `${progressPercent}%`}
           </div>
           <div className="absolute inset-x-5 bottom-5 z-30 h-1.5 overflow-hidden rounded-full bg-white/70">
             <div
@@ -326,7 +326,7 @@ export const ProcessingTemplateListCard = memo(
               ) : (
                 <RotateCcw className="h-3.5 w-3.5" />
               )}
-              Retry
+              Reintentar
             </button>
           )}
         </div>
@@ -340,7 +340,7 @@ function taskErrorDetail(error: unknown): string {
     const detail = (error as { detail?: unknown }).detail;
     if (typeof detail === "string" && detail.trim()) return detail;
   }
-  return "Template generation failed";
+  return "Error al generar la plantilla";
 }
 
 export function TemplateListSection({
@@ -378,17 +378,17 @@ export function TemplateTabSwitcher({
 }) {
   if (libraryPage) {
     return (
-      <div role="group" aria-label="Template type" data-selection={tab === "custom" ? "1" : "0"} className="motion-segments flex h-9 w-[180px] shrink-0 items-center rounded-lg border border-[#EDEEEF] bg-white p-[3px] font-manrope">
+      <div role="group" aria-label="Tipo de plantilla" data-selection={tab === "custom" ? "1" : "0"} className="motion-segments flex h-9 w-[180px] shrink-0 items-center rounded-lg border border-[#EDEEEF] bg-white p-[3px] font-manrope">
         <span aria-hidden="true" className="motion-segment-indicator rounded-lg bg-[#F6F6F9]" />
-        {([{ value: "default", label: "Built-In" }, { value: "custom", label: "Custom" }] as const).map((item) => (
-          <button key={item.value} type="button" aria-pressed={tab === item.value} onClick={() => onTabChange(item.value)} className={cn("flex h-7 flex-1 items-center justify-center rounded-lg text-[13px] font-medium leading-6 text-[#191919] outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/30", tab !== item.value && "hover:bg-[#F9FAFB]")}>{item.label}</button>
+        {([{ value: "default", label: "Integradas" }, { value: "custom", label: "Personalizadas" }] as const).map((item) => (
+          <button key={item.value} type="button" aria-pressed={tab === item.value} onClick={() => onTabChange(item.value)} className={cn("flex h-7 flex-1 items-center justify-center rounded-lg text-[13px] font-medium leading-6 text-[#191919] outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/30", tab !== item.value && "hover:bg-[#F9FAFB]")}>{item.label}</button>
         ))}
       </div>
     );
   }
   return (
-    <div role="group" aria-label="Template type" data-selection={tab === "default" ? "1" : "0"} className="motion-segments grid w-fit grid-cols-2 items-center rounded-[40px] border border-[#EDEEEF] bg-white p-1 [--motion-segment-inset:4px] [--motion-segment-inset-y:4px]">
-      <span aria-hidden="true" className="motion-segment-indicator rounded-[70px] bg-[#FFFADC]" />
+    <div role="group" aria-label="Tipo de plantilla" data-selection={tab === "default" ? "1" : "0"} className="motion-segments grid w-fit grid-cols-2 items-center rounded-[40px] border border-[#EDEEEF] bg-white p-1 [--motion-segment-inset:4px] [--motion-segment-inset-y:4px]">
+      <span aria-hidden="true" className="motion-segment-indicator rounded-[70px] bg-[#F4F3FF]" />
       <button
         type="button"
         aria-pressed={tab === "custom"}
@@ -398,7 +398,7 @@ export function TemplateTabSwitcher({
           color: tab === "custom" ? "#0A0A0A" : "#3A3A3A",
         }}
       >
-        Custom
+        Personalizadas
       </button>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -420,13 +420,13 @@ export function TemplateTabSwitcher({
           color: tab === "default" ? "#0A0A0A" : "#3A3A3A",
         }}
       >
-        Built-in
+        Integradas
       </button>
     </div>
   );
 }
 
-export function TemplateListLoadingState({ message = "Loading templates..." }: { message?: string }) {
+export function TemplateListLoadingState({ message = "Cargando plantillas..." }: { message?: string }) {
   return (
     <div className="flex items-center justify-center py-12 font-syne">
       <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
@@ -435,7 +435,7 @@ export function TemplateListLoadingState({ message = "Loading templates..." }: {
   );
 }
 
-export function TemplateListEmptyState({ message = "No templates available." }: { message?: string }) {
+export function TemplateListEmptyState({ message = "No hay plantillas disponibles." }: { message?: string }) {
   return (
     <div className="flex items-center justify-center py-12 font-syne text-gray-600">
       {message}

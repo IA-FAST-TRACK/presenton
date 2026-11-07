@@ -8,13 +8,13 @@ export const useFileUpload = () => {
     const lowerName = file.name.toLowerCase();
     const isPptx = lowerName.endsWith(".pptx");
     if (!isPptx) {
-      notify.error("Invalid file", "Please select a valid PPTX file.");
+      notify.error("Archivo no válido", "Selecciona un archivo PPTX válido.");
       return;
     }
 
     const maxSize = 100 * 1024 * 1024;
     if (file.size > maxSize) {
-      notify.error("File too large", "File size must be less than 100MB.");
+      notify.error("Archivo demasiado grande", "El tamaño del archivo debe ser inferior a 100 MB.");
       return;
     }
 

@@ -43,52 +43,52 @@ type SortOption = {
 const DEFAULT_SORT_VALUE = "default";
 
 const SORT_OPTIONS: SortOption[] = [
-  { value: DEFAULT_SORT_VALUE, label: "Default" },
+  { value: DEFAULT_SORT_VALUE, label: "Predeterminado" },
   {
     value: "created_at:desc",
-    label: "Newest",
+    label: "Más recientes",
     orderBy: "created_at",
     order: "desc",
   },
   {
     value: "created_at:asc",
-    label: "Oldest",
+    label: "Más antiguas",
     orderBy: "created_at",
     order: "asc",
   },
   {
     value: "views:desc",
-    label: "Most viewed",
+    label: "Más vistas",
     orderBy: "views",
     order: "desc",
   },
   {
     value: "views:asc",
-    label: "Least viewed",
+    label: "Menos vistas",
     orderBy: "views",
     order: "asc",
   },
   {
     value: "likes:desc",
-    label: "Most liked",
+    label: "Más gustadas",
     orderBy: "likes",
     order: "desc",
   },
   {
     value: "likes:asc",
-    label: "Least liked",
+    label: "Menos gustadas",
     orderBy: "likes",
     order: "asc",
   },
   {
     value: "priority:desc",
-    label: "Featured first",
+    label: "Destacadas primero",
     orderBy: "priority",
     order: "desc",
   },
   {
     value: "priority:asc",
-    label: "Featured last",
+    label: "Destacadas al final",
     orderBy: "priority",
     order: "asc",
   },
@@ -157,8 +157,8 @@ export default function CommunityPresentationFilters({
         disabled={disabled}
       >
         <SelectTrigger
-          className="h-10 w-[148px] rounded-full border-[#DBDBDB99] bg-white px-3 font-manrope text-xs shadow-none focus:ring-[#0A0A0A]/20"
-          aria-label="Sort community presentations"
+          className="h-10 w-[148px] rounded-full border-[#DBDBDB99] bg-white px-3 font-manrope text-xs shadow-none focus:ring-[#7A5AF8]/20"
+          aria-label="Ordenar presentaciones de la comunidad"
         >
           <SelectValue />
         </SelectTrigger>
@@ -190,7 +190,7 @@ export default function CommunityPresentationFilters({
             )}
           >
             <SlidersHorizontal className="h-3.5 w-3.5" />
-            Filters
+            Filtros
             {activeFilterCount > 0 && (
               <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#FFDB05] px-1 text-[10px] text-[#0A0A0A]">
                 {activeFilterCount}
@@ -207,17 +207,17 @@ export default function CommunityPresentationFilters({
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-semibold text-[#191919]">
-                Community filters
+                Filtros de la comunidad
               </h3>
               <p className="mt-0.5 text-[11px] text-[#808080]">
-                Narrow presentations by date and engagement.
+                Filtra las presentaciones por fecha e interacción.
               </p>
             </div>
             <button
               type="button"
               onClick={() => setOpen(false)}
               className="flex h-7 w-7 items-center justify-center rounded-full text-[#666666] hover:bg-[#F6F6F9]"
-              aria-label="Close filters"
+              aria-label="Cerrar filtros"
             >
               <X className="h-4 w-4" />
             </button>
@@ -226,14 +226,14 @@ export default function CommunityPresentationFilters({
           <div className="mt-4 space-y-4">
             <div className="grid grid-cols-2 gap-3">
               <DateFilter
-                label="Created after"
+                label="Creadas después de"
                 value={draft.createdAfter}
                 onChange={(createdAfter) =>
                   setDraft((current) => ({ ...current, createdAfter }))
                 }
               />
               <DateFilter
-                label="Created before"
+                label="Creadas antes de"
                 value={draft.createdBefore}
                 onChange={(createdBefore) =>
                   setDraft((current) => ({ ...current, createdBefore }))
@@ -241,7 +241,7 @@ export default function CommunityPresentationFilters({
               />
             </div>
             <CountFilter
-              label="Views"
+              label="Visualizaciones"
               comparison={draft.viewsComparison}
               value={draft.viewsValue}
               onComparisonChange={(viewsComparison) =>
@@ -252,7 +252,7 @@ export default function CommunityPresentationFilters({
               }
             />
             <CountFilter
-              label="Likes"
+              label="Me gusta"
               comparison={draft.likesComparison}
               value={draft.likesValue}
               onComparisonChange={(likesComparison) =>
@@ -275,14 +275,14 @@ export default function CommunityPresentationFilters({
               disabled={activeFilterCount === 0}
               className="text-xs font-medium text-[#666666] hover:text-[#191919] disabled:cursor-not-allowed disabled:opacity-40"
             >
-              Clear filters
+              Borrar filtros
             </button>
             <button
               type="button"
               onClick={applyFilters}
               className="h-9 rounded-full bg-[#FFDB05] px-5 text-xs font-medium text-[#0A0A0A] transition hover:bg-[#E6C500] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/30"
             >
-              Apply
+              Aplicar
             </button>
           </div>
         </PopoverContent>
@@ -344,10 +344,10 @@ function CountFilter({
             <SelectValue />
           </SelectTrigger>
           <SelectContent className="font-manrope">
-            <SelectItem value="any">Any</SelectItem>
-            <SelectItem value="exact">Exactly</SelectItem>
-            <SelectItem value="gt">More than</SelectItem>
-            <SelectItem value="lt">Fewer than</SelectItem>
+            <SelectItem value="any">Cualquiera</SelectItem>
+            <SelectItem value="exact">Exactamente</SelectItem>
+            <SelectItem value="gt">Más de</SelectItem>
+            <SelectItem value="lt">Menos de</SelectItem>
           </SelectContent>
         </Select>
         <input
@@ -358,8 +358,8 @@ function CountFilter({
           value={value}
           onChange={(event) => onValueChange(event.target.value)}
           disabled={comparison === "any"}
-          placeholder="Count"
-          className="h-9 w-full rounded-lg border border-[#E0E0E3] bg-white px-3 text-xs text-[#191919] outline-none transition placeholder:text-[#A0A0A0] focus:border-[#FFED82] focus:ring-2 focus:ring-[#0A0A0A]/10 disabled:bg-[#F7F7F9] disabled:text-[#A0A0A0]"
+          placeholder="Cantidad"
+          className="h-9 w-full rounded-lg border border-[#E0E0E3] bg-white px-3 text-xs text-[#191919] outline-none transition placeholder:text-[#A0A0A0] focus:border-[#BDB4FB] focus:ring-2 focus:ring-[#7A5AF8]/10 disabled:bg-[#F7F7F9] disabled:text-[#A0A0A0]"
         />
       </div>
     </div>

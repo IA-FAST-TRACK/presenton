@@ -64,7 +64,7 @@ def test_load_pdf_requires_temp_dir_when_images_are_requested():
         )
 
     assert exc.value.status_code == 400
-    assert "temp_dir is required" in exc.value.detail
+    assert "temp_dir es obligatorio" in exc.value.detail
 
 
 def test_convert_image_to_png_writes_png_file(tmp_path):

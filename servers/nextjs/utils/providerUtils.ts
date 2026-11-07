@@ -254,7 +254,7 @@ const fetchAvailableOllamaModels = async (
     throw new BackendConnectionError();
   }
   if (!response.ok) {
-    throw new Error(await getApiErrorMessage(response, "Could not list Ollama models"));
+    throw new Error(await getApiErrorMessage(response, "No se han podido obtener los modelos de Ollama"));
   }
   let models: unknown;
   try {
@@ -263,7 +263,7 @@ const fetchAvailableOllamaModels = async (
     throw new BackendConnectionError();
   }
   if (!Array.isArray(models)) {
-    throw new Error("Ollama returned an invalid model list");
+    throw new Error("Ollama ha devuelto una lista de modelos no válida");
   }
   return models.flatMap((model) => {
     if (!model || typeof model !== "object" || !("name" in model)) return [];
@@ -370,11 +370,11 @@ const fetchOllamaLibraryModels = async (): Promise<OllamaLibraryModel[]> => {
     getApiUrl("/api/v1/ppt/ollama/models/library")
   );
   if (!response.ok) {
-    throw new Error(await getApiErrorMessage(response, "Could not fetch Ollama library models"));
+    throw new Error(await getApiErrorMessage(response, "No se han podido obtener los modelos de la biblioteca de Ollama"));
   }
   const models: unknown = await response.json();
   if (!Array.isArray(models)) {
-    throw new Error("Invalid library model list");
+    throw new Error("Lista de modelos de la biblioteca no válida");
   }
   return models.flatMap((model) => {
     if (!model || typeof model !== "object" || !("name" in model)) return [];
@@ -413,14 +413,14 @@ export const pullOllamaModel = async (
   );
 
   if (!response.ok) {
-    const msg = await getApiErrorMessage(response, "Failed to pull model");
+    const msg = await getApiErrorMessage(response, "No se ha podido descargar el modelo");
     onEvent({ type: "error", detail: msg });
     return;
   }
 
   const reader = response.body?.getReader();
   if (!reader) {
-    onEvent({ type: "error", detail: "No response stream" });
+    onEvent({ type: "error", detail: "No se ha recibido el flujo de respuesta" });
     return;
   }
 
@@ -444,7 +444,7 @@ export const pullOllamaModel = async (
           try {
             const data = JSON.parse(dataStr) as OllamaPullProgressEvent;
             if (currentEvent === "error" || data.type === "error") {
-              onEvent({ type: "error", detail: data.detail || "Pull failed" });
+              onEvent({ type: "error", detail: data.detail || "Error en la descarga" });
               return;
             }
             onEvent(data);

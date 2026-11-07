@@ -44,12 +44,12 @@ export function DeleteTemplateDialog({
 
           <DialogHeader className="space-y-2 text-left">
             <DialogTitle className="text-[18px] font-semibold leading-[26px] tracking-normal text-[#101323]">
-              Delete template?
+              ¿Eliminar plantilla?
             </DialogTitle>
             <DialogDescription className="text-[14px] leading-[20px] text-[#667085]">
-              This will permanently delete{" "}
+              Se eliminará de forma permanente{" "}
               <span className="font-medium text-[#344054]">{templateName}</span>
-              . This action cannot be undone.
+              . Esta acción no se puede deshacer.
             </DialogDescription>
           </DialogHeader>
         </div>
@@ -61,7 +61,7 @@ export function DeleteTemplateDialog({
             onClick={() => onOpenChange(false)}
             type="button"
           >
-            Cancel
+            Cancelar
           </button>
           <button
             className="inline-flex h-10 items-center justify-center gap-2 rounded-[8px] border border-[#D92D20] bg-[#D92D20] px-4 text-[14px] font-medium text-white shadow-sm transition-colors hover:bg-[#B42318] disabled:pointer-events-none disabled:opacity-70"
@@ -74,7 +74,7 @@ export function DeleteTemplateDialog({
             ) : (
               <Trash2 className="h-4 w-4" />
             )}
-            {isDeleting ? "Deleting" : "Delete Template"}
+            {isDeleting ? "Eliminando" : "Eliminar plantilla"}
           </button>
         </DialogFooter>
       </DialogContent>

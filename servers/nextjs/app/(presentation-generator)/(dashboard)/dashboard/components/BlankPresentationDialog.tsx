@@ -96,7 +96,7 @@ function TemplatePicker({
           onClick={onRetry}
           className="rounded-lg border border-[#E5E7EB] px-4 py-2 text-sm font-medium text-[#0A0A0A] hover:bg-[#FFFADC]"
         >
-          Try again
+          Reintentar
         </button>
       </div>
     );
@@ -105,7 +105,7 @@ function TemplatePicker({
   const hasTemplates = defaultTemplates.length + customTemplates.length > 0;
 
   if (!hasTemplates) {
-    return <TemplateListEmptyState message="No templates available." />;
+    return <TemplateListEmptyState message="No hay plantillas disponibles." />;
   }
 
   return (
@@ -114,7 +114,7 @@ function TemplatePicker({
         {defaultTemplates.length > 0 && (
           <section>
             <h3 className="mb-4 font-syne text-sm font-semibold text-[#333333]">
-              Built-in templates
+              Plantillas integradas
             </h3>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {defaultTemplates.map((template) => (
@@ -132,7 +132,7 @@ function TemplatePicker({
         {customTemplates.length > 0 && (
           <section>
             <h3 className="mb-4 font-syne text-sm font-semibold text-[#333333]">
-              Your templates
+              Tus plantillas
             </h3>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {customTemplates.map((template) => (
@@ -152,7 +152,7 @@ function TemplatePicker({
         <div role="status" className="absolute inset-0 z-50 flex items-center justify-center rounded-xl bg-white/70 backdrop-blur-[1px]">
           <div className="flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white px-4 py-2 text-sm font-medium text-[#0A0A0A] shadow-sm">
             <Loader2 className="h-4 w-4 animate-spin" />
-            Creating presentation...
+            Creando presentación...
           </div>
         </div>
       )}
@@ -197,25 +197,25 @@ export function BlankPresentationDialog({
           <>
             <DialogHeader>
               <DialogTitle className="font-syne text-xl text-[#191919]">
-                Start a blank presentation
+                Empezar una presentación en blanco
               </DialogTitle>
               <DialogDescription className="pt-1 text-sm text-[#6B6D76]">
-                Choose whether you want to begin with a design or a clean
-                slide.
+                Elige si quieres empezar con un diseño o con una diapositiva
+                limpia.
               </DialogDescription>
             </DialogHeader>
 
             <div className="mt-2 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <ChoiceCard
-                title="With a template"
-                description="Choose from all built-in and custom templates."
+                title="Con una plantilla"
+                description="Elige entre todas las plantillas integradas y personalizadas."
                 icon={<LayoutTemplate className="h-5 w-5" />}
                 onClick={() => setStep("templates")}
                 disabled={isCreating}
               />
               <ChoiceCard
-                title="Without a template"
-                description="Start with a clean white slide."
+                title="Sin plantilla"
+                description="Empieza con una diapositiva en blanco."
                 icon={<Presentation className="h-5 w-5" />}
                 onClick={onContinueWithoutTemplate}
                 disabled={isCreating}
@@ -224,7 +224,7 @@ export function BlankPresentationDialog({
             {isCreating && (
               <div role="status" className="flex items-center justify-center gap-2 text-sm text-[#0A0A0A]">
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Creating presentation...
+                Creando presentación...
               </div>
             )}
           </>
@@ -238,15 +238,15 @@ export function BlankPresentationDialog({
                 className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#64666F] transition-colors hover:text-[#0A0A0A] disabled:cursor-wait disabled:opacity-50"
               >
                 <ArrowLeft className="h-4 w-4" />
-                Back
+                Volver
               </button>
               <DialogHeader>
                 <DialogTitle className="font-syne text-xl text-[#191919]">
-                  Choose a template
+                  Elige una plantilla
                 </DialogTitle>
                 <DialogDescription className="pt-1 text-sm text-[#6B6D76]">
-                  Select a template to create your presentation and open it in
-                  the editor.
+                  Selecciona una plantilla para crear tu presentación y abrirla
+                  en el editor.
                 </DialogDescription>
               </DialogHeader>
             </div>

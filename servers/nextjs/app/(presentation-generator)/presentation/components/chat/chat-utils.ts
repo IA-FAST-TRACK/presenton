@@ -133,7 +133,7 @@ export async function readDecomposedFile(filePath: string) {
   });
   const result = await response.json();
   if (!response.ok) {
-    throw new Error(result?.error || "Failed to read document.");
+    throw new Error(result?.error || "No se ha podido leer el documento.");
   }
   return result?.content || "";
 }

@@ -201,14 +201,14 @@ function makeBulletListElement(marker: Marker): SlideElement {
   const items = [
     [
       {
-        text: "Clarify the goal and audience",
+        text: "Aclara el objetivo y la audiencia",
         font: { ...baseFont, bold: true },
       },
     ],
-    [{ text: "Show the strongest supporting point", font: { ...baseFont } }],
+    [{ text: "Muestra el argumento de apoyo más sólido", font: { ...baseFont } }],
     [
       {
-        text: "Close with the next action",
+        text: "Cierra con la siguiente acción",
         font: { ...baseFont, italic: true },
       },
     ],
@@ -268,7 +268,7 @@ function createDefaultTextInsertElements(kind?: string): SlideElement[] {
       return [
         makeTextElement({
           name: "slide_title",
-          text: "Add a clear slide title",
+          text: "Añade un título claro para la diapositiva",
           x: 109,
           y: 109,
           width: 986,
@@ -281,7 +281,7 @@ function createDefaultTextInsertElements(kind?: string): SlideElement[] {
       return [
         makeTextElement({
           name: "slide_subtitle",
-          text: "Add a concise supporting subtitle",
+          text: "Añade un subtítulo breve de apoyo",
           x: 122,
           y: 154,
           width: 870,
@@ -301,7 +301,7 @@ function createDefaultTextInsertElements(kind?: string): SlideElement[] {
       return [
         makeTextElement({
           name: "quote",
-          text: '"Add a memorable quote or customer insight here."',
+          text: '"Añade aquí una cita memorable o la opinión de un cliente."',
           x: 122,
           y: 147,
           width: 858,
@@ -316,7 +316,7 @@ function createDefaultTextInsertElements(kind?: string): SlideElement[] {
       return [
         makeTextElement({
           name: "body_text",
-          text: "Add body text here. Use this space for a short paragraph or supporting detail.",
+          text: "Añade aquí el texto principal. Usa este espacio para un párrafo breve o un detalle de apoyo.",
           x: 122,
           y: 154,
           width: 858,
@@ -373,50 +373,50 @@ function chartExample(chartType: ChartType) {
   switch (chartType) {
     case "donut":
       return {
-        title: "Revenue Share by Segment",
-        categories: ["Enterprise", "Mid-market", "Small business", "Consumer"],
+        title: "Cuota de ingresos por segmento",
+        categories: ["Grandes empresas", "Mediana empresa", "Pequeña empresa", "Consumidor"],
         values: [42, 28, 18, 12],
-        seriesName: "Revenue Share",
+        seriesName: "Cuota de ingresos",
         colors: ["7F22FE", "155DFC", "F59E0B", "12B76A"],
       };
     case "horizontal_bar":
       return {
-        title: "Qualified Leads by Channel",
-        categories: ["Email", "Search", "Social", "Referral"],
+        title: "Leads cualificados por canal",
+        categories: ["Correo electrónico", "Búsqueda", "Redes sociales", "Recomendación"],
         values: [68, 54, 47, 38],
-        seriesName: "Qualified Leads",
+        seriesName: "Leads cualificados",
         colors: ["7F22FE", "155DFC", "F59E0B", "12B76A"],
       };
     case "polar_area":
       return {
-        title: "Support Tickets by Priority",
-        categories: ["Critical", "High", "Medium", "Low"],
+        title: "Incidencias de soporte por prioridad",
+        categories: ["Crítica", "Alto", "Media", "Bajo"],
         values: [18, 32, 46, 24],
-        seriesName: "Ticket Volume",
+        seriesName: "Volumen de incidencias",
         colors: ["7F22FE", "155DFC", "F59E0B", "12B76A"],
       };
     case "radar":
       return {
-        title: "Product Readiness Score",
-        categories: ["Design", "Reliability", "Speed", "Security", "Usability"],
+        title: "Nivel de preparación del producto",
+        categories: ["Diseño", "Fiabilidad", "Velocidad", "Seguridad", "Usabilidad"],
         values: [82, 74, 88, 69, 91],
-        seriesName: "Readiness Score",
+        seriesName: "Nivel de preparación",
         colors: ["7F22FE", "155DFC", "F59E0B", "12B76A", "06B6D4"],
       };
     case "scatter":
       return {
-        title: "Campaign Conversion Results",
-        categories: ["Campaign A", "Campaign B", "Campaign C", "Campaign D"],
+        title: "Resultados de conversión por campaña",
+        categories: ["Campaña A", "Campaña B", "Campaña C", "Campaña D"],
         values: [42, 57, 63, 76],
-        seriesName: "Conversions",
+        seriesName: "Conversiones",
         colors: ["7F22FE", "155DFC", "F59E0B", "12B76A"],
       };
     default:
       return {
-        title: "Quarterly Revenue Trend",
+        title: "Tendencia trimestral de ingresos",
         categories: ["Q1", "Q2", "Q3", "Q4"],
         values: [38, 54, 47, 68],
-        seriesName: "Revenue",
+        seriesName: "Ingresos",
         colors: ["7F22FE", "155DFC", "F59E0B", "12B76A"],
       };
   }
@@ -429,7 +429,7 @@ function makeChartElement(chartType: ChartType): SlideElement {
   };
 
   if (chartType === "bar") {
-    const categories = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const categories = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
     const values = [70, 120, 45, 145, 105, 105, 45];
     const colors = [
       "4D20C5",
@@ -446,7 +446,7 @@ function makeChartElement(chartType: ChartType): SlideElement {
       position: { ...DEFAULT_CHART_INSERT_POSITION },
       size: { ...DEFAULT_CHART_INSERT_SIZE },
       chart_type: "bar",
-      title: "Weekly Website Visits\nJun 10-16",
+      title: "Visitas semanales al sitio web\n10-16 jun",
       color: "4D20C5",
       axis_color: "D8D8D8",
       grid_color: "D8D8D8",
@@ -456,7 +456,7 @@ function makeChartElement(chartType: ChartType): SlideElement {
       x_axis: true,
       y_axis: true,
       categories,
-      series: [{ name: "Visits", values }],
+      series: [{ name: "Visitas", values }],
       colors,
       data: chartData(categories, values, colors),
       ...schema,
@@ -480,7 +480,7 @@ function makeChartElement(chartType: ChartType): SlideElement {
       position: { ...DEFAULT_CHART_INSERT_POSITION },
       size: { ...DEFAULT_CHART_INSERT_SIZE },
       chart_type: "line",
-      title: "Revenue Growth\n2021-2026",
+      title: "Crecimiento de ingresos\n2021-2026",
       color: "4D20C5",
       axis_color: "D8D8D8",
       grid_color: "D8D8D8",
@@ -490,7 +490,7 @@ function makeChartElement(chartType: ChartType): SlideElement {
       x_axis: true,
       y_axis: false,
       categories,
-      series: [{ name: "Revenue", values }],
+      series: [{ name: "Ingresos", values }],
       colors,
       data: chartData(categories, values, colors),
       ...schema,
@@ -514,7 +514,7 @@ function makeChartElement(chartType: ChartType): SlideElement {
       position: { ...DEFAULT_CHART_INSERT_POSITION },
       size: { ...DEFAULT_CHART_INSERT_SIZE },
       chart_type: "area",
-      title: "Monthly Active Users\n2021-2026",
+      title: "Usuarios activos mensuales\n2021-2026",
       color: "7555F6",
       axis_color: "D8D8D8",
       grid_color: "D8D8D8",
@@ -524,7 +524,7 @@ function makeChartElement(chartType: ChartType): SlideElement {
       x_axis: true,
       y_axis: false,
       categories,
-      series: [{ name: "Active Users", values }],
+      series: [{ name: "Usuarios activos", values }],
       colors,
       data: chartData(categories, values, colors),
       ...schema,
@@ -532,7 +532,7 @@ function makeChartElement(chartType: ChartType): SlideElement {
   }
 
   if (chartType === "pie") {
-    const categories = ["Product", "Services", "Support", "Training"];
+    const categories = ["Producto", "Servicios", "Soporte", "Formación"];
     const values = [45, 30, 15, 10];
     const colors = ["7555F6", "155DFC", "F59E0B", "12B76A"];
 
@@ -541,13 +541,13 @@ function makeChartElement(chartType: ChartType): SlideElement {
       position: { ...DEFAULT_CHART_INSERT_POSITION },
       size: { ...DEFAULT_CHART_INSERT_SIZE },
       chart_type: "pie",
-      title: "Revenue Mix by Offering",
+      title: "Ingresos por línea de oferta",
       color: "7555F6",
       axis_color: "D8D8D8",
       grid_color: "D8D8D8",
       data_labels: "top",
       categories,
-      series: [{ name: "Revenue Share", values }],
+      series: [{ name: "Cuota de ingresos", values }],
       colors,
       data: chartData(categories, values, colors),
       ...schema,
@@ -565,7 +565,7 @@ function makeChartElement(chartType: ChartType): SlideElement {
       position: { ...DEFAULT_CHART_INSERT_POSITION },
       size: { width: 538, height: 410 },
       chart_type: chartType,
-      title: "Quarterly Revenue by Segment",
+      title: "Ingresos trimestrales por segmento",
       color: "7F22FE",
       axis_color: "D0D5DD",
       grid_color: "D0D5DD",
@@ -575,8 +575,8 @@ function makeChartElement(chartType: ChartType): SlideElement {
       y_axis_grid: true,
       categories,
       series: [
-        { name: "New Business", values },
-        { name: "Expansion", values: secondaryValues },
+        { name: "Nuevo negocio", values },
+        { name: "Expansión", values: secondaryValues },
       ],
       colors,
       data: chartData(categories, values, colors),
@@ -724,84 +724,84 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
       size: { width: 720, height: 300 },
       data: {
         type: "gantt",
-        columns: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"].map((label) => ({
+        columns: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago"].map((label) => ({
           label,
         })),
         rows: [
           {
-            label: "Research & Discovery",
+            label: "Investigación y descubrimiento",
             items: [
               {
-                name: "Research & Discovery",
+                name: "Investigación y descubrimiento",
                 start: { column: 0, offset: 0 },
                 end: { column: 2, offset: 0.5 },
               },
             ],
           },
           {
-            label: "Content Planning",
+            label: "Planificación de contenidos",
             items: [
               {
-                name: "Content Planning",
+                name: "Planificación de contenidos",
                 start: { column: 1, offset: 0.14 },
                 end: { column: 2, offset: 0.88 },
               },
             ],
           },
           {
-            label: "Strategy Development",
+            label: "Desarrollo de la estrategia",
             items: [
               {
-                name: "Strategy Development",
+                name: "Desarrollo de la estrategia",
                 start: { column: 2, offset: 0.34 },
                 end: { column: 4, offset: 0.86 },
               },
             ],
           },
           {
-            label: "Design & Production",
+            label: "Diseño y producción",
             items: [{
-              name: "Design & Production",
+              name: "Diseño y producción",
               start: { column: 4, offset: 0 },
               end: { column: 6, offset: 0.38 },
             }],
           },
           {
-            label: "Content Creation",
+            label: "Creación de contenidos",
             items: [{
-              name: "Content Creation",
+              name: "Creación de contenidos",
               start: { column: 5, offset: 0 },
               end: { column: 7, offset: 1 },
             }],
           },
           {
-            label: "Campaign Launch",
+            label: "Lanzamiento de la campaña",
             items: [{
-              name: "Campaign Launch",
+              name: "Lanzamiento de la campaña",
               start: { column: 5, offset: 0.52 },
               end: { column: 7, offset: 0.68 },
             }],
           },
           {
-            label: "Performance Tracking",
+            label: "Seguimiento del rendimiento",
             items: [{
-              name: "Performance Tracking",
+              name: "Seguimiento del rendimiento",
               start: { column: 4, offset: 0.3 },
               end: { column: 7, offset: 1 },
             }],
           },
           {
-            label: "Optimization",
+            label: "Optimización",
             items: [{
-              name: "Optimization",
+              name: "Optimización",
               start: { column: 6, offset: 0.9 },
               end: { column: 7, offset: 1 },
             }],
           },
           {
-            label: "Final Review",
+            label: "Revisión final",
             items: [{
-              name: "Final Review",
+              name: "Revisión final",
               start: { column: 6, offset: 0.56 },
               end: { column: 7, offset: 1 },
             }],
@@ -839,40 +839,40 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
               url: INFOGRAPHIC_EXAMPLE_ICON_URLS.discover,
               color: "FFFFFF",
             },
-            heading: "Discover",
-            description: "Research the challenge and identify key needs.",
+            heading: "Descubrir",
+            description: "Investiga el reto e identifica las necesidades clave.",
           },
           {
             icon: {
               url: INFOGRAPHIC_EXAMPLE_ICON_URLS.define,
               color: "FFFFFF",
             },
-            heading: "Define",
-            description: "Set clear goals, priorities, and direction.",
+            heading: "Definir",
+            description: "Establece objetivos, prioridades y una dirección claros.",
           },
           {
             icon: {
               url: INFOGRAPHIC_EXAMPLE_ICON_URLS.plan,
               color: "FFFFFF",
             },
-            heading: "Plan",
-            description: "Build the strategy, timeline, and action plan.",
+            heading: "Planificar",
+            description: "Elabora la estrategia, el calendario y el plan de acción.",
           },
           {
             icon: {
               url: INFOGRAPHIC_EXAMPLE_ICON_URLS.execute,
               color: "FFFFFF",
             },
-            heading: "Execute",
-            description: "Put the plan into action and track progress.",
+            heading: "Ejecutar",
+            description: "Pon en marcha el plan y haz seguimiento del progreso.",
           },
           {
             icon: {
               url: INFOGRAPHIC_EXAMPLE_ICON_URLS.measure,
               color: "FFFFFF",
             },
-            heading: "Measure",
-            description: "Review results against key performance indicators.",
+            heading: "Medir",
+            description: "Revisa los resultados frente a los indicadores clave de rendimiento.",
           },
         ],
       },
@@ -892,28 +892,28 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
         type: "roadmap",
         items: [
           {
-            heading: "Discover",
-            description: "Research the challenge and identify key needs.",
+            heading: "Descubrir",
+            description: "Investiga el reto e identifica las necesidades clave.",
           },
           {
-            heading: "Define",
-            description: "Set clear goals, priorities, and direction.",
+            heading: "Definir",
+            description: "Establece objetivos, prioridades y una dirección claros.",
           },
           {
-            heading: "Plan",
-            description: "Build the strategy, timeline, and action plan.",
+            heading: "Planificar",
+            description: "Elabora la estrategia, el calendario y el plan de acción.",
           },
           {
-            heading: "Execute",
-            description: "Put the plan into action and track progress.",
+            heading: "Ejecutar",
+            description: "Pon en marcha el plan y haz seguimiento del progreso.",
           },
           {
-            heading: "Measure",
-            description: "Review results against key performance indicators.",
+            heading: "Medir",
+            description: "Revisa los resultados frente a los indicadores clave de rendimiento.",
           },
           {
-            heading: "Review",
-            description: "Capture lessons and decide the next direction.",
+            heading: "Revisar",
+            description: "Recoge los aprendizajes y decide los siguientes pasos.",
           },
         ],
       },
@@ -933,7 +933,7 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
         type: "milestone_timeline",
         items: Array.from({ length: 7 }, (_, index) => ({
           heading: String(2020 + index),
-          description: "Defined the project vision, objectives, and strategic direction.",
+          description: "Se definieron la visión, los objetivos y la dirección estratégica del proyecto.",
         })),
       },
       colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0", "7CA2E5", "D6D6D6"],
@@ -953,28 +953,28 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
         items: [
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.discover, color: "FFFFFF" },
-            heading: "Drive Growth",
-            description: "Expand customer reach, improve engagement, and increase revenue.",
+            heading: "Impulsar el crecimiento",
+            description: "Amplía el alcance de clientes, mejora la interacción y aumenta los ingresos.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.define, color: "FFFFFF" },
-            heading: "Enter the Market",
-            description: "Launch strategically and establish a strong market presence.",
+            heading: "Entrar en el mercado",
+            description: "Lanza de forma estratégica y consolida una presencia sólida en el mercado.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.plan, color: "FFFFFF" },
-            heading: "Build the Solution",
-            description: "Develop products, services, and experiences.",
+            heading: "Construir la solución",
+            description: "Desarrolla productos, servicios y experiencias.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.execute, color: "FFFFFF" },
-            heading: "Understand Market",
-            description: "Identify customer needs, market trends, and competitive gaps.",
+            heading: "Entender el mercado",
+            description: "Identifica las necesidades de los clientes, las tendencias del mercado y los huecos competitivos.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.measure, color: "FFFFFF" },
-            heading: "Define the Vision",
-            description: "Set clear goals, priorities, and a long-term direction.",
+            heading: "Definir la visión",
+            description: "Establece objetivos y prioridades claros y una dirección a largo plazo.",
           },
         ],
       },
@@ -987,69 +987,69 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
 
   if (infographicType === "supply_chain") {
     const entries = [
-      ["SOURCING", "Raw materials\nSupplier network"],
-      ["PROCUREMENT", "Purchasing\nQuality & cost"],
-      ["PRODUCTION", "Manufacturing\nQuality control"],
-      ["DISTRIBUTION", "Warehousing\nLogistics & delivery"],
-      ["END MARKET", "Retail / B2B\nCustomer delivery"],
+      ["ABASTECIMIENTO", "Materias primas\nRed de proveedores"],
+      ["COMPRAS", "Adquisiciones\nCalidad y coste"],
+      ["PRODUCCIÓN", "Fabricación\nControl de calidad"],
+      ["DISTRIBUCIÓN", "Almacenaje\nLogística y entrega"],
+      ["MERCADO FINAL", "Minorista / B2B\nEntrega al cliente"],
     ] as const;
     return { type: "infographic", position: { ...DEFAULT_INFOGRAPHIC_INSERT_POSITION }, size: { width: 720, height: 300 }, data: { type: "supply_chain", items: entries.map(([heading, description], index) => ({ icon: { url: Object.values(INFOGRAPHIC_EXAMPLE_ICON_URLS)[index % 5], color: "FFFFFF" }, heading, description })) }, colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0", "D6D6D6"], text_color: null, decorative: false, name: "supply_chain" };
   }
 
   if (infographicType === "stair_step_blocks") {
     const entries = [
-      ["Foundation", "Establish core capabilities, clear processes, resources, and operating structures."],
-      ["Optimize", "Streamline workflows, improve efficiency, reduce bottlenecks, and strengthen performance."],
-      ["Scale", "Expand capacity, customer reach, technology, and operational capabilities to support growth."],
-      ["Accelerate", "Invest in innovation, new opportunities, partnerships, and high-impact growth initiatives."],
-      ["Lead", "Build market leadership through continuous improvement and differentiation."],
+      ["Base", "Establece capacidades clave, procesos claros, recursos y estructuras operativas."],
+      ["Optimizar", "Agiliza los flujos de trabajo, mejora la eficiencia, reduce los cuellos de botella y refuerza el rendimiento."],
+      ["Escalar", "Amplía la capacidad, el alcance de clientes, la tecnología y las capacidades operativas para sostener el crecimiento."],
+      ["Acelerar", "Invierte en innovación, nuevas oportunidades, alianzas e iniciativas de crecimiento de alto impacto."],
+      ["Liderar", "Consolida el liderazgo en el mercado mediante la mejora continua y la diferenciación."],
     ] as const;
     return { type: "infographic", position: { ...DEFAULT_INFOGRAPHIC_INSERT_POSITION }, size: { width: 720, height: 350 }, data: { type: "stair_step_blocks", items: entries.map(([heading, description], index) => ({ icon: { url: Object.values(INFOGRAPHIC_EXAMPLE_ICON_URLS)[index % 5], color: "FFFFFF" }, heading, description })) }, colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0"], text_color: null, decorative: false, name: "stair_step_blocks" };
   }
 
   if (infographicType === "maturity_model") {
     const entries = [
-      ["Initial", "Capabilities are continuously refined through automation, innovation, advanced analytics, and proactive performance management."],
-      ["Developing", "Performance is actively measured through KPIs and data, enabling teams to identify gaps and manage outcomes."],
-      ["Defined", "Core processes are standardized, documented, and consistently applied, with clearer roles and governance."],
-      ["Managed", "Basic processes and responsibilities are emerging, but execution varies across teams."],
-      ["Optimized", "Processes are largely informal and reactive, with limited standardization or clear ownership."],
+      ["Inicial", "Las capacidades se perfeccionan de forma continua mediante automatización, innovación, analítica avanzada y una gestión proactiva del rendimiento."],
+      ["En desarrollo", "El rendimiento se mide activamente con KPI y datos, lo que permite a los equipos detectar carencias y gestionar resultados."],
+      ["Definido", "Los procesos clave están estandarizados, documentados y se aplican de forma coherente, con roles y gobernanza más claros."],
+      ["Gestionado", "Empiezan a surgir procesos y responsabilidades básicos, pero la ejecución varía entre equipos."],
+      ["Optimizado", "Los procesos son en gran medida informales y reactivos, con poca estandarización y sin responsables claros."],
     ] as const;
     return { type: "infographic", position: { ...DEFAULT_INFOGRAPHIC_INSERT_POSITION }, size: { width: 720, height: 390 }, data: { type: "maturity_model", items: entries.map(([heading, description], index) => ({ icon: { url: Object.values(INFOGRAPHIC_EXAMPLE_ICON_URLS)[index % 5], color: "FFFFFF" }, heading, description })) }, colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0"], text_color: null, decorative: false, name: "maturity_model" };
   }
 
   if (infographicType === "pillar_framework") {
     const entries = [
-      ["Customer", "Strengthen customer relationships, improve experience, and deliver greater value across key touchpoints.", "Experience & Value"],
-      ["Growth", "Expand market presence, develop new opportunities, and build sustainable revenue streams.", "Revenue & Market"],
-      ["Operations", "Simplify processes, improve productivity, and build scalable operating capabilities.", "Efficiency & Scale"],
-      ["Innovation", "Leverage technology, data, and innovation to create new solutions and differentiation.", "Digital & New Ideas"],
-      ["People", "Develop capabilities, strengthen leadership, and create a culture of ownership and continuous improvement.", "Talent & Culture"],
+      ["Cliente", "Refuerza la relación con los clientes, mejora la experiencia y aporta más valor en los puntos de contacto clave.", "Experiencia y valor"],
+      ["Crecimiento", "Amplía la presencia en el mercado, desarrolla nuevas oportunidades y crea fuentes de ingresos sostenibles.", "Ingresos y mercado"],
+      ["Operaciones", "Simplifica procesos, mejora la productividad y crea capacidades operativas escalables.", "Eficiencia y escala"],
+      ["Innovación", "Aprovecha la tecnología, los datos y la innovación para crear nuevas soluciones y diferenciarte.", "Digital y nuevas ideas"],
+      ["Personas", "Desarrolla capacidades, refuerza el liderazgo y crea una cultura de responsabilidad y mejora continua.", "Talento y cultura"],
     ] as const;
-    return { type: "infographic", position: { ...DEFAULT_INFOGRAPHIC_INSERT_POSITION }, size: { width: 720, height: 380 }, data: { type: "pillar_framework", title: "Growth & Transformation Framework", items: entries.map(([heading, description, focus], index) => ({ icon: { url: Object.values(INFOGRAPHIC_EXAMPLE_ICON_URLS)[index % 5], color: "FFFFFF" }, heading, description, focus })) }, colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0", "D6D6D6"], text_color: null, decorative: false, name: "pillar_framework" };
+    return { type: "infographic", position: { ...DEFAULT_INFOGRAPHIC_INSERT_POSITION }, size: { width: 720, height: 380 }, data: { type: "pillar_framework", title: "Marco de crecimiento y transformación", items: entries.map(([heading, description, focus], index) => ({ icon: { url: Object.values(INFOGRAPHIC_EXAMPLE_ICON_URLS)[index % 5], color: "FFFFFF" }, heading, description, focus })) }, colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0", "D6D6D6"], text_color: null, decorative: false, name: "pillar_framework" };
   }
 
   if (infographicType === "transformation_hub") {
-    return { type: "infographic", position: { ...DEFAULT_INFOGRAPHIC_INSERT_POSITION }, size: { width: 720, height: 300 }, data: { type: "transformation_hub", center_label: "Business\nTransformation", items: ["Strategy", "Customer", "People", "Process", "Technology", "Data"].map((heading) => ({ heading })) }, colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0", "D6D6D6"], text_color: null, decorative: false, name: "transformation_hub" };
+    return { type: "infographic", position: { ...DEFAULT_INFOGRAPHIC_INSERT_POSITION }, size: { width: 720, height: 300 }, data: { type: "transformation_hub", center_label: "Transformación\nempresarial", items: ["Estrategia", "Cliente", "Personas", "Procesos", "Tecnología", "Datos"].map((heading) => ({ heading })) }, colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0", "D6D6D6"], text_color: null, decorative: false, name: "transformation_hub" };
   }
 
   if (infographicType === "diagonal_circles") {
     const entries = [
-      ["Strategy", "Defines the organization's direction, priorities, objectives, and investment focus."],
-      ["People", "Builds the skills, leadership, accountability, and culture required to execute strategy."],
-      ["Customer", "Focuses on customer needs, experience, engagement, and value creation."],
-      ["Process", "Improves workflows, standardization, efficiency, and governance."],
-      ["Technology", "Enables digital transformation through systems, automation, integration, and data-driven capabilities."],
+      ["Estrategia", "Define la dirección, las prioridades, los objetivos y el foco de inversión de la organización."],
+      ["Personas", "Desarrolla las habilidades, el liderazgo, la responsabilidad y la cultura necesarios para ejecutar la estrategia."],
+      ["Cliente", "Se centra en las necesidades del cliente, la experiencia, la interacción y la creación de valor."],
+      ["Procesos", "Mejora los flujos de trabajo, la estandarización, la eficiencia y la gobernanza."],
+      ["Tecnología", "Hace posible la transformación digital mediante sistemas, automatización, integración y capacidades basadas en datos."],
     ] as const;
     return { type: "infographic", position: { ...DEFAULT_INFOGRAPHIC_INSERT_POSITION }, size: { width: 720, height: 430 }, data: { type: "diagonal_circles", items: entries.map(([heading, description], index) => ({ icon: { url: Object.values(INFOGRAPHIC_EXAMPLE_ICON_URLS)[index % 5], color: "FFFFFF" }, heading, description })) }, colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0", "D6D6D6"], text_color: null, decorative: false, name: "diagonal_circles" };
   }
 
   if (infographicType === "risk_matrix") {
     const entries = [
-      ["Identify", "Detect potential risks across operations, technology, finance, people, and external factors."],
-      ["Prioritize", "Rank risks by severity to focus attention and resources on the most critical areas."],
-      ["Assess", "Evaluate likelihood, impact, and exposure to understand each risk."],
-      ["Respond", "Define mitigation actions, controls, owners, and contingency plans for priority risks."],
+      ["Identificar", "Detecta riesgos potenciales en operaciones, tecnología, finanzas, personas y factores externos."],
+      ["Priorizar", "Ordena los riesgos por gravedad para centrar la atención y los recursos en las áreas más críticas."],
+      ["Evaluar", "Valora la probabilidad, el impacto y la exposición para entender cada riesgo."],
+      ["Responder", "Define acciones de mitigación, controles, responsables y planes de contingencia para los riesgos prioritarios."],
     ] as const;
     return { type: "infographic", position: { ...DEFAULT_INFOGRAPHIC_INSERT_POSITION }, size: { width: 720, height: 370 }, data: { type: "risk_matrix", center_label: "RISK", items: entries.map(([heading, description], index) => ({ icon: { url: Object.values(INFOGRAPHIC_EXAMPLE_ICON_URLS)[index % 5], color: "FFFFFF" }, heading, description })) }, colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0", "D6D6D6"], text_color: null, decorative: false, name: "risk_matrix" };
   }
@@ -1063,24 +1063,24 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
         type: "chevron_process",
         items: [
           {
-            heading: "Discover",
-            description: "Understand the business, market, and key challenges.",
+            heading: "Descubrir",
+            description: "Comprende el negocio, el mercado y los retos clave.",
           },
           {
-            heading: "Analyze",
-            description: "Evaluate data, trends, competitors, and opportunities.",
+            heading: "Analizar",
+            description: "Evalúa datos, tendencias, competidores y oportunidades.",
           },
           {
-            heading: "Define",
-            description: "Prioritize strategic issues and define objectives.",
+            heading: "Definir",
+            description: "Prioriza los asuntos estratégicos y define los objetivos.",
           },
           {
-            heading: "Design",
-            description: "Develop solutions, initiatives, and strategic priorities.",
+            heading: "Diseño",
+            description: "Desarrolla soluciones, iniciativas y prioridades estratégicas.",
           },
           {
-            heading: "Implement",
-            description: "Build the roadmap, actions, owners, and next steps.",
+            heading: "Implementar",
+            description: "Elabora la hoja de ruta, las acciones, los responsables y los siguientes pasos.",
           },
         ],
       },
@@ -1102,28 +1102,28 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
           "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
         items: [
           {
-            heading: "Discover",
-            description: "Understand the business, market, and key challenges.",
+            heading: "Descubrir",
+            description: "Comprende el negocio, el mercado y los retos clave.",
           },
           {
-            heading: "Analyze",
-            description: "Review data, identify patterns, and evaluate opportunities.",
+            heading: "Analizar",
+            description: "Revisa los datos, identifica patrones y evalúa oportunidades.",
           },
           {
-            heading: "Plan",
-            description: "Define priorities, develop the approach, and establish clear actions.",
+            heading: "Planificar",
+            description: "Define prioridades, desarrolla el enfoque y establece acciones claras.",
           },
           {
-            heading: "Execute",
-            description: "Implement the recommended actions and track progress.",
+            heading: "Ejecutar",
+            description: "Aplica las acciones recomendadas y haz seguimiento del progreso.",
           },
           {
-            heading: "Optimize",
-            description: "Measure performance and improve the plan.",
+            heading: "Optimizar",
+            description: "Mide el rendimiento y mejora el plan.",
           },
           {
-            heading: "Finalize",
-            description: "Capture outcomes, decisions, and next steps.",
+            heading: "Cerrar",
+            description: "Recoge resultados, decisiones y siguientes pasos.",
           },
         ],
       },
@@ -1144,23 +1144,23 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
         items: [
           {
             value: 57,
-            heading: "Awareness",
-            description: "Implement the recommended actions and track progress.",
+            heading: "Reconocimiento",
+            description: "Aplica las acciones recomendadas y haz seguimiento del progreso.",
           },
           {
             value: 42,
-            heading: "Interest",
-            description: "Users showing engagement with the offering.",
+            heading: "Interés",
+            description: "Usuarios que interactúan con la oferta.",
           },
           {
             value: 36,
-            heading: "Consideration",
-            description: "Prospects evaluating the solution.",
+            heading: "Consideración",
+            description: "Clientes potenciales que evalúan la solución.",
           },
           {
             value: 27,
-            heading: "Intent",
-            description: "Users showing strong purchase interest.",
+            heading: "Intención",
+            description: "Usuarios con una intención de compra clara.",
           },
         ],
       },
@@ -1181,23 +1181,23 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
         items: [
           {
             value: 100,
-            heading: "Awareness",
-            description: "The full audience entering the funnel.",
+            heading: "Reconocimiento",
+            description: "Toda la audiencia que entra en el embudo.",
           },
           {
             value: 60,
-            heading: "Interest",
-            description: "People engaging with the offering.",
+            heading: "Interés",
+            description: "Personas que interactúan con la oferta.",
           },
           {
             value: 35,
-            heading: "Consideration",
-            description: "Prospects evaluating the solution.",
+            heading: "Consideración",
+            description: "Clientes potenciales que evalúan la solución.",
           },
           {
             value: 20,
-            heading: "Conversion",
-            description: "People completing the target action.",
+            heading: "Conversión",
+            description: "Personas que completan la acción objetivo.",
           },
         ],
       },
@@ -1218,23 +1218,23 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
         items: [
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.discover, color: "FFFFFF" },
-            heading: "Foundation",
-            description: "Establish strong processes, capabilities, and resources.",
+            heading: "Base",
+            description: "Establece procesos, capacidades y recursos sólidos.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.define, color: "FFFFFF" },
-            heading: "Efficiency",
-            description: "Streamline operations, reduce gaps, and optimize costs.",
+            heading: "Eficiencia",
+            description: "Agiliza las operaciones, reduce carencias y optimiza los costes.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.plan, color: "FFFFFF" },
-            heading: "Growth",
-            description: "Enter new markets, strengthen offerings, and increase reach.",
+            heading: "Crecimiento",
+            description: "Entra en nuevos mercados, refuerza la oferta y amplía el alcance.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.execute, color: "FFFFFF" },
-            heading: "Innovation",
-            description: "Develop new ideas, solutions, and competitive advantages.",
+            heading: "Innovación",
+            description: "Desarrolla nuevas ideas, soluciones y ventajas competitivas.",
           },
         ],
       },
@@ -1255,28 +1255,28 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
         items: [
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.measure, color: "FFFFFF" },
-            heading: "Foundation",
-            description: "Establish strong processes, capabilities, and resources.",
+            heading: "Base",
+            description: "Establece procesos, capacidades y recursos sólidos.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.define, color: "FFFFFF" },
-            heading: "Efficiency",
-            description: "Streamline operations, reduce gaps, and optimize costs.",
+            heading: "Eficiencia",
+            description: "Agiliza las operaciones, reduce carencias y optimiza los costes.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.execute, color: "FFFFFF" },
-            heading: "Growth",
-            description: "Enter new markets, strengthen offerings, and increase reach.",
+            heading: "Crecimiento",
+            description: "Entra en nuevos mercados, refuerza la oferta y amplía el alcance.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.plan, color: "FFFFFF" },
-            heading: "Innovation",
-            description: "Develop new ideas, solutions, and competitive advantages.",
+            heading: "Innovación",
+            description: "Desarrolla nuevas ideas, soluciones y ventajas competitivas.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.discover, color: "FFFFFF" },
-            heading: "Leadership",
-            description: "Build long-term resilience, market leadership, and value creation.",
+            heading: "Liderazgo",
+            description: "Construye resiliencia a largo plazo, liderazgo en el mercado y creación de valor.",
           },
         ],
       },
@@ -1302,23 +1302,23 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.measure, color: "FFFFFF" },
-            heading: "Awareness",
-            description: "Customer discovers the brand through marketing and referrals.",
+            heading: "Reconocimiento",
+            description: "El cliente descubre la marca a través del marketing y las recomendaciones.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.discover, color: "FFFFFF" },
-            heading: "Consideration",
-            description: "Customer explores options, compares alternatives.",
+            heading: "Consideración",
+            description: "El cliente explora opciones y compara alternativas.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.define, color: "FFFFFF" },
-            heading: "Purchase",
-            description: "Customer makes a decision and completes the transaction.",
+            heading: "Compra",
+            description: "El cliente toma una decisión y completa la transacción.",
           },
           {
             icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.execute, color: "FFFFFF" },
-            heading: "Experience",
-            description: "Customer uses the product or service and interacts with support.",
+            heading: "Experiencia",
+            description: "El cliente usa el producto o servicio e interactúa con el soporte.",
           },
         ],
       },
@@ -1331,14 +1331,14 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
 
   if (infographicType === "before_after") {
     const beforeItems = [
-      ["Manual Processes", "Time-consuming workflows."],
-      ["Limited Visibility", "Data is difficult to access."],
-      ["Fragmented Workflows", "Teams work in silos."],
+      ["Procesos manuales", "Flujos de trabajo que consumen mucho tiempo."],
+      ["Visibilidad limitada", "Es difícil acceder a los datos."],
+      ["Flujos de trabajo fragmentados", "Los equipos trabajan aislados."],
     ] as const;
     const afterItems = [
-      ["Automated Processes", "Faster, streamlined operations."],
-      ["Faster Decisions", "Quicker, data-driven actions."],
-      ["Connected Workflows", "Better team collaboration."],
+      ["Procesos automatizados", "Operaciones más rápidas y ágiles."],
+      ["Decisiones más rápidas", "Acciones más rápidas basadas en datos."],
+      ["Flujos de trabajo conectados", "Mejor colaboración entre equipos."],
     ] as const;
     const beforeIcons = [
       INFOGRAPHIC_EXAMPLE_ICON_URLS.measure,
@@ -1356,8 +1356,8 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
       size: { width: 720, height: 460 },
       data: {
         type: "before_after",
-        before_label: "Before",
-        after_label: "After",
+        before_label: "Antes",
+        after_label: "Después",
         items: beforeItems.flatMap(([beforeHeading, beforeDescription], index) => [
           {
             icon: { url: beforeIcons[index], color: "FFFFFF" },
@@ -1385,26 +1385,26 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
       size: { width: 720, height: 420 },
       data: {
         type: "impact_effort_matrix",
-        x_axis_label: "Impact",
-        y_axis_label: "Effort",
-        low_label: "Low",
-        high_label: "High",
+        x_axis_label: "Impacto",
+        y_axis_label: "Esfuerzo",
+        low_label: "Bajo",
+        high_label: "Alto",
         items: [
           {
-            heading: "Quick Wins",
-            description: "High-impact initiatives that require relatively low effort, making them ideal for immediate execution and fast results.",
+            heading: "Victorias rápidas",
+            description: "Iniciativas de alto impacto que requieren relativamente poco esfuerzo, ideales para ejecutarlas de inmediato y obtener resultados rápidos.",
           },
           {
-            heading: "Strategic Priorities",
-            description: "High-impact initiatives that require significant investment, planning, and resources but can drive long-term business value.",
+            heading: "Prioridades estratégicas",
+            description: "Iniciativas de alto impacto que requieren una inversión, planificación y recursos significativos, pero que pueden generar valor de negocio a largo plazo.",
           },
           {
-            heading: "Deprioritize",
-            description: "Low-impact initiatives requiring substantial effort or resources, making them less suitable for immediate focus.",
+            heading: "Despriorizar",
+            description: "Iniciativas de bajo impacto que requieren un esfuerzo o unos recursos considerables, por lo que son menos adecuadas como foco inmediato.",
           },
           {
-            heading: "Fill-ins",
-            description: "Low-impact initiatives that are easy to implement and can be addressed when resources are available.",
+            heading: "Tareas de relleno",
+            description: "Iniciativas de bajo impacto fáciles de implementar que pueden abordarse cuando haya recursos disponibles.",
           },
         ],
       },
@@ -1417,11 +1417,11 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
 
   if (infographicType === "comparison_matrix") {
     const criteria = [
-      "Market Access",
-      "Investment Required",
-      "Speed to Market",
+      "Acceso al mercado",
+      "Inversión necesaria",
+      "Rapidez de lanzamiento",
       "Control",
-      "Scalability",
+      "Escalabilidad",
     ];
     return {
       type: "infographic",
@@ -1431,11 +1431,11 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
         type: "comparison_matrix",
         criteria,
         items: [
-          { icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.measure, color: "111111" }, heading: "Organic Growth", values: ["Moderate", "Low", "Slow", "High", "High"] },
-          { icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.define, color: "111111" }, heading: "Product Innovation", values: ["High", "Low", "Fast", "Low", "High"] },
-          { icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.discover, color: "111111" }, heading: "Strategic Partnership", values: ["Low", "Low", "Slow", "Fast", "High"] },
-          { icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.execute, color: "111111" }, heading: "Acquisition", values: ["Moderate", "Low", "Slow", "High", "High"] },
-          { icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.plan, color: "111111" }, heading: "Market Expansion", values: ["Moderate", "Low", "Slow", "High", "High"] },
+          { icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.measure, color: "111111" }, heading: "Crecimiento orgánico", values: ["Moderado", "Bajo", "Lento", "Alto", "Alto"] },
+          { icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.define, color: "111111" }, heading: "Innovación de producto", values: ["Alto", "Bajo", "Rápido", "Bajo", "Alto"] },
+          { icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.discover, color: "111111" }, heading: "Alianza estratégica", values: ["Bajo", "Bajo", "Lento", "Rápido", "Alto"] },
+          { icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.execute, color: "111111" }, heading: "Adquisición", values: ["Moderado", "Bajo", "Lento", "Alto", "Alto"] },
+          { icon: { url: INFOGRAPHIC_EXAMPLE_ICON_URLS.plan, color: "111111" }, heading: "Expansión de mercado", values: ["Moderado", "Bajo", "Lento", "Alto", "Alto"] },
         ],
       },
       colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0", "D6D6D6"],
@@ -1453,17 +1453,17 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
       data: {
         type: "org_chart",
         items: [
-          { id: "ceo", parent_id: null, heading: "Aarav Sharma", description: "Chief Executive Officer" },
-          { id: "coo", parent_id: "ceo", heading: "Nisha Kapoor", description: "Chief Operating Officer" },
-          { id: "cfo", parent_id: "ceo", heading: "Rohan Mehta", description: "Chief Financial Officer" },
-          { id: "cmo", parent_id: "ceo", heading: "Priya Malhotra", description: "Chief Marketing Officer" },
-          { id: "operations", parent_id: "coo", heading: "Rohan Thapa", description: "Operations Manager" },
-          { id: "product", parent_id: "cmo", heading: "Vikram Joshi", description: "Product Manager" },
-          { id: "finance", parent_id: "cmo", heading: "Rahul Nair", description: "Finance Manager" },
-          { id: "ops-executive", parent_id: "operations", heading: "Sneha Gurung", description: "Operations Executive" },
-          { id: "analyst", parent_id: "operations", heading: "Amit Shrestha", description: "Process Analyst" },
-          { id: "finance-executive", parent_id: "finance", heading: "Aditya Rao", description: "Finance Executive" },
-          { id: "accountant", parent_id: "finance", heading: "Dev Sharma", description: "Accountant" },
+          { id: "ceo", parent_id: null, heading: "Aarav Sharma", description: "Director ejecutivo" },
+          { id: "coo", parent_id: "ceo", heading: "Nisha Kapoor", description: "Director de operaciones" },
+          { id: "cfo", parent_id: "ceo", heading: "Rohan Mehta", description: "Director financiero" },
+          { id: "cmo", parent_id: "ceo", heading: "Priya Malhotra", description: "Directora de marketing" },
+          { id: "operations", parent_id: "coo", heading: "Rohan Thapa", description: "Responsable de operaciones" },
+          { id: "product", parent_id: "cmo", heading: "Vikram Joshi", description: "Responsable de producto" },
+          { id: "finance", parent_id: "cmo", heading: "Rahul Nair", description: "Responsable de finanzas" },
+          { id: "ops-executive", parent_id: "operations", heading: "Sneha Gurung", description: "Técnica de operaciones" },
+          { id: "analyst", parent_id: "operations", heading: "Amit Shrestha", description: "Analista de procesos" },
+          { id: "finance-executive", parent_id: "finance", heading: "Aditya Rao", description: "Técnico de finanzas" },
+          { id: "accountant", parent_id: "finance", heading: "Dev Sharma", description: "Contable" },
         ],
       },
       colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0", "D6D6D6"],
@@ -1481,19 +1481,19 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
       data: {
         type: "decision_tree",
         items: [
-          { id: "decision", parent_id: null, heading: "Market Expansion Decision" },
-          { id: "demand", parent_id: "decision", heading: "Market Demand" },
-          { id: "competitive", parent_id: "decision", heading: "Competitive Position" },
-          { id: "feasibility", parent_id: "decision", heading: "Investment Feasibility" },
-          { id: "readiness", parent_id: "decision", heading: "Operational Readiness" },
-          { id: "market-demand", parent_id: "demand", heading: "Market Demand" },
-          { id: "growth", parent_id: "demand", heading: "Growth Potential" },
-          { id: "competition", parent_id: "competitive", heading: "Competition Level" },
-          { id: "saturation", parent_id: "competitive", heading: "Market Saturation" },
-          { id: "capacity", parent_id: "feasibility", heading: "Limited capacity" },
-          { id: "funding", parent_id: "feasibility", heading: "Funding required" },
-          { id: "ready", parent_id: "readiness", heading: "Fully ready" },
-          { id: "partial", parent_id: "readiness", heading: "Partially ready" },
+          { id: "decision", parent_id: null, heading: "Decisión de expansión de mercado" },
+          { id: "demand", parent_id: "decision", heading: "Demanda del mercado" },
+          { id: "competitive", parent_id: "decision", heading: "Posición competitiva" },
+          { id: "feasibility", parent_id: "decision", heading: "Viabilidad de la inversión" },
+          { id: "readiness", parent_id: "decision", heading: "Preparación operativa" },
+          { id: "market-demand", parent_id: "demand", heading: "Demanda del mercado" },
+          { id: "growth", parent_id: "demand", heading: "Potencial de crecimiento" },
+          { id: "competition", parent_id: "competitive", heading: "Nivel de competencia" },
+          { id: "saturation", parent_id: "competitive", heading: "Saturación del mercado" },
+          { id: "capacity", parent_id: "feasibility", heading: "Capacidad limitada" },
+          { id: "funding", parent_id: "feasibility", heading: "Requiere financiación" },
+          { id: "ready", parent_id: "readiness", heading: "Totalmente preparado" },
+          { id: "partial", parent_id: "readiness", heading: "Parcialmente preparado" },
         ],
       },
       colors: ["FFFFFF", "102E79", "24468E", "385EAA", "4D73BE", "6388D0", "D6D6D6"],
@@ -1516,8 +1516,8 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
               url: INFOGRAPHIC_EXAMPLE_ICON_URLS.discover,
               color: "FFFFFF",
             },
-            heading: "Discover",
-            description: "Research the challenge and identify key needs.",
+            heading: "Descubrir",
+            description: "Investiga el reto e identifica las necesidades clave.",
             items: [],
           },
           {
@@ -1525,8 +1525,8 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
               url: INFOGRAPHIC_EXAMPLE_ICON_URLS.define,
               color: "FFFFFF",
             },
-            heading: "Define",
-            description: "Set clear goals, priorities, and direction.",
+            heading: "Definir",
+            description: "Establece objetivos, prioridades y una dirección claros.",
             items: [],
           },
           {
@@ -1534,8 +1534,8 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
               url: INFOGRAPHIC_EXAMPLE_ICON_URLS.plan,
               color: "FFFFFF",
             },
-            heading: "Plan",
-            description: "Build the strategy, timeline, and action plan.",
+            heading: "Planificar",
+            description: "Elabora la estrategia, el calendario y el plan de acción.",
             items: [],
           },
           {
@@ -1543,8 +1543,8 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
               url: INFOGRAPHIC_EXAMPLE_ICON_URLS.execute,
               color: "FFFFFF",
             },
-            heading: "Execute",
-            description: "Put the plan into action and track progress.",
+            heading: "Ejecutar",
+            description: "Pon en marcha el plan y haz seguimiento del progreso.",
             items: [],
           },
           {
@@ -1552,9 +1552,9 @@ function makeInfographicElement(infographicType: InfographicType): SlideElement 
               url: INFOGRAPHIC_EXAMPLE_ICON_URLS.measure,
               color: "FFFFFF",
             },
-            heading: "Measure",
+            heading: "Medir",
             description:
-              "Review results against key performance indicators.",
+              "Revisa los resultados frente a los indicadores clave de rendimiento.",
             items: [],
           },
         ],
@@ -1640,37 +1640,37 @@ function createDefaultTableInsertElements(kind?: string): SlideElement[] {
   const definitions: Record<string, TablePreviewDefinition> = {
     "simple-table": {
       name: "simple_table",
-      columns: ["Metric", "Current", "Target"],
+      columns: ["Métrica", "Actual", "Objetivo"],
       rows: [
-        ["Activation", "68%", "75%"],
-        ["Retention", "42%", "50%"],
+        ["Activación", "68%", "75%"],
+        ["Retención", "42%", "50%"],
       ],
     },
     "comparison-table": {
       name: "comparison_table",
-      columns: ["Feature", "Starter", "Pro"],
+      columns: ["Funcionalidad", "Básico", "Pro"],
       rows: [
-        ["Storage", "10 GB", "100 GB"],
-        ["Collaboration", "3 seats", "Unlimited"],
-        ["Support", "Email", "Priority"],
+        ["Almacenamiento", "10 GB", "100 GB"],
+        ["Colaboración", "3 puestos", "Ilimitado"],
+        ["Soporte", "Correo electrónico", "Prioritario"],
       ],
     },
     "project-table": {
       name: "project_tracker_table",
-      columns: ["Task", "Owner", "Status", "Due"],
+      columns: ["Tarea", "Responsable", "Estado", "Fecha límite"],
       rows: [
-        ["Research", "Maya", "Done", "Jun 4"],
-        ["Prototype", "Leo", "In progress", "Jun 12"],
-        ["Launch", "Nina", "Planned", "Jun 24"],
+        ["Investigación", "Maya", "Hecho", "4 jun"],
+        ["Prototipo", "Leo", "En curso", "12 jun"],
+        ["Lanzamiento", "Nina", "Planificado", "24 jun"],
       ],
     },
     "metrics-table": {
       name: "metrics_table",
-      columns: ["KPI", "This month", "Change"],
+      columns: ["KPI", "Este mes", "Variación"],
       rows: [
-        ["Revenue", "$128K", "+18%"],
-        ["Conversion", "7.4%", "+1.2%"],
-        ["Retention", "91%", "+4%"],
+        ["Ingresos", "$128K", "+18%"],
+        ["Conversión", "7.4%", "+1.2%"],
+        ["Retención", "91%", "+4%"],
       ],
     },
   };
@@ -2098,7 +2098,7 @@ function createDefaultImageInsertContent(kind?: string): EditorInsertContent {
               }),
               makeTextElement({
                 name: "image_heading",
-                text: "Add a heading",
+                text: "Añade un título",
                 x: 525,
                 y: 15,
                 width: 442,
@@ -2108,7 +2108,7 @@ function createDefaultImageInsertContent(kind?: string): EditorInsertContent {
               }),
               makeTextElement({
                 name: "image_supporting_text",
-                text: "Add supporting text that explains why this visual matters.",
+                text: "Añade un texto de apoyo que explique por qué es importante esta imagen.",
                 x: 525,
                 y: 108,
                 width: 442,
@@ -2182,7 +2182,7 @@ function createDefaultImageInsertContent(kind?: string): EditorInsertContent {
               }),
               makeTextElement({
                 name: "image_caption_text",
-                text: "A focused team turns customer insight into action.",
+                text: "Un equipo centrado convierte el conocimiento del cliente en acción.",
                 x: 0,
                 y: 356,
                 width: 690,
@@ -2346,70 +2346,70 @@ const DEFAULT_VECTOR_LINE_STROKE: Stroke = {
 
 export const ELEMENT_INSERT_GROUPS = [
   {
-    label: "Basic Shapes",
+    label: "Formas básicas",
     items: [
-      { id: "vector-rectangle", label: "Rectangle" },
-      { id: "vector-rounded-rectangle", label: "Rounded Rect" },
-      { id: "vector-capsule", label: "Capsule" },
-      { id: "vector-circle", label: "Circle" },
-      { id: "vector-ellipse", label: "Ellipse" },
-      { id: "vector-triangle", label: "Triangle" },
-      { id: "vector-right-triangle", label: "Right Triangle" },
-      { id: "vector-diamond", label: "Diamond" },
-      { id: "vector-parallelogram", label: "Parallelogram" },
-      { id: "vector-trapezoid", label: "Trapezoid" },
-      { id: "vector-pentagon", label: "Pentagon" },
-      { id: "vector-hexagon", label: "Hexagon" },
-      { id: "vector-octagon", label: "Octagon" },
-      { id: "vector-teardrop", label: "Teardrop" },
+      { id: "vector-rectangle", label: "Rectángulo" },
+      { id: "vector-rounded-rectangle", label: "Rectángulo redondeado" },
+      { id: "vector-capsule", label: "Cápsula" },
+      { id: "vector-circle", label: "Círculo" },
+      { id: "vector-ellipse", label: "Elipse" },
+      { id: "vector-triangle", label: "Triángulo" },
+      { id: "vector-right-triangle", label: "Triángulo rectángulo" },
+      { id: "vector-diamond", label: "Rombo" },
+      { id: "vector-parallelogram", label: "Paralelogramo" },
+      { id: "vector-trapezoid", label: "Trapecio" },
+      { id: "vector-pentagon", label: "Pentágono" },
+      { id: "vector-hexagon", label: "Hexágono" },
+      { id: "vector-octagon", label: "Octágono" },
+      { id: "vector-teardrop", label: "Lágrima" },
     ],
   },
   {
-    label: "Lines & Arrows",
+    label: "Líneas y flechas",
     items: [
-      { id: "vector-line", label: "Line" },
-      { id: "vector-line-arrow", label: "Arrow" },
-      { id: "vector-line-arrow-both", label: "Double Arrow" },
-      { id: "vector-line-stealth", label: "Stealth Arrow" },
-      { id: "vector-line-filled", label: "Filled Arrow" },
-      { id: "vector-line-filled-both", label: "Filled Double" },
-      { id: "vector-line-circle-arrow", label: "Circle + Arrow" },
-      { id: "vector-line-square-arrow", label: "Square + Arrow" },
-      { id: "vector-line-diamond-arrow", label: "Diamond + Arrow" },
+      { id: "vector-line", label: "Línea" },
+      { id: "vector-line-arrow", label: "Flecha" },
+      { id: "vector-line-arrow-both", label: "Flecha doble" },
+      { id: "vector-line-stealth", label: "Flecha estilizada" },
+      { id: "vector-line-filled", label: "Flecha rellena" },
+      { id: "vector-line-filled-both", label: "Doble rellena" },
+      { id: "vector-line-circle-arrow", label: "Círculo + flecha" },
+      { id: "vector-line-square-arrow", label: "Cuadrado + flecha" },
+      { id: "vector-line-diamond-arrow", label: "Rombo + flecha" },
     ],
   },
   {
-    label: "Block Arrows",
+    label: "Flechas de bloque",
     items: [
-      { id: "vector-arrow", label: "Right Arrow" },
-      { id: "vector-arrow-left", label: "Left Arrow" },
-      { id: "vector-arrow-up", label: "Up Arrow" },
-      { id: "vector-arrow-down", label: "Down Arrow" },
-      { id: "vector-arrow-left-right", label: "Left–Right Arrow" },
-      { id: "vector-arrow-up-down", label: "Up–Down Arrow" },
-      { id: "vector-chevron-right", label: "Chevron" },
-      { id: "vector-notched-arrow", label: "Notched Arrow" },
-      { id: "vector-bent-arrow", label: "Bent Arrow" },
-      { id: "vector-four-way-arrow", label: "Four-Way Arrow" },
+      { id: "vector-arrow", label: "Flecha a la derecha" },
+      { id: "vector-arrow-left", label: "Flecha a la izquierda" },
+      { id: "vector-arrow-up", label: "Flecha arriba" },
+      { id: "vector-arrow-down", label: "Flecha abajo" },
+      { id: "vector-arrow-left-right", label: "Flecha izquierda–derecha" },
+      { id: "vector-arrow-up-down", label: "Flecha arriba–abajo" },
+      { id: "vector-chevron-right", label: "Cheurón" },
+      { id: "vector-notched-arrow", label: "Flecha con muesca" },
+      { id: "vector-bent-arrow", label: "Flecha curvada" },
+      { id: "vector-four-way-arrow", label: "Flecha en cuatro direcciones" },
     ],
   },
   {
-    label: "Symbols",
+    label: "Símbolos",
     items: [
-      { id: "vector-plus", label: "Plus" },
-      { id: "vector-cross", label: "Cross" },
-      { id: "vector-lightning", label: "Lightning" },
-      { id: "vector-home", label: "Home" },
-      { id: "vector-speech-bubble", label: "Speech Bubble" },
-      { id: "vector-cloud", label: "Cloud" },
-      { id: "vector-heart", label: "Heart" },
-      { id: "vector-star", label: "Star" },
-      { id: "vector-bookmark", label: "Bookmark" },
-      { id: "vector-shield", label: "Shield" },
-      { id: "vector-flag", label: "Flag" },
-      { id: "vector-moon", label: "Moon" },
-      { id: "vector-sun", label: "Sun" },
-      { id: "vector-play", label: "Play" },
+      { id: "vector-plus", label: "Más" },
+      { id: "vector-cross", label: "Cruz" },
+      { id: "vector-lightning", label: "Rayo" },
+      { id: "vector-home", label: "Casa" },
+      { id: "vector-speech-bubble", label: "Bocadillo" },
+      { id: "vector-cloud", label: "Nube" },
+      { id: "vector-heart", label: "Corazón" },
+      { id: "vector-star", label: "Estrella" },
+      { id: "vector-bookmark", label: "Marcador" },
+      { id: "vector-shield", label: "Escudo" },
+      { id: "vector-flag", label: "Bandera" },
+      { id: "vector-moon", label: "Luna" },
+      { id: "vector-sun", label: "Sol" },
+      { id: "vector-play", label: "Reproducir" },
     ],
   },
 ] as const;

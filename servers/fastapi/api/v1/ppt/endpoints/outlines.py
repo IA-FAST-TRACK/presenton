@@ -48,7 +48,7 @@ async def get_outline(
 ):
     presentation = await sql_session.get(PresentationModel, id)
     if not presentation:
-        raise HTTPException(status_code=404, detail="Presentation not found")
+        raise HTTPException(status_code=404, detail="Presentación no encontrada")
 
     if not presentation.outlines:
         return PresentationOutlineModel(slides=[])
@@ -64,7 +64,7 @@ async def update_outline(
 ):
     presentation = await sql_session.get(PresentationModel, id)
     if not presentation:
-        raise HTTPException(status_code=404, detail="Presentation not found")
+        raise HTTPException(status_code=404, detail="Presentación no encontrada")
 
     presentation.outlines = outline.model_dump(mode="json")
     presentation.n_slides = len(outline.slides)
@@ -90,7 +90,7 @@ async def stream_outlines(
     presentation = await sql_session.get(PresentationModel, id)
 
     if not presentation:
-        raise HTTPException(status_code=404, detail="Presentation not found")
+        raise HTTPException(status_code=404, detail="Presentación no encontrada")
 
     search_route, actual_search_provider = get_web_search_route()
     LOGGER.info(
@@ -114,7 +114,7 @@ async def stream_outlines(
             return
 
         yield SSEStatusResponse(
-            status="Preparing your presentation outline"
+            status="Preparando el esquema de tu presentación"
         ).to_string()
 
         additional_context = ""
@@ -211,7 +211,7 @@ async def stream_outlines(
         except Exception as e:
             traceback.print_exc()
             yield SSEErrorResponse(
-                detail="The AI returned invalid presentation outlines. Please try again.",
+                detail="La IA ha devuelto un esquema de presentación no válido. Inténtalo de nuevo.",
                 code="provider_invalid_response", retryable=True,
             ).to_string()
             return
@@ -232,8 +232,8 @@ async def stream_outlines(
         ):
             yield SSEErrorResponse(
                 detail=(
-                    "Failed to generate presentation outlines with requested "
-                    "number of slides. Please try again."
+                    "No se ha podido generar el esquema de la presentación con el "
+                    "número de diapositivas solicitado. Inténtalo de nuevo."
                 )
             ).to_string()
             return
@@ -270,7 +270,7 @@ async def stream_outlines(
         safe_sse_stream(
             inner(),
             logger=LOGGER,
-            error_detail="Failed to generate presentation outlines. Please try again.",
+            error_detail="No se ha podido generar el esquema de la presentación. Inténtalo de nuevo.",
             on_error=rollback_stream_session,
         ),
         media_type="text/event-stream",

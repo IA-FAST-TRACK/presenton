@@ -125,7 +125,7 @@ export default function OnboardingPresentonAccount({
     approvalWindowRef.current = approvalWindow;
     if (approvalWindow) {
       approvalWindow.opener = null;
-      approvalWindow.document.title = "Connecting to Presenton…";
+      approvalWindow.document.title = "Conectando con Presenton…";
     }
 
     try {
@@ -146,7 +146,7 @@ export default function OnboardingPresentonAccount({
       const payload: unknown = await response.json().catch(() => ({}));
       if (!response.ok || !payload || typeof payload !== "object") {
         throw new Error(
-          getErrorMessage(payload, "Could not start Presenton authorization."),
+          getErrorMessage(payload, "No se ha podido iniciar la autorización de Presenton."),
         );
       }
 
@@ -174,8 +174,8 @@ export default function OnboardingPresentonAccount({
     } catch (error) {
       approvalWindow?.close();
       notify.error(
-        "Could not connect Presenton",
-        error instanceof Error ? error.message : "Please try again.",
+        "No se ha podido conectar Presenton",
+        error instanceof Error ? error.message : "Inténtalo de nuevo.",
       );
     } finally {
       setIsStarting(false);
@@ -200,7 +200,7 @@ export default function OnboardingPresentonAccount({
       const payload: unknown = await response.json().catch(() => ({}));
       if (!response.ok) {
         throw new Error(
-          getErrorMessage(payload, "Could not disconnect Presenton."),
+          getErrorMessage(payload, "No se ha podido desconectar Presenton."),
         );
       }
 
@@ -215,17 +215,17 @@ export default function OnboardingPresentonAccount({
       await loadStatus();
       await onDisconnect?.();
       notify.success(
-        "Presenton Cloud disconnected",
+        "Presenton Cloud desconectado",
         variant === "settings"
-          ? "Choose a text provider and save the configuration to continue."
-          : "The global provider has been disconnected from this workspace.",
+          ? "Elige un proveedor de texto y guarda la configuración para continuar."
+          : "El proveedor global se ha desconectado de este espacio de trabajo.",
       );
     } catch (error) {
       notify.error(
-        "Sign-out failed",
+        "Error al cerrar sesión",
         error instanceof Error
           ? error.message
-          : "Could not disconnect from Presenton. Please try again.",
+          : "No se ha podido desconectar de Presenton. Inténtalo de nuevo.",
       );
     } finally {
       setIsLoggingOut(false);
@@ -236,9 +236,9 @@ export default function OnboardingPresentonAccount({
     if (!flow) return;
     try {
       await navigator.clipboard.writeText(flow.userCode);
-      notify.success("Code copied", "Paste it in the Presenton approval page.");
+      notify.success("Código copiado", "Pégalo en la página de aprobación de Presenton.");
     } catch {
-      notify.error("Could not copy code", "Select and copy the code manually.");
+      notify.error("No se ha podido copiar el código", "Selecciona y copia el código manualmente.");
     }
   };
 
@@ -249,8 +249,8 @@ export default function OnboardingPresentonAccount({
       if (Date.now() >= flow.expiresAt) {
         setFlow(null);
         notify.error(
-          "Authorization expired",
-          "Start again to connect your Presenton account.",
+          "La autorización ha caducado",
+          "Vuelve a empezar para conectar tu cuenta de Presenton.",
         );
         return;
       }
@@ -282,7 +282,7 @@ export default function OnboardingPresentonAccount({
         }
         if (!response.ok) {
           throw new Error(
-            getErrorMessage(payload, "Could not connect Presenton Cloud."),
+            getErrorMessage(payload, "No se ha podido conectar Presenton Cloud."),
           );
         }
 
@@ -297,8 +297,8 @@ export default function OnboardingPresentonAccount({
         approvalWindowRef.current = null;
         await loadStatus();
         notify.success(
-          "Presenton Cloud connected",
-          "Presenton is now available as a workspace provider.",
+          "Presenton Cloud conectado",
+          "Presenton ya está disponible como proveedor del espacio de trabajo.",
         );
         if (variant === "onboarding") {
           await onContinueRef.current?.();
@@ -306,8 +306,8 @@ export default function OnboardingPresentonAccount({
       } catch (error) {
         setFlow(null);
         notify.error(
-          "Presenton connection failed",
-          error instanceof Error ? error.message : "Please try again.",
+          "Error en la conexión con Presenton",
+          error instanceof Error ? error.message : "Inténtalo de nuevo.",
         );
       }
     }, pollDelay * 1000);
@@ -318,7 +318,7 @@ export default function OnboardingPresentonAccount({
   if (isLoading) {
     return (
       <section
-        aria-label="Loading Presenton account connection"
+        aria-label="Cargando la conexión con la cuenta de Presenton"
         className="h-[82px] animate-pulse rounded-[12px] border border-[#EDEEEF] bg-[#FAFAFC]"
       />
     );
@@ -326,7 +326,7 @@ export default function OnboardingPresentonAccount({
 
   return (
       <section
-        aria-label="Presenton Cloud connection"
+        aria-label="Conexión con Presenton Cloud"
         className="relative isolate font-syne"
       >
         <div className="relative z-10 overflow-hidden rounded-[12px] border border-[#EDEEEF] bg-white">
@@ -358,16 +358,16 @@ export default function OnboardingPresentonAccount({
                 </span>
                 {status.linked ? (
                   <span className="inline-flex items-center gap-1 rounded-full bg-[#E9F8EF] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-[#238553]">
-                    <CheckCircle2 className="h-3 w-3" /> Connected
+                    <CheckCircle2 className="h-3 w-3" /> Conectado
                   </span>
                 ) : null}
               </span>
               <span className="mt-0.5 block truncate text-[14px] font-normal leading-normal text-[#4C4C4C]">
                 {status.linked
-                  ? status.email || "Presenton Cloud is ready for this workspace."
+                  ? status.email || "Presenton Cloud está listo para este espacio de trabajo."
                   : status.canManage
-                    ? "Use Presenton as provider for AI Presentations"
-                    : "A workspace administrator must connect Presenton Cloud."}
+                    ? "Usa Presenton como proveedor para presentaciones con IA"
+                    : "Un administrador del espacio de trabajo debe conectar Presenton Cloud."}
               </span>
             </span>
             {isStarting ? (
@@ -382,8 +382,8 @@ export default function OnboardingPresentonAccount({
               type="button"
               onClick={() => void signOut()}
               disabled={isLoggingOut}
-              title="Disconnect Presenton Cloud"
-              aria-label="Disconnect Presenton Cloud"
+              title="Desconectar Presenton Cloud"
+              aria-label="Desconectar Presenton Cloud"
               className="absolute right-5 top-1/2 z-10 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#EDEEEF] bg-white text-[#4C4C4C] shadow-[0_3px_10px_rgba(16,24,40,0.04)] transition hover:border-[#DDD9E8] hover:bg-[#F7F6F9] disabled:opacity-50"
             >
               {isLoggingOut ? (
@@ -402,7 +402,7 @@ export default function OnboardingPresentonAccount({
                   onClick={() => void onContinue()}
                   className="inline-flex h-9 items-center justify-center gap-2 rounded-full bg-[#FFDB05] px-4 text-[11px] font-semibold text-[#0A0A0A] transition hover:bg-[#E6C500]"
                 >
-                  Continue with Presenton
+                  Continuar con Presenton
                   <ArrowRight className="h-3.5 w-3.5" />
                 </button>
               ) : (
@@ -413,8 +413,8 @@ export default function OnboardingPresentonAccount({
                   type="button"
                   onClick={() => void signOut()}
                   disabled={isLoggingOut}
-                  title="Disconnect Presenton Cloud"
-                  aria-label="Disconnect Presenton Cloud"
+                  title="Desconectar Presenton Cloud"
+                  aria-label="Desconectar Presenton Cloud"
                   className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#EDEEEF] text-[#4C4C4C] transition hover:bg-[#F7F6F9] disabled:opacity-50"
                 >
                   {isLoggingOut ? (
@@ -432,7 +432,7 @@ export default function OnboardingPresentonAccount({
           <div className="relative z-0 -mt-[10px] rounded-b-[12px] border border-[#EDEEEF] bg-white px-5 pb-5 pt-[30px]">
             <div className="flex items-end justify-between gap-3">
               <p className="min-w-0 truncate font-manrope text-[14px] font-normal leading-normal tracking-[-0.14px] text-[#333333]">
-                Approve this code in the Presenton window
+                Aprueba este código en la ventana de Presenton
               </p>
               <a
                 href={flow.verificationUri}
@@ -440,14 +440,14 @@ export default function OnboardingPresentonAccount({
                 rel="noreferrer"
                 className="inline-flex shrink-0 items-end gap-0.5 text-[12px] font-normal leading-normal tracking-[-0.36px] text-[#0A0A0A] transition-colors hover:text-[#0A0A0A]"
               >
-                Approval Page <ExternalLink className="h-3 w-3" />
+                Página de aprobación <ExternalLink className="h-3 w-3" />
               </a>
             </div>
             <div className="mt-3 flex h-[50px] items-center gap-2.5 rounded-[6px] border border-[#F6F6F9] bg-[#F9FAFB] p-2.5">
               <div className="flex min-w-0 flex-1 items-center gap-[9px]">
                 <div
                   className="flex items-center font-manrope text-[14px] font-semibold leading-normal tracking-[0.7px] text-[#333333]"
-                  aria-label={`Authorization code ${flow.userCode}`}
+                  aria-label={`Código de autorización ${flow.userCode}`}
                 >
                   {flow.userCode
                     .replace(/[^A-Z0-9]/gi, "")
@@ -481,8 +481,8 @@ export default function OnboardingPresentonAccount({
               <button
                 type="button"
                 onClick={() => void copyDeviceCode()}
-                aria-label="Copy authorization code"
-                title="Copy authorization code"
+                aria-label="Copiar código de autorización"
+                title="Copiar código de autorización"
                 className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[6px] text-[#333333] transition-colors hover:bg-[#EDEEEF]"
               >
                 <Copy className="h-4 w-4" strokeWidth={1.8} />
@@ -493,8 +493,8 @@ export default function OnboardingPresentonAccount({
               role="status"
               aria-live="polite"
             >
-              <Loader2 className="h-3.5 w-3.5 animate-spin text-[#0A0A0A]" />
-              Waiting for authorization…
+              <Loader2 className="h-3.5 w-3.5 animate-spin text-[#7A5AF8]" />
+              Esperando la autorización…
             </div>
           </div>
         ) : null}

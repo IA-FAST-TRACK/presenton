@@ -440,7 +440,7 @@ def test_handle_llm_client_exceptions(monkeypatch):
     from utils.provider_error_messages import INVALID_API_KEY_MESSAGE
 
     llmai_err = LLMAIBaseError(status_code=429, message="busy")
-    assert "rate limited" in handle_llm_client_exceptions(llmai_err).detail
+    assert "límite de solicitudes" in handle_llm_client_exceptions(llmai_err).detail
 
     wrapped_auth_err = LLMAIBaseError(
         status_code=401,
@@ -454,7 +454,7 @@ def test_handle_llm_client_exceptions(monkeypatch):
     assert wrapped_auth_response.detail == INVALID_API_KEY_MESSAGE
     assert "sk-proj" not in wrapped_auth_response.detail
 
-    assert "AI provider" in handle_llm_client_exceptions(
+    assert "Proveedor de IA" in handle_llm_client_exceptions(
         OpenAIAPIError(
             message="boom",
             request=httpx.Request("POST", "https://x"),
@@ -462,7 +462,7 @@ def test_handle_llm_client_exceptions(monkeypatch):
         )
     ).detail
 
-    assert "temporarily unavailable" in handle_llm_client_exceptions(
+    assert "no está disponible temporalmente" in handle_llm_client_exceptions(
         GoogleAPIError(503, {})
     ).detail
 

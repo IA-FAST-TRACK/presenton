@@ -70,7 +70,7 @@ async def require_presenton_manager(
     if current_user is None:
         raise HTTPException(status_code=401, detail="Unauthorized")
     if not current_user.is_superuser:
-        raise HTTPException(status_code=403, detail="Admin access required")
+        raise HTTPException(status_code=403, detail="Se requiere acceso de administrador")
     return current_user
 
 
@@ -179,14 +179,14 @@ async def start_presenton_provider_connection(
     except httpx.HTTPError as exc:
         raise HTTPException(
             status_code=502,
-            detail="Could not connect to the Presenton authorization service",
+            detail="No se ha podido conectar con el servicio de autorización de Presenton",
         ) from exc
 
     payload = _provider_json(response)
     if not response.is_success:
         raise HTTPException(
             status_code=502 if response.status_code >= 500 else response.status_code,
-            detail=_provider_error(payload, "Could not connect Presenton Cloud"),
+            detail=_provider_error(payload, "No se ha podido conectar Presenton Cloud"),
         )
     required = {
         "device_code",
@@ -199,7 +199,7 @@ async def start_presenton_provider_connection(
     if not required.issubset(payload):
         raise HTTPException(
             status_code=502,
-            detail="Presenton returned an invalid device authorization response",
+            detail="Presenton ha devuelto una respuesta de autorización de dispositivo no válida",
         )
     # Always send the browser to the plain approval page. The user enters the
     # displayed code there, keeping it out of URLs, browser history, and logs.
@@ -234,7 +234,7 @@ async def poll_presenton_provider_connection(
     except httpx.HTTPError as exc:
         raise HTTPException(
             status_code=502,
-            detail="Could not connect to the Presenton authorization service",
+            detail="No se ha podido conectar con el servicio de autorización de Presenton",
         ) from exc
 
     token_payload = _provider_json(token_response)
@@ -248,14 +248,14 @@ async def poll_presenton_provider_connection(
             )
         raise HTTPException(
             status_code=400 if token_response.status_code < 500 else 502,
-            detail=_provider_error(token_payload, "Presenton connection failed"),
+            detail=_provider_error(token_payload, "La conexión con Presenton ha fallado"),
         )
 
     access_token = token_payload.get("access_token")
     expires_in = token_payload.get("expires_in")
     if not isinstance(access_token, str) or not access_token:
         raise HTTPException(
-            status_code=502, detail="Presenton did not return an access token"
+            status_code=502, detail="Presenton no ha devuelto un token de acceso"
         )
 
     expires_in_value = expires_in if isinstance(expires_in, int) else 30 * 24 * 60 * 60
@@ -270,19 +270,19 @@ async def poll_presenton_provider_connection(
         except httpx.HTTPError as exc:
             raise HTTPException(
                 status_code=502,
-                detail="Could not verify the Presenton account",
+                detail="No se ha podido verificar la cuenta de Presenton",
             ) from exc
         userinfo_payload = _provider_json(userinfo_response)
         if not userinfo_response.is_success:
             raise HTTPException(
-                status_code=502, detail="Could not verify the Presenton account"
+                status_code=502, detail="No se ha podido verificar la cuenta de Presenton"
             )
         try:
             profile = PresentonUserInfo.model_validate(userinfo_payload)
         except ValueError as exc:
             raise HTTPException(
                 status_code=502,
-                detail="Presenton returned an invalid user profile",
+                detail="Presenton ha devuelto un perfil de usuario no válido",
             ) from exc
         try:
             await store_presenton_credentials(
