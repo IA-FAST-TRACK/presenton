@@ -2,7 +2,13 @@
 
 import mixpanel from 'mixpanel-browser';
 
-const MIXPANEL_TOKEN = 'd726e8bea8ec147f4c7720060cb2e6d1';
+// Telemetría desactivada por defecto en AI Fast Track Presentaciones.
+// No hay token embebido: sólo se envían eventos si se define
+// NEXT_PUBLIC_MIXPANEL_TOKEN en tiempo de build (nunca al Mixpanel de Presenton).
+const MIXPANEL_TOKEN = (process.env.NEXT_PUBLIC_MIXPANEL_TOKEN || "").trim();
+
+/** true sólo si hay un token propio configurado en el build. */
+export const TELEMETRY_AVAILABLE = MIXPANEL_TOKEN.length > 0;
 
 export enum MixpanelEvent {
   PageView = 'Page View',
@@ -201,7 +207,7 @@ declare global {
 }
 
 function canUseMixpanel(): boolean {
-  return typeof window !== 'undefined' && Boolean(MIXPANEL_TOKEN);
+  return typeof window !== 'undefined' && TELEMETRY_AVAILABLE;
 }
 
 let trackingCheckPromise: Promise<boolean> | null = null;
@@ -221,9 +227,9 @@ async function ensureTelemetryStatus(): Promise<boolean> {
         window.__mixpanel_telemetry_enabled = enabled;
         return enabled;
       } catch {
-        // If the API call fails, default to enabling tracking
-        window.__mixpanel_telemetry_enabled = true;
-        return true;
+        // Si la consulta falla, la telemetría queda desactivada.
+        window.__mixpanel_telemetry_enabled = false;
+        return false;
       }
     })();
   }
@@ -247,7 +253,7 @@ function initializeMixpanelNow(): void {
     track_pageview: false,
     autocapture: false,
     api_host: 'https://api-eu.mixpanel.com',
-    record_sessions_percent: 100,
+    record_sessions_percent: 0,
     record_mask_text_selector: '',
     record_block_selector: '',
     record_collect_fonts: true,
@@ -329,6 +335,7 @@ export function resetTelemetryCache(): void {
 }
 
 export function setTelemetryEnabled(enabled: boolean): void {
+  if (!canUseMixpanel()) return;
   if (typeof window !== 'undefined') {
     window.__mixpanel_telemetry_enabled = enabled;
   }

@@ -1,5 +1,11 @@
 import os
 
+# AI Fast Track: desactivar toda telemetría de librerías de terceros
+# (mem0 envía eventos a PostHog por defecto; HF Hub también tiene telemetría).
+os.environ["MEM0_TELEMETRY"] = "False"
+os.environ.setdefault("HF_HUB_DISABLE_TELEMETRY", "1")
+os.environ.setdefault("DO_NOT_TRACK", "1")
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles

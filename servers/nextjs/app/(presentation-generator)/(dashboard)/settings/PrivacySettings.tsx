@@ -5,6 +5,7 @@ import {
   MixpanelEvent,
   setTelemetryEnabled,
   trackEventImmediately,
+  TELEMETRY_AVAILABLE,
 } from "@/utils/mixpanel";
 import { Loader2 } from "lucide-react";
 
@@ -13,6 +14,10 @@ const PrivacySettings = () => {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
+    if (!TELEMETRY_AVAILABLE) {
+      setTrackingEnabled(false);
+      return;
+    }
     async function fetchStatus() {
       try {
         const response = await fetch("/api/telemetry-status");
@@ -20,7 +25,7 @@ const PrivacySettings = () => {
         const data = await response.json();
         setTrackingEnabled(data.telemetryEnabled);
       } catch {
-        setTrackingEnabled(true);
+        setTrackingEnabled(false);
       }
     }
     fetchStatus();
@@ -51,7 +56,7 @@ const PrivacySettings = () => {
       if (!response.ok) throw new Error(`user-config returned ${response.status}`);
     } catch {
       setTrackingEnabled(prev);
-      setTelemetryEnabled(prev ?? true);
+      setTelemetryEnabled(prev ?? false);
     } finally {
       setSaving(false);
     }
@@ -61,6 +66,21 @@ const PrivacySettings = () => {
     return (
       <div className="w-full bg-[#F9F8F8] p-7 rounded-[20px] flex items-center justify-center min-h-[200px]">
         <Loader2 className="w-5 h-5 animate-spin text-[#0A0A0A]" />
+      </div>
+    );
+  }
+
+  if (!TELEMETRY_AVAILABLE) {
+    return (
+      <div className="w-full space-y-6">
+        <div className="bg-[#F9F8F8] p-7 rounded-[20px]">
+          <h4 className="text-sm font-semibold text-[#191919] mb-1">
+            Analítica de uso
+          </h4>
+          <p className="text-xs text-[#6B7280] leading-relaxed max-w-lg">
+            La analítica de uso está desactivada en esta instalación. No se envía ningún dato de uso a terceros.
+          </p>
+        </div>
       </div>
     );
   }

@@ -92,6 +92,11 @@ ENV APP_DATA_DIRECTORY=/app_data \
     PATH="/opt/venv/bin:${PATH}" \
     NODE_ENV=production \
     START_OLLAMA=false \
+    DISABLE_ANONYMOUS_TRACKING=true \
+    MEM0_TELEMETRY=False \
+    HF_HUB_DISABLE_TELEMETRY=1 \
+    DO_NOT_TRACK=1 \
+    NEXT_TELEMETRY_DISABLED=1 \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 RUN set -eux; \

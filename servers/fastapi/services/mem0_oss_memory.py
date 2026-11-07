@@ -19,6 +19,9 @@ from collections.abc import Callable
 from importlib import import_module
 from typing import Any, Optional, TypeVar
 
+# AI Fast Track: mem0 envía telemetría a PostHog salvo MEM0_TELEMETRY=False.
+os.environ["MEM0_TELEMETRY"] = "False"
+
 LOGGER = logging.getLogger(__name__)
 
 _memory_init_lock = threading.Lock()

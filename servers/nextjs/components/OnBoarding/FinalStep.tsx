@@ -6,6 +6,7 @@ import {
     trackEventImmediately,
     MixpanelEvent,
     setTelemetryEnabled,
+    TELEMETRY_AVAILABLE,
 } from "@/utils/mixpanel";
 import { Switch } from '../ui/switch';
 import confetti from 'canvas-confetti';
@@ -42,6 +43,8 @@ const FinalStep = () => {
     }, []);
 
     useEffect(() => {
+        // Telemetría desactivada salvo que haya token propio configurado.
+        if (!TELEMETRY_AVAILABLE) return;
         async function fetchStatus() {
             try {
                 const response = await fetch('/api/telemetry-status');
@@ -49,7 +52,7 @@ const FinalStep = () => {
                 const data = await response.json();
                 setTrackingEnabled(data.telemetryEnabled);
             } catch {
-                setTrackingEnabled(true);
+                setTrackingEnabled(false);
             }
         }
         fetchStatus();
@@ -79,7 +82,7 @@ const FinalStep = () => {
             if (!response.ok) throw new Error(`user-config returned ${response.status}`);
         } catch {
             setTrackingEnabled(prev);
-            setTelemetryEnabled(prev ?? true);
+            setTelemetryEnabled(prev ?? false);
         }
     }, [trackingEnabled]);
 
@@ -99,7 +102,7 @@ const FinalStep = () => {
                 <h1 className='text-black text-[30px] font-normal font-syne py-2.5'>¡Te damos la bienvenida!</h1>
                 <p className='text-[#000000CC] text-xl font-normal font-syne'>Ya está todo listo. Vamos a crear tu primera presentación.</p>
 
-                {trackingEnabled !== null && (
+                {TELEMETRY_AVAILABLE && trackingEnabled !== null && (
                     <div className='flex items-center gap-3 mt-8 px-5 py-3.5 rounded-[10px] border border-[#EDEEEF] bg-white'>
                         <div>
                             <p className='text-sm font-medium text-[#191919] font-syne'>Analítica de uso</p>

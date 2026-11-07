@@ -23,7 +23,9 @@ export async function GET() {
     envDisabled ||
     fileDisabled === "true" ||
     fileDisabled === "True";
-  const telemetryEnabled = !isDisabled;
+  // Sin token propio (NEXT_PUBLIC_MIXPANEL_TOKEN) la telemetría está siempre desactivada.
+  const hasToken = Boolean((process.env.NEXT_PUBLIC_MIXPANEL_TOKEN || "").trim());
+  const telemetryEnabled = hasToken && !isDisabled;
   return NextResponse.json({ telemetryEnabled });
 }
 
