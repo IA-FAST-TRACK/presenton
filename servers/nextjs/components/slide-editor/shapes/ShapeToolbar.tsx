@@ -459,7 +459,7 @@ export function ShapeToolbar({
                     className="flex w-full items-center justify-between rounded-md border border-[#EDEEEF] px-3 py-2 text-left text-xs text-[#4B5563] hover:bg-[#F8F8FA]"
                   >
                     <span className="font-medium text-[#191919]">Trazado cerrado</span>
-                    <span className="flex items-center gap-1 text-[#7A5AF8]">
+                    <span className="flex items-center gap-1 text-[#0A0A0A]">
                       {vectorClosed ? (
                         <ToggleRight size={17} aria-hidden="true" />
                       ) : (

@@ -86,7 +86,7 @@ export default function UserAccountSettings({
                 </p>
                 <LogoutButton
                   label="Cerrar sesión"
-                  className="motion-press mt-4 inline-flex w-full items-center justify-center gap-2 rounded-[58px] border border-[#EDEEEF] bg-[#7C51F8] px-5 py-3 text-xs font-semibold text-white hover:bg-[#6d46e6] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                  className="motion-press mt-4 inline-flex w-full items-center justify-center gap-2 rounded-[58px] border border-[#EDEEEF] bg-[#FFDB05] px-5 py-3 text-xs font-semibold text-[#0A0A0A] hover:bg-[#E6C500] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 />
               </div>
             </div>

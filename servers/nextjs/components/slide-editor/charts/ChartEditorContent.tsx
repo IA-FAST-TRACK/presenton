@@ -182,7 +182,7 @@ function ChartTypeSelect({
       <BarChart3 className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#191919]" />
       <select
         aria-label="Tipo de gráfico"
-        className={`${compact ? "h-9 rounded-lg pl-10 pr-9 text-[12px]" : "h-12 rounded-xl pl-11 pr-10 text-[13px]"} w-full appearance-none border border-[#E6E6EA] bg-white font-medium text-[#191919] outline-none transition focus:border-[#7C51F8]`}
+        className={`${compact ? "h-9 rounded-lg pl-10 pr-9 text-[12px]" : "h-12 rounded-xl pl-11 pr-10 text-[13px]"} w-full appearance-none border border-[#E6E6EA] bg-white font-medium text-[#191919] outline-none transition focus:border-[#0A0A0A]`}
         value={value}
         onChange={(event) => onChange(event.target.value as ChartType)}
       >
@@ -604,7 +604,7 @@ function ChartSeriesColorControls({
           <button
             type="button"
             aria-label="Añadir color al gráfico"
-            className="grid h-8 w-8 place-items-center rounded-full border border-dashed border-[#B8A3F8] bg-white text-[#7C51F8] transition hover:bg-[#F7F3FF]"
+            className="grid h-8 w-8 place-items-center rounded-full border border-dashed border-[#FFED82] bg-white text-[#0A0A0A] transition hover:bg-[#FFFADC]"
             title="Añadir color al gráfico"
             onClick={() => onChange(appendChartColorTarget(chart))}
           >

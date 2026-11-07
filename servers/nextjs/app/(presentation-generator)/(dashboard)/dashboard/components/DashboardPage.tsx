@@ -357,7 +357,7 @@ function DashboardHeader() {
               rel="noreferrer"
               aria-label="Actualizar Presenton"
               title="Actualizar Presenton"
-              className="relative flex h-[42.24px] w-[42.24px] shrink-0 items-center justify-center rounded-full border-[1.32px] border-[#D9D6FE] bg-[#FAFAFF] transition-colors hover:bg-[#F3F0FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8] focus-visible:ring-offset-2"
+              className="relative flex h-[42.24px] w-[42.24px] shrink-0 items-center justify-center rounded-full border-[1.32px] border-[#FFED82] bg-[#FAFAFF] transition-colors hover:bg-[#FFFADC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A] focus-visible:ring-offset-2"
               onClick={() =>
                 trackEvent(MixpanelEvent.Navigation, {
                   from: pathname,

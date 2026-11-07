@@ -310,7 +310,7 @@ export function AiPanel({
                   type="button"
                   className="flex h-[28px] items-center gap-[6px] rounded-full border border-[#EDEEEF] px-[10px] text-[12px] font-medium text-[#191919]"
                 >
-                  <Sparkles className="h-[13px] w-[13px] text-[#7A5AF8]" />
+                  <Sparkles className="h-[13px] w-[13px] text-[#0A0A0A]" />
                   Instrucciones
                 </button>
               </div>
@@ -439,7 +439,7 @@ export function SchemaPanel({
           </p>
           <button
             aria-label="Restablecer la vista previa de densidad del contenido"
-            className="flex h-7 items-center gap-1.5 rounded-[6px] border border-[#EDEEEF] bg-white px-2 text-[11px] font-medium text-[#667085] transition-colors hover:border-[#D9D6FE] hover:bg-[#F8F6FF] hover:text-[#7A5AF8] disabled:cursor-not-allowed disabled:opacity-40"
+            className="flex h-7 items-center gap-1.5 rounded-[6px] border border-[#EDEEEF] bg-white px-2 text-[11px] font-medium text-[#667085] transition-colors hover:border-[#FFED82] hover:bg-[#FFFADC] hover:text-[#0A0A0A] disabled:cursor-not-allowed disabled:opacity-40"
             disabled={!canResetDensity}
             onClick={onDensityReset}
             title="Restaurar el contenido original de la diapositiva"

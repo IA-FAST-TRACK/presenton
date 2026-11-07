@@ -608,7 +608,7 @@ const PresentonMode = ({
                                 </label>
                                 <textarea
                                     placeholder='Pega aquí el JSON de tu flujo de trabajo de ComfyUI (expórtalo con "Export (API)" en ComfyUI)'
-                                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 font-mono text-xs outline-none transition-colors focus:border-[#7A5AF8] focus:ring-2 focus:ring-[#7A5AF8]/20"
+                                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 font-mono text-xs outline-none transition-colors focus:border-[#0A0A0A] focus:ring-2 focus:ring-[#0A0A0A]/20"
                                     rows={3}
                                     value={llmConfig.COMFYUI_WORKFLOW || ""}
                                     onChange={(e) => {
@@ -647,7 +647,7 @@ const PresentonMode = ({
                                     <input
                                         type={showApiKey ? "text" : "password"}
                                         placeholder="Clave API"
-                                        className="h-12 w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-12 outline-none transition-colors focus:border-[#7A5AF8] focus:ring-2 focus:ring-[#7A5AF8]/20"
+                                        className="h-12 w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-12 outline-none transition-colors focus:border-[#0A0A0A] focus:ring-2 focus:ring-[#0A0A0A]/20"
                                         value={llmConfig.OPEN_WEBUI_IMAGE_API_KEY || ""}
                                         onChange={(e) => {
                                             setLlmConfig(prev => ({
@@ -675,7 +675,7 @@ const PresentonMode = ({
                                 <input
                                     type={showApiKey ? "text" : "password"}
                                     placeholder={`Introduce tu ${provider.apiKeyFieldLabel}`}
-                                    className="h-12 w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-12 outline-none transition-colors focus:border-[#7A5AF8] focus:ring-2 focus:ring-[#7A5AF8]/20"
+                                    className="h-12 w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-12 outline-none transition-colors focus:border-[#0A0A0A] focus:ring-2 focus:ring-[#0A0A0A]/20"
                                     value={getFieldValue(provider.apiKeyField)}
                                     onChange={(e) => {
                                         setLlmConfig((prev) => ({
@@ -947,7 +947,7 @@ const PresentonMode = ({
 
                 <div className="space-y-4">
                     {selectedWebProvider.value === "auto" && (
-                        <div className="rounded-lg border border-[#D9D6FE] bg-[#F4F3FF] p-3 text-xs leading-5 text-[#5146E5]">
+                        <div className="rounded-lg border border-[#FFED82] bg-[#FFFADC] p-3 text-xs leading-5 text-[#0A0A0A]">
                             Presenton usará la búsqueda web nativa del modelo cuando esté disponible. Si el modelo de texto seleccionado no la admite, la búsqueda web permanecerá desactivada hasta que elijas un proveedor externo.
                         </div>
                     )}
@@ -977,7 +977,7 @@ const PresentonMode = ({
                                     type={showApiKey ? "text" : "password"}
                                     value={getFieldValue(selectedWebProvider.apiKeyField)}
                                     onChange={(event) => setLlmConfig(prev => ({ ...prev, [selectedWebProvider.apiKeyField!]: event.target.value }))}
-                                    className="h-12 w-full rounded-lg border border-gray-300 px-4 pr-12 outline-none transition-colors focus:border-[#7A5AF8] focus:ring-2 focus:ring-[#7A5AF8]/20"
+                                    className="h-12 w-full rounded-lg border border-gray-300 px-4 pr-12 outline-none transition-colors focus:border-[#0A0A0A] focus:ring-2 focus:ring-[#0A0A0A]/20"
                                     placeholder={`Introduce tu ${selectedWebProvider.apiKeyLabel}`}
                                 />
                                 <button

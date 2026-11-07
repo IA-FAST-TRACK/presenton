@@ -536,7 +536,7 @@ const PresentationHeader = ({
                 type="button"
                 onMouseDown={onTitleSaveMouseDown}
                 onClick={commitTitleEdit}
-                className="flex h-8 w-8 items-center justify-center rounded-lg text-[#5141e5] hover:bg-[#5141e5]/10 transition-colors"
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-[#0A0A0A] hover:bg-[#FFDB05]/10 transition-colors"
                 aria-label="Guardar título"
               >
                 <Check className="h-4 w-4" strokeWidth={2.25} />

@@ -46,7 +46,7 @@ export function UploadIllustration() {
 }
 
 export function AttachmentButton({ onClick, disabled = false }: { onClick: () => void; disabled?: boolean }) {
-  return <button type="button" onClick={onClick} disabled={disabled} aria-label="Elegir archivo de PowerPoint" className="flex h-[34px] w-[42px] shrink-0 items-center justify-center rounded-full border border-[#EDEEEF] bg-white hover:bg-[#F9F9FA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8] disabled:opacity-50"><img src={asset("upload-imgFrame.svg")} alt="" /></button>;
+  return <button type="button" onClick={onClick} disabled={disabled} aria-label="Elegir archivo de PowerPoint" className="flex h-[34px] w-[42px] shrink-0 items-center justify-center rounded-full border border-[#EDEEEF] bg-white hover:bg-[#F9F9FA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A] disabled:opacity-50"><img src={asset("upload-imgFrame.svg")} alt="" /></button>;
 }
 
 export function ContinueButton({ onClick, disabled, label }: { onClick: () => void; disabled?: boolean; label: string }) {

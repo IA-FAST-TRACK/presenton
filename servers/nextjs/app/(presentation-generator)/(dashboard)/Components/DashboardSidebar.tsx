@@ -41,7 +41,7 @@ const DashboardSidebar = ({
             <div>
 
                 <Link href={`/dashboard`} className="flex items-center  pb-6 border-b border-[#E1E1E5]   gap-2    ">
-                    <div className="bg-[#7C51F8] rounded-full cursor-pointer p-1 flex justify-center items-center mx-auto">
+                    <div className="bg-[#FFDB05] rounded-full cursor-pointer p-1 flex justify-center items-center mx-auto">
                         <img src="/logo-with-bg.png" alt="Logotipo de Presenton" className="h-[40px] object-contain w-full" />
                     </div>
                 </Link>
@@ -59,7 +59,7 @@ const DashboardSidebar = ({
                             aria-label="Panel"
                             title="Panel"
                         >
-                            <LayoutDashboard className={["h-4 w-4", pathname === "/dashboard" ? "text-[#5146E5]" : "text-slate-600"].join(" ")} />
+                            <LayoutDashboard className={["h-4 w-4", pathname === "/dashboard" ? "text-[#0A0A0A]" : "text-slate-600"].join(" ")} />
                             <span className="text-[11px] text-slate-800">Panel</span>
                         </Link>
                         {showTemplates ? 
@@ -96,7 +96,7 @@ const DashboardSidebar = ({
                             aria-label="Comunidad"
                             title="Comunidad"
                         >
-                            <UsersRound className={`h-4 w-4 ${pathname === "/community" ? "text-[#5146E5]" : "text-slate-600"}`} />
+                            <UsersRound className={`h-4 w-4 ${pathname === "/community" ? "text-[#0A0A0A]" : "text-slate-600"}`} />
                             <span className="text-[11px] text-slate-800">Comunidad</span>
                         </Link> : null}
 

@@ -112,7 +112,7 @@ export function TemplateLibraryControls({
         </label>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button type="button" aria-label="Ordenar plantillas" className="flex h-[38px] shrink-0 items-center gap-1.5 rounded-md font-manrope text-[13px] font-medium tracking-[-0.39px] text-[#191919] outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/30">
+            <button type="button" aria-label="Ordenar plantillas" className="flex h-[38px] shrink-0 items-center gap-1.5 rounded-md font-manrope text-[13px] font-medium tracking-[-0.39px] text-[#191919] outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/30">
               {sortOptions.find((option) => option.value === sort)?.label}
               <ArrowDownUp aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={1.5} />
             </button>
@@ -136,8 +136,8 @@ export function TemplateLibraryCard({ template, onOpen }: {
   const hasDate = createdAt !== null && !Number.isNaN(createdAt.getTime());
 
   return (
-    <Card className="motion-card relative min-w-0 overflow-hidden rounded-xl border-0 bg-white font-manrope shadow-none after:pointer-events-none after:absolute after:inset-0 after:rounded-xl after:border after:border-[#EDEEEF] hover:after:border-[#D8D3FA]">
-      <button type="button" onClick={onOpen} aria-label={`Abrir la plantilla ${template.name}`} className="group block w-full text-left outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7A5AF8]">
+    <Card className="motion-card relative min-w-0 overflow-hidden rounded-xl border-0 bg-white font-manrope shadow-none after:pointer-events-none after:absolute after:inset-0 after:rounded-xl after:border after:border-[#EDEEEF] hover:after:border-[#FFED82]">
+      <button type="button" onClick={onOpen} aria-label={`Abrir la plantilla ${template.name}`} className="group block w-full text-left outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A0A0A]">
         <div className="relative aspect-[304.5/169.183] w-full overflow-hidden bg-[#F8FBFB]">
           <TemplateLibraryPattern />
           <TemplateThumbnailPreview thumbnail={template.thumbnail} templateName={template.name} selectionPage flush />
@@ -160,7 +160,7 @@ export function TemplateLibraryCard({ template, onOpen }: {
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button type="button" aria-label={`Opciones de ${template.name}`} className="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded outline-none hover:bg-[#F6F6F9] focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/30">
+              <button type="button" aria-label={`Opciones de ${template.name}`} className="flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded outline-none hover:bg-[#F6F6F9] focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/30">
                 <Ellipsis aria-hidden="true" className="h-[18px] w-[18px] text-[#808080]" />
               </button>
             </DropdownMenuTrigger>

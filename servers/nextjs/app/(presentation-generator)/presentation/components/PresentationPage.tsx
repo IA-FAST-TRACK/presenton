@@ -972,7 +972,7 @@ const PresentationPage: React.FC<PresentationPageProps> = ({
                 "linear-gradient(270deg, #FFDB05 0%, #FFE45C 100%)",
             }}
           >
-            <Sparkles className="h-4 w-4 text-[#7A5AF8]" aria-hidden="true" />
+            <Sparkles className="h-4 w-4 text-[#0A0A0A]" aria-hidden="true" />
             Asistente de IA
           </button>
 
@@ -1015,7 +1015,7 @@ const PresentationPage: React.FC<PresentationPageProps> = ({
             ) : null}
             <div className="flex h-14 shrink-0 items-center justify-between border-b border-[#EDEEEF] px-4 xl:hidden">
               <div className="flex items-center gap-2 text-sm font-semibold text-[#101323]">
-                <Sparkles className="h-4 w-4 text-[#7A5AF8]" aria-hidden="true" />
+                <Sparkles className="h-4 w-4 text-[#0A0A0A]" aria-hidden="true" />
                 Asistente de IA
               </div>
               <button

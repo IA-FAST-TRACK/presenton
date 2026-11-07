@@ -273,7 +273,7 @@ export function InfographicDataEditorContent({
               </div>
 
               <div className="mt-3 flex gap-2 rounded-lg border border-[#ECECF1] bg-[#F8F8FA] p-3 text-[10px] leading-4 text-[#686873]">
-                <Palette size={14} className="mt-0.5 shrink-0 text-[#7C51F8]" />
+                <Palette size={14} className="mt-0.5 shrink-0 text-[#0A0A0A]" />
                 <span>El fondo de la diapositiva sigue visible detrás de la infografía.</span>
               </div>
             </aside>
@@ -748,7 +748,7 @@ function GanttEditor({
                     aria-controls={rowPanelId}
                     aria-expanded={isExpanded}
                     aria-label={`${isExpanded ? "Contraer" : "Desplegar"} fila ${rowIndex + 1}`}
-                    className="flex min-w-0 flex-1 items-center gap-2.5 rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-[#D8CEFA]"
+                    className="flex min-w-0 flex-1 items-center gap-2.5 rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-[#FFED82]"
                     onClick={() =>
                       setExpandedRowIndex((current) =>
                         current === rowIndex ? null : rowIndex,
@@ -1472,13 +1472,13 @@ function BeforeAfterEditor({
                               <button
                                 type="button"
                                 aria-label={`Cambiar icono de ${sideLabel}, fila ${rowIndex + 1}`}
-                                className="flex w-full flex-col items-center gap-2 rounded-xl border border-[#DFE0E6] bg-white px-2 py-3 outline-none transition hover:border-[#BDAAF8] focus-visible:ring-2 focus-visible:ring-[#D8CEFA]"
+                                className="flex w-full flex-col items-center gap-2 rounded-xl border border-[#DFE0E6] bg-white px-2 py-3 outline-none transition hover:border-[#FFED82] focus-visible:ring-2 focus-visible:ring-[#FFED82]"
                                 onClick={() => setEditingIconIndex(itemIndex)}
                               >
                                 <span className="grid size-11 place-items-center rounded-xl bg-[#506FBE]">
                                   <InfographicIconPreview color={icon.color} url={icon.url} />
                                 </span>
-                                <span className="text-[9px] font-semibold text-[#7C51F8]">Cambiar icono</span>
+                                <span className="text-[9px] font-semibold text-[#0A0A0A]">Cambiar icono</span>
                               </button>
                               <div className="mt-2">
                                 <DeferredColorInput
@@ -1500,7 +1500,7 @@ function BeforeAfterEditor({
                               <LabeledField className="mt-2" label="Descripción">
                                 <textarea
                                   aria-label={`Descripción de ${sideLabel}, fila ${rowIndex + 1}`}
-                                  className="min-h-[72px] w-full resize-y rounded-lg border border-[#E6E6EA] bg-white px-3 py-2 text-[12px] leading-5 text-[#191919] outline-none focus:border-[#7C51F8]"
+                                  className="min-h-[72px] w-full resize-y rounded-lg border border-[#E6E6EA] bg-white px-3 py-2 text-[12px] leading-5 text-[#191919] outline-none focus:border-[#0A0A0A]"
                                   maxLength={280}
                                   value={item.description ?? ""}
                                   onChange={(event) => updatePairItem(rowIndex, sideIndex as 0 | 1, { description: event.target.value })}
@@ -1737,7 +1737,7 @@ function ComparisonMatrixEditor({
             return (
               <div key={`comparison-option-${index}`} className="rounded-xl border border-[#ECECF1] bg-white p-4">
                 <div className="mb-4 flex flex-wrap items-end gap-3 border-b border-[#EFEFF3] pb-4">
-                  <button type="button" aria-label={`Cambiar icono de la opción ${index + 1}`} className="grid size-11 place-items-center rounded-lg bg-[#506FBE] outline-none transition hover:brightness-95 focus-visible:ring-2 focus-visible:ring-[#D8CEFA]" onClick={() => setEditingIconIndex(index)}>
+                  <button type="button" aria-label={`Cambiar icono de la opción ${index + 1}`} className="grid size-11 place-items-center rounded-lg bg-[#506FBE] outline-none transition hover:brightness-95 focus-visible:ring-2 focus-visible:ring-[#FFED82]" onClick={() => setEditingIconIndex(index)}>
                     <InfographicIconPreview color={icon.color} url={icon.url} />
                   </button>
                   <div className="min-w-[180px] flex-1">
@@ -1937,7 +1937,7 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                     aria-controls={accordionPanelId}
                     aria-expanded={isExpanded}
                     aria-label={`${isExpanded ? "Contraer" : "Desplegar"} ${itemLabel} ${index + 1}`}
-                    className="flex min-w-0 flex-1 items-center gap-2.5 rounded-lg py-2 text-left outline-none focus-visible:ring-2 focus-visible:ring-[#D8CEFA]"
+                    className="flex min-w-0 flex-1 items-center gap-2.5 rounded-lg py-2 text-left outline-none focus-visible:ring-2 focus-visible:ring-[#FFED82]"
                     onClick={() =>
                       setExpandedIndex((current) =>
                         current === index ? null : index,
@@ -1999,7 +1999,7 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                         <button
                           type="button"
                           aria-label={`Cambiar icono de ${itemLabel} ${index + 1}`}
-                          className="group flex w-full flex-col items-center gap-2 rounded-lg border border-[#E6E6EA] bg-[#F8F8FA] px-2 py-3 text-[#686873] outline-none transition hover:border-[#B8A3F8] focus-visible:ring-2 focus-visible:ring-[#D8CEFA]"
+                          className="group flex w-full flex-col items-center gap-2 rounded-lg border border-[#E6E6EA] bg-[#F8F8FA] px-2 py-3 text-[#686873] outline-none transition hover:border-[#FFED82] focus-visible:ring-2 focus-visible:ring-[#FFED82]"
                           onClick={() => setEditingIconIndex(index)}
                         >
                           <span className="grid size-11 place-items-center rounded-lg bg-[#506FBE]">
@@ -2008,7 +2008,7 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                               url={icon.url}
                             />
                           </span>
-                          <span className="text-[10px] font-medium text-[#7C51F8]">
+                          <span className="text-[10px] font-medium text-[#0A0A0A]">
                             Cambiar icono
                           </span>
                         </button>
@@ -2083,7 +2083,7 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                         <LabeledField className="mt-3" label="Descripción">
                           <textarea
                             aria-label={`Descripción de ${itemLabel} ${index + 1}`}
-                            className="min-h-[82px] w-full resize-y rounded-lg border border-[#E6E6EA] bg-white px-3 py-2 text-[12px] leading-5 text-[#191919] outline-none transition focus:border-[#7C51F8]"
+                            className="min-h-[82px] w-full resize-y rounded-lg border border-[#E6E6EA] bg-white px-3 py-2 text-[12px] leading-5 text-[#191919] outline-none transition focus:border-[#0A0A0A]"
                             maxLength={280}
                             value={item.description ?? ""}
                             onChange={(event) =>

@@ -478,7 +478,7 @@ const SettingsPage = () => {
               </div>
               <LogoutButton
                 label="Cerrar sesión"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-[58px] border border-[#EDEEEF] bg-[#7C51F8] px-5 py-3 font-syne text-xs font-semibold text-white transition hover:bg-[#6d46e6] disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-[58px] border border-[#EDEEEF] bg-[#FFDB05] px-5 py-3 font-syne text-xs font-semibold text-[#0A0A0A] transition hover:bg-[#E6C500] disabled:cursor-not-allowed disabled:opacity-60"
               />
             </div>
           )}

@@ -125,8 +125,8 @@ export default function CommunityReferencePicker({
             <input ref={searchRef} type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar por título o palabra clave" className="min-w-0 flex-1 bg-transparent font-syne text-base font-normal text-[#191919] outline-none placeholder:text-[#808080]" />
             <kbd className="hidden shrink-0 font-manrope text-[10px] text-[#CCCCCC] sm:block" aria-label="Comando o Control K">⌘K</kbd>
           </label>
-          <Link href="/community" className="inline-flex items-center gap-1.5 whitespace-nowrap font-syne text-xs text-[#7A5AF8] hover:underline">Ver todo <ArrowUpRight className="h-3.5 w-3.5" /></Link>
-          {selectedId !== null && <button type="button" onClick={() => onSelect(null)} className="text-xs text-[#7A5AF8] hover:underline">Quitar selección</button>}
+          <Link href="/community" className="inline-flex items-center gap-1.5 whitespace-nowrap font-syne text-xs text-[#0A0A0A] hover:underline">Ver todo <ArrowUpRight className="h-3.5 w-3.5" /></Link>
+          {selectedId !== null && <button type="button" onClick={() => onSelect(null)} className="text-xs text-[#0A0A0A] hover:underline">Quitar selección</button>}
         </div>
       </div>
 
@@ -204,7 +204,7 @@ export default function CommunityReferencePicker({
                     </p>
                     <button type="button" onClick={() => setPreview(item)} aria-label={`Vista previa de ${item.title || "diseño de la comunidad"}`} className="flex h-[26px] w-[42px] shrink-0 items-center justify-center rounded-full border border-[#EDEEEF] hover:bg-[#F6F6F9]"><Eye className="h-3.5 w-3.5" /></button>
                     <div className="flex h-[26px] shrink-0 items-center rounded-full border border-[#EDEEEF] bg-white">
-                      <button type="button" aria-pressed={selected} onClick={() => onSelect(selected ? null : item)} className="flex items-center gap-1 rounded-l-full px-3 font-syne text-xs hover:bg-[#F6F6F9]">{selected && <Check className="h-3 w-3 text-[#7A5AF8]" />}{selected ? "Seleccionado" : "Usar"}</button>
+                      <button type="button" aria-pressed={selected} onClick={() => onSelect(selected ? null : item)} className="flex items-center gap-1 rounded-l-full px-3 font-syne text-xs hover:bg-[#F6F6F9]">{selected && <Check className="h-3 w-3 text-[#0A0A0A]" />}{selected ? "Seleccionado" : "Usar"}</button>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild><button type="button" aria-label={`Opciones de uso para ${item.title || "diseño de la comunidad"}`} className="flex h-6 w-6 items-center justify-center rounded-r-full border-l border-[#EDEEEF] hover:bg-[#F6F6F9]"><ChevronDown className="h-3.5 w-3.5" /></button></DropdownMenuTrigger>
                         <DropdownMenuContent align="end"><DropdownMenuItem onSelect={() => onSelect(item)}>Usar diseño</DropdownMenuItem><DropdownMenuItem disabled={!item.prompt?.trim()} onSelect={() => onUsePrompt(item.prompt || "")}>Usar instrucciones</DropdownMenuItem></DropdownMenuContent>

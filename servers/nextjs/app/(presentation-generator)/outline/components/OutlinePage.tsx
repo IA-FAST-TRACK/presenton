@@ -458,7 +458,7 @@ const OutlinePage: React.FC = () => {
                       className="h-[18px] w-[19px]"
                     />
                   </div>
-                  <span className="mt-1 text-xs font-normal text-[#7A5AF8]">
+                  <span className="mt-1 text-xs font-normal text-[#0A0A0A]">
                     IA
                   </span>
                 </div>

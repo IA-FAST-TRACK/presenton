@@ -174,7 +174,7 @@ const WebSearchProvider = ({
                 </div>
 
                 {selected === "auto" && (
-                  <div className="rounded-lg border border-[#D9D6FE] bg-[#F4F3FF] p-3 text-xs text-[#5146E5]">
+                  <div className="rounded-lg border border-[#FFED82] bg-[#FFFADC] p-3 text-xs text-[#0A0A0A]">
                     Se da preferencia a la búsqueda web nativa del modelo cuando está disponible.
                     En caso contrario, se recurre a una búsqueda externa.
                   </div>

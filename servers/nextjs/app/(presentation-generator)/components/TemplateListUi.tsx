@@ -146,7 +146,7 @@ export const TemplateListCard = memo(function TemplateListCard({
         </span>
       )}
       {isSuggested && (
-        <span className="absolute right-3.5 top-[52px] z-50 rounded-full border border-[#DDD7FF] bg-white/95 px-2.5 py-1 font-syne text-[10px] font-semibold text-[#6553E8] shadow-sm backdrop-blur">
+        <span className="absolute right-3.5 top-[52px] z-50 rounded-full border border-[#FFED82] bg-white/95 px-2.5 py-1 font-syne text-[10px] font-semibold text-[#0A0A0A] shadow-sm backdrop-blur">
           Sugerida
         </span>
       )}
@@ -381,14 +381,14 @@ export function TemplateTabSwitcher({
       <div role="group" aria-label="Tipo de plantilla" data-selection={tab === "custom" ? "1" : "0"} className="motion-segments flex h-9 w-[180px] shrink-0 items-center rounded-lg border border-[#EDEEEF] bg-white p-[3px] font-manrope">
         <span aria-hidden="true" className="motion-segment-indicator rounded-lg bg-[#F6F6F9]" />
         {([{ value: "default", label: "Integradas" }, { value: "custom", label: "Personalizadas" }] as const).map((item) => (
-          <button key={item.value} type="button" aria-pressed={tab === item.value} onClick={() => onTabChange(item.value)} className={cn("flex h-7 flex-1 items-center justify-center rounded-lg text-[13px] font-medium leading-6 text-[#191919] outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/30", tab !== item.value && "hover:bg-[#F9FAFB]")}>{item.label}</button>
+          <button key={item.value} type="button" aria-pressed={tab === item.value} onClick={() => onTabChange(item.value)} className={cn("flex h-7 flex-1 items-center justify-center rounded-lg text-[13px] font-medium leading-6 text-[#191919] outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/30", tab !== item.value && "hover:bg-[#F9FAFB]")}>{item.label}</button>
         ))}
       </div>
     );
   }
   return (
     <div role="group" aria-label="Tipo de plantilla" data-selection={tab === "default" ? "1" : "0"} className="motion-segments grid w-fit grid-cols-2 items-center rounded-[40px] border border-[#EDEEEF] bg-white p-1 [--motion-segment-inset:4px] [--motion-segment-inset-y:4px]">
-      <span aria-hidden="true" className="motion-segment-indicator rounded-[70px] bg-[#F4F3FF]" />
+      <span aria-hidden="true" className="motion-segment-indicator rounded-[70px] bg-[#FFFADC]" />
       <button
         type="button"
         aria-pressed={tab === "custom"}

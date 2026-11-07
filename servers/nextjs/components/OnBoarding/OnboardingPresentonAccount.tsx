@@ -493,7 +493,7 @@ export default function OnboardingPresentonAccount({
               role="status"
               aria-live="polite"
             >
-              <Loader2 className="h-3.5 w-3.5 animate-spin text-[#7A5AF8]" />
+              <Loader2 className="h-3.5 w-3.5 animate-spin text-[#0A0A0A]" />
               Esperando la autorización…
             </div>
           </div>

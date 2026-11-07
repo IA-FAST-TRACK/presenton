@@ -19,7 +19,7 @@ const OutlineStandardHeader = ({
         <Link
           href="/dashboard"
           aria-label="Ir al panel"
-          className="shrink-0 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/30"
+          className="shrink-0 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/30"
         >
           <Image
             src="/logo-with-bg.png"

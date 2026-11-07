@@ -127,7 +127,7 @@ export default function SupportingDoc({
           onClick={onSubmit}
           disabled={disabled}
           aria-label="Generar presentación"
-          className="motion-press group flex h-10 w-[60px] items-center justify-center rounded-full bg-[#7A5AF8] text-white shadow-sm hover:bg-[#6938EF] disabled:cursor-not-allowed disabled:opacity-50"
+          className="motion-press group flex h-10 w-[60px] items-center justify-center rounded-full bg-[#FFDB05] text-[#0A0A0A] shadow-sm hover:bg-[#E6C500] disabled:cursor-not-allowed disabled:opacity-50"
         >
           <Image src="/generate/submit-arrow.svg" alt="" width={16} height={16} className="motion-arrow" />
         </button>

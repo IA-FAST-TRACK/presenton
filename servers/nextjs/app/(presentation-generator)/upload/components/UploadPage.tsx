@@ -634,7 +634,7 @@ const UploadPage = ({
             <div role="group" aria-label="Modo de presentación" data-selection={generationMode === "standard" ? "1" : "0"} className="motion-segments inline-flex h-9 w-[188px] items-center rounded-xl border border-[#EDEEEF] bg-white p-1 font-manrope text-[13px] font-medium text-[#191919] [--motion-segment-inset:4px]">
               <span aria-hidden="true" className="motion-segment-indicator rounded-lg bg-[#F6F6F9]" />
               {(["smart", "standard"] as const).map((mode) => (
-                <button key={mode} type="button" aria-pressed={generationMode === mode} disabled={!isGenerationModeAvailable(presentationGenerationMode, mode)} onClick={() => handleGenerationModeChange(mode)} className={`h-7 flex-1 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8] disabled:cursor-not-allowed disabled:opacity-40 ${generationMode === mode ? "" : "hover:bg-[#FAFAFC]"}`}>
+                <button key={mode} type="button" aria-pressed={generationMode === mode} disabled={!isGenerationModeAvailable(presentationGenerationMode, mode)} onClick={() => handleGenerationModeChange(mode)} className={`h-7 flex-1 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A] disabled:cursor-not-allowed disabled:opacity-40 ${generationMode === mode ? "" : "hover:bg-[#FAFAFC]"}`}>
                   {mode === "smart" ? "Inteligente" : "Estándar"}
                 </button>
               ))}

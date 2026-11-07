@@ -231,7 +231,7 @@ const ContextTags = ({
             <button
               type="button"
               onClick={tag.onRemove}
-              className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[#8069C5] transition-colors hover:bg-[#E4DFFF] hover:text-[#5235A8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[#0A0A0A] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
               aria-label={`Quitar ${tag.label} del contexto`}
               title={`Quitar ${tag.label} del contexto`}
             >

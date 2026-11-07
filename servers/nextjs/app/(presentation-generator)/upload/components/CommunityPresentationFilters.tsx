@@ -157,7 +157,7 @@ export default function CommunityPresentationFilters({
         disabled={disabled}
       >
         <SelectTrigger
-          className="h-10 w-[148px] rounded-full border-[#DBDBDB99] bg-white px-3 font-manrope text-xs shadow-none focus:ring-[#7A5AF8]/20"
+          className="h-10 w-[148px] rounded-full border-[#DBDBDB99] bg-white px-3 font-manrope text-xs shadow-none focus:ring-[#0A0A0A]/20"
           aria-label="Ordenar presentaciones de la comunidad"
         >
           <SelectValue />
@@ -359,7 +359,7 @@ function CountFilter({
           onChange={(event) => onValueChange(event.target.value)}
           disabled={comparison === "any"}
           placeholder="Cantidad"
-          className="h-9 w-full rounded-lg border border-[#E0E0E3] bg-white px-3 text-xs text-[#191919] outline-none transition placeholder:text-[#A0A0A0] focus:border-[#BDB4FB] focus:ring-2 focus:ring-[#7A5AF8]/10 disabled:bg-[#F7F7F9] disabled:text-[#A0A0A0]"
+          className="h-9 w-full rounded-lg border border-[#E0E0E3] bg-white px-3 text-xs text-[#191919] outline-none transition placeholder:text-[#A0A0A0] focus:border-[#FFED82] focus:ring-2 focus:ring-[#0A0A0A]/10 disabled:bg-[#F7F7F9] disabled:text-[#A0A0A0]"
         />
       </div>
     </div>

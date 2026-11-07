@@ -171,9 +171,9 @@ function UploadPanel({
               <p className="text-xs text-[#666] [font-family:var(--font-manrope)]">{formatFileSize(selectedFile.size)}<span className="px-2">·</span>{isProcessing ? "Procesando" : "Listo"}</p>
             </div>
             <div className="flex h-full w-[62px] shrink-0 items-center justify-center rounded-lg border-4 border-[#F6F6F9] bg-white">
-              <button type="button" onClick={onRemove} disabled={isProcessing} aria-label="Quitar archivo" className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F6F6F9] focus-visible:ring-2 focus-visible:ring-[#7A5AF8] disabled:opacity-50"><img src="/custom-template/processing-imgFrame.svg" alt="" /></button>
+              <button type="button" onClick={onRemove} disabled={isProcessing} aria-label="Quitar archivo" className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F6F6F9] focus-visible:ring-2 focus-visible:ring-[#0A0A0A] disabled:opacity-50"><img src="/custom-template/processing-imgFrame.svg" alt="" /></button>
             </div>
-          </> : <button type="button" onClick={chooseFile} className="flex h-full w-full flex-col items-center justify-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7A5AF8]"><UploadIllustration /><span className="text-sm text-[#808080]">Arrastra y suelta aquí tus archivos</span></button>}
+          </> : <button type="button" onClick={chooseFile} className="flex h-full w-full flex-col items-center justify-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0A0A0A]"><UploadIllustration /><span className="text-sm text-[#808080]">Arrastra y suelta aquí tus archivos</span></button>}
         </div>
         <div className="mt-2.5 flex items-center justify-between gap-3">
           <AttachmentButton onClick={chooseFile} disabled={isProcessing} />
@@ -729,7 +729,7 @@ function GeneratingSlidesOverlay() {
       <span className="relative z-20 flex items-center overflow-hidden rounded-[50px] bg-white px-4 py-2.5 text-sm font-medium text-[#666666] shadow-[0_2px_12px_rgba(16,24,40,0.08)]">
         <span aria-hidden className="generating-slides-background absolute" />
         <span className="relative z-10 flex items-center gap-2">
-          <Sparkles className="h-4 w-4 text-[#9034EA]" />
+          <Sparkles className="h-4 w-4 text-[#0A0A0A]" />
           Actualizando diapositivas...
         </span>
       </span>
@@ -1168,7 +1168,7 @@ function SaveTemplateModal({
               onChange={(event) => setName(event.target.value)}
               disabled={isSaving}
               placeholder="p. ej., Presentación moderna para inversores tecnológicos"
-              className="h-9 2xl:h-10 w-full rounded-[5px] border border-[#E1E2E8] bg-white px-3 2xl:px-4 text-[13px] 2xl:text-[15px] text-black outline-none placeholder:text-[#8C8E96] focus:border-[#B9ABFF]"
+              className="h-9 2xl:h-10 w-full rounded-[5px] border border-[#E1E2E8] bg-white px-3 2xl:px-4 text-[13px] 2xl:text-[15px] text-black outline-none placeholder:text-[#8C8E96] focus:border-[#FFED82]"
             />
           </label>
           <label className="block">

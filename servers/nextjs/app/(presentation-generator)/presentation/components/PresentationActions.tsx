@@ -765,13 +765,13 @@ function ChartsPanel({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Buscar gráficos..."
-            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#7A5AF8] [&::-webkit-search-cancel-button]:hidden"
+            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#0A0A0A] [&::-webkit-search-cancel-button]:hidden"
           />
           {query ? (
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#F0EEFF] hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
               aria-label="Borrar la búsqueda de gráficos"
             >
               <X className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
@@ -962,13 +962,13 @@ function ShapesPanel({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Buscar elementos..."
-            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#7A5AF8] [&::-webkit-search-cancel-button]:hidden"
+            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#0A0A0A] [&::-webkit-search-cancel-button]:hidden"
           />
           {query ? (
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#F0EEFF] hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
               aria-label="Borrar la búsqueda de elementos"
             >
               <X className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
@@ -1115,13 +1115,13 @@ function InfographicsPanel({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Buscar infografías..."
-            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#7A5AF8] [&::-webkit-search-cancel-button]:hidden"
+            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#0A0A0A] [&::-webkit-search-cancel-button]:hidden"
           />
           {query ? (
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#F0EEFF] hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
               aria-label="Borrar la búsqueda de infografías"
             >
               <X className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
@@ -1774,13 +1774,13 @@ export const BlocksPanel = ({
             value={blockPrompt}
             onChange={(event) => setBlockPrompt(event.target.value)}
             placeholder="Buscar bloques..."
-            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#7A5AF8] [&::-webkit-search-cancel-button]:hidden"
+            className="h-11 w-full appearance-none border-0 border-b border-[#E4E4E7] bg-transparent px-0 pr-8 text-[15px] font-normal text-[#191919] outline-none transition-colors placeholder:text-[#A1A1AA] focus:border-[#0A0A0A] [&::-webkit-search-cancel-button]:hidden"
           />
           {blockPrompt ? (
             <button
               type="button"
               onClick={() => setBlockPrompt("")}
-              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#F0EEFF] hover:text-[#6938EF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]/40"
+              className="absolute right-0 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-[#A1A1AA] transition-colors hover:bg-[#FFFADC] hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]/40"
               aria-label="Borrar la búsqueda de bloques"
             >
               <X className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />

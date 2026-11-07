@@ -51,14 +51,14 @@ export default function GenerateUserGuide({ mode, communityEnabled }: { mode: Ge
   return (
     <Dialog open={open} onOpenChange={(next) => { if (!next) close(); }}>
       <DialogContent overlayClassName="bg-black/15 backdrop-blur-none" className="top-auto bottom-4 max-w-[440px] translate-y-0 rounded-xl border-[#EDEEEF] bg-white p-6 font-syne sm:bottom-6">
-        <p className="text-xs text-[#7A5AF8]">Guía de uso · {Math.min(step + 1, steps.length)} de {steps.length}</p>
+        <p className="text-xs text-[#0A0A0A]">Guía de uso · {Math.min(step + 1, steps.length)} de {steps.length}</p>
         <DialogTitle className="pr-4 text-lg text-[#191919]">{current.title}</DialogTitle>
         <DialogDescription className="text-sm leading-6 text-[#666666]">{current.description}</DialogDescription>
         <div className="flex items-center justify-between gap-3">
           <button type="button" onClick={close} className="text-xs text-[#808080] hover:text-[#191919]">Omitir guía</button>
           <div className="flex gap-2">
             {step > 0 && <Button variant="outline" onClick={() => setStep((value) => value - 1)}>Atrás</Button>}
-            <Button className="bg-[#7A5AF8] text-white hover:bg-[#6847E8]" onClick={() => step >= steps.length - 1 ? close() : setStep((value) => value + 1)}>{step >= steps.length - 1 ? "Empezar" : "Siguiente"}</Button>
+            <Button className="bg-[#FFDB05] text-[#0A0A0A] hover:bg-[#E6C500]" onClick={() => step >= steps.length - 1 ? close() : setStep((value) => value + 1)}>{step >= steps.length - 1 ? "Empezar" : "Siguiente"}</Button>
           </div>
         </div>
       </DialogContent>

@@ -159,7 +159,7 @@ export const EditComparisonPreview = ({
           className="h-[14px] w-[14px] shrink-0"
         />
         <span className="font-semibold text-[#191919]">Seleccionar cambios</span>
-        <span className="ml-auto text-[11px] font-medium leading-[normal] text-[#7A5AF8]">
+        <span className="ml-auto text-[11px] font-medium leading-[normal] text-[#0A0A0A]">
           {preview.changeCount} {preview.changeCount === 1 ? "cambio" : "cambios"}
         </span>
       </div>

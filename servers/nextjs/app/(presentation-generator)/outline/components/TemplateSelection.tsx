@@ -139,7 +139,7 @@ const TemplateSelection: React.FC<TemplateSelectionProps> = memo(
     };
 
     const suggestionNotice = suggestedTemplate && selectedTemplateId && (
-      <div className="mb-5 rounded-xl border border-[#E4E0FF] bg-[#F7F5FF] px-4 py-3 font-syne text-xs font-medium text-[#5141E5]">
+      <div className="mb-5 rounded-xl border border-[#FFED82] bg-[#FFFADC] px-4 py-3 font-syne text-xs font-medium text-[#0A0A0A]">
         <strong className="font-semibold">Plantilla sugerida seleccionada.</strong>{" "}
         Haz clic en la plantilla resaltada para continuar.
       </div>
