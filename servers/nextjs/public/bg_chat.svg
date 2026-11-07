@@ -22,13 +22,13 @@
   <g clip-path="url(#chat-bg-clip)">
     <rect width="293.611" height="457.951" fill="#FFFFFF" />
     <g transform="translate(-40.57 32.63)" filter="url(#chat-bg-indigo-blur)">
-      <circle cx="187.483" cy="187.483" r="65.1449" fill="#6172F3" />
+      <circle cx="187.483" cy="187.483" r="65.1449" fill="#FFE45C" />
     </g>
     <g transform="translate(-40.36 -44.65)" filter="url(#chat-bg-blue-blur)" style="mix-blend-mode:hard-light">
-      <circle cx="187.177" cy="187.177" r="64.8391" fill="#53B1FD" />
+      <circle cx="187.177" cy="187.177" r="64.8391" fill="#00D9FF" />
     </g>
     <g transform="translate(-40.36 128.05)" filter="url(#chat-bg-purple-blur)" style="mix-blend-mode:hard-light">
-      <ellipse cx="187.177" cy="187.279" rx="64.8391" ry="64.941" fill="#7A5AF8" />
+      <ellipse cx="187.177" cy="187.279" rx="64.8391" ry="64.941" fill="#FFDB05" />
     </g>
     <image x="0.2" y="0" width="293.203" height="457.951" preserveAspectRatio="xMidYMid slice" xlink:href="chat-panel-background.svg" style="mix-blend-mode:plus-lighter" />
   </g>
