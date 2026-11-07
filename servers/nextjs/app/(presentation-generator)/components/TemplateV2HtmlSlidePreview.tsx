@@ -419,7 +419,7 @@ export function TemplateV2HtmlSlidePreview({
             : undefined
         }
       >
-        Preview unavailable
+        Vista previa no disponible
       </div>
     );
   }
@@ -461,7 +461,7 @@ export function TemplateV2HtmlSlidePreview({
       >
         <div
           ref={contentRef}
-          aria-label="Template v2 slide preview"
+          aria-label="Vista previa de diapositiva de plantilla v2"
           data-tailwind-runtime-scope
           className={`block h-full w-full bg-white ${contentClassName}`}
           style={{ pointerEvents: "none" }}

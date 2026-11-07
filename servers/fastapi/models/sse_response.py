@@ -40,7 +40,7 @@ class SSEErrorResponse(BaseModel):
     total_slides: int | None = None
 
     @classmethod
-    def from_exception(cls, error: Exception, *, fallback_detail: str = "The request failed. Please try again."):
+    def from_exception(cls, error: Exception, *, fallback_detail: str = "La solicitud ha fallado. Inténtalo de nuevo."):
         from utils.api_errors import api_error_payload
 
         payload = api_error_payload(error, fallback_detail=fallback_detail, source="generation")

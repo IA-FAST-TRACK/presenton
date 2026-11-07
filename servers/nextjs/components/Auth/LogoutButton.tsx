@@ -17,7 +17,7 @@ type LogoutButtonProps = {
 };
 
 export default function LogoutButton({
-  label = "Logout",
+  label = "Cerrar sesión",
   className = "",
   iconOnly = false,
 }: LogoutButtonProps) {
@@ -71,7 +71,7 @@ export default function LogoutButton({
       title={label}
     >
       <LogOut className="h-4 w-4" />
-      {!iconOnly ? <span>{isSubmitting ? "Signing out..." : label}</span> : null}
+      {!iconOnly ? <span>{isSubmitting ? "Cerrando sesión..." : label}</span> : null}
     </button>
   );
 }

@@ -930,7 +930,7 @@ async def generate_smart_presentation(
     raise HTTPException(
         status_code=500,
         detail=(
-            "Failed to generate the complete Smart presentation after retries; "
-            f"{len(accepted_slides)} valid slides were retained"
+            "No se ha podido generar la presentación Smart completa tras varios reintentos; "
+            f"se han conservado {len(accepted_slides)} diapositivas válidas"
         ),
     ) from last_exception

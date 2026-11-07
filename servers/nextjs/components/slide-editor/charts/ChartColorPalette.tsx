@@ -75,12 +75,12 @@ export function ChartColorPaletteCard({
     >
       <div style={styles.header}>
         <div style={styles.headerText}>
-          <div style={styles.title}>Chart colors</div>
+          <div style={styles.title}>Colores del gráfico</div>
         </div>
         {onClose ? (
           <button
             type="button"
-            aria-label="Close color palette"
+            aria-label="Cerrar paleta de colores"
             style={styles.closeButton}
             onClick={onClose}
           >
@@ -89,12 +89,12 @@ export function ChartColorPaletteCard({
         ) : null}
       </div>
 
-      <div style={styles.heading}>Theme</div>
+      <div style={styles.heading}>Tema</div>
       <div style={styles.themeGrid}>
         {themeColors.map((color, index) => (
           <ColorSwatch
             key={`${color}-${index}`}
-            ariaLabel={`Select theme color ${index + 1}`}
+            ariaLabel={`Seleccionar color del tema ${index + 1}`}
             color={color}
             selected={index === activeIndex}
             onClick={() => onSelectIndex(index)}
@@ -103,8 +103,8 @@ export function ChartColorPaletteCard({
         {onAddColor ? (
           <button
             type="button"
-            aria-label="Add chart color"
-            title="Add chart color"
+            aria-label="Añadir color al gráfico"
+            title="Añadir color al gráfico"
             style={styles.addSwatch}
             onClick={onAddColor}
           >
@@ -115,11 +115,11 @@ export function ChartColorPaletteCard({
 
       <div style={styles.divider} />
 
-      <div style={styles.heading}>System colors</div>
+      <div style={styles.heading}>Colores del sistema</div>
       <div style={styles.systemGrid}>
         <label
-          aria-label="Custom chart color"
-          title="Custom color"
+          aria-label="Color personalizado del gráfico"
+          title="Color personalizado"
           style={{
             ...styles.swatch,
             ...styles.customSwatch,
@@ -135,7 +135,7 @@ export function ChartColorPaletteCard({
         {CHART_SYSTEM_COLORS.map((color) => (
           <ColorSwatch
             key={color}
-            ariaLabel={`Set chart color #${color}`}
+            ariaLabel={`Aplicar color #${color} al gráfico`}
             color={color}
             selected={color === currentColor}
             onClick={() => commitColor(color)}

@@ -41,7 +41,7 @@ export function ShortcutKeys({
 
   return (
     <span
-      aria-label={`${shortcut.label} shortcut`}
+      aria-label={`Atajo: ${shortcut.label}`}
       className={cn("inline-flex shrink-0 items-center gap-1.5", className)}
     >
       {chords.map((chord, chordIndex) => (

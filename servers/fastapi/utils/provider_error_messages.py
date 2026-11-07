@@ -3,13 +3,13 @@ import re
 from typing import Any
 
 
-INVALID_API_KEY_MESSAGE = "Invalid API key. Please verify your API key and try again."
+INVALID_API_KEY_MESSAGE = "Clave API no válida. Comprueba tu clave API e inténtalo de nuevo."
 IMAGE_MODERATION_MESSAGE = (
-    "An image request was blocked by the provider's safety system. "
-    "Try a different prompt."
+    "El sistema de seguridad del proveedor ha bloqueado una solicitud de imagen. "
+    "Prueba con otra indicación."
 )
 GENERIC_PROVIDER_ERROR_MESSAGE = (
-    "The AI provider returned an error. Please try again."
+    "El proveedor de IA ha devuelto un error. Inténtalo de nuevo."
 )
 
 
@@ -97,7 +97,7 @@ def _looks_like_model_access_error(
 
 
 def _provider_operation_prefix(provider: str, operation: str) -> str:
-    provider_label = (provider or "AI provider").strip()
+    provider_label = (provider or "Proveedor de IA").strip()
     operation_label = (operation or "request").strip()
     return f"{provider_label} {operation_label}"
 
@@ -127,44 +127,44 @@ def safe_provider_error_detail(
         if "image" in (operation or "").lower():
             return IMAGE_MODERATION_MESSAGE
         return (
-            "The request was blocked by the provider's safety system. "
-            "Please revise it and try again."
+            "El sistema de seguridad del proveedor ha bloqueado la solicitud. "
+            "Revísala e inténtalo de nuevo."
         )
 
     prefix = _provider_operation_prefix(provider, operation)
     normalized_code = _normalize_code(code)
     messages = {
-        "provider_dns_error": f"The {provider} hostname could not be resolved. Check the provider URL and Docker network configuration.",
-        "provider_unreachable": f"Cannot connect to the {provider}. Check that it is running and that the provider URL and Docker network are correct.",
-        "provider_timeout": f"The {provider} took too long to respond. Try again, or check the provider's load and connection.",
-        "context_window_exceeded": "The AI request exceeded the model's context window. Try a smaller edit or use a model with a larger context window.",
-        "provider_invalid_response": f"The {provider} returned an incomplete or invalid response. Try again, or check that the configured URL and model support this operation.",
-        "provider_configuration_error": "The AI provider configuration is incomplete or invalid. Check provider settings or contact your administrator.",
-        "provider_unavailable": f"The {provider} is temporarily unavailable. Try again shortly or check the provider's status.",
-        "provider_tls_error": f"A secure connection to the {provider} could not be established. Check the provider's HTTPS certificate and the system trust store.",
-        "provider_endpoint_not_found": f"The {provider} endpoint was not found. Check the configured API URL and selected model.",
+        "provider_dns_error": f"{provider}: no se ha podido resolver el nombre de host. Revisa la URL del proveedor y la configuración de red de Docker.",
+        "provider_unreachable": f"{provider}: no se puede establecer la conexión. Comprueba que esté en ejecución y que la URL del proveedor y la red de Docker sean correctas.",
+        "provider_timeout": f"{provider}: ha tardado demasiado en responder. Inténtalo de nuevo o revisa la carga y la conexión del proveedor.",
+        "context_window_exceeded": "La solicitud de IA ha superado la ventana de contexto del modelo. Prueba con una edición más pequeña o usa un modelo con una ventana de contexto mayor.",
+        "provider_invalid_response": f"{provider}: ha devuelto una respuesta incompleta o no válida. Inténtalo de nuevo o comprueba que la URL y el modelo configurados admitan esta operación.",
+        "provider_configuration_error": "La configuración del proveedor de IA está incompleta o no es válida. Revisa la configuración del proveedor o contacta con tu administrador.",
+        "provider_unavailable": f"{provider}: no está disponible temporalmente. Inténtalo de nuevo en breve o revisa el estado del proveedor.",
+        "provider_tls_error": f"{provider}: no se ha podido establecer una conexión segura. Revisa el certificado HTTPS del proveedor y el almacén de confianza del sistema.",
+        "provider_endpoint_not_found": f"{provider}: no se ha encontrado el endpoint. Revisa la URL de la API configurada y el modelo seleccionado.",
     }
     if normalized_code in messages:
         return messages[normalized_code]
     if normalized_code == "insufficient_quota":
         return (
-            f"{prefix} failed because API quota is unavailable. "
-            f"Check {provider} API billing and the limits for the project that owns this API key."
+            f"{prefix}: error porque no hay cuota de API disponible. "
+            f"Revisa la facturación de la API de {provider} y los límites del proyecto al que pertenece esta clave API."
         )
 
     if status_code == 403:
         return (
-            f"{provider} rejected the request because the configured API key does not "
-            "have access. Check the key permissions and selected model."
+            f"{provider}: se ha rechazado la solicitud porque la clave API configurada no "
+            "tiene acceso. Revisa los permisos de la clave y el modelo seleccionado."
         )
 
     if status_code == 429 or normalized_code in {"rate_limit_exceeded", "rate_limit"}:
-        return f"{prefix} is temporarily rate limited. Please wait and try again."
+        return f"{prefix}: se ha alcanzado temporalmente el límite de solicitudes. Espera e inténtalo de nuevo."
 
     if _looks_like_model_access_error(code=code, message=message):
         return (
-            f"The selected {provider} model is not available. "
-            "Choose another model or check model access."
+            f"{provider}: el modelo seleccionado no está disponible. "
+            "Elige otro modelo o revisa el acceso al modelo."
         )
 
     if status_code in {408, 504}:
@@ -172,9 +172,9 @@ def safe_provider_error_detail(
     if status_code is not None and status_code >= 500:
         return messages["provider_unavailable"]
     if status_code in {400, 422}:
-        return f"The {provider} rejected the request. Check the selected model and provider settings, or try a smaller request."
+        return f"{provider}: se ha rechazado la solicitud. Revisa el modelo seleccionado y la configuración del proveedor, o prueba con una solicitud más pequeña."
 
-    return f"{prefix} failed. Please try again."
+    return f"{prefix}: error. Inténtalo de nuevo."
 
 
 def safe_llm_provider_error_detail(
@@ -199,12 +199,12 @@ def safe_llm_provider_error_detail(
     )
     if looks_like_raw_provider_payload:
         return safe_provider_error_detail(
-            "AI provider",
+            "Proveedor de IA",
             "API request",
             status_code=status_code,
             message=text,
         )
 
     return safe_provider_error_detail(
-        "AI provider", "API request", status_code=status_code, message=text,
+        "Proveedor de IA", "API request", status_code=status_code, message=text,
     )

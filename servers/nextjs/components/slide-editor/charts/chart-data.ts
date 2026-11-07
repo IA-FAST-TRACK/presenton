@@ -364,7 +364,7 @@ export function resolvedChartColorTargets(
       index,
       label:
         paletteSize === 1
-          ? "Chart color"
+          ? "Color del gráfico"
           : element.series?.[index]?.name ?? `Color ${index + 1}`,
       mode,
     }));

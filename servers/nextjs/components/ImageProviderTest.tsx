@@ -47,7 +47,7 @@ export default function ImageProviderTest({ config }: { config: LLMConfig }) {
       if (!request.signal.aborted) setResult({ imageUrl: image_url });
     } catch (error) {
       if (!request.signal.aborted) {
-        setResult({ error: error instanceof Error ? error.message : "The image test failed. Check your provider settings and try again." });
+        setResult({ error: error instanceof Error ? error.message : "La prueba de imagen ha fallado. Revisa los ajustes del proveedor e inténtalo de nuevo." });
       }
     } finally {
       if (!request.signal.aborted) setIsTesting(false);
@@ -59,16 +59,16 @@ export default function ImageProviderTest({ config }: { config: LLMConfig }) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="max-w-md text-sm text-gray-600">
           {isStock
-            ? "Search for a test image to verify your configuration."
-            : "Generate a test image to verify your configuration."}
+            ? "Busca una imagen de prueba para verificar tu configuración."
+            : "Genera una imagen de prueba para verificar tu configuración."}
         </p>
         <Button type="button" variant="outline" disabled={isTesting} onClick={testProvider}>
           {isTesting && <Loader2 className="animate-spin motion-reduce:animate-none" aria-hidden="true" />}
-          {isTesting ? "Testing…" : isStock ? "Test image search" : "Test image generation"}
+          {isTesting ? "Probando…" : isStock ? "Probar búsqueda de imágenes" : "Probar generación de imágenes"}
         </Button>
       </div>
       <div role="status" aria-live="polite" aria-atomic="true">
-        {isTesting && <p className="text-sm text-gray-600">{isStock ? "Searching for a sample image…" : "Generating a sample image. This may take a few minutes…"}</p>}
+        {isTesting && <p className="text-sm text-gray-600">{isStock ? "Buscando una imagen de ejemplo…" : "Generando una imagen de ejemplo. Puede tardar unos minutos…"}</p>}
         {result?.error && (
           <p className="flex items-start gap-2 text-sm text-red-700">
             <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
@@ -79,11 +79,11 @@ export default function ImageProviderTest({ config }: { config: LLMConfig }) {
           <div className="space-y-3">
             <p className="flex items-center gap-2 text-sm text-green-700">
               <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-              {isStock ? "Image search is working." : "Image generation is working."}
+              {isStock ? "La búsqueda de imágenes funciona." : "La generación de imágenes funciona."}
             </p>
             {/* Provider previews can be temporary data URLs or remote stock images. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={result.imageUrl} alt="Sample mountain lake from your image provider" className="max-h-64 max-w-full rounded-lg object-contain" onError={() => setResult({ error: "The provider returned an image, but its preview could not load. Check your provider and try again." })} />
+            <img src={result.imageUrl} alt="Lago de montaña de ejemplo de tu proveedor de imágenes" className="max-h-64 max-w-full rounded-lg object-contain" onError={() => setResult({ error: "El proveedor ha devuelto una imagen, pero no se ha podido cargar su vista previa. Revisa tu proveedor e inténtalo de nuevo." })} />
           </div>
         )}
       </div>

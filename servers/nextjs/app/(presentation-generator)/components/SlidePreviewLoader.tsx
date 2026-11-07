@@ -1,7 +1,7 @@
 import { LoaderCircle } from "lucide-react";
 
 export default function SlidePreviewLoader({
-  label = "Loading slide…",
+  label = "Cargando diapositiva…",
 }: {
   label?: string;
 }) {

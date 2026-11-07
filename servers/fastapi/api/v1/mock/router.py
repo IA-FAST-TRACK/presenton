@@ -31,6 +31,6 @@ async def mock_presentation_generation_completed():
     return [
         APIErrorModel(
             status_code=500,
-            detail="Presentation generation failed",
+            detail="Error al generar la presentación",
         )
     ]

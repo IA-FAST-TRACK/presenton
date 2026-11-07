@@ -167,7 +167,7 @@ async def chat_message_stream(
     return StreamingResponse(
         safe_sse_stream(
             inner(), logger=logging.getLogger(__name__),
-            error_detail="The AI editor could not complete this request. Please try again.",
+            error_detail="El editor de IA no ha podido completar esta solicitud. Inténtalo de nuevo.",
             on_error=rollback,
         ), media_type="text/event-stream",
     )

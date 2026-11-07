@@ -12,30 +12,30 @@ const SettingSideBar = ({ selectedProvider, setSelectedProvider, presentonSelect
     const imageProviderIcon = IMAGE_PROVIDERS[llm_config.IMAGE_PROVIDER as keyof typeof IMAGE_PROVIDERS]?.icon || '/providers/pexel.png'
     return (
         <div className={`w-full max-w-[230px] h-screen px-3 pt-[22px] bg-[#F9FAFB] flex flex-col ${className}`}>
-            <p className='text-xs text-black  font-medium border-b mt-[3.15rem]  border-[#E1E1E5] pb-3.5'>FILTER BY:</p>
+            <p className='text-xs text-black  font-medium border-b mt-[3.15rem]  border-[#E1E1E5] pb-3.5'>FILTRAR POR:</p>
             <div className='mt-6 flex-1'>
-                <p className='text-[#3A3A3A] text-xs font-medium pb-2.5'>Select Provider</p>
+                <p className='text-[#3A3A3A] text-xs font-medium pb-2.5'>Seleccionar proveedor</p>
                 <div className='space-y-2.5'>
                     <button className={` w-full rounded-[6px] px-3 py-4 flex items-center gap-1.5 border  ${selectedProvider === 'text-provider' ? 'bg-[#F4F3FF] border-[#D9D6FE]' : 'bg-white border-[#EDEEEF]'}`} onClick={() => setSelectedProvider('text-provider')}>
                         <div className='relative w-[18px] h-[18px] rounded-full overflow-hidden border border-[#EDEEEF]'>
 
                             <img src={textProviderIcon} className=' object-cover w-full h-full overflow-hidden' alt='google' />
                         </div>
-                        <p className='text-[#191919] text-xs  font-medium' >Text Provider</p>
+                        <p className='text-[#191919] text-xs  font-medium' >Proveedor de texto</p>
                     </button>
                     {!presentonSelected ? (
                         <>
                             <button className={` w-full rounded-[6px] px-3 py-4 flex items-center gap-1.5 border  ${selectedProvider === 'image-provider' ? 'bg-[#F4F3FF] border-[#D9D6FE]' : 'bg-white border-[#EDEEEF]'}`} onClick={() => setSelectedProvider('image-provider')}>
                                 <div className='relative w-[18px] h-[18px] rounded-full overflow-hidden border border-[#EDEEEF]'>
-                                    <img src={imageProviderIcon} className=' object-cover w-full h-full overflow-hidden' alt='image provider' />
+                                    <img src={imageProviderIcon} className=' object-cover w-full h-full overflow-hidden' alt='Proveedor de imágenes' />
                                 </div>
-                                <p className='text-[#191919] text-xs  font-medium' >Image Provider</p>
+                                <p className='text-[#191919] text-xs  font-medium' >Proveedor de imágenes</p>
                             </button>
                             <button className={` w-full rounded-[6px] px-3 py-4 flex items-center gap-1.5 border  ${selectedProvider === 'web-search-provider' ? 'bg-[#F4F3FF] border-[#D9D6FE]' : 'bg-white border-[#EDEEEF]'}`} onClick={() => setSelectedProvider('web-search-provider')}>
                                 <div className='relative w-[18px] h-[18px] rounded-full overflow-hidden border border-[#EDEEEF] flex items-center justify-center bg-white'>
                                     <Search className='w-3 h-3 text-[#5146E5]' />
                                 </div>
-                                <p className='text-[#191919] text-xs font-medium'>Web Search Provider</p>
+                                <p className='text-[#191919] text-xs font-medium'>Proveedor de búsqueda web</p>
                             </button>
                         </>
                     ) : null}
@@ -43,7 +43,7 @@ const SettingSideBar = ({ selectedProvider, setSelectedProvider, presentonSelect
             </div>
 
             <div className='border-t border-[#E1E1E5] py-5 relative z-50'>
-                <p className='text-[#3A3A3A] text-xs font-medium pb-2.5'>Other</p>
+                <p className='text-[#3A3A3A] text-xs font-medium pb-2.5'>Otros</p>
                 <div className='space-y-2.5'>
                     <button
                         className={`w-full rounded-[6px] p-3 py-4 flex items-center gap-1.5 border ${selectedProvider === 'privacy' ? 'bg-[#F4F3FF] border-[#D9D6FE]' : 'bg-white border-[#EDEEEF]'}`}
@@ -52,7 +52,7 @@ const SettingSideBar = ({ selectedProvider, setSelectedProvider, presentonSelect
                         <div className='relative w-6 h-6 rounded-full overflow-hidden border border-[#EDEEEF] flex items-center justify-center bg-white'>
                             <Shield className='w-3.5 h-3.5 text-[#5146E5]' />
                         </div>
-                        <p className='text-[#191919] text-xs font-medium'>Usage Analytics</p>
+                        <p className='text-[#191919] text-xs font-medium'>Analítica de uso</p>
                     </button>
                     <button
                         className={`w-full rounded-[6px] p-3 py-4 flex items-center gap-1.5 border ${selectedProvider === 'admin' ? 'bg-[#F4F3FF] border-[#D9D6FE]' : 'bg-white border-[#EDEEEF]'}`}
@@ -61,7 +61,7 @@ const SettingSideBar = ({ selectedProvider, setSelectedProvider, presentonSelect
                         <div className='relative w-6 h-6 rounded-full overflow-hidden border border-[#EDEEEF] flex items-center justify-center bg-white'>
                             <ShieldCheck className='w-3.5 h-3.5 text-[#5146E5]' />
                         </div>
-                        <p className='text-[#191919] text-xs font-medium'>Admin</p>
+                        <p className='text-[#191919] text-xs font-medium'>Administración</p>
                     </button>
                     <button
                         className={`w-full rounded-[6px] p-3 py-4 flex items-center gap-1.5 border ${selectedProvider === 'session' ? 'bg-[#F4F3FF] border-[#D9D6FE]' : 'bg-white border-[#EDEEEF]'}`}
@@ -70,7 +70,7 @@ const SettingSideBar = ({ selectedProvider, setSelectedProvider, presentonSelect
                         <div className='relative w-6 h-6 rounded-full overflow-hidden border border-[#EDEEEF] flex items-center justify-center bg-white'>
                             <LogOut className='w-3.5 h-3.5 text-[#5146E5]' />
                         </div>
-                        <p className='text-[#191919] text-xs font-medium'>Sign out</p>
+                        <p className='text-[#191919] text-xs font-medium'>Cerrar sesión</p>
                     </button>
                 </div>
             </div>

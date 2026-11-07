@@ -48,7 +48,7 @@ test("HTML gateway failures produce an actionable message", async () => {
   await assert.rejects(api.ApiResponseHandler.handleResponse(response, "Failed"), error => {
     assert.equal(error.status, 502);
     assert.doesNotMatch(error.message, /html|secret|<h1>/);
-    assert.match(error.message, /try again/i);
+    assert.match(error.message, /inténtalo de nuevo/i);
     return true;
   });
 });
@@ -137,7 +137,7 @@ test("early stream termination warns about saved changes without automatic retry
   await assert.rejects(api.PresentationChatApi.streamMessage(payload), error => {
     assert.equal(error.code, "stream_interrupted");
     assert.equal(error.retryable, false);
-    assert.match(error.message, /saved changes/);
+    assert.match(error.message, /cambios guardados/);
     return true;
   });
 });

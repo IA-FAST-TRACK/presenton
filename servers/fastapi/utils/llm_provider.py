@@ -51,7 +51,7 @@ def get_llm_provider():
         raise HTTPException(
             status_code=500,
             detail=(
-                "Invalid LLM provider. Please select one of: "
+                "Proveedor de LLM no válido. Selecciona uno de los siguientes: "
                 "openai, deepseek, google, vertex, azure, bedrock, openrouter, "
                 "fireworks, together, cerebras, anthropic, litellm, "
                 "lmstudio, ollama, custom, codex"
@@ -166,7 +166,7 @@ def get_model():
         raise HTTPException(
             status_code=500,
             detail=(
-                "Invalid LLM provider. Please select one of: "
+                "Proveedor de LLM no válido. Selecciona uno de los siguientes: "
                 "openai, deepseek, google, vertex, azure, bedrock, openrouter, "
                 "fireworks, together, cerebras, anthropic, litellm, "
                 "lmstudio, ollama, custom, codex"
@@ -177,14 +177,14 @@ def get_model():
 def get_google_llm_client() -> genai.Client:
     """Google GenAI client for tests and direct API use (uses GOOGLE_API_KEY from env)."""
     if not get_google_api_key_env():
-        raise HTTPException(status_code=400, detail="Google API Key is not set")
+        raise HTTPException(status_code=400, detail="La clave API de Google no está configurada")
     return genai.Client()
 
 
 def get_llm_client() -> OpenAI:
     """OpenAI client for tests and direct API use (uses OPENAI_API_KEY from env)."""
     if not get_openai_api_key_env():
-        raise HTTPException(status_code=400, detail="OpenAI API Key is not set")
+        raise HTTPException(status_code=400, detail="La clave API de OpenAI no está configurada")
     return OpenAI()
 
 

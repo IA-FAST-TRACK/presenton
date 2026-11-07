@@ -22,9 +22,9 @@ export class ImagesApi {
       body: JSON.stringify(config),
       signal,
     });
-    const result = await ApiResponseHandler.handleResponse(response, "Image provider test failed");
+    const result = await ApiResponseHandler.handleResponse(response, "Error en la prueba del proveedor de imágenes");
     if (typeof result?.image_url !== "string" || !result.image_url) {
-      throw new Error("The provider did not return a sample image. Check its configuration and try again.");
+      throw new Error("El proveedor no ha devuelto ninguna imagen de muestra. Revisa su configuración e inténtalo de nuevo.");
     }
     return result;
   }
@@ -38,7 +38,7 @@ export class ImagesApi {
       headers: getHeaderForFormData(),
       body: formData,
     });
-    return await ApiResponseHandler.handleResponse(response, "Failed to upload image") as ImageAssetResponse;
+    return await ApiResponseHandler.handleResponse(response, "No se ha podido subir la imagen") as ImageAssetResponse;
   } catch (error:any) {
     console.log("Upload error:", error.message);
     throw error;
@@ -50,7 +50,7 @@ export class ImagesApi {
     const response = await apiFetch(getApiUrl(`/api/v1/ppt/images/uploaded`), {
       cache: "no-cache",
     });
-   return await ApiResponseHandler.handleResponse(response, "Failed to get uploaded images") as ImageAssetResponse[];
+   return await ApiResponseHandler.handleResponse(response, "No se han podido obtener las imágenes subidas") as ImageAssetResponse[];
   } catch (error:any) {
     console.log("Get uploaded images error:", error);
     throw error;
@@ -63,7 +63,7 @@ export class ImagesApi {
     });
     return await ApiResponseHandler.handleResponse(
       response,
-      "Failed to get generated images",
+      "No se han podido obtener las imágenes generadas",
     ) as ImageAssetResponse[];
   }
 
@@ -82,7 +82,7 @@ export class ImagesApi {
     );
     return await ApiResponseHandler.handleResponse(
       response,
-      "Failed to generate image",
+      "No se ha podido generar la imagen",
     ) as string;
   }
 
@@ -91,7 +91,7 @@ export class ImagesApi {
       const response = await apiFetch(getApiUrl(`/api/v1/ppt/images/${image_id}`), {
         method: "DELETE"
       });
-      return await ApiResponseHandler.handleResponse(response, "Failed to delete image") as {success: boolean, message?: string};
+      return await ApiResponseHandler.handleResponse(response, "No se ha podido eliminar la imagen") as {success: boolean, message?: string};
     } catch (error:any) {
       console.log("Delete image error:", error);
       throw error;
@@ -126,7 +126,7 @@ export class ImagesApi {
         method: "GET",
         headers,
       });
-      return await ApiResponseHandler.handleResponse(response, "Failed to search stock images") as string[];
+      return await ApiResponseHandler.handleResponse(response, "No se han podido buscar imágenes de stock") as string[];
     } catch (error:any) {
       console.log("Stock image search error:", error);
       throw error;

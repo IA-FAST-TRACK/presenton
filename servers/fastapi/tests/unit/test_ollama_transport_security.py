@@ -144,6 +144,6 @@ def test_pull_redirect_is_an_error_frame_without_replay(transport, status):
     frames = asyncio.run(collect_pull("http://localhost:11434/proxy"))
     assert len(frames) == 1
     assert frames[0].startswith("event: error\n")
-    assert "redirect" in json.loads(frames[0].split("data: ", 1)[1])["detail"].lower()
+    assert "redireccion" in json.loads(frames[0].split("data: ", 1)[1])["detail"].lower()
     assert len(calls) == 1
     assert calls[0][2]["allow_redirects"] is False

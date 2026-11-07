@@ -31,13 +31,13 @@ export const useOutlineManagement = (outlines: { content: string }[] | null) => 
     if (!outlines) return;
     if (outlines.length >= MAX_NUMBER_OF_SLIDES) {
       notify.warning(
-        "Slide limit reached",
-        `You can have up to ${MAX_NUMBER_OF_SLIDES} outline slides.`
+        "Se ha alcanzado el límite de diapositivas",
+        `Puedes tener hasta ${MAX_NUMBER_OF_SLIDES} diapositivas en el esquema.`
       );
       return;
     }
 
-    const updatedOutlines = [...outlines, { content: "Outline title" }];
+    const updatedOutlines = [...outlines, { content: "Título de la diapositiva" }];
     dispatch(setOutlines(updatedOutlines));
   }, [outlines, dispatch]);
 

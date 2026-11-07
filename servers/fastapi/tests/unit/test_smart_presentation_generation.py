@@ -504,7 +504,7 @@ def test_disabled_community_is_rejected_before_network_access(monkeypatch):
     assert exc_info.value.status_code == 404
     assert exc_info.value.detail == {
         "code": "community_disabled",
-        "message": "Community is disabled for this deployment.",
+        "message": "La comunidad está desactivada en este despliegue.",
         "retryable": False,
     }
 
@@ -533,8 +533,8 @@ def test_community_upstream_outage_is_specific_and_retryable():
     assert error.detail == {
         "code": "community_service_unavailable",
         "message": (
-            "The Community service is temporarily unavailable "
-            "(upstream status 503). Please try again later."
+            "El servicio de la comunidad no está disponible temporalmente "
+            "(estado de origen 503). Inténtalo de nuevo más tarde."
         ),
         "retryable": True,
     }

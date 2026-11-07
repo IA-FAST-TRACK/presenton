@@ -59,33 +59,33 @@ import { buildSvgUpdateUrl } from "@/lib/svg-color";
 type RawRecord = Record<string, unknown>;
 
 const TYPE_LABELS: Record<InfographicType, string> = {
-  progress_bar: "Progress Bar",
-  gauge: "Gauge",
-  gantt: "Gantt Chart",
-  timeline: "Timeline",
-  roadmap: "Roadmap",
-  milestone_timeline: "Milestone Timeline",
-  staircase: "Staircase",
-  supply_chain: "Supply Chain",
-  stair_step_blocks: "Step Blocks",
-  maturity_model: "Maturity Model",
-  diagonal_circles: "Diagonal Circles",
-  pillar_framework: "Pillar Framework",
-  transformation_hub: "Transformation Hub",
-  risk_matrix: "Risk Matrix",
-  chevron_process: "Chevron Process",
-  radial_cycle: "Radial Cycle",
-  conversion_funnel: "Conversion Funnel",
-  vertical_funnel: "Vertical Funnel",
-  pyramid: "Pyramid",
-  segmented_wheel: "Segmented Wheel",
-  customer_journey: "Customer Journey",
-  before_after: "Before & After",
-  impact_effort_matrix: "Impact / Effort Matrix",
-  comparison_matrix: "Comparison Matrix",
-  org_chart: "Organization Chart",
-  decision_tree: "Decision Tree",
-  mind_map: "Mind Map",
+  progress_bar: "Barra de progreso",
+  gauge: "Indicador",
+  gantt: "Diagrama de Gantt",
+  timeline: "Cronología",
+  roadmap: "Hoja de ruta",
+  milestone_timeline: "Cronología de hitos",
+  staircase: "Escalera",
+  supply_chain: "Cadena de suministro",
+  stair_step_blocks: "Bloques escalonados",
+  maturity_model: "Modelo de madurez",
+  diagonal_circles: "Círculos en diagonal",
+  pillar_framework: "Marco de pilares",
+  transformation_hub: "Eje de transformación",
+  risk_matrix: "Matriz de riesgos",
+  chevron_process: "Proceso en flechas",
+  radial_cycle: "Ciclo radial",
+  conversion_funnel: "Embudo de conversión",
+  vertical_funnel: "Embudo vertical",
+  pyramid: "Pirámide",
+  segmented_wheel: "Rueda segmentada",
+  customer_journey: "Recorrido del cliente",
+  before_after: "Antes y después",
+  impact_effort_matrix: "Matriz de impacto / esfuerzo",
+  comparison_matrix: "Matriz comparativa",
+  org_chart: "Organigrama",
+  decision_tree: "Árbol de decisión",
+  mind_map: "Mapa mental",
 };
 
 export function InfographicDataEditorPopover({
@@ -202,7 +202,7 @@ export function InfographicDataEditorContent({
                 id="infographic-editor-title"
                 className="text-[15px] font-semibold text-[#191919]"
               >
-                Edit Infographic
+                Editar infografía
               </h2>
               <p
                 id="infographic-editor-description"
@@ -210,7 +210,7 @@ export function InfographicDataEditorContent({
               >
                 {TYPE_LABELS[type]}
                 {!isMeter && itemCount > 0
-                  ? ` · ${itemCount} ${itemCount === 1 ? "item" : "items"}`
+                  ? ` · ${itemCount} ${itemCount === 1 ? "elemento" : "elementos"}`
                   : ""}
               </p>
             </div>
@@ -220,7 +220,7 @@ export function InfographicDataEditorContent({
                 className="h-8 min-w-[76px] rounded-full bg-[linear-gradient(100deg,#FFE6A6_0%,#D8B4FE_100%)] px-5 text-[12px] font-semibold text-[#191919] transition hover:brightness-95"
                 onClick={saveChanges}
               >
-                Save
+                Guardar
               </button>
             </div>
           </header>
@@ -228,17 +228,17 @@ export function InfographicDataEditorContent({
           <div className="flex min-h-0 flex-1 overflow-hidden">
             <aside className="min-h-0 w-[255px] shrink-0 overflow-y-auto overscroll-contain border-r border-[#ECECF1] px-4 py-4 hide-scrollbar">
               <label className="mb-2 block text-[12px] font-medium text-[#191919]">
-                Appearance
+                Apariencia
               </label>
 
               <div className="rounded-lg border border-[#ECECF1] bg-[#F8F8FA] p-3">
                 <div className="mb-3 flex items-center justify-between gap-2">
                   <div>
                     <p className="text-[12px] font-medium text-[#191919]">
-                      Color palette
+                      Paleta de colores
                     </p>
                     <p className="mt-0.5 text-[10px] text-[#8B8B94]">
-                      Applied to items in order
+                      Se aplica a los elementos en orden
                     </p>
                   </div>
                   <Layers3 size={14} className="text-[#7C51F8]" />
@@ -255,15 +255,15 @@ export function InfographicDataEditorContent({
                   <Type size={14} className="text-[#191919]" />
                   <div>
                     <p className="text-[12px] font-medium text-[#191919]">
-                      Text color
+                      Color del texto
                     </p>
                     <p className="mt-0.5 text-[10px] text-[#8B8B94]">
-                      Labels and descriptions
+                      Etiquetas y descripciones
                     </p>
                   </div>
                 </div>
                 <DeferredColorInput
-                  aria-label="Infographic text color"
+                  aria-label="Color del texto de la infografía"
                   className="h-8 w-full cursor-pointer rounded-lg border border-[#E6E6EA] bg-white p-1"
                   value={textColor}
                   onCommit={(text_color) =>
@@ -274,7 +274,7 @@ export function InfographicDataEditorContent({
 
               <div className="mt-3 flex gap-2 rounded-lg border border-[#ECECF1] bg-[#F8F8FA] p-3 text-[10px] leading-4 text-[#686873]">
                 <Palette size={14} className="mt-0.5 shrink-0 text-[#7C51F8]" />
-                <span>The slide background remains visible behind the infographic.</span>
+                <span>El fondo de la diapositiva sigue visible detrás de la infografía.</span>
               </div>
             </aside>
 
@@ -282,15 +282,15 @@ export function InfographicDataEditorContent({
               <div className="mb-5 flex items-center justify-between gap-4">
                 <div>
                   <h3 className="text-[14px] font-semibold text-[#191919]">
-                    Content
+                    Contenido
                   </h3>
                   <p className="mt-1 text-[11px] text-[#8B8B94]">
-                    Edit copy, icons, order, and relationships.
+                    Edita textos, iconos, orden y relaciones.
                   </p>
                 </div>
                 {!isMeter && itemCount > 0 ? (
                   <span className="rounded-full border border-[#E6E6EA] bg-white px-3 py-1 text-[11px] font-medium text-[#686873]">
-                    {itemCount} {itemCount === 1 ? "item" : "items"}
+                    {itemCount} {itemCount === 1 ? "elemento" : "elementos"}
                   </span>
                 ) : null}
               </div>
@@ -396,7 +396,7 @@ export function InfographicDataEditorContent({
 
         <button
           type="button"
-          aria-label="Close infographic editor"
+          aria-label="Cerrar editor de infografías"
           className="absolute -right-14 top-0 grid h-11 w-11 place-items-center rounded-full bg-white text-[#191919] shadow-sm transition hover:bg-[#F7F7FA]"
           onClick={onClose}
         >
@@ -434,10 +434,10 @@ function ColorEditor({
               <DeferredColorInput
                 aria-label={
                   meter && index === 0
-                    ? "Track color"
+                    ? "Color de la pista"
                     : meter && index === 1
-                      ? "Progress color"
-                      : `Palette color ${visibleIndex + 1}`
+                      ? "Color del progreso"
+                      : `Color de la paleta ${visibleIndex + 1}`
                 }
                 className="h-8 w-9 shrink-0 cursor-pointer rounded-lg border border-[#E6E6EA] bg-white p-1"
                 value={color}
@@ -452,9 +452,9 @@ function ColorEditor({
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-[10px] font-medium text-[#191919]">
                   {meter && index === 0
-                    ? "Track"
+                    ? "Pista"
                     : meter && index === 1
-                      ? "Progress"
+                      ? "Progreso"
                       : `Color ${visibleIndex + 1}`}
                 </span>
                 <span className="mt-0.5 block font-mono text-[8px] uppercase text-[#8B8B94]">
@@ -463,21 +463,21 @@ function ColorEditor({
               </span>
               <div className="flex items-center opacity-60 transition group-hover:opacity-100">
                 <MiniButton
-                  label="Move color up"
+                  label="Subir color"
                   disabled={!canMoveUp}
                   onClick={() => onChange(moveCollectionItem(colors, index, -1))}
                 >
                   <ChevronUp size={13} />
                 </MiniButton>
                 <MiniButton
-                  label="Move color down"
+                  label="Bajar color"
                   disabled={!canMoveDown}
                   onClick={() => onChange(moveCollectionItem(colors, index, 1))}
                 >
                   <ChevronDown size={13} />
                 </MiniButton>
                 <MiniButton
-                  label="Delete color"
+                  label="Eliminar color"
                   disabled={editableColors.length <= (meter ? 2 : 1)}
                   onClick={() => onChange(removeInfographicColor(colors, index))}
                 >
@@ -494,7 +494,7 @@ function ColorEditor({
         onClick={() => onChange(appendInfographicColor(colors))}
       >
         <Plus size={13} />
-        Add palette color
+        Añadir color a la paleta
       </button>
     </div>
   );
@@ -508,20 +508,20 @@ function MeterEditor({
   onChange: (data: MeterInfographicData) => void;
 }) {
   return (
-    <EditorSection title="Values" description="Set the displayed value and range.">
+    <EditorSection title="Valores" description="Define el valor mostrado y el rango.">
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         <NumberInput
-          label="Minimum"
+          label="Mínimo"
           value={data.min_value}
           onChange={(min_value) => onChange({ ...data, min_value })}
         />
         <NumberInput
-          label="Maximum"
+          label="Máximo"
           value={data.max_value}
           onChange={(max_value) => onChange({ ...data, max_value })}
         />
         <NumberInput
-          label="Value"
+          label="Valor"
           value={data.value}
           onChange={(value) => onChange({ ...data, value })}
         />
@@ -584,7 +584,7 @@ function GanttEditor({
     setRows([
       ...data.rows,
       {
-        label: `Row ${data.rows.length + 1}`,
+        label: `Fila ${data.rows.length + 1}`,
         items: [defaultGanttItem(data.columns.length)],
       },
     ]);
@@ -634,18 +634,18 @@ function GanttEditor({
   return (
     <div className="space-y-5">
       <EditorSection
-        title="Timeline columns"
+        title="Columnas de la cronología"
         description={`${data.columns.length} columns define the horizontal schedule.`}
         action={
           <AddButton
             compact
-            label="Add column"
+            label="Añadir columna"
             onClick={() =>
               onChange({
                 ...data,
                 columns: [
                   ...data.columns,
-                  { label: `Column ${data.columns.length + 1}` },
+                  { label: `Columna ${data.columns.length + 1}` },
                 ],
               })
             }
@@ -664,7 +664,7 @@ function GanttEditor({
                 </span>
                 <div className="flex items-center gap-0.5">
                   <MiniButton
-                    label="Move column left"
+                    label="Mover columna a la izquierda"
                     disabled={index === 0}
                     onClick={() =>
                       onChange({
@@ -676,7 +676,7 @@ function GanttEditor({
                     <ChevronLeft size={13} />
                   </MiniButton>
                   <MiniButton
-                    label="Move column right"
+                    label="Mover columna a la derecha"
                     disabled={index === data.columns.length - 1}
                     onClick={() =>
                       onChange({
@@ -688,7 +688,7 @@ function GanttEditor({
                     <ChevronRight size={13} />
                   </MiniButton>
                   <MiniButton
-                    label="Delete column"
+                    label="Eliminar columna"
                     disabled={data.columns.length <= 1}
                     onClick={() => onChange(removeGanttColumn(data, index))}
                   >
@@ -697,7 +697,7 @@ function GanttEditor({
                 </div>
               </div>
               <TextInput
-                ariaLabel={`Column ${index + 1}`}
+                ariaLabel={`Columna ${index + 1}`}
                 value={column.label}
                 onChange={(label) =>
                   onChange({
@@ -714,12 +714,12 @@ function GanttEditor({
       </EditorSection>
 
       <EditorSection
-        title="Rows and tasks"
-        description={`${data.rows.length} rows. Expand one row to edit its tasks and schedule.`}
+        title="Filas y tareas"
+        description={`${data.rows.length} filas. Despliega una fila para editar sus tareas y su calendario.`}
         action={
           <AddButton
             compact
-            label="Add row"
+            label="Añadir fila"
             onClick={addRow}
           />
         }
@@ -747,7 +747,7 @@ function GanttEditor({
                     type="button"
                     aria-controls={rowPanelId}
                     aria-expanded={isExpanded}
-                    aria-label={`${isExpanded ? "Collapse" : "Expand"} row ${rowIndex + 1}`}
+                    aria-label={`${isExpanded ? "Contraer" : "Desplegar"} fila ${rowIndex + 1}`}
                     className="flex min-w-0 flex-1 items-center gap-2.5 rounded-lg text-left outline-none focus-visible:ring-2 focus-visible:ring-[#D8CEFA]"
                     onClick={() =>
                       setExpandedRowIndex((current) =>
@@ -760,7 +760,7 @@ function GanttEditor({
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-[12px] font-semibold text-[#191919]">
-                        {row.label || `Row ${rowIndex + 1}`}
+                        {row.label || `Fila ${rowIndex + 1}`}
                       </span>
                       <span className="mt-0.5 block text-[10px] text-[#8B8B94]">
                         {rowItems.length} {rowItems.length === 1 ? "task" : "tasks"}
@@ -776,11 +776,11 @@ function GanttEditor({
                     <MoveButtons
                       index={rowIndex}
                       length={data.rows.length}
-                      label="row"
+                      label="fila"
                       onMove={(direction) => moveRow(rowIndex, direction)}
                     />
                     <MiniButton
-                      label="Delete row"
+                      label="Eliminar fila"
                       disabled={data.rows.length <= 1}
                       onClick={() => deleteRow(rowIndex)}
                     >
@@ -792,9 +792,9 @@ function GanttEditor({
                 {isExpanded ? (
                   <div id={rowPanelId} className="mt-4">
                     <div className="flex items-end gap-3">
-                      <LabeledField className="min-w-0 flex-1" label="Row label">
+                      <LabeledField className="min-w-0 flex-1" label="Etiqueta de la fila">
                         <TextInput
-                          ariaLabel={`Row ${rowIndex + 1} label`}
+                          ariaLabel={`Etiqueta de la fila ${rowIndex + 1}`}
                           className="font-semibold"
                           value={row.label}
                           onChange={(label) =>
@@ -810,7 +810,7 @@ function GanttEditor({
                       </LabeledField>
                       <AddButton
                         compact
-                        label="Add task"
+                        label="Añadir tarea"
                         onClick={() => addTask(rowIndex)}
                       />
                     </div>
@@ -866,7 +866,7 @@ function GanttEditor({
                       ))}
                       {rowItems.length === 0 ? (
                         <div className="rounded-xl border border-dashed border-[#DCDDDF] bg-[#FAFAFC] px-4 py-6 text-center text-[11px] text-[#8B8B94]">
-                          This row has no tasks yet. Use “Add task” to create one.
+                          Esta fila aún no tiene tareas. Usa «Añadir tarea» para crear una.
                         </div>
                       ) : null}
                     </div>
@@ -909,14 +909,14 @@ function GanttTaskEditor({
             Task {taskIndex + 1}
           </span>
         </div>
-        <MiniButton label="Delete task" onClick={onDelete}>
+        <MiniButton label="Eliminar tarea" onClick={onDelete}>
           <Trash2 size={13} />
         </MiniButton>
       </div>
       <div className="p-3">
-        <LabeledField label="Task name">
+        <LabeledField label="Nombre de la tarea">
           <TextInput
-            ariaLabel={`Task ${taskIndex + 1} name`}
+            ariaLabel={`Nombre de la tarea ${taskIndex + 1}`}
             value={item.name}
             onChange={(name) => commit({ ...item, name })}
           />
@@ -928,13 +928,13 @@ function GanttTaskEditor({
         />
         <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
           <GanttPositionEditor
-            label="Start"
+            label="Inicio"
             columns={columns}
             value={item.start}
             onChange={(start) => commit({ ...item, start })}
           />
           <GanttPositionEditor
-            label="End"
+            label="Fin"
             columns={columns}
             value={item.end}
             onChange={(end) => commit({ ...item, end })}
@@ -959,13 +959,13 @@ function GanttTaskRangePreview({
   const endUnits = Math.min(count, Math.max(startUnits, ganttPositionToUnits(item.end)));
   const left = (startUnits / count) * 100;
   const width = Math.max(1.5, ((endUnits - startUnits) / count) * 100);
-  const startLabel = columns[item.start.column]?.label || `Column ${item.start.column + 1}`;
-  const endLabel = columns[item.end.column]?.label || `Column ${item.end.column + 1}`;
+  const startLabel = columns[item.start.column]?.label || `Columna ${item.start.column + 1}`;
+  const endLabel = columns[item.end.column]?.label || `Columna ${item.end.column + 1}`;
 
   return (
     <div className="mt-3 rounded-xl border border-[#E5E6EB] bg-white p-3">
       <div className="mb-2 flex items-center justify-between gap-3 text-[10px]">
-        <span className="font-medium text-[#686873]">Schedule preview</span>
+        <span className="font-medium text-[#686873]">Vista previa del calendario</span>
         <span className="truncate text-[#8B8B94]">
           {startLabel} → {endLabel}
         </span>
@@ -1001,9 +1001,9 @@ function GanttPositionEditor({
         </span>
       </div>
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-[minmax(0,1fr)_120px]">
-        <LabeledField label="Column">
+        <LabeledField label="Columna">
           <select
-            aria-label={`${label} column`}
+            aria-label={`Columna de ${label.toLowerCase()}`}
             className={inputClassName}
             value={Math.min(columns.length - 1, Math.max(0, value.column))}
             onChange={(event) =>
@@ -1012,15 +1012,15 @@ function GanttPositionEditor({
           >
             {columns.map((column, index) => (
               <option key={`${label}-column-${index}`} value={index}>
-                {column.label || `Column ${index + 1}`}
+                {column.label || `Columna ${index + 1}`}
               </option>
             ))}
           </select>
         </LabeledField>
-        <LabeledField label="Position (%)">
+        <LabeledField label="Posición (%)">
           <NumberInput
             compact
-            label={`${label} position percentage`}
+            label={`Porcentaje de posición de ${label.toLowerCase()}`}
             max={100}
             min={0}
             step={5}
@@ -1047,94 +1047,94 @@ function TimelineEditor({
     switch (data.type) {
       case "roadmap":
         return {
-          itemLabel: "stop",
-          description: "Edit every stop's heading, description, and order.",
-          heading: `Stop ${data.items.length + 1}`,
+          itemLabel: "parada",
+          description: "Edita el título, la descripción y el orden de cada parada.",
+          heading: `Parada ${data.items.length + 1}`,
           showIcons: false,
         };
       case "milestone_timeline":
         return {
-          itemLabel: "milestone",
-          description: "Edit each milestone's label, description, and order.",
+          itemLabel: "hito",
+          description: "Edita la etiqueta, la descripción y el orden de cada hito.",
           heading: Number.isFinite(latestMilestone)
             ? String(latestMilestone + 1)
-            : `Milestone ${data.items.length + 1}`,
+            : `Hito ${data.items.length + 1}`,
           showIcons: false,
         };
       case "staircase":
         return {
-          itemLabel: "step",
+          itemLabel: "paso",
           description:
-            "Edit every staircase step's icon, heading, description, and order.",
-          heading: `Step ${data.items.length + 1}`,
+            "Edita el icono, el título, la descripción y el orden de cada peldaño.",
+          heading: `Paso ${data.items.length + 1}`,
           showIcons: true,
         };
       case "supply_chain":
         return {
-          itemLabel: "stage",
-          description: "Edit every supply-chain stage, icon, label, and description.",
-          heading: `Stage ${data.items.length + 1}`,
+          itemLabel: "etapa",
+          description: "Edita cada etapa de la cadena de suministro: icono, etiqueta y descripción.",
+          heading: `Etapa ${data.items.length + 1}`,
           showIcons: true,
         };
       case "stair_step_blocks":
         return {
-          itemLabel: "step",
-          description: "Edit every step block's icon, heading, and description.",
-          heading: `Step ${String(data.items.length + 1).padStart(2, "0")}`,
+          itemLabel: "paso",
+          description: "Edita el icono, el título y la descripción de cada bloque.",
+          heading: `Paso ${String(data.items.length + 1).padStart(2, "0")}`,
           showIcons: true,
         };
       case "maturity_model":
         return {
-          itemLabel: "level",
-          description: "Edit every maturity level's icon, heading, and explanation.",
-          heading: `Level ${data.items.length + 1}`,
+          itemLabel: "nivel",
+          description: "Edita el icono, el título y la explicación de cada nivel de madurez.",
+          heading: `Nivel ${data.items.length + 1}`,
           showIcons: true,
         };
       case "diagonal_circles":
         return {
-          itemLabel: "pillar",
-          description: "Edit each overlapping circle's icon, heading, and callout.",
-          heading: `Pillar ${data.items.length + 1}`,
+          itemLabel: "pilar",
+          description: "Edita el icono, el título y el texto destacado de cada círculo.",
+          heading: `Pilar ${data.items.length + 1}`,
           showIcons: true,
         };
       case "chevron_process":
         return {
-          itemLabel: "stage",
+          itemLabel: "etapa",
           description:
-            "Edit every chevron stage's heading, description, and order.",
-          heading: `Stage ${data.items.length + 1}`,
+            "Edita el título, la descripción y el orden de cada etapa.",
+          heading: `Etapa ${data.items.length + 1}`,
           showIcons: false,
         };
       case "pyramid":
         return {
-          itemLabel: "level",
+          itemLabel: "nivel",
           description:
-            "Edit each pyramid level's icon, heading, description, and order.",
-          heading: `Level ${data.items.length + 1}`,
+            "Edita el icono, el título, la descripción y el orden de cada nivel de la pirámide.",
+          heading: `Nivel ${data.items.length + 1}`,
           showIcons: true,
         };
       case "segmented_wheel":
         return {
-          itemLabel: "segment",
+          itemLabel: "segmento",
           description:
-            "Edit every wheel segment's icon, heading, description, and order.",
-          heading: `Segment ${data.items.length + 1}`,
+            "Edita el icono, el título, la descripción y el orden de cada segmento de la rueda.",
+          heading: `Segmento ${data.items.length + 1}`,
           showIcons: true,
         };
       case "customer_journey":
         return {
-          itemLabel: "stage",
+          itemLabel: "etapa",
           description:
-            "Edit every visible journey stage's icon, heading, description, and order.",
-          heading: data.items.length === 0 ? "" : `Stage ${data.items.length}`,
+            "Edita el icono, el título, la descripción y el orden de cada etapa visible del recorrido.",
+          heading: data.items.length === 0 ? "" : `Etapa ${data.items.length}`,
           showIcons: true,
         };
       default:
         return {
-          itemLabel: "step",
+          itemLabel: "paso",
           description:
-            "Edit each step's icon, heading, description, and order.",
-          heading: `Step ${data.items.length + 1}`,
+            "Edita el icono, el título, la descripción y el orden de cada paso.",
+          heading: `Paso ${data.items.length + 1}`,
           showIcons: true,
         };
     }
@@ -1183,7 +1183,7 @@ function TimelineEditor({
           ? defaultInfographicIcon(data.items.length)
           : null,
         heading: config.heading,
-        description: "Add a description.",
+        description: "Añade una descripción.",
       })}
     />
   );
@@ -1200,8 +1200,8 @@ function RadialCycleEditor({
   return (
     <div className="space-y-4">
       <EditorSection
-        title="Center image"
-        description="Choose the image displayed at the center of the cycle."
+        title="Imagen central"
+        description="Elige la imagen que se muestra en el centro del ciclo."
       >
         <button
           type="button"
@@ -1222,23 +1222,23 @@ function RadialCycleEditor({
           </span>
           <span>
             <span className="block text-[12px] font-semibold text-[#191919]">
-              {data.center_image ? "Change center image" : "Add center image"}
+              {data.center_image ? "Cambiar imagen central" : "Añadir imagen central"}
             </span>
             <span className="mt-1 block text-[10px] leading-4 text-[#8B8B94]">
-              Search, upload, or select a presentation image.
+              Busca, sube o selecciona una imagen de la presentación.
             </span>
           </span>
         </button>
       </EditorSection>
       <ItemCollectionEditor
-        description="Edit every cycle stage's heading, description, and order."
-        itemLabel="stage"
+        description="Edita el título, la descripción y el orden de cada etapa del ciclo."
+        itemLabel="etapa"
         items={data.items}
         maxItems={8}
         onChange={(items) => onChange({ ...data, items })}
         onCreate={() => ({
-          heading: `Stage ${data.items.length + 1}`,
-          description: "Add a description.",
+          heading: `Etapa ${data.items.length + 1}`,
+          description: "Añade una descripción.",
         })}
         showIcons={false}
       />
@@ -1267,15 +1267,15 @@ function FunnelEditor({
 }) {
   return (
     <ItemCollectionEditor<ConversionFunnelInfographicItem>
-      description="Edit each funnel stage's percentage, heading, description, and order."
-      itemLabel="stage"
+      description="Edita el porcentaje, el título, la descripción y el orden de cada etapa del embudo."
+      itemLabel="etapa"
       items={data.items}
       maxItems={8}
       onChange={(items) => onChange({ ...data, items })}
       onCreate={() => ({
         value: Math.max(0, (data.items.at(-1)?.value ?? 60) - 10),
-        heading: `Stage ${data.items.length + 1}`,
-        description: "Add a description.",
+        heading: `Etapa ${data.items.length + 1}`,
+        description: "Añade una descripción.",
       })}
       showIcons={false}
       showValue
@@ -1339,13 +1339,13 @@ function BeforeAfterEditor({
         ...data.items,
         {
           icon: defaultInfographicIcon(data.items.length),
-          heading: `Before ${nextRow + 1}`,
-          description: "Add a description.",
+          heading: `Antes ${nextRow + 1}`,
+          description: "Añade una descripción.",
         },
         {
           icon: defaultInfographicIcon(data.items.length + 1),
-          heading: `After ${nextRow + 1}`,
-          description: "Add a description.",
+          heading: `Después ${nextRow + 1}`,
+          description: "Añade una descripción.",
         },
       ],
     });
@@ -1376,21 +1376,21 @@ function BeforeAfterEditor({
   return (
     <div className="space-y-4">
       <EditorSection
-        title="Column labels"
-        description="Edit the labels shown above the two comparison columns."
+        title="Etiquetas de columna"
+        description="Edita las etiquetas que aparecen sobre las dos columnas de la comparación."
       >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <LabeledField label="Before label">
+          <LabeledField label="Etiqueta de «antes»">
             <TextInput
-              ariaLabel="Before comparison label"
-              value={data.before_label ?? "Before"}
+              ariaLabel="Etiqueta de la columna «antes»"
+              value={data.before_label ?? "Antes"}
               onChange={(before_label) => onChange({ ...data, before_label })}
             />
           </LabeledField>
-          <LabeledField label="After label">
+          <LabeledField label="Etiqueta de «después»">
             <TextInput
-              ariaLabel="After comparison label"
-              value={data.after_label ?? "After"}
+              ariaLabel="Etiqueta de la columna «después»"
+              value={data.after_label ?? "Después"}
               onChange={(after_label) => onChange({ ...data, after_label })}
             />
           </LabeledField>
@@ -1398,13 +1398,13 @@ function BeforeAfterEditor({
       </EditorSection>
 
       <EditorSection
-        title="Comparison rows"
-        description="Edit each before-and-after pair, including both icons and descriptions."
+        title="Filas de comparación"
+        description="Edita cada pareja de antes y después, incluidos sus iconos y descripciones."
         action={
           <AddButton
             compact
             disabled={pairs.length >= 5}
-            label="Add row"
+            label="Añadir fila"
             onClick={addPair}
           />
         }
@@ -1434,7 +1434,7 @@ function BeforeAfterEditor({
                     <span className="min-w-0 flex-1">
                       <span className="block text-[12px] font-semibold text-[#191919]">Comparison {rowIndex + 1}</span>
                       <span className="mt-0.5 block truncate text-[10px] text-[#8B8B94]">
-                        {pair[0].heading || "Before"} → {pair[1].heading || "After"}
+                        {pair[0].heading || "Antes"} → {pair[1].heading || "Después"}
                       </span>
                     </span>
                     {expanded ? <ChevronDown size={15} className="text-[#777781]" /> : <ChevronRight size={15} className="text-[#777781]" />}
@@ -1443,11 +1443,11 @@ function BeforeAfterEditor({
                     <MoveButtons
                       index={rowIndex}
                       length={pairs.length}
-                      label="comparison"
+                      label="comparación"
                       onMove={(direction) => movePair(rowIndex, direction)}
                     />
                     <MiniButton
-                      label="Delete comparison"
+                      label="Eliminar comparación"
                       disabled={pairs.length <= 1}
                       onClick={() => deletePair(rowIndex)}
                     >
@@ -1462,8 +1462,8 @@ function BeforeAfterEditor({
                       const itemIndex = rowIndex * 2 + sideIndex;
                       const icon = normalizeInfographicIcon(item.icon) ?? defaultInfographicIcon(itemIndex);
                       const sideLabel = sideIndex === 0
-                        ? data.before_label ?? "Before"
-                        : data.after_label ?? "After";
+                        ? data.before_label ?? "Antes"
+                        : data.after_label ?? "Después";
                       return (
                         <div key={`${rowIndex}-${sideIndex}`} className="rounded-xl border border-[#ECECF1] bg-[#FAFAFC] p-3">
                           <div className="mb-3 text-[11px] font-semibold text-[#555560]">{sideLabel}</div>
@@ -1471,18 +1471,18 @@ function BeforeAfterEditor({
                             <div>
                               <button
                                 type="button"
-                                aria-label={`Change ${sideLabel} row ${rowIndex + 1} icon`}
+                                aria-label={`Cambiar icono de ${sideLabel}, fila ${rowIndex + 1}`}
                                 className="flex w-full flex-col items-center gap-2 rounded-xl border border-[#DFE0E6] bg-white px-2 py-3 outline-none transition hover:border-[#BDAAF8] focus-visible:ring-2 focus-visible:ring-[#D8CEFA]"
                                 onClick={() => setEditingIconIndex(itemIndex)}
                               >
                                 <span className="grid size-11 place-items-center rounded-xl bg-[#506FBE]">
                                   <InfographicIconPreview color={icon.color} url={icon.url} />
                                 </span>
-                                <span className="text-[9px] font-semibold text-[#7C51F8]">Change icon</span>
+                                <span className="text-[9px] font-semibold text-[#7C51F8]">Cambiar icono</span>
                               </button>
                               <div className="mt-2">
                                 <DeferredColorInput
-                                  aria-label={`${sideLabel} row ${rowIndex + 1} icon color`}
+                                  aria-label={`Color del icono de ${sideLabel}, fila ${rowIndex + 1}`}
                                   className="h-8 w-full rounded-lg border border-[#E6E6EA] bg-white p-1"
                                   value={icon.color}
                                   onCommit={(color) => updatePairItem(rowIndex, sideIndex as 0 | 1, { icon: { ...icon, color } })}
@@ -1490,16 +1490,16 @@ function BeforeAfterEditor({
                               </div>
                             </div>
                             <div>
-                              <LabeledField label="Heading">
+                              <LabeledField label="Título">
                                 <TextInput
-                                  ariaLabel={`${sideLabel} row ${rowIndex + 1} heading`}
+                                  ariaLabel={`Título de ${sideLabel}, fila ${rowIndex + 1}`}
                                   value={item.heading ?? ""}
                                   onChange={(heading) => updatePairItem(rowIndex, sideIndex as 0 | 1, { heading })}
                                 />
                               </LabeledField>
-                              <LabeledField className="mt-2" label="Description">
+                              <LabeledField className="mt-2" label="Descripción">
                                 <textarea
-                                  aria-label={`${sideLabel} row ${rowIndex + 1} description`}
+                                  aria-label={`Descripción de ${sideLabel}, fila ${rowIndex + 1}`}
                                   className="min-h-[72px] w-full resize-y rounded-lg border border-[#E6E6EA] bg-white px-3 py-2 text-[12px] leading-5 text-[#191919] outline-none focus:border-[#7C51F8]"
                                   maxLength={280}
                                   value={item.description ?? ""}
@@ -1522,7 +1522,7 @@ function BeforeAfterEditor({
       {editingIconIndex != null && editingItem ? (
         <IconsEditor
           currentIconUrl={normalizeInfographicIcon(editingItem.icon)?.url ?? defaultInfographicIcon(editingIconIndex).url}
-          icon_prompt={[editingItem.heading?.trim() || `Comparison item ${editingIconIndex + 1}`]}
+          icon_prompt={[editingItem.heading?.trim() || `Elemento de comparación ${editingIconIndex + 1}`]}
           onClose={() => setEditingIconIndex(null)}
           onIconChange={(url) => {
             onChange({
@@ -1551,8 +1551,8 @@ function MindMapEditor({
   const items = nested.length > 0 ? nested : data.items;
   return (
     <ItemCollectionEditor
-      description="Edit every visible node's icon, heading, description, and order."
-      itemLabel="node"
+      description="Edita el icono, el título, la descripción y el orden de cada nodo visible."
+      itemLabel="nodo"
       items={items}
       onChange={(nextItems) =>
         onChange({
@@ -1562,8 +1562,8 @@ function MindMapEditor({
       }
       onCreate={() => ({
         icon: defaultInfographicIcon(items.length),
-        heading: `Node ${items.length + 1}`,
-        description: "Add a description.",
+        heading: `Nodo ${items.length + 1}`,
+        description: "Añade una descripción.",
         items: [],
       })}
     />
@@ -1576,18 +1576,18 @@ function PillarFrameworkEditor({ data, onChange }: {
 }) {
   return (
     <div className="space-y-4">
-      <EditorSection title="Framework title" description="Edit the title displayed inside the roof.">
-        <TextInput ariaLabel="Pillar framework title" value={data.title} onChange={(title) => onChange({ ...data, title })} />
+      <EditorSection title="Título del marco" description="Edita el título que aparece dentro del tejado.">
+        <TextInput ariaLabel="Título del marco de pilares" value={data.title} onChange={(title) => onChange({ ...data, title })} />
       </EditorSection>
       <ItemCollectionEditor
-        description="Edit each pillar's icon, title, description, and focus label."
-        itemLabel="pillar"
+        description="Edita el icono, el título, la descripción y la etiqueta de enfoque de cada pilar."
+        itemLabel="pilar"
         items={data.items}
         minItems={3}
         maxItems={7}
         showFocus
         onChange={(items) => onChange({ ...data, items })}
-        onCreate={() => ({ icon: defaultInfographicIcon(data.items.length), heading: `Pillar ${data.items.length + 1}`, description: "Add a description.", focus: "Focus area" })}
+        onCreate={() => ({ icon: defaultInfographicIcon(data.items.length), heading: `Pilar ${data.items.length + 1}`, description: "Añade una descripción.", focus: "Área de enfoque" })}
       />
     </div>
   );
@@ -1599,19 +1599,19 @@ function TransformationHubEditor({ data, onChange }: {
 }) {
   return (
     <div className="space-y-4">
-      <EditorSection title="Center label" description="Edit the transformation hub label.">
-        <TextInput ariaLabel="Transformation hub center label" value={data.center_label} onChange={(center_label) => onChange({ ...data, center_label })} />
+      <EditorSection title="Etiqueta central" description="Edita la etiqueta del eje de transformación.">
+        <TextInput ariaLabel="Etiqueta central del eje de transformación" value={data.center_label} onChange={(center_label) => onChange({ ...data, center_label })} />
       </EditorSection>
       <ItemCollectionEditor
-        description="Edit the capability names connected to the central hub."
-        itemLabel="capability"
+        description="Edita los nombres de las capacidades conectadas al eje central."
+        itemLabel="capacidad"
         items={data.items}
         minItems={2}
         maxItems={8}
         showIcons={false}
         showDescription={false}
         onChange={(items) => onChange({ ...data, items })}
-        onCreate={() => ({ heading: `Capability ${data.items.length + 1}` })}
+        onCreate={() => ({ heading: `Capacidad ${data.items.length + 1}` })}
       />
     </div>
   );
@@ -1623,17 +1623,17 @@ function RiskMatrixEditor({ data, onChange }: {
 }) {
   return (
     <div className="space-y-4">
-      <EditorSection title="Center label" description="Use four characters for the central risk mark.">
-        <TextInput ariaLabel="Risk matrix center label" value={data.center_label} onChange={(center_label) => onChange({ ...data, center_label: center_label.slice(0, 4) })} />
+      <EditorSection title="Etiqueta central" description="Usa cuatro caracteres para la marca central de riesgo.">
+        <TextInput ariaLabel="Etiqueta central de la matriz de riesgos" value={data.center_label} onChange={(center_label) => onChange({ ...data, center_label: center_label.slice(0, 4) })} />
       </EditorSection>
       <ItemCollectionEditor
-        description="Edit the four risk activities and their icons. Their positions stay fixed."
-        itemLabel="activity"
+        description="Edita las cuatro actividades de riesgo y sus iconos. Sus posiciones son fijas."
+        itemLabel="actividad"
         items={data.items}
         minItems={4}
         maxItems={4}
         onChange={(items) => onChange({ ...data, items })}
-        onCreate={() => ({ icon: defaultInfographicIcon(data.items.length), heading: "Activity", description: "Add a description." })}
+        onCreate={() => ({ icon: defaultInfographicIcon(data.items.length), heading: "Actividad", description: "Añade una descripción." })}
       />
     </div>
   );
@@ -1649,15 +1649,15 @@ function ImpactEffortEditor({
   return (
     <div className="space-y-4">
       <EditorSection
-        title="Axis labels"
-        description="Edit the impact and effort axis captions and their range labels."
+        title="Etiquetas de los ejes"
+        description="Edita los títulos de los ejes de impacto y esfuerzo y las etiquetas de su rango."
       >
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {([
-            ["Impact axis", "x_axis_label"],
-            ["Effort axis", "y_axis_label"],
-            ["Low label", "low_label"],
-            ["High label", "high_label"],
+            ["Eje de impacto", "x_axis_label"],
+            ["Eje de esfuerzo", "y_axis_label"],
+            ["Etiqueta «bajo»", "low_label"],
+            ["Etiqueta «alto»", "high_label"],
           ] as const).map(([label, key]) => (
             <LabeledField key={key} label={label}>
               <TextInput
@@ -1670,14 +1670,14 @@ function ImpactEffortEditor({
         </div>
       </EditorSection>
       <ItemCollectionEditor
-        description="Edit the four quadrant titles and explanations. Their positions stay fixed."
-        itemLabel="quadrant"
+        description="Edita los títulos y las explicaciones de los cuatro cuadrantes. Sus posiciones son fijas."
+        itemLabel="cuadrante"
         items={data.items}
         minItems={4}
         maxItems={4}
         showIcons={false}
         onChange={(items) => onChange({ ...data, items })}
-        onCreate={() => ({ heading: "Quadrant", description: "Add a description." })}
+        onCreate={() => ({ heading: "Cuadrante", description: "Añade una descripción." })}
       />
     </div>
   );
@@ -1713,23 +1713,23 @@ function ComparisonMatrixEditor({
   return (
     <div className="space-y-4">
       <EditorSection
-        title="Criteria"
-        description="Add, rename, or remove the criteria shown as matrix rows."
-        action={<AddButton compact disabled={data.criteria.length >= 8} label="Add criterion" onClick={() => updateCriteria([...data.criteria, `Criterion ${data.criteria.length + 1}`])} />}
+        title="Criterios"
+        description="Añade, renombra o elimina los criterios que se muestran como filas de la matriz."
+        action={<AddButton compact disabled={data.criteria.length >= 8} label="Añadir criterio" onClick={() => updateCriteria([...data.criteria, `Criterio ${data.criteria.length + 1}`])} />}
       >
         <div className="space-y-2">
           {data.criteria.map((criterion, index) => (
             <div key={`criterion-${index}`} className="flex gap-2">
-              <TextInput ariaLabel={`Criterion ${index + 1}`} value={criterion} onChange={(value) => updateCriteria(data.criteria.map((current, itemIndex) => itemIndex === index ? value : current))} />
-              <MiniButton label="Delete criterion" disabled={data.criteria.length <= 1} onClick={() => updateCriteria(data.criteria.filter((_, itemIndex) => itemIndex !== index))}><Trash2 size={14} /></MiniButton>
+              <TextInput ariaLabel={`Criterio ${index + 1}`} value={criterion} onChange={(value) => updateCriteria(data.criteria.map((current, itemIndex) => itemIndex === index ? value : current))} />
+              <MiniButton label="Eliminar criterio" disabled={data.criteria.length <= 1} onClick={() => updateCriteria(data.criteria.filter((_, itemIndex) => itemIndex !== index))}><Trash2 size={14} /></MiniButton>
             </div>
           ))}
         </div>
       </EditorSection>
       <EditorSection
-        title="Options"
-        description="Edit every option's icon, heading, and value for each criterion."
-        action={<AddButton compact disabled={data.items.length >= 6} label="Add option" onClick={() => onChange({ ...data, items: [...data.items, { icon: defaultInfographicIcon(data.items.length), heading: `Option ${data.items.length + 1}`, values: data.criteria.map(() => "") }] })} />}
+        title="Opciones"
+        description="Edita el icono, el título y el valor de cada opción para cada criterio."
+        action={<AddButton compact disabled={data.items.length >= 6} label="Añadir opción" onClick={() => onChange({ ...data, items: [...data.items, { icon: defaultInfographicIcon(data.items.length), heading: `Opción ${data.items.length + 1}`, values: data.criteria.map(() => "") }] })} />}
       >
         <div className="space-y-3">
           {data.items.map((item, index) => {
@@ -1737,18 +1737,18 @@ function ComparisonMatrixEditor({
             return (
               <div key={`comparison-option-${index}`} className="rounded-xl border border-[#ECECF1] bg-white p-4">
                 <div className="mb-4 flex flex-wrap items-end gap-3 border-b border-[#EFEFF3] pb-4">
-                  <button type="button" aria-label={`Change option ${index + 1} icon`} className="grid size-11 place-items-center rounded-lg bg-[#506FBE] outline-none transition hover:brightness-95 focus-visible:ring-2 focus-visible:ring-[#D8CEFA]" onClick={() => setEditingIconIndex(index)}>
+                  <button type="button" aria-label={`Cambiar icono de la opción ${index + 1}`} className="grid size-11 place-items-center rounded-lg bg-[#506FBE] outline-none transition hover:brightness-95 focus-visible:ring-2 focus-visible:ring-[#D8CEFA]" onClick={() => setEditingIconIndex(index)}>
                     <InfographicIconPreview color={icon.color} url={icon.url} />
                   </button>
                   <div className="min-w-[180px] flex-1">
-                    <LabeledField label="Heading"><TextInput ariaLabel={`Option ${index + 1} heading`} value={item.heading} onChange={(heading) => updateItem(index, { heading })} /></LabeledField>
+                    <LabeledField label="Título"><TextInput ariaLabel={`Título de la opción ${index + 1}`} value={item.heading} onChange={(heading) => updateItem(index, { heading })} /></LabeledField>
                   </div>
-                  <DeferredColorInput aria-label={`Option ${index + 1} icon color`} className="h-9 w-14 rounded-lg border border-[#E6E6EA] bg-white p-1" value={icon.color} onCommit={(color) => updateItem(index, { icon: { ...icon, color } })} />
-                  <MiniButton label="Delete option" disabled={data.items.length <= 1} onClick={() => onChange({ ...data, items: data.items.filter((_, itemIndex) => itemIndex !== index) })}><Trash2 size={14} /></MiniButton>
+                  <DeferredColorInput aria-label={`Color del icono de la opción ${index + 1}`} className="h-9 w-14 rounded-lg border border-[#E6E6EA] bg-white p-1" value={icon.color} onCommit={(color) => updateItem(index, { icon: { ...icon, color } })} />
+                  <MiniButton label="Eliminar opción" disabled={data.items.length <= 1} onClick={() => onChange({ ...data, items: data.items.filter((_, itemIndex) => itemIndex !== index) })}><Trash2 size={14} /></MiniButton>
                 </div>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {data.criteria.map((criterion, valueIndex) => (
-                    <LabeledField key={`${index}-${valueIndex}`} label={criterion || `Criterion ${valueIndex + 1}`}>
+                    <LabeledField key={`${index}-${valueIndex}`} label={criterion || `Criterio ${valueIndex + 1}`}>
                       <TextInput ariaLabel={`${item.heading} ${criterion}`} value={item.values[valueIndex] ?? ""} onChange={(value) => updateItem(index, { values: data.criteria.map((_, criterionIndex) => criterionIndex === valueIndex ? value : item.values[criterionIndex] ?? "") })} />
                     </LabeledField>
                   ))}
@@ -1761,7 +1761,7 @@ function ComparisonMatrixEditor({
       {editingIconIndex != null && editingItem ? (
         <IconsEditor
           currentIconUrl={normalizeInfographicIcon(editingItem.icon)?.url ?? defaultInfographicIcon(editingIconIndex).url}
-          icon_prompt={[editingItem.heading || `Option ${editingIconIndex + 1}`]}
+          icon_prompt={[editingItem.heading || `Opción ${editingIconIndex + 1}`]}
           onClose={() => setEditingIconIndex(null)}
           onIconChange={(url) => updateItem(editingIconIndex, { icon: { url, color: normalizeInfographicIcon(editingItem.icon)?.color ?? defaultInfographicIcon(editingIconIndex).color } })}
         />
@@ -1781,7 +1781,7 @@ function HierarchyEditor({
     onChange({ ...data, items: data.items.map((item, itemIndex) => itemIndex === index ? { ...item, ...patch } : item) });
   const addItem = () => {
     const id = `node-${Date.now().toString(36)}-${data.items.length + 1}`;
-    onChange({ ...data, items: [...data.items, { id, parent_id: data.items[0]?.id ?? null, heading: "New item", description: data.type === "org_chart" ? "Role" : null }] });
+    onChange({ ...data, items: [...data.items, { id, parent_id: data.items[0]?.id ?? null, heading: "Nuevo elemento", description: data.type === "org_chart" ? "Cargo" : null }] });
   };
   const deleteItem = (index: number) => {
     const removed = data.items[index];
@@ -1790,25 +1790,25 @@ function HierarchyEditor({
   };
   return (
     <EditorSection
-      title={data.type === "org_chart" ? "People and reporting lines" : "Decision nodes"}
-      description="Edit each node and choose its parent to control the hierarchy."
-      action={<AddButton compact disabled={data.items.length >= 16} label="Add item" onClick={addItem} />}
+      title={data.type === "org_chart" ? "Personas y líneas jerárquicas" : "Nodos de decisión"}
+      description="Edita cada nodo y elige su nodo superior para controlar la jerarquía."
+      action={<AddButton compact disabled={data.items.length >= 16} label="Añadir elemento" onClick={addItem} />}
     >
       <div className="space-y-3">
         {data.items.map((item, index) => (
           <div key={item.id} className="rounded-xl border border-[#ECECF1] bg-white p-4">
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_220px_auto]">
-              <LabeledField label={data.type === "org_chart" ? "Name" : "Label"}><TextInput ariaLabel={`Item ${index + 1} heading`} value={item.heading} onChange={(heading) => updateItem(index, { heading })} /></LabeledField>
-              <LabeledField label="Parent">
+              <LabeledField label={data.type === "org_chart" ? "Nombre" : "Etiqueta"}><TextInput ariaLabel={`Título del elemento ${index + 1}`} value={item.heading} onChange={(heading) => updateItem(index, { heading })} /></LabeledField>
+              <LabeledField label="Superior">
                 <select className={inputClassName} value={item.parent_id ?? ""} onChange={(event) => updateItem(index, { parent_id: event.target.value || null })}>
-                  <option value="">Top level</option>
+                  <option value="">Nivel superior</option>
                   {data.items.map((candidate) => candidate.id !== item.id ? <option key={candidate.id} value={candidate.id}>{candidate.heading || candidate.id}</option> : null)}
                 </select>
               </LabeledField>
-              <div className="flex justify-end sm:pt-7"><MiniButton label="Delete item" disabled={data.items.length <= 1} onClick={() => deleteItem(index)}><Trash2 size={14} /></MiniButton></div>
+              <div className="flex justify-end sm:pt-7"><MiniButton label="Eliminar elemento" disabled={data.items.length <= 1} onClick={() => deleteItem(index)}><Trash2 size={14} /></MiniButton></div>
             </div>
             {data.type === "org_chart" ? (
-              <LabeledField className="mt-3" label="Role"><TextInput ariaLabel={`Item ${index + 1} role`} value={item.description ?? ""} onChange={(description) => updateItem(index, { description })} /></LabeledField>
+              <LabeledField className="mt-3" label="Cargo"><TextInput ariaLabel={`Cargo del elemento ${index + 1}`} value={item.description ?? ""} onChange={(description) => updateItem(index, { description })} /></LabeledField>
             ) : null}
           </div>
         ))}
@@ -1904,13 +1904,13 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
   return (
     <>
       <EditorSection
-        title={`${capitalize(itemLabel)}s`}
+        title={pluralizeEs(capitalize(itemLabel))}
         description={description}
         action={
           <AddButton
             compact
             disabled={maxItems != null && items.length >= maxItems}
-            label={`Add ${itemLabel}`}
+            label={`Añadir ${itemLabel}`}
             onClick={addItem}
           />
         }
@@ -1936,7 +1936,7 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                     type="button"
                     aria-controls={accordionPanelId}
                     aria-expanded={isExpanded}
-                    aria-label={`${isExpanded ? "Collapse" : "Expand"} ${itemLabel} ${index + 1}`}
+                    aria-label={`${isExpanded ? "Contraer" : "Desplegar"} ${itemLabel} ${index + 1}`}
                     className="flex min-w-0 flex-1 items-center gap-2.5 rounded-lg py-2 text-left outline-none focus-visible:ring-2 focus-visible:ring-[#D8CEFA]"
                     onClick={() =>
                       setExpandedIndex((current) =>
@@ -1952,7 +1952,7 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                         {capitalize(itemLabel)} {index + 1}
                       </span>
                       <span className="mt-0.5 block truncate text-[10px] text-[#8B8B94]">
-                        {item.heading?.trim() || "Untitled"}
+                        {item.heading?.trim() || "Sin título"}
                       </span>
                     </span>
                     {isExpanded ? (
@@ -1975,7 +1975,7 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                       onMove={(direction) => moveItem(index, direction)}
                     />
                     <MiniButton
-                      label={`Delete ${itemLabel}`}
+                      label={`Eliminar ${itemLabel}`}
                       disabled={items.length <= minItems}
                       onClick={() => deleteItem(index)}
                     >
@@ -1994,11 +1994,11 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                     {showIcons ? (
                       <div>
                         <span className="mb-1.5 block text-[11px] font-medium text-[#686873]">
-                          Icon
+                          Icono
                         </span>
                         <button
                           type="button"
-                          aria-label={`Change ${itemLabel} ${index + 1} icon`}
+                          aria-label={`Cambiar icono de ${itemLabel} ${index + 1}`}
                           className="group flex w-full flex-col items-center gap-2 rounded-lg border border-[#E6E6EA] bg-[#F8F8FA] px-2 py-3 text-[#686873] outline-none transition hover:border-[#B8A3F8] focus-visible:ring-2 focus-visible:ring-[#D8CEFA]"
                           onClick={() => setEditingIconIndex(index)}
                         >
@@ -2009,13 +2009,13 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                             />
                           </span>
                           <span className="text-[10px] font-medium text-[#7C51F8]">
-                            Change icon
+                            Cambiar icono
                           </span>
                         </button>
                         <div className="mt-3">
-                          <LabeledField label="Icon color">
+                          <LabeledField label="Color del icono">
                             <DeferredColorInput
-                              aria-label={`${capitalize(itemLabel)} ${index + 1} icon color`}
+                              aria-label={`Color del icono de ${itemLabel} ${index + 1}`}
                               className="h-8 w-full rounded-lg border border-[#E6E6EA] bg-white p-1"
                               value={icon.color}
                               onCommit={(color) =>
@@ -2042,7 +2042,7 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                     <div className="min-w-0">
                       {showValue ? (
                         <NumberInput
-                          label="Percentage"
+                          label="Porcentaje"
                           max={100}
                           min={0}
                           value={
@@ -2063,10 +2063,10 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                       ) : null}
                       <LabeledField
                         className={showValue ? "mt-3" : ""}
-                        label="Heading"
+                        label="Título"
                       >
                         <TextInput
-                          ariaLabel={`${capitalize(itemLabel)} ${index + 1} heading`}
+                          ariaLabel={`Título de ${itemLabel} ${index + 1}`}
                           value={item.heading ?? ""}
                           onChange={(heading) =>
                             onChange(
@@ -2080,9 +2080,9 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                         />
                       </LabeledField>
                       {showDescription ? (
-                        <LabeledField className="mt-3" label="Description">
+                        <LabeledField className="mt-3" label="Descripción">
                           <textarea
-                            aria-label={`${capitalize(itemLabel)} ${index + 1} description`}
+                            aria-label={`Descripción de ${itemLabel} ${index + 1}`}
                             className="min-h-[82px] w-full resize-y rounded-lg border border-[#E6E6EA] bg-white px-3 py-2 text-[12px] leading-5 text-[#191919] outline-none transition focus:border-[#7C51F8]"
                             maxLength={280}
                             value={item.description ?? ""}
@@ -2102,9 +2102,9 @@ function ItemCollectionEditor<T extends TimelineInfographicItem>({
                         </LabeledField>
                       ) : null}
                       {showFocus ? (
-                        <LabeledField className="mt-3" label="Focus">
+                        <LabeledField className="mt-3" label="Enfoque">
                           <TextInput
-                            ariaLabel={`${capitalize(itemLabel)} ${index + 1} focus`}
+                            ariaLabel={`Enfoque de ${itemLabel} ${index + 1}`}
                             value={item.focus ?? ""}
                             onChange={(focus) =>
                               onChange(
@@ -2357,14 +2357,14 @@ function MoveButtons({
   return (
     <>
       <MiniButton
-        label={`Move ${label} up`}
+        label={`Subir ${label}`}
         disabled={index === 0}
         onClick={() => onMove(-1)}
       >
         <ChevronUp size={14} />
       </MiniButton>
       <MiniButton
-        label={`Move ${label} down`}
+        label={`Bajar ${label}`}
         disabled={index === length - 1}
         onClick={() => onMove(1)}
       >
@@ -2377,7 +2377,7 @@ function MoveButtons({
 function defaultGanttItem(columnCount: number): GanttInfographicItem {
   return normalizeGanttItem(
     {
-      name: "New task",
+      name: "Nueva tarea",
       start: { column: 0, offset: 0 },
       end: { column: 0, offset: 1 },
     },
@@ -2401,18 +2401,18 @@ function readMeterData(
 function readGanttData(value: unknown): GanttInfographicData {
   const data = readRecord(value);
   const columns = readArray(data.columns).map((column, index) => ({
-    label: readString(readRecord(column).label, `Column ${index + 1}`),
+    label: readString(readRecord(column).label, `Columna ${index + 1}`),
   }));
-  const safeColumns = columns.length > 0 ? columns : [{ label: "Column 1" }];
+  const safeColumns = columns.length > 0 ? columns : [{ label: "Columna 1" }];
   const rows = readArray(data.rows).map((row, rowIndex) => {
     const record = readRecord(row);
     return {
-      label: readString(record.label, `Row ${rowIndex + 1}`),
+      label: readString(record.label, `Fila ${rowIndex + 1}`),
       items: readArray(record.items).map((item) => {
         const task = readRecord(item);
         return normalizeGanttItem(
           {
-            name: readString(task.name, "Task"),
+            name: readString(task.name, "Tarea"),
             start: readGanttPosition(task.start),
             end: readGanttPosition(task.end, { column: 0, offset: 1 }),
           },
@@ -2427,7 +2427,7 @@ function readGanttData(value: unknown): GanttInfographicData {
     rows:
       rows.length > 0
         ? rows
-        : [{ label: "Row 1", items: [defaultGanttItem(safeColumns.length)] }],
+        : [{ label: "Fila 1", items: [defaultGanttItem(safeColumns.length)] }],
   };
 }
 
@@ -2444,11 +2444,11 @@ function readItemCollectionData(
         ? items
         : type === "pyramid"
           ? [
-              { icon: defaultInfographicIcon(0), heading: "Foundation", description: "" },
-              { icon: defaultInfographicIcon(1), heading: "Efficiency", description: "" },
-              { icon: defaultInfographicIcon(2), heading: "Innovation", description: "" },
+              { icon: defaultInfographicIcon(0), heading: "Base", description: "" },
+              { icon: defaultInfographicIcon(1), heading: "Eficiencia", description: "" },
+              { icon: defaultInfographicIcon(2), heading: "Innovación", description: "" },
             ]
-          : [{ icon: defaultInfographicIcon(), heading: "Step 1", description: "" }],
+          : [{ icon: defaultInfographicIcon(), heading: "Paso 1", description: "" }],
   };
 }
 
@@ -2461,7 +2461,7 @@ function readRadialCycleData(value: unknown): RadialCycleInfographicData {
     items:
       items.length > 0
         ? items
-        : [{ heading: "Stage 1", description: "" }],
+        : [{ heading: "Etapa 1", description: "" }],
   };
 }
 
@@ -2471,13 +2471,13 @@ function readBeforeAfterData(value: unknown): BeforeAfterInfographicData {
   const safeItems = items.length >= 2
     ? items.slice(0, items.length - (items.length % 2))
     : [
-        { icon: defaultInfographicIcon(0), heading: "Before", description: "" },
-        { icon: defaultInfographicIcon(1), heading: "After", description: "" },
+        { icon: defaultInfographicIcon(0), heading: "Antes", description: "" },
+        { icon: defaultInfographicIcon(1), heading: "Después", description: "" },
       ];
   return {
     type: "before_after",
-    before_label: readString(data.before_label, "Before"),
-    after_label: readString(data.after_label, "After"),
+    before_label: readString(data.before_label, "Antes"),
+    after_label: readString(data.after_label, "Después"),
     items: safeItems,
   };
 }
@@ -2485,39 +2485,39 @@ function readBeforeAfterData(value: unknown): BeforeAfterInfographicData {
 function readImpactEffortData(value: unknown): ImpactEffortMatrixInfographicData {
   const data = readRecord(value);
   const defaults: TimelineInfographicItem[] = [
-    { heading: "Quick Wins", description: "High-impact initiatives requiring relatively low effort." },
-    { heading: "Strategic Priorities", description: "High-impact initiatives requiring significant investment." },
-    { heading: "Deprioritize", description: "Low-impact initiatives requiring substantial effort." },
-    { heading: "Fill-ins", description: "Low-impact initiatives that are easy to implement." },
+    { heading: "Victorias rápidas", description: "Iniciativas de alto impacto que requieren relativamente poco esfuerzo." },
+    { heading: "Prioridades estratégicas", description: "Iniciativas de alto impacto que requieren una inversión significativa." },
+    { heading: "Despriorizar", description: "Iniciativas de bajo impacto que requieren un esfuerzo considerable." },
+    { heading: "Tareas de relleno", description: "Iniciativas de bajo impacto fáciles de implementar." },
   ];
   const items = readArray(data.items).map(readTimelineItem);
   return {
     type: "impact_effort_matrix",
-    x_axis_label: readString(data.x_axis_label, "Impact"),
-    y_axis_label: readString(data.y_axis_label, "Effort"),
-    low_label: readString(data.low_label, "Low"),
-    high_label: readString(data.high_label, "High"),
+    x_axis_label: readString(data.x_axis_label, "Impacto"),
+    y_axis_label: readString(data.y_axis_label, "Esfuerzo"),
+    low_label: readString(data.low_label, "Bajo"),
+    high_label: readString(data.high_label, "Alto"),
     items: defaults.map((fallback, index) => items[index] ?? fallback),
   };
 }
 
 function readComparisonMatrixData(value: unknown): ComparisonMatrixInfographicData {
   const data = readRecord(value);
-  const criteria = readArray(data.criteria).map((item, index) => readString(item, `Criterion ${index + 1}`));
-  const safeCriteria = criteria.length > 0 ? criteria : ["Market Access", "Investment Required", "Speed to Market"];
+  const criteria = readArray(data.criteria).map((item, index) => readString(item, `Criterio ${index + 1}`));
+  const safeCriteria = criteria.length > 0 ? criteria : ["Acceso al mercado", "Inversión necesaria", "Rapidez de lanzamiento"];
   const items = readArray(data.items).map((value, index) => {
     const item = readRecord(value);
     const values = readArray(item.values).map((entry) => readString(entry, ""));
     return {
       icon: normalizeInfographicIcon(item.icon, item.color) ?? defaultInfographicIcon(index),
-      heading: readString(item.heading, `Option ${index + 1}`),
+      heading: readString(item.heading, `Opción ${index + 1}`),
       values: safeCriteria.map((_, valueIndex) => values[valueIndex] ?? ""),
     };
   });
   return {
     type: "comparison_matrix",
     criteria: safeCriteria,
-    items: items.length > 0 ? items : [{ icon: defaultInfographicIcon(), heading: "Option 1", values: safeCriteria.map(() => "") }],
+    items: items.length > 0 ? items : [{ icon: defaultInfographicIcon(), heading: "Opción 1", values: safeCriteria.map(() => "") }],
   };
 }
 
@@ -2531,13 +2531,13 @@ function readHierarchyData(
     return {
       id: readString(item.id, `node-${index + 1}`),
       parent_id: readNullableString(item.parent_id),
-      heading: readString(item.heading, `Item ${index + 1}`),
+      heading: readString(item.heading, `Elemento ${index + 1}`),
       description: readNullableString(item.description),
     };
   });
   return {
     type,
-    items: items.length > 0 ? items : [{ id: "node-1", parent_id: null, heading: type === "org_chart" ? "Leader" : "Decision", description: type === "org_chart" ? "Role" : null }],
+    items: items.length > 0 ? items : [{ id: "node-1", parent_id: null, heading: type === "org_chart" ? "Responsable" : "Decisión", description: type === "org_chart" ? "Cargo" : null }],
   };
 }
 
@@ -2549,7 +2549,7 @@ function readConversionFunnelData(
     const item = readRecord(value);
     return {
       value: Math.min(100, Math.max(0, readNumber(item.value, 60 - index * 10))),
-      heading: readString(item.heading, `Stage ${index + 1}`),
+      heading: readString(item.heading, `Etapa ${index + 1}`),
       description: readNullableString(item.description),
     };
   });
@@ -2558,7 +2558,7 @@ function readConversionFunnelData(
     items:
       items.length > 0
         ? items
-        : [{ value: 50, heading: "Stage 1", description: "" }],
+        : [{ value: 50, heading: "Etapa 1", description: "" }],
   };
 }
 
@@ -2577,7 +2577,7 @@ function readMindMapData(value: unknown): MindMapInfographicData {
         : [
             {
               icon: defaultInfographicIcon(),
-              heading: "Node 1",
+              heading: "Nodo 1",
               description: "",
               items: [],
             },
@@ -2601,20 +2601,20 @@ function readPillarFrameworkData(value: unknown): PillarFrameworkInfographicData
   const items = readArray(data.items).map(readTimelineItem);
   return {
     type: "pillar_framework",
-    title: readString(data.title, "Growth & Transformation Framework"),
-    items: items.length > 0 ? items : [{ icon: defaultInfographicIcon(), heading: "Customer", description: "", focus: "Experience & Value" }],
+    title: readString(data.title, "Marco de crecimiento y transformación"),
+    items: items.length > 0 ? items : [{ icon: defaultInfographicIcon(), heading: "Cliente", description: "", focus: "Experiencia y valor" }],
   };
 }
 
 function readTransformationHubData(value: unknown): TransformationHubInfographicData {
   const data = readRecord(value);
   const items = readArray(data.items).map(readTimelineItem);
-  return { type: "transformation_hub", center_label: readString(data.center_label, "Business Transformation"), items: items.length > 0 ? items : [{ heading: "Strategy" }, { heading: "Process" }] };
+  return { type: "transformation_hub", center_label: readString(data.center_label, "Transformación empresarial"), items: items.length > 0 ? items : [{ heading: "Estrategia" }, { heading: "Procesos" }] };
 }
 
 function readRiskMatrixData(value: unknown): RiskMatrixInfographicData {
   const data = readRecord(value);
-  const defaults = ["Identify", "Prioritize", "Assess", "Respond"].map((heading, index) => ({ icon: defaultInfographicIcon(index), heading, description: "Add a description." }));
+  const defaults = ["Identificar", "Priorizar", "Evaluar", "Responder"].map((heading, index) => ({ icon: defaultInfographicIcon(index), heading, description: "Añade una descripción." }));
   const items = readArray(data.items).map(readTimelineItem);
   return { type: "risk_matrix", center_label: readString(data.center_label, "RISK"), items: defaults.map((fallback, index) => items[index] ?? fallback) };
 }
@@ -2721,6 +2721,10 @@ function defaultInfographicTextColor(background: string): string {
   return (red * 299 + green * 587 + blue * 114) / 1000 < 150
     ? "F3F4F6"
     : "111111";
+}
+
+function pluralizeEs(value: string): string {
+  return /[aeiouáéíóú]$/i.test(value) ? `${value}s` : `${value}es`;
 }
 
 function capitalize(value: string): string {

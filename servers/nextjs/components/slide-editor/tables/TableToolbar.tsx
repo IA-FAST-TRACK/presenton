@@ -238,8 +238,8 @@ export function TableToolbarControls({
     <div ref={toolbarRef} style={tableControlsStyle}>
       <button
         type="button"
-        aria-label="Cell background color"
-        title="Cell background"
+        aria-label="Color de fondo de la celda"
+        title="Fondo de la celda"
         style={iconButtonStyle}
         onClick={() => colorInputRef.current?.click()}
       >
@@ -263,8 +263,8 @@ export function TableToolbarControls({
       <Divider />
       <button
         type="button"
-        aria-label="Table alignment"
-        title={`Align ${nextAlignmentLabel(activeCellAlignment)}`}
+        aria-label="Alineación de la tabla"
+        title={TABLE_ALIGNMENT_TITLES[nextAlignmentLabel(activeCellAlignment)] ?? "Alinear"}
         style={iconButtonStyle}
         onClick={cycleActiveCellAlignment}
       >
@@ -273,8 +273,8 @@ export function TableToolbarControls({
       <Divider />
       <button
         type="button"
-        aria-label="Delete row"
-        title="Delete row"
+        aria-label="Eliminar fila"
+        title="Eliminar fila"
         disabled={!canDeleteRow}
         style={{
           ...iconButtonStyle,
@@ -288,9 +288,9 @@ export function TableToolbarControls({
       <Divider />
       <button
         type="button"
-        aria-label="Table cell actions"
+        aria-label="Acciones de celda"
         aria-expanded={tableMenuOpen}
-        title="Table cell actions"
+        title="Acciones de celda"
         style={{
           ...iconButtonStyle,
           ...(tableMenuOpen ? activeButtonStyle : null),
@@ -396,38 +396,38 @@ function TableToolbarMenu({
       <MenuItem
         disabled={!canDeleteRow}
         icon={<Rows3 size={20} strokeWidth={2.2} />}
-        label="Delete Row"
+        label="Eliminar fila"
         onClick={onDeleteRow}
       />
       <MenuItem
         disabled={!canDeleteColumn}
         icon={<Columns3 size={20} strokeWidth={2.2} />}
-        label="Delete Column"
+        label="Eliminar columna"
         onClick={onDeleteColumn}
       />
       <MenuItem
         disabled={!canAddRow}
         icon={<Plus size={20} strokeWidth={2.4} />}
-        label="Add Row"
+        label="Añadir fila"
         onClick={onAddRow}
       />
       <MenuItem
         disabled={!canAddColumn}
         icon={<Plus size={20} strokeWidth={2.4} />}
-        label="Add Column"
+        label="Añadir columna"
         onClick={onAddColumn}
       />
       <div style={menuDividerStyle} />
       <MenuItem
         disabled={!canMoveColumnRight}
         icon={<ChevronRight size={20} strokeWidth={2.4} />}
-        label="Move Column Right"
+        label="Mover columna a la derecha"
         onClick={onMoveColumnRight}
       />
       <MenuItem
         disabled={!canMoveColumnLeft}
         icon={<ChevronLeft size={20} strokeWidth={2.4} />}
-        label="Move Column Left"
+        label="Mover columna a la izquierda"
         onClick={onMoveColumnLeft}
       />
     </FloatingToolbarPanel>
@@ -474,6 +474,12 @@ function MenuItem({
 function Divider() {
   return <span aria-hidden="true" style={dividerStyle} />;
 }
+
+const TABLE_ALIGNMENT_TITLES: Record<string, string> = {
+  left: "Alinear a la izquierda",
+  center: "Centrar",
+  right: "Alinear a la derecha",
+};
 
 function nextAlignmentLabel(alignment: TableCellAlignment) {
   const activeIndex = TABLE_CELL_ALIGNMENTS.indexOf(alignment);

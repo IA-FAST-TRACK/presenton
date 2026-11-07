@@ -143,7 +143,7 @@ def test_disabled_community_never_reaches_cloud_proxy(monkeypatch):
     assert json.loads(response.body) == {
         "detail": {
             "code": "community_disabled",
-            "message": "Community is disabled for this deployment.",
+            "message": "La comunidad está desactivada en este despliegue.",
             "retryable": False,
         }
     }
@@ -195,7 +195,7 @@ def test_disabled_community_reference_never_reaches_cloud_generation(monkeypatch
         "detail": {
             "code": "community_references_disabled",
             "message": (
-                "Community design references are disabled for this deployment."
+                "Las referencias de diseño de la comunidad están desactivadas en este despliegue."
             ),
             "retryable": False,
         }
@@ -880,7 +880,7 @@ def test_selected_but_disconnected_provider_returns_clear_error(monkeypatch):
 
     assert response.status_code == 503
     assert response.body == (
-        b'{"detail":"Presenton is selected but the global provider is not connected"}'
+        '{"detail":"Presenton está seleccionado, pero el proveedor global no está conectado"}'.encode("utf-8")
     )
 
 

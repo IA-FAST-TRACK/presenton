@@ -7,9 +7,9 @@ import { normalizePresentationGenerationMode } from "@/utils/presentationGenerat
 import { isCommunityEnabled } from "@/utils/community";
 
 export const metadata: Metadata = {
-  title: "Presenton | Open Source AI presentation generator",
+  title: "Presenton | Generador de presentaciones con IA de código abierto",
   description:
-    "Open-source AI presentation generator with custom layouts, multi-model support (OpenAI, Gemini, Ollama), and PDF/PPTX export. A free Gamma alternative.",
+    "Generador de presentaciones con IA de código abierto con diseños personalizados, compatibilidad con varios modelos (OpenAI, Gemini, Ollama) y exportación a PDF/PPTX. Una alternativa gratuita a Gamma.",
   alternates: {
     canonical: "https://presenton.ai/create",
   },
@@ -26,18 +26,18 @@ export const metadata: Metadata = {
     "business presentations",
   ],
   openGraph: {
-    title: "Create Data Presentation | PresentOn",
+    title: "Crear presentación de datos | PresentOn",
     description:
-      "Open-source AI presentation generator with custom layouts, multi-model support (OpenAI, Gemini, Ollama), and PDF/PPTX export. A free Gamma alternative.",
+      "Generador de presentaciones con IA de código abierto con diseños personalizados, compatibilidad con varios modelos (OpenAI, Gemini, Ollama) y exportación a PDF/PPTX. Una alternativa gratuita a Gamma.",
     type: "website",
     url: "https://presenton.ai/create",
     siteName: "PresentOn",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Create Data Presentation | PresentOn",
+    title: "Crear presentación de datos | PresentOn",
     description:
-      "Open-source AI presentation generator with custom layouts, multi-model support (OpenAI, Gemini, Ollama), and PDF/PPTX export. A free Gamma alternative.",
+      "Generador de presentaciones con IA de código abierto con diseños personalizados, compatibilidad con varios modelos (OpenAI, Gemini, Ollama) y exportación a PDF/PPTX. Una alternativa gratuita a Gamma.",
     site: "@presenton_ai",
     creator: "@presenton_ai",
   },
@@ -54,9 +54,9 @@ const page = () => {
       <main className="flex flex-1 flex-col pb-10 pt-[46px]">
         <div className="motion-enter mb-7 flex flex-col items-center justify-center gap-1.5 px-4 text-center">
           <h1 className="font-syne text-[36px] font-medium leading-normal tracking-[-0.58px] text-[#101323] sm:text-[48px] lg:text-[58px] lg:leading-[70px]">
-            Turn Ideas into Slides
+            Convierte ideas en diapositivas
           </h1>
-          <p className="max-w-[609px] font-syne text-base leading-[1.4] tracking-[0.2px] text-[#101323CC] sm:text-xl">Turn prompts or documents into presentations with AI</p>
+          <p className="max-w-[609px] font-syne text-base leading-[1.4] tracking-[0.2px] text-[#101323CC] sm:text-xl">Convierte instrucciones o documentos en presentaciones con IA</p>
         </div>
 
         <UploadPage

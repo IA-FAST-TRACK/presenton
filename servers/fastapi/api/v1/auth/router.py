@@ -99,7 +99,7 @@ async def verify_session(
         user_id=principal.user_id,
         is_admin=principal.is_admin,
     ):
-        raise HTTPException(status_code=403, detail="Asset access denied")
+        raise HTTPException(status_code=403, detail="Acceso al recurso denegado")
     return {
         "authenticated": True,
         **serialize_user(user),
@@ -114,13 +114,13 @@ async def setup_credentials(
     session: AsyncSession = Depends(get_async_session),
 ):
     if await _account_count(session):
-        raise HTTPException(status_code=409, detail="Credentials already configured")
+        raise HTTPException(status_code=409, detail="Las credenciales ya están configuradas")
 
     username = normalize_username(body.username)
     if len(username) < 3:
         raise HTTPException(
             status_code=422,
-            detail="Username must be at least 3 characters",
+            detail="El nombre de usuario debe tener al menos 3 caracteres",
         )
     password_hash = PASSWORD_HELPER.hash(body.password)
     user = User(
@@ -139,7 +139,7 @@ async def setup_credentials(
         await session.rollback()
         raise HTTPException(
             status_code=409,
-            detail="Credentials already configured",
+            detail="Las credenciales ya están configuradas",
         )
     await session.commit()
     await session.refresh(user)

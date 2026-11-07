@@ -87,11 +87,11 @@ type ContentDensity = Exclude<Density, "">;
 const MAX_PREVIEW_ITEMS = 24;
 const MAX_PREVIEW_TEXT_LENGTH = 10_000;
 const DENSE_CONTENT_SENTENCES = [
-  "Strategic teams need clear context, measurable progress, and practical next steps for every decision.",
-  "This expanded sample copy demonstrates how the layout behaves when a field receives dense presentation content.",
-  "Use this mock content to inspect wrapping, alignment, overflow, spacing, and visual balance across the slide.",
-  "Each sentence adds realistic business language so longer text blocks feel close to generated presentation output.",
-  "The preview fills the schema allowance to expose layout pressure before export.",
+  "Los equipos estratégicos necesitan un contexto claro, avances medibles y próximos pasos prácticos para cada decisión.",
+  "Este texto de ejemplo ampliado muestra cómo se comporta el diseño cuando un campo recibe contenido denso de presentación.",
+  "Usa este contenido de prueba para revisar el ajuste de línea, la alineación, el desbordamiento, el espaciado y el equilibrio visual de la diapositiva.",
+  "Cada frase añade lenguaje empresarial realista para que los bloques de texto largos se parezcan a una presentación generada.",
+  "La vista previa ocupa el espacio permitido por el esquema para mostrar la presión sobre el diseño antes de exportar.",
 ];
 
 /**
@@ -259,10 +259,10 @@ function textAtTargetLength(
   targetLength: number,
 ) {
   const normalizedValue = value.replace(/\s+/g, " ").trim();
-  const fallback = `${label} provides a clear supporting point.`;
+  const fallback = `${label} aporta un argumento de apoyo claro.`;
   const source = normalizedValue || fallback;
   const supportingDetail =
-    "This supporting detail adds useful context and helps explain the key message clearly.";
+    "Este detalle de apoyo añade un contexto útil y ayuda a explicar con claridad el mensaje clave.";
   let expanded = source;
 
   while (expanded.length < targetLength) {
@@ -1043,24 +1043,24 @@ function exactDensityText(
   if (targetLength <= 0) return "";
 
   const title = sentenceCase(
-    label.replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim() || "content",
+    label.replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim() || "contenido",
   );
   const candidates =
     density === "Low"
       ? [
           `${title}.`,
-          `${title} is ready.`,
-          `${title} is clear.`,
-          "Clear next step.",
-          "Teams have a clear next step.",
-          "The plan is ready for review.",
-          "This section has enough content to validate spacing.",
+          `${title} está listo.`,
+          `${title} está claro.`,
+          "Próximo paso claro.",
+          "Los equipos tienen un próximo paso claro.",
+          "El plan está listo para revisarse.",
+          "Esta sección tiene contenido suficiente para validar el espaciado.",
         ]
       : [
-          `${title} summary shows steady progress and a clear next step.`,
+          `El resumen de ${title} muestra un avance constante y un próximo paso claro.`,
           ...DENSE_CONTENT_SENTENCES,
-          "Stakeholders can compare options, spot risks, and align on the strongest path forward.",
-          "The final wording stays deterministic while still resembling natural presentation copy.",
+          "Las partes interesadas pueden comparar opciones, detectar riesgos y alinearse en el mejor camino a seguir.",
+          "La redacción final sigue siendo determinista sin dejar de parecer el texto natural de una presentación.",
         ];
   const seed = candidates.join(" ").replace(/\s+/g, " ").trim();
   if (seed.length >= targetLength) return seed.slice(0, targetLength);
@@ -1284,7 +1284,7 @@ export function collectSchemaFields(layout: TemplateV2Layout) {
     const decorative = element.decorative !== false;
     const label = schemaLabelForElement(
       element,
-      `${type || "Field"} ${fields.length + 1}`,
+      `${type || "Campo"} ${fields.length + 1}`,
       parentLabel,
     );
 

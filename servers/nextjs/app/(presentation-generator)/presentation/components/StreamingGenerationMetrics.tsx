@@ -2,11 +2,11 @@
 
 import type { GenerationMetrics } from "@/store/slices/presentationGeneration";
 
-const integerFormatter = new Intl.NumberFormat("en-US", {
+const integerFormatter = new Intl.NumberFormat("es-ES", {
   maximumFractionDigits: 0,
 });
 
-const decimalFormatter = new Intl.NumberFormat("en-US", {
+const decimalFormatter = new Intl.NumberFormat("es-ES", {
   minimumFractionDigits: 1,
   maximumFractionDigits: 1,
 });
@@ -32,8 +32,8 @@ export default function StreamingGenerationMetrics({
       className="hidden h-[38px] shrink-0 items-center rounded-[80px] border border-[#E4E2EB] bg-[#F6F6F9] px-3 font-syne sm:flex"
       title={
         metrics.estimated
-          ? "Live token counts are estimated until the provider reports final usage."
-          : `Final usage from ${metrics.model || "the selected model"}`
+          ? "El recuento de tokens en directo es estimado hasta que el proveedor informe del uso final."
+          : `Uso final de ${metrics.model || "el modelo seleccionado"}`
       }
     >
       <div className="flex items-center gap-2 text-[11px] font-semibold text-[#555766]">
@@ -44,11 +44,11 @@ export default function StreamingGenerationMetrics({
           }`}
         />
         <span className="whitespace-nowrap">
-          In {formatTokens(metrics.input_tokens, metrics.estimated)}
+          Entrada {formatTokens(metrics.input_tokens, metrics.estimated)}
         </span>
         <span className="h-3.5 w-px bg-[#D8D8DF]" aria-hidden="true" />
         <span className="whitespace-nowrap">
-          Out {formatTokens(metrics.output_tokens, metrics.estimated)}
+          Salida {formatTokens(metrics.output_tokens, metrics.estimated)}
         </span>
         {metrics.supports_thinking ? (
           <>
@@ -59,11 +59,11 @@ export default function StreamingGenerationMetrics({
               }`}
               title={
                 thinkingPending
-                  ? "Reasoning is enabled; waiting for thinking-token usage."
+                  ? "El razonamiento está activado; esperando el uso de tokens de razonamiento."
                   : undefined
               }
             >
-              Think{" "}
+              Razonamiento{" "}
               {formatTokens(
                 metrics.thinking_tokens,
                 metrics.thinking_tokens_estimated

@@ -36,24 +36,24 @@ export const usePresentationGeneration = (
     (currentOutlines: { content: string }[] | null) => {
       if (!currentOutlines || currentOutlines.length === 0) {
         notify.warning(
-          "Outlines not ready",
-          "Please wait for your outlines to finish generating before continuing."
+          "Los esquemas no están listos",
+          "Espera a que terminen de generarse los esquemas antes de continuar."
         );
         return false;
       }
 
       if (!selectedTemplateId) {
         notify.warning(
-          "Template not selected",
-          "Choose a template before generating your presentation."
+          "No se ha seleccionado ninguna plantilla",
+          "Elige una plantilla antes de generar tu presentación."
         );
         return false;
       }
 
       if (currentOutlines.length > MAX_NUMBER_OF_SLIDES) {
         notify.warning(
-          "Slide limit reached",
-          `Use ${MAX_NUMBER_OF_SLIDES} or fewer outline slides before generating.`
+          "Se ha alcanzado el límite de diapositivas",
+          `Usa ${MAX_NUMBER_OF_SLIDES} diapositivas o menos en el esquema antes de generar.`
         );
         return false;
       }
@@ -97,7 +97,7 @@ export const usePresentationGeneration = (
     });
 
     setLoadingState({
-      message: "Generating presentation data...",
+      message: "Generando los datos de la presentación...",
       isLoading: true,
       showProgress: true,
       duration: 30,
@@ -134,8 +134,8 @@ export const usePresentationGeneration = (
         ),
       });
       notify.error(
-        "Generation error",
-        error.message || "Error in presentation generation."
+        "Error en la generación",
+        error.message || "Error al generar la presentación."
       );
     } finally {
       setLoadingState(DEFAULT_LOADING_STATE);

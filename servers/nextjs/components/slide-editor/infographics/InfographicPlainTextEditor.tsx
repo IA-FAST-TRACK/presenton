@@ -91,7 +91,7 @@ export function InfographicPlainTextEditor({
         contentEditable
         suppressContentEditableWarning
         role="textbox"
-        aria-label="Edit infographic text"
+        aria-label="Editar texto de la infografía"
         aria-multiline="true"
         data-inline-edit-ignore="true"
         onBlur={commit}

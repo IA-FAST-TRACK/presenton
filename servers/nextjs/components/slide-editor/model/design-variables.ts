@@ -50,12 +50,12 @@ export function designVariableNameLabel(name: string) {
 }
 
 export function designVariableOptionLabel(option: unknown) {
-  if (option == null) return "None";
+  if (option == null) return "Ninguno";
   if (typeof option === "string" || typeof option === "number") {
     return String(option);
   }
-  if (typeof option === "boolean") return option ? "On" : "Off";
-  if (Array.isArray(option)) return `${option.length} values`;
+  if (typeof option === "boolean") return option ? "Sí" : "No";
+  if (Array.isArray(option)) return `${option.length} valores`;
   if (isRecord(option)) {
     return Object.entries(option)
       .slice(0, 3)

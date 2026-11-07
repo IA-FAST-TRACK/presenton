@@ -219,7 +219,7 @@ const PresentationHeader = ({
       format
     );
     if (!result?.success) {
-      throw new Error(result?.message || "Export failed");
+      throw new Error(result?.message || "Error al exportar");
     }
   };
 
@@ -234,8 +234,8 @@ const PresentationHeader = ({
     let exportToastId: string | number | undefined;
     try {
       exportToastId = notify.loading(
-        "Exporting PPTX",
-        "Your presentation is being exported. This may take a moment."
+        "Exportando PPTX",
+        "Se está exportando tu presentación. Esto puede tardar un momento."
       );
       setIsExporting(true);
       await trackExportLifecycle(
@@ -281,8 +281,8 @@ const PresentationHeader = ({
         exportStartedAt
       );
       notify.success(
-        "Export complete",
-        "Your PPTX file has been downloaded.",
+        "Exportación completada",
+        "Se ha descargado tu archivo PPTX.",
         { id: exportToastId }
       );
     } catch (error) {
@@ -296,8 +296,8 @@ const PresentationHeader = ({
         error
       );
       notify.error(
-        "Export failed",
-        "We are having trouble exporting your presentation. Please try again.",
+        "Error al exportar",
+        "Estamos teniendo problemas para exportar tu presentación. Inténtalo de nuevo.",
         exportToastId !== undefined ? { id: exportToastId } : undefined
       );
     } finally {
@@ -316,8 +316,8 @@ const PresentationHeader = ({
     let exportToastId: string | number | undefined;
     try {
       exportToastId = notify.loading(
-        "Exporting PDF",
-        "Your presentation is being exported. This may take a moment."
+        "Exportando PDF",
+        "Se está exportando tu presentación. Esto puede tardar un momento."
       );
       setIsExporting(true);
       await trackExportLifecycle(
@@ -362,8 +362,8 @@ const PresentationHeader = ({
         exportStartedAt
       );
       notify.success(
-        "Export complete",
-        "Your PDF file has been downloaded.",
+        "Exportación completada",
+        "Se ha descargado tu archivo PDF.",
         { id: exportToastId }
       );
     } catch (error) {
@@ -377,8 +377,8 @@ const PresentationHeader = ({
         error
       );
       notify.error(
-        "Export failed",
-        "We are having trouble exporting your presentation. Please try again.",
+        "Error al exportar",
+        "Estamos teniendo problemas para exportar tu presentación. Inténtalo de nuevo.",
         exportToastId !== undefined ? { id: exportToastId } : undefined
       );
     } finally {
@@ -416,8 +416,8 @@ const PresentationHeader = ({
       );
     } catch (error) {
       notify.error(
-        "Regeneration failed",
-        error instanceof Error ? error.message : "Please try again."
+        "Error al regenerar",
+        error instanceof Error ? error.message : "Inténtalo de nuevo."
       );
     } finally {
       setIsRegenerating(false);
@@ -470,7 +470,7 @@ const PresentationHeader = ({
     <div
       className={` rounded-[18px] max-md:mt-4 ${mobile ? "" : "bg-white"}  p-5`}
     >
-      <p className="text-sm font-medium text-[#19001F]">Export as</p>
+      <p className="text-sm font-medium text-[#19001F]">Exportar como</p>
       <div className="my-[18px] h-[1px] bg-[#E8E8E8]" />
       <div className="space-y-3">
         <Button
@@ -526,29 +526,29 @@ const PresentationHeader = ({
                 cancelTitleEdit();
               }
             }}
-            placeholder="Presentation title"
+            placeholder="Título de la presentación"
             className="min-w-0 flex-1 bg-transparent py-2 pr-2 font-syne text-base leading-tight text-[#101323] placeholder:text-[#101323]/35 outline-none border-0 focus:ring-0"
-            aria-label="Presentation title"
+            aria-label="Título de la presentación"
           />
           <div className="flex shrink-0 items-center gap-0.5 border-l border-[#EDECEC] pl-1 ml-0.5">
-            <ToolTip content="Save · Enter">
+            <ToolTip content="Guardar · Intro">
               <button
                 type="button"
                 onMouseDown={onTitleSaveMouseDown}
                 onClick={commitTitleEdit}
                 className="flex h-8 w-8 items-center justify-center rounded-lg text-[#5141e5] hover:bg-[#5141e5]/10 transition-colors"
-                aria-label="Save title"
+                aria-label="Guardar título"
               >
                 <Check className="h-4 w-4" strokeWidth={2.25} />
               </button>
             </ToolTip>
-            <ToolTip content="Cancel · Esc">
+            <ToolTip content="Cancelar · Esc">
               <button
                 type="button"
                 onMouseDown={onTitleCancelMouseDown}
                 onClick={cancelTitleEdit}
                 className="flex h-8 w-8 items-center justify-center rounded-lg text-[#101323]/55 hover:bg-[#F6F6F9] hover:text-[#101323] transition-colors"
-                aria-label="Cancel editing title"
+                aria-label="Cancelar la edición del título"
               >
                 <X className="h-4 w-4" strokeWidth={2.25} />
               </button>
@@ -568,7 +568,7 @@ const PresentationHeader = ({
         >
           <h2 className="min-w-0 flex-1 font-syne text-lg w-[450px] leading-snug text-[#101323]">
             <MarkdownRenderer
-              content={presentationData?.title || "Presentation"}
+              content={presentationData?.title || "Presentación"}
               className="mb-0 min-w-0 overflow-hidden text-ellipsis line-clamp-1 text-sm text-[#101323] prose-p:my-0 prose-headings:my-0"
             />
           </h2>
@@ -596,7 +596,7 @@ const PresentationHeader = ({
             className="w-10 h-10 cursor-pointer object-contain"
           />
           {presentationData && !isStreaming && !isEditingTitle ? (
-            <ToolTip content="Rename presentation">{titleBlock}</ToolTip>
+            <ToolTip content="Cambiar nombre de la presentación">{titleBlock}</ToolTip>
           ) : (
             titleBlock
           )}
@@ -616,8 +616,8 @@ const PresentationHeader = ({
             <ToolTip
               content={
                 enableHtmlSelector
-                  ? "Element selection is on"
-                  : "Click a slide element to add it to AI chat"
+                  ? "La selección de elementos está activada"
+                  : "Haz clic en un elemento de la diapositiva para añadirlo al chat de IA"
               }
             >
               <button
@@ -643,7 +643,7 @@ const PresentationHeader = ({
                 >
                   <MousePointer2 className="h-3.5 w-3.5" strokeWidth={2} />
                 </span>
-                <span className="whitespace-nowrap">Select to edit</span>
+                <span className="whitespace-nowrap">Seleccionar para editar</span>
                 <span
                   aria-hidden="true"
                   className={cn(
@@ -657,15 +657,15 @@ const PresentationHeader = ({
           <div className="flex items-center gap-2 bg-[#F6F6F9] px-3.5 h-[38px] border border-[#EDECEC] rounded-[80px]">
             <ToolTip content={
               canRegenerate
-                ? "Regenerate Presentation"
+                ? "Regenerar presentación"
                 : isStreaming
-                  ? "Wait until generation finishes"
-                  : "Only AI-generated presentations can be regenerated"
+                  ? "Espera a que termine la generación"
+                  : "Solo se pueden regenerar las presentaciones generadas con IA"
             }>
               <span className="inline-flex">
                 <button
                   type="button"
-                  aria-label="Regenerate presentation"
+                  aria-label="Regenerar presentación"
                   disabled={!canRegenerate}
                   onClick={() => setIsRegenerateConfirmOpen(true)}
                   className="text-[#101323] enabled:hover:text-[#5141e5] disabled:cursor-not-allowed disabled:opacity-40"
@@ -675,7 +675,7 @@ const PresentationHeader = ({
               </span>
             </ToolTip>
             <Separator orientation="vertical" className="h-4" />
-            <ToolTip content="Undo">
+            <ToolTip content="Deshacer">
               <button
                 disabled={!canUndo}
                 className=" disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer group"
@@ -687,7 +687,7 @@ const PresentationHeader = ({
               </button>
             </ToolTip>
             <Separator orientation="vertical" className="h-4" />
-            <ToolTip content="Redo">
+            <ToolTip content="Rehacer">
               <button
                 disabled={!canRedo}
                 className=" disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer group"
@@ -699,7 +699,7 @@ const PresentationHeader = ({
               </button>
             </ToolTip>
             <Separator orientation="vertical" className="h-4 w-[2px]" />
-            <ToolTip content="Present">
+            <ToolTip content="Presentar">
               <button
                 onClick={() => {
                   const to = `?id=${presentation_id}&mode=present&slide=${
@@ -728,10 +728,10 @@ const PresentationHeader = ({
           </div>
 
         {generationMode === "standard" && (
-          <ToolTip content="Keyboard shortcuts (?)">
+          <ToolTip content="Atajos de teclado (?)">
             <button
               type="button"
-              aria-label="Keyboard shortcuts"
+              aria-label="Atajos de teclado"
               aria-haspopup="dialog"
               aria-expanded={shortcutsDialogOpen}
               aria-keyshortcuts="?"
@@ -760,7 +760,7 @@ const PresentationHeader = ({
                 {isExporting ? (
                   <Loader2 className="w-3.5 h-3.5 animate-spin" />
                 ) : (
-                  "Export"
+                  "Exportar"
                 )}{" "}
                 <ArrowRightFromLine className="w-3.5 h-3.5" />
               </button>
@@ -784,11 +784,11 @@ const PresentationHeader = ({
               <AlertTriangle className="h-6 w-6 text-red-500" />
             </div>
             <DialogTitle className="text-lg font-semibold text-[#191919]">
-              Regenerate Presentation?
+              ¿Regenerar la presentación?
             </DialogTitle>
             <DialogDescription className="text-sm leading-relaxed text-gray-500">
-              This will replace the current slides with a newly generated
-              version and clear undo history. Your current edits may be lost.
+              Se sustituirán las diapositivas actuales por una nueva versión
+              generada y se borrará el historial de deshacer. Es posible que pierdas los cambios actuales.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="flex-row border-t border-gray-100 p-0 sm:space-x-0">
@@ -798,7 +798,7 @@ const PresentationHeader = ({
               onClick={() => setIsRegenerateConfirmOpen(false)}
               className="h-auto flex-1 rounded-none rounded-bl-2xl px-4 py-3.5 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-700"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               type="button"
@@ -807,7 +807,7 @@ const PresentationHeader = ({
               disabled={!canRegenerate}
               className="h-auto flex-1 rounded-none rounded-br-2xl border-l border-gray-100 px-4 py-3.5 text-sm font-medium text-red-500 hover:bg-red-50 hover:text-red-600"
             >
-              Regenerate
+              Regenerar
             </Button>
           </DialogFooter>
         </DialogContent>

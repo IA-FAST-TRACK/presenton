@@ -104,16 +104,16 @@ export default function LLMProviderSelection({
         needsOpenWebUIImageUrl ||
         needsOpenAICompatImageConfig,
       text: needsModelSelection
-        ? "Please Select a Model"
+        ? "Selecciona un modelo"
         : needsApiKey
-          ? "Please Enter API Key"
+          ? "Introduce la clave API"
           : needsComfyUIConfig
-            ? "Please Configure ComfyUI"
+            ? "Configura ComfyUI"
             : needsOpenWebUIImageUrl
-              ? "Please Enter Open WebUI URL"
+              ? "Introduce la URL de Open WebUI"
               : needsOpenAICompatImageConfig
-                ? "Please Configure Custom Image API"
-                : "Save Configuration",
+                ? "Configura la API de imágenes personalizada"
+                : "Guardar configuración",
       showProgress: false,
     });
   }, [llmConfig]);
@@ -231,7 +231,7 @@ export default function LLMProviderSelection({
             <TabsTrigger value="google">Google</TabsTrigger>
             <TabsTrigger value="anthropic">Anthropic</TabsTrigger>
             <TabsTrigger value="ollama">Ollama</TabsTrigger>
-            <TabsTrigger value="custom">Custom</TabsTrigger>
+            <TabsTrigger value="custom">Personalizado</TabsTrigger>
             <TabsTrigger value="codex">ChatGPT</TabsTrigger>
           </TabsList>
         </Tabs>

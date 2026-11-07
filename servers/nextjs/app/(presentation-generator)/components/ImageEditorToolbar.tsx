@@ -90,8 +90,8 @@ export function ImageEditorToolbar({
 
       <button
         type="button"
-        title="Replace image"
-        aria-label="Replace image"
+        title="Reemplazar imagen"
+        aria-label="Reemplazar imagen"
         onClick={onReplaceImage}
         className="rounded-[2px] p-1 text-[#191919] hover:bg-[#F8F8FA]"
       >
@@ -111,8 +111,8 @@ export function ImageEditorToolbar({
       <div className="inline-flex items-center gap-3">
         <button
           type="button"
-          title="Fill"
-          aria-label="Fill"
+          title="Rellenar"
+          aria-label="Rellenar"
           onClick={() => onObjectFitChange("cover")}
           className={cn(
             "rounded-[2px] p-1 text-[#191919] hover:bg-[#F8F8FA]",
@@ -123,8 +123,8 @@ export function ImageEditorToolbar({
         </button>
         <button
           type="button"
-          title="Contain"
-          aria-label="Contain"
+          title="Ajustar"
+          aria-label="Ajustar"
           onClick={() => onObjectFitChange("contain")}
           className={cn(
             "rounded-[2px] p-1 text-[#191919] hover:bg-[#F8F8FA]",
@@ -135,8 +135,8 @@ export function ImageEditorToolbar({
         </button>
         <button
           type="button"
-          title="Stretch"
-          aria-label="Stretch"
+          title="Estirar"
+          aria-label="Estirar"
           onClick={() => onObjectFitChange("fill")}
           className={cn(
             "rounded-[2px] p-1 text-[#191919] hover:bg-[#F8F8FA]",
@@ -151,8 +151,8 @@ export function ImageEditorToolbar({
 
       <button
         type="button"
-        title="Focus point"
-        aria-label="Focus point"
+        title="Punto de enfoque"
+        aria-label="Punto de enfoque"
         onClick={onToggleFocusPoint}
         className={cn(
           "rounded-[2px] p-1 text-[#191919] hover:bg-[#F8F8FA]",

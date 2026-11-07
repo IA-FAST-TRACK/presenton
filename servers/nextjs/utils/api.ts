@@ -1,7 +1,7 @@
 import { extractApiErrorMessage, statusErrorMessage } from "@/utils/apiErrorMessages";
 
 export const BACKEND_CONNECTION_ERROR_MESSAGE =
-  "Check that the FastAPI backend is running and that the frontend can reach it.";
+  "Comprueba que el backend de FastAPI está en ejecución y que el frontend puede conectarse a él.";
 
 export class BackendConnectionError extends Error {
   constructor(message = BACKEND_CONNECTION_ERROR_MESSAGE) {

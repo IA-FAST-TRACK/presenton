@@ -63,7 +63,7 @@ async def upload_font(
 ):
     try:
         if not font_file.filename:
-            raise HTTPException(status_code=400, detail="No file name provided")
+            raise HTTPException(status_code=400, detail="No se ha indicado ningún nombre de archivo")
 
         font_upload, _font_path = await persist_upload_file(font_file)
         font_info = await font_upload_to_info(font_upload)
@@ -82,7 +82,7 @@ async def upload_font(
     except Exception as exc:
         print(f"Error uploading font: {exc}")
         raise HTTPException(
-            status_code=500, detail=f"Error uploading font: {exc}"
+            status_code=500, detail=f"Error al subir la fuente: {exc}"
         ) from exc
 
 
@@ -123,7 +123,7 @@ async def list_fonts():
     except Exception as exc:
         print(f"Error listing fonts: {exc}")
         raise HTTPException(
-            status_code=500, detail=f"Error listing fonts: {exc}"
+            status_code=500, detail=f"Error al listar las fuentes: {exc}"
         ) from exc
 
 
@@ -145,7 +145,7 @@ async def get_uploaded_fonts():
     except Exception as exc:
         print(f"Error getting uploaded fonts: {exc}")
         raise HTTPException(
-            status_code=500, detail=f"Error getting uploaded fonts: {exc}"
+            status_code=500, detail=f"Error al obtener las fuentes subidas: {exc}"
         ) from exc
 
 
@@ -168,5 +168,5 @@ async def delete_font(filename: str):
     except Exception as exc:
         print(f"Error deleting font: {exc}")
         raise HTTPException(
-            status_code=500, detail=f"Error deleting font: {exc}"
+            status_code=500, detail=f"Error al eliminar la fuente: {exc}"
         ) from exc

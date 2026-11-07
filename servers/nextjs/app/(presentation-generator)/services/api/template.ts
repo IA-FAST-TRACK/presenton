@@ -132,7 +132,7 @@ class TemplateService {
                 params.set("presenton_cloud_only", "true");
             }
             const response = await apiFetch(getApiUrl(`/api/v1/ppt/template/all?${params.toString()}`));
-            return await ApiResponseHandler.handleResponse(response, "Failed to get Templates summaries");
+            return await ApiResponseHandler.handleResponse(response, "No se han podido obtener los resúmenes de las plantillas");
         } catch (error) {
             console.error("Failed to get Templates summaries", error);
             throw error;
@@ -143,7 +143,7 @@ class TemplateService {
         try {
             const apiTemplateId = this.normalizeTemplateId(templateId);
             const response = await apiFetch(getApiUrl(`/api/v1/ppt/template/${encodeURIComponent(apiTemplateId)}`));
-            return await ApiResponseHandler.handleResponse(response, "Failed to get template details");
+            return await ApiResponseHandler.handleResponse(response, "No se han podido obtener los detalles de la plantilla");
         } catch (error) {
             console.error("Failed to get Templates v1 details", error);
             throw error;
@@ -179,7 +179,7 @@ class TemplateService {
                     return null;
                 }
                 if (!response.ok) {
-                    throw new Error(`Template theme request failed (${response.status})`);
+                    throw new Error(`Error en la solicitud del tema de la plantilla (${response.status})`);
                 }
 
                 const theme = normalizeTemplateTheme(await response.json());
@@ -209,7 +209,7 @@ class TemplateService {
                 headers: getHeader(),
                 body: JSON.stringify(payload),
             });
-            return await ApiResponseHandler.handleResponse(response, "Failed to create template");
+            return await ApiResponseHandler.handleResponse(response, "No se ha podido crear la plantilla");
         } catch (error) {
             console.error("Failed to create template", error);
             throw error;
@@ -227,7 +227,7 @@ class TemplateService {
                 created_at: createdAtFrom.toISOString(),
             });
             const response = await apiFetch(getApiUrl(`/api/v1/async-tasks?${params.toString()}`));
-            return await ApiResponseHandler.handleResponse(response, "Failed to get recent template tasks");
+            return await ApiResponseHandler.handleResponse(response, "No se han podido obtener las tareas recientes de plantillas");
         } catch (error) {
             console.error("Failed to get recent template tasks", error);
             throw error;
@@ -245,7 +245,7 @@ class TemplateService {
             );
             return await ApiResponseHandler.handleResponse(
                 response,
-                "Failed to retry template generation",
+                "No se ha podido reintentar la generación de la plantilla",
             );
         } catch (error) {
             console.error("Failed to retry template generation", error);
@@ -259,7 +259,7 @@ class TemplateService {
             getApiUrl(`/api/v1/ppt/template/${encodeURIComponent(apiTemplateId)}/clone`),
             { method: "POST", headers: getHeader() },
         );
-        return ApiResponseHandler.handleResponse(response, "Failed to copy template");
+        return ApiResponseHandler.handleResponse(response, "No se ha podido copiar la plantilla");
     }
 
     static async deleteTemplate(templateId: string) {
@@ -268,7 +268,7 @@ class TemplateService {
                 method: "DELETE",
                 headers: getHeader(),
             });
-            const result = await ApiResponseHandler.handleResponseWithResult(response, "Failed to delete template");
+            const result = await ApiResponseHandler.handleResponseWithResult(response, "No se ha podido eliminar la plantilla");
             this.invalidateTemplateTheme(templateId);
             return result;
         } catch (error) {
@@ -297,7 +297,7 @@ class TemplateService {
                 headers: getHeader(),
                 body: JSON.stringify(payload),
             });
-            const result = await ApiResponseHandler.handleResponse(response, "Failed to update template");
+            const result = await ApiResponseHandler.handleResponse(response, "No se ha podido actualizar la plantilla");
             this.invalidateTemplateTheme(templateId);
             return result;
         } catch (error) {
@@ -318,7 +318,7 @@ class TemplateService {
             );
             const result = await ApiResponseHandler.handleResponse(
                 response,
-                `Failed to create layout for slide ${payload.index + 1}`,
+                `No se ha podido crear el diseño de la diapositiva ${payload.index + 1}`,
             );
             this.invalidateTemplateTheme(payload.template_id);
             return result;
@@ -342,7 +342,7 @@ class TemplateService {
             );
             const result = await ApiResponseHandler.handleResponse(
                 response,
-                "Failed to generate template layout",
+                "No se ha podido generar el diseño de la plantilla",
             );
             this.invalidateTemplateTheme(payload.template_id);
             return result;

@@ -104,7 +104,7 @@ const SlideThumbnailCardComponent = forwardRef<
                 fixedSize
                 fonts={fonts}
                 html={slide.html_content}
-                title={`Slide ${index + 1} thumbnail`}
+                title={`Miniatura de la diapositiva ${index + 1}`}
               />
             </div>
           ) : useTemplateV2HtmlPreview ? (

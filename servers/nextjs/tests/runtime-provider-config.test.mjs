@@ -126,7 +126,7 @@ for (const providerId of ["gpt-image-2.5-flare", "gpt-image-2.5-sunburst"]) {
     assert.equal(provider.label, providerId.endsWith("flare") ? "GPT Image 2.5 Flare" : "GPT Image 2.5 Sunburst");
     assert.equal(provider.apiKeyField, "OPENAI_API_KEY");
     const base = { LLM: "google", GOOGLE_API_KEY: "google-key", GOOGLE_MODEL: "text-model", IMAGE_PROVIDER: providerId };
-    assert.match(runtimeConfig.getLLMConfigValidationError(base), /OpenAI API key is required/);
+    assert.match(runtimeConfig.getLLMConfigValidationError(base), /La clave de API de OpenAI es obligatoria/);
     assert.equal(runtimeConfig.getLLMConfigValidationError({ ...base, OPENAI_API_KEY: "image-key" }), null);
     const updated = runtimeConfig.updateLLMConfig(base, "gpt_image_2_5_quality", "xhigh");
     assert.equal(updated.IMAGE_PROVIDER, providerId);

@@ -114,7 +114,7 @@ const SlideCountSelect: React.FC<{
     }
   };
 
-  const displayLabel = value ? `${value} slides` : "Auto slides";
+  const displayLabel = value ? `${value} diapositivas` : "Diapositivas automáticas";
 
   return (
     <Popover open={open} onOpenChange={onOpenChange}>
@@ -170,7 +170,7 @@ const SlideCountSelect: React.FC<{
                   : "text-xs font-medium min-[1800px]:text-sm min-[2200px]:text-base",
               )}
             >
-              {compact && value ? `Slides ${value}` : displayLabel}
+              {compact && value ? `Diapositivas: ${value}` : displayLabel}
             </span>
             {compact && (
               <Image src="/generate/chevron-right.svg" alt="" width={14} height={14} className="rotate-90" />
@@ -220,7 +220,7 @@ const SlideCountSelect: React.FC<{
               className="h-8 w-16 px-2 text-sm min-[1800px]:h-9 min-[1800px]:w-20 min-[1800px]:text-base"
             />
             <span className="text-sm font-medium min-[1800px]:text-base">
-              slides
+              diapositivas
             </span>
           </div>
         </div>
@@ -252,7 +252,7 @@ const SlideCountSelect: React.FC<{
                       value === option ? "opacity-100" : "opacity-0",
                     )}
                   />
-                  {option} slides
+                  {option} diapositivas
                 </CommandItem>
               ))}
             </CommandGroup>
@@ -303,7 +303,7 @@ const LanguageSelect: React.FC<{
                 : "text-xs font-medium min-[1800px]:text-sm min-[2200px]:text-base",
             )}
           >
-            {value === LanguageType.Auto ? "Auto (English)" : value || "Select language"}
+            {value === LanguageType.Auto ? "Automático (inglés)" : value || "Selecciona un idioma"}
           </span>
           {compact && (
             <Image src="/generate/chevron-right.svg" alt="" width={14} height={14} className="rotate-90" />
@@ -321,11 +321,11 @@ const LanguageSelect: React.FC<{
     >
       <Command>
         <CommandInput
-          placeholder="Search language..."
+          placeholder="Buscar idioma..."
           className="font-manrope"
         />
         <CommandList>
-          <CommandEmpty>No language found.</CommandEmpty>
+          <CommandEmpty>No se ha encontrado ningún idioma.</CommandEmpty>
           <CommandGroup>
             {Object.values(LanguageType).map((language) => (
               <CommandItem
@@ -382,7 +382,7 @@ export function ConfigurationSelects({
             compact ? "h-[34px] shadow-none" : "h-[38px] shadow-sm",
           )}
         >
-          {mode === "standard" ? "Standard" : "Smart"}
+          {mode === "standard" ? "Estándar" : "Inteligente"}
           <ChevronUp className="h-4 w-4" />
         </Button>
       ) : null}

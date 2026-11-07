@@ -46,7 +46,7 @@ class McpFilesUploadRequest(BaseModel):
     def validate_combined_upload_size(self):
         encoded_size = sum(len(file.content_base64) for file in self.files)
         if encoded_size > MCP_FILES_UPLOAD_MAX_BASE64_CHARS:
-            raise ValueError("Combined file upload exceeds 100 MiB")
+            raise ValueError("El total de archivos subidos supera los 100 MiB")
         return self
 
 
@@ -66,12 +66,12 @@ def _decode_mcp_file(upload: McpEncodedFileUpload) -> bytes:
     except (binascii.Error, ValueError) as exc:
         raise HTTPException(
             status_code=400,
-            detail=f"Invalid base64 content for '{upload.filename}'",
+            detail=f"Contenido base64 no válido para '{upload.filename}'",
         ) from exc
     if len(content) > MCP_FILES_UPLOAD_MAX_TOTAL_BYTES:
         raise HTTPException(
             status_code=413,
-            detail=f"'{upload.filename}' exceeds the allowed upload size",
+            detail=f"'{upload.filename}' supera el tamaño de subida permitido",
         )
     return content
 
@@ -115,7 +115,7 @@ async def upload_files_for_mcp(request: McpFilesUploadRequest):
         if total_bytes > MCP_FILES_UPLOAD_MAX_TOTAL_BYTES:
             raise HTTPException(
                 status_code=413,
-                detail="Combined file upload exceeds 100 MiB",
+                detail="El total de archivos subidos supera los 100 MiB",
             )
         decoded_files.append((encoded_file, content))
 

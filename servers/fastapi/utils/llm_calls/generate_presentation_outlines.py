@@ -312,7 +312,7 @@ async def generate_ppt_outline(
 
     if use_external_search:
         if emit_statuses:
-            yield OutlineGenerationStatus("Analyzing your topic for web research")
+            yield OutlineGenerationStatus("Analizando tu tema para la investigación web")
         fallback_query = build_web_search_query(content, instructions)
         search_query = fallback_query
         try:
@@ -342,11 +342,11 @@ async def generate_ppt_outline(
         if search_query:
             if emit_statuses:
                 yield OutlineGenerationStatus(
-                    f"Searching with {actual_provider_display_name}: {search_query}"
+                    f"Buscando con {actual_provider_display_name}: {search_query}"
                 )
             search_context = await get_web_search_context(search_query)
             if emit_statuses:
-                yield OutlineGenerationStatus("Web research complete")
+                yield OutlineGenerationStatus("Investigación web completada")
         if search_context:
             additional_context = "\n\n".join(
                 part for part in (additional_context, search_context) if part
@@ -355,9 +355,9 @@ async def generate_ppt_outline(
     try:
         if emit_statuses:
             yield OutlineGenerationStatus(
-                "Searching with model-native web search and drafting outlines"
+                "Buscando con la búsqueda web nativa del modelo y redactando el esquema"
                 if use_search_tool
-                else "Drafting your presentation outline"
+                else "Redactando el esquema de tu presentación"
             )
         outline_schema = prepare_schema_for_validation(
             response_model.model_json_schema(),

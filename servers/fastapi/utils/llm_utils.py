@@ -353,7 +353,7 @@ async def generate_structured_with_schema_retries(
         if content is None:
             raise HTTPException(
                 status_code=400,
-                detail="LLM did not return any content",
+                detail="El LLM no ha devuelto ningún contenido",
             )
 
         if not validate_schema:
@@ -386,7 +386,7 @@ async def generate_structured_with_schema_retries(
             structured_validation_feedback_user_message(content, validation_errors)
         )
 
-    raise HTTPException(status_code=400, detail="LLM did not return any content")
+    raise HTTPException(status_code=400, detail="El LLM no ha devuelto ningún contenido")
 
 
 def extract_text(content: Any) -> Optional[str]:

@@ -36,13 +36,13 @@ def validate_files(
             if (max_size * 1024 * 1024) < file_size:
                 raise HTTPException(
                     400,
-                    detail=f"File '{each_file.filename}' exceeded max upload size of {max_size} MB",
+                    detail=f"El archivo '{each_file.filename}' supera el tamaño máximo de subida de {max_size} MB",
                 )
             elif not _is_accepted_file_type(each_file, accepted_types):
                 raise HTTPException(
                     400,
-                    detail=f"File '{each_file.filename}' not accepted. Accepted types: {accepted_types}",
+                    detail=f"El archivo '{each_file.filename}' no se acepta. Tipos aceptados: {accepted_types}",
                 )
 
     elif not (field or nullable):
-        raise HTTPException(400, detail="File must be provided.")
+        raise HTTPException(400, detail="Debes proporcionar un archivo.")

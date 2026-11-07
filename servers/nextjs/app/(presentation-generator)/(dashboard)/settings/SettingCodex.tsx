@@ -165,8 +165,8 @@ export default function CodexConfig({
                             onInputChange(DEFAULT_CODEX_MODEL, "codex_model");
                         }
                         notify.success(
-                            "Signed in to ChatGPT",
-                            "Your ChatGPT account is connected and ready to use."
+                            "Sesión iniciada en ChatGPT",
+                            "Tu cuenta de ChatGPT está conectada y lista para usarse."
                         );
                     } else if (pollData.status === "failed") {
                         stopPolling();
@@ -176,8 +176,8 @@ export default function CodexConfig({
                         setAuthStatus("unauthenticated");
                         applyProfile({});
                         notify.error(
-                            "Sign-in failed",
-                            "Authentication did not complete. Please try signing in again."
+                            "Error al iniciar sesión",
+                            "La autenticación no se ha completado. Vuelve a intentar iniciar sesión."
                         );
                     }
                 } catch {
@@ -190,8 +190,8 @@ export default function CodexConfig({
                 error_message: sanitizeAnalyticsError(err, "Failed to initiate auth"),
             });
             notify.error(
-                "Sign-in failed",
-                "Could not start the sign-in flow. Please try again."
+                "Error al iniciar sesión",
+                "No se ha podido iniciar el proceso de inicio de sesión. Inténtalo de nuevo."
             );
             setAuthStatus("unauthenticated");
             applyProfile({});
@@ -230,8 +230,8 @@ export default function CodexConfig({
                 onInputChange(DEFAULT_CODEX_MODEL, "codex_model");
             }
             notify.success(
-                "Signed in to ChatGPT",
-                "Your ChatGPT account is connected and ready to use."
+                "Sesión iniciada en ChatGPT",
+                "Tu cuenta de ChatGPT está conectada y lista para usarse."
             );
         } catch (err: any) {
             trackEvent(MixpanelEvent.Codex_SignIn_Failed, {
@@ -239,8 +239,8 @@ export default function CodexConfig({
                 error_message: sanitizeAnalyticsError(err, "Exchange failed"),
             });
             notify.error(
-                "Sign-in failed",
-                err.message || "The verification code could not be accepted. Please try again."
+                "Error al iniciar sesión",
+                err.message || "No se ha podido aceptar el código de verificación. Inténtalo de nuevo."
             );
         } finally {
             setIsExchanging(false);
@@ -289,13 +289,13 @@ export default function CodexConfig({
             syncStoreAfterCodexSignOut();
             router.replace("/settings");
             notify.success(
-                "Signed out",
-                "You have been disconnected from ChatGPT."
+                "Sesión cerrada",
+                "Te has desconectado de ChatGPT."
             );
         } catch {
             notify.error(
-                "Sign-out failed",
-                "Could not disconnect from ChatGPT. Please try again."
+                "Error al cerrar sesión",
+                "No se ha podido desconectar de ChatGPT. Inténtalo de nuevo."
             );
         } finally {
             setIsLoggingOut(false);
@@ -310,7 +310,8 @@ export default function CodexConfig({
             });
             if (!res.ok) {
                 let errorData: { detail?: unknown; message?: string; error?: string } | null = null;
-                let message = "Your ChatGPT session could not be renewed. Please sign in again.";
+                const fallbackMessage = "No se ha podido renovar tu sesión de ChatGPT. Vuelve a iniciar sesión.";
+                let message = fallbackMessage;
                 try {
                     const parsedError: { detail?: unknown; message?: string; error?: string } = await res.json();
                     errorData = parsedError;
@@ -320,7 +321,8 @@ export default function CodexConfig({
                         parsedError.error ||
                         message;
                 } catch {}
-                if (isChatGptAuthRequiredResponse(res, errorData, message)) {
+                // The English "ChatGPT session" marker keeps the auth-required detection working for the translated fallback.
+                if (isChatGptAuthRequiredResponse(res, errorData, message === fallbackMessage ? "ChatGPT session" : message)) {
                     requestChatGptReauth({
                         message: normalizeChatGptAuthMessage(message),
                         source: "codex-refresh",
@@ -332,13 +334,13 @@ export default function CodexConfig({
             const data = await res.json();
             applyProfile(data);
             notify.success(
-                "Session refreshed",
-                "Your ChatGPT connection was renewed successfully."
+                "Sesión renovada",
+                "Tu conexión con ChatGPT se ha renovado correctamente."
             );
         } catch {
             notify.error(
-                "Session refresh failed",
-                "Your ChatGPT session could not be renewed. Please sign in again."
+                "Error al renovar la sesión",
+                "No se ha podido renovar tu sesión de ChatGPT. Vuelve a iniciar sesión."
             );
             setAuthStatus("unauthenticated");
             applyProfile({});
@@ -351,7 +353,7 @@ export default function CodexConfig({
         return (
             <div className="flex items-center gap-2 py-3 text-gray-400">
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span className="text-xs">Checking status…</span>
+                <span className="text-xs">Comprobando estado…</span>
             </div>
         );
     }
@@ -361,23 +363,23 @@ export default function CodexConfig({
             <div className="space-y-4">
                 <div className="flex items-center gap-3 py-2">
                     <Loader2 className="w-4 h-4 text-gray-500 animate-spin" />
-                    <span className="text-sm text-gray-600">Waiting for sign-in…</span>
+                    <span className="text-sm text-gray-600">Esperando el inicio de sesión…</span>
                     <button
                         onClick={handleCancelPolling}
                         className="text-xs text-gray-400 hover:text-gray-600 underline underline-offset-2 ml-auto"
                     >
-                        Cancel
+                        Cancelar
                     </button>
                 </div>
 
                 <div className="space-y-2">
                     <p className="text-xs text-gray-400">
-                        Paste redirect URL or code if not redirected automatically
+                        Pega la URL de redirección o el código si no se te redirige automáticamente
                     </p>
                     <div className="flex gap-2">
                         <input
                             type="text"
-                            placeholder="Paste URL or code…"
+                            placeholder="Pega la URL o el código…"
                             className="flex-1 px-2 py-2 outline-none border border-gray-300 rounded-lg text-xs focus:border-gray-400 transition-colors"
                             value={manualCode}
                             onChange={(e) => setManualCode(e.target.value)}
@@ -390,7 +392,7 @@ export default function CodexConfig({
                             {isExchanging ? (
                                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
                             ) : (
-                                "Submit"
+                                "Enviar"
                             )}
                         </button>
                     </div>
@@ -400,7 +402,7 @@ export default function CodexConfig({
     }
 
     if (authStatus === "authenticated") {
-        const planLabel = isPro === true ? "Pro" : isPro === false ? "Free" : "Unknown";
+        const planLabel = isPro === true ? "Pro" : isPro === false ? "Gratis" : "Desconocido";
 
         return (
             <div className="space-y-4">
@@ -409,7 +411,7 @@ export default function CodexConfig({
                     <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 min-w-0">
                             <p className="text-sm font-medium text-gray-800 truncate">
-                                {username || email || (accountId ? `Account ${accountId}` : "ChatGPT Account")}
+                                {username || email || (accountId ? `Cuenta ${accountId}` : "Cuenta de ChatGPT")}
                             </p>
 
                         </div>
@@ -419,13 +421,13 @@ export default function CodexConfig({
                         {!email && accountId && (
                             <p className="text-xs text-gray-500 truncate">ID: {accountId}</p>
                         )}
-                        <p className="text-xs text-gray-400">Signed in to ChatGPT</p>
+                        <p className="text-xs text-gray-400">Sesión iniciada en ChatGPT</p>
                     </div>
                     <div className="flex gap-1.5 shrink-0">
                         <button
                             onClick={handleRefreshToken}
                             disabled={isRefreshing}
-                            title="Refresh token"
+                            title="Renovar token"
                             className="w-8 h-8 flex items-center justify-center rounded-full bg-[#EDEEEF] hover:bg-[#E4E5E6] disabled:opacity-40 transition-colors"
                         >
                             {isRefreshing ? (
@@ -437,7 +439,7 @@ export default function CodexConfig({
                         <button
                             onClick={handleSignOut}
                             disabled={isLoggingOut}
-                            title="Sign out"
+                            title="Cerrar sesión"
                             className="w-8 h-8 flex items-center justify-center rounded-full bg-[#EDEEEF] hover:bg-[#E4E5E6] disabled:opacity-40 transition-colors"
                         >
                             {isLoggingOut ? (
@@ -451,7 +453,7 @@ export default function CodexConfig({
 
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Select GPT Model
+                        Seleccionar modelo GPT
                     </label>
                     <Popover open={openModelSelect} onOpenChange={setOpenModelSelect}>
                         <PopoverTrigger asChild>
@@ -464,7 +466,7 @@ export default function CodexConfig({
                                 <span className="text-sm text-gray-900">
                                     {codexModel
                                         ? (CODEX_MODELS.find((m) => m.id === codexModel)?.name ?? codexModel)
-                                        : "Select a model"}
+                                        : "Selecciona un modelo"}
                                 </span>
                                 <ChevronUp className="w-4 h-4 text-gray-400" />
                             </Button>
@@ -475,9 +477,9 @@ export default function CodexConfig({
                             style={{ width: "var(--radix-popover-trigger-width)" }}
                         >
                             <Command>
-                                <CommandInput placeholder="Search models…" />
+                                <CommandInput placeholder="Buscar modelos…" />
                                 <CommandList>
-                                    <CommandEmpty>No model found.</CommandEmpty>
+                                    <CommandEmpty>No se ha encontrado ningún modelo.</CommandEmpty>
                                     <CommandGroup>
                                         {CODEX_MODELS.map((model) => (
                                             <CommandItem
@@ -518,7 +520,7 @@ export default function CodexConfig({
             onClick={handleSignIn}
             className="mt-8 py-2.5 px-3.5 bg-[#EDEEEF] hover:bg-[#E4E5E6] rounded-[48px] text-xs font-semibold text-[#101323] transition-colors"
         >
-            Sign in with ChatGPT
+            Iniciar sesión con ChatGPT
         </button>
     );
 }

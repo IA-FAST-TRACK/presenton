@@ -282,7 +282,7 @@ export default function SmartHtmlSlide({
   html,
   fonts,
   fixedSize = false,
-  title = "Smart presentation slide",
+  title = "Diapositiva de presentación inteligente",
   executeScripts = true,
   showLoader = false,
 }: {

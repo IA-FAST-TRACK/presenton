@@ -671,7 +671,7 @@ def test_create_template_async_rejects_external_attachment_id(fake_async_session
         )
 
     assert exc.value.status_code == 400
-    assert "attachment ID cannot be used directly" in exc.value.detail
+    assert "directamente el ID de un adjunto" in exc.value.detail
     assert fake_async_session.added == []
     assert fake_async_session.commit_count == 0
 
@@ -748,7 +748,7 @@ def test_retry_create_template_rejects_non_failed_task(fake_async_session):
         )
 
     assert exc.value.status_code == 409
-    assert exc.value.detail == "Only failed template creation tasks can be retried"
+    assert exc.value.detail == "Solo se pueden reintentar tareas de creación de plantillas fallidas"
     assert fake_async_session.commit_count == 0
 
 
@@ -814,7 +814,7 @@ def test_mcp_template_upload_rejects_combined_binary_size(monkeypatch):
         asyncio.run(upload_template_assets_for_mcp(request))
 
     assert exc.value.status_code == 413
-    assert "Combined template upload" in exc.value.detail
+    assert "El total de la plantilla subida" in exc.value.detail
     handler.assert_not_awaited()
 
 
@@ -1172,7 +1172,7 @@ def test_get_template_theme_returns_404_for_missing_template(fake_async_session)
         )
 
     assert exc.value.status_code == 404
-    assert exc.value.detail == "Template not found"
+    assert exc.value.detail == "Plantilla no encontrada"
 
 
 def test_create_template_slide_layouts_returns_generated_layout(
@@ -1250,7 +1250,7 @@ def test_create_template_slide_layouts_rejects_invalid_index(
         )
 
     assert exc.value.status_code == 400
-    assert exc.value.detail == "Invalid slide index"
+    assert exc.value.detail == "Índice de diapositiva no válido"
 
 
 def test_create_template_slide_layouts_requires_slide_image(
@@ -1277,7 +1277,7 @@ def test_create_template_slide_layouts_requires_slide_image(
 
     assert exc.value.status_code == 400
     assert (
-        exc.value.detail == "Slide image URL is unavailable for requested slide index"
+        exc.value.detail == "La URL de la imagen de la diapositiva no está disponible para el índice solicitado"
     )
 
 
@@ -1341,7 +1341,7 @@ def test_create_template_slide_layouts_returns_404_for_missing_template(
         )
 
     assert exc.value.status_code == 404
-    assert exc.value.detail == "Template not found"
+    assert exc.value.detail == "Plantilla no encontrada"
 
 
 def test_generate_template_blocks_clusters_and_persists(fake_async_session):
@@ -1393,7 +1393,7 @@ def test_generate_template_blocks_requires_layouts(fake_async_session):
         )
 
     assert exc.value.status_code == 400
-    assert exc.value.detail == "Template layouts are unavailable"
+    assert exc.value.detail == "Los diseños de la plantilla no están disponibles"
     assert fake_async_session.commit_count == 0
 
 
@@ -1484,7 +1484,7 @@ def test_generate_template_layout_from_prompt_requires_layouts(
         )
 
     assert exc.value.status_code == 400
-    assert exc.value.detail == "Template layouts are unavailable"
+    assert exc.value.detail == "Los diseños de la plantilla no están disponibles"
     assert fake_async_session.commit_count == 0
 
 
@@ -1626,7 +1626,7 @@ def test_patch_template_slide_layout_rejects_invalid_index(fake_async_session):
         )
 
     assert exc.value.status_code == 400
-    assert exc.value.detail == "Invalid slide index"
+    assert exc.value.detail == "Índice de diapositiva no válido"
     assert fake_async_session.commit_count == 0
 
 
@@ -1658,7 +1658,7 @@ def test_patch_template_slide_layout_rejects_duplicate_layout_ids(
         )
 
     assert exc.value.status_code == 400
-    assert exc.value.detail == "Patched template layouts are invalid"
+    assert exc.value.detail == "Los diseños de plantilla modificados no son válidos"
     assert fake_async_session.commit_count == 0
 
 
@@ -1743,7 +1743,7 @@ def test_update_template_metadata_rejects_blank_name(fake_async_session):
         )
 
     assert exc.value.status_code == 400
-    assert exc.value.detail == "Template name is required"
+    assert exc.value.detail == "Se requiere el nombre de la plantilla"
     assert template.name == "Custom"
     assert fake_async_session.commit_count == 0
 
@@ -1892,7 +1892,7 @@ def test_update_template_rejects_path_body_id_mismatch(fake_async_session):
         )
 
     assert exc.value.status_code == 400
-    assert exc.value.detail == "Template ID in path does not match request body ID"
+    assert exc.value.detail == "El ID de plantilla de la ruta no coincide con el ID del cuerpo de la solicitud"
     assert fake_async_session.commit_count == 0
 
 
@@ -1939,4 +1939,4 @@ def test_get_template_returns_404_for_missing_template(fake_async_session):
         )
 
     assert exc.value.status_code == 404
-    assert exc.value.detail == "Template not found"
+    assert exc.value.detail == "Plantilla no encontrada"

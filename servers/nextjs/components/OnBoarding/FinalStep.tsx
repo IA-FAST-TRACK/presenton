@@ -95,15 +95,15 @@ const FinalStep = () => {
         <div className='fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center'>
             <div className='flex flex-col items-center justify-center'>
 
-                <img src="/final_onboarding.png" alt="presenton" className='w-[118px] h-[98px]  object-contain' />
-                <h1 className='text-black text-[30px] font-normal font-syne py-2.5'>Welcome on board!</h1>
-                <p className='text-[#000000CC] text-xl font-normal font-syne'>You’re all set. Let’s create your first presentation.</p>
+                <img src="/final_onboarding.png" alt="Presenton" className='w-[118px] h-[98px]  object-contain' />
+                <h1 className='text-black text-[30px] font-normal font-syne py-2.5'>¡Te damos la bienvenida!</h1>
+                <p className='text-[#000000CC] text-xl font-normal font-syne'>Ya está todo listo. Vamos a crear tu primera presentación.</p>
 
                 {trackingEnabled !== null && (
                     <div className='flex items-center gap-3 mt-8 px-5 py-3.5 rounded-[10px] border border-[#EDEEEF] bg-white'>
                         <div>
-                            <p className='text-sm font-medium text-[#191919] font-syne'>Usage analytics</p>
-                            <p className='text-[11px] text-[#9CA3AF] font-syne leading-tight mt-0.5'>Help improve Presenton by sharing anonymous usage data.</p>
+                            <p className='text-sm font-medium text-[#191919] font-syne'>Analítica de uso</p>
+                            <p className='text-[11px] text-[#9CA3AF] font-syne leading-tight mt-0.5'>Ayuda a mejorar Presenton compartiendo datos de uso anónimos.</p>
                         </div>
                         <Switch
                             checked={trackingEnabled}
@@ -113,12 +113,12 @@ const FinalStep = () => {
                     </div>
                 )}
 
-                <button onClick={handleGoToUpload} className='bg-[#7C51F8] px-[23px] mt-8 py-[15px]  rounded-[70px] text-white text-lg font-syne font-semibold'>My First Presentation 🚀</button>
+                <button onClick={handleGoToUpload} className='bg-[#7C51F8] px-[23px] mt-8 py-[15px]  rounded-[70px] text-white text-lg font-syne font-semibold'>Mi primera presentación 🚀</button>
                 <button onClick={fireRealisticConfetti} className='mt-3 flex items-center gap-1.5 text-sm text-[#7A5AF8] font-syne font-medium hover:underline'>
-                    <PartyPopper className='w-4 h-4' /> Celebrate again!
+                    <PartyPopper className='w-4 h-4' /> ¡Celébralo otra vez!
                 </button>
             </div>
-            <button onClick={handleGoToDashboard} className='absolute uppercase bottom-20 text-[#7A5AF8] flex items-center gap-2 right-10  text-xs font-normal font-syne'>Go to your dashboard <ArrowRight className='w-4 h-4 text-[#7A5AF8]' /></button>
+            <button onClick={handleGoToDashboard} className='absolute uppercase bottom-20 text-[#7A5AF8] flex items-center gap-2 right-10  text-xs font-normal font-syne'>Ir a tu panel <ArrowRight className='w-4 h-4 text-[#7A5AF8]' /></button>
         </div>
     )
 }

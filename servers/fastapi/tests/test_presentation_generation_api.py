@@ -465,7 +465,7 @@ class TestPresentationGenerationAPI:
             )
 
         assert exc.value.status_code == 400
-        assert exc.value.detail == "Number of slides must be greater than 0"
+        assert exc.value.detail == "El número de diapositivas debe ser mayor que 0"
 
     def test_generate_presentation_with_invalid_export_type(self):
         with pytest.raises(ValidationError):

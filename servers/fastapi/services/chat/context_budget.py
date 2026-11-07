@@ -163,7 +163,7 @@ class ChatContextBudget:
                 if window <= 0:
                     raise ValueError
             except ValueError:
-                raise HTTPException(status_code=400, detail="LLM_CONTEXT_WINDOW must be a positive integer.") from None
+                raise HTTPException(status_code=400, detail="LLM_CONTEXT_WINDOW debe ser un número entero positivo.") from None
         else:
             # Unknown aliases get a provisional assumption, never the SDK's
             # unrelated 4,000-token unknown-model fallback. Deployments can
@@ -172,7 +172,7 @@ class ChatContextBudget:
         reasoning = prepared.reasoning.budget_tokens or 0
         minimum = max(min(1024, prepared.max_output_tokens), reasoning + 512 if reasoning else 0)
         if minimum > prepared.max_output_tokens:
-            raise HTTPException(status_code=400, detail="Max output tokens must leave room for an answer after the configured reasoning token budget.")
+            raise HTTPException(status_code=400, detail="El máximo de tokens de salida debe dejar margen para una respuesta tras el presupuesto de tokens de razonamiento configurado.")
         return cls(window, prepared.max_output_tokens, minimum)
 
     def prepare(self, messages: list[Message], tools: list[Any] | None) -> dict[str, Any]:

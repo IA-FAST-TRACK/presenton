@@ -301,10 +301,10 @@ def test_generate_ppt_outline_emits_provider_aware_external_search_statuses():
         if isinstance(chunk, outline_module.OutlineGenerationStatus)
     ]
     assert statuses == [
-        "Analyzing your topic for web research",
-        "Searching with SearXNG: current Nepal PM",
-        "Web research complete",
-        "Drafting your presentation outline",
+        "Analizando tu tema para la investigación web",
+        "Buscando con SearXNG: current Nepal PM",
+        "Investigación web completada",
+        "Redactando el esquema de tu presentación",
     ]
 
 
@@ -339,7 +339,7 @@ def test_generate_ppt_outline_emits_model_native_search_status():
         if isinstance(chunk, outline_module.OutlineGenerationStatus)
     ]
     assert statuses == [
-        "Searching with model-native web search and drafting outlines"
+        "Buscando con la búsqueda web nativa del modelo y redactando el esquema"
     ]
 
 

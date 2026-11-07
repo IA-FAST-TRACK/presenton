@@ -99,7 +99,7 @@ const SlideContent = ({
                     aria-hidden="true"
                   />
                   <span className="text-[13px] font-normal leading-[14px] tracking-[0.39px] text-[#666666]">
-                    Updating slides...
+                    Actualizando diapositivas...
                   </span>
                 </span>
               </span>

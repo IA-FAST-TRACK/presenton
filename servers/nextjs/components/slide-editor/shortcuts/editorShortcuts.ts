@@ -56,119 +56,119 @@ const ARROW_KEY_LABELS: Partial<Record<EditorShortcutKey, string>> = {
 export const EDITOR_SHORTCUT_SECTIONS: EditorShortcutSection[] = [
   {
     id: "selection",
-    title: "Selection",
-    description: "Select and organize objects on the active slide.",
+    title: "Selección",
+    description: "Selecciona y organiza objetos en la diapositiva activa.",
     shortcuts: [
       {
         id: "multi-select",
-        label: "Add to selection",
-        description: "Hold Shift while clicking to add or remove an object.",
+        label: "Añadir a la selección",
+        description: "Mantén pulsada Mayús al hacer clic para añadir o quitar un objeto.",
         chords: [["Shift", "Click"]],
       },
       {
         id: "group",
-        label: "Group objects",
-        description: "Combine two or more selected objects into one group.",
+        label: "Agrupar objetos",
+        description: "Combina dos o más objetos seleccionados en un grupo.",
         chords: [["Mod", "G"]],
       },
       {
         id: "delete",
-        label: "Delete selection",
-        description: "Remove the selected object or objects from the slide.",
+        label: "Eliminar selección",
+        description: "Quita de la diapositiva el objeto u objetos seleccionados.",
         chords: [["Backspace"], ["Delete"]],
       },
     ],
   },
   {
     id: "editing",
-    title: "Editing",
-    description: "Common editing commands for slide objects.",
+    title: "Edición",
+    description: "Comandos de edición habituales para los objetos de la diapositiva.",
     shortcuts: [
       {
         id: "undo",
-        label: "Undo",
-        description: "Undo the last change made on the active slide.",
+        label: "Deshacer",
+        description: "Deshace el último cambio realizado en la diapositiva activa.",
         chords: [["Mod", "Z"]],
       },
       {
         id: "redo",
-        label: "Redo",
-        description: "Restore the most recently undone slide change.",
+        label: "Rehacer",
+        description: "Restaura el último cambio deshecho en la diapositiva.",
         chords: [["Mod", "Shift", "Z"], ["Mod", "Y"]],
       },
       {
         id: "copy",
-        label: "Copy selection",
-        description: "Copy the selected object or objects.",
+        label: "Copiar selección",
+        description: "Copia el objeto u objetos seleccionados.",
         chords: [["Mod", "C"]],
       },
       {
         id: "paste",
-        label: "Paste",
-        description: "Paste copied objects with a small position offset.",
+        label: "Pegar",
+        description: "Pega los objetos copiados con un pequeño desplazamiento.",
         chords: [["Mod", "V"]],
       },
     ],
   },
   {
     id: "arrange",
-    title: "Arrange",
-    description: "Change the selected object’s layer position.",
+    title: "Organizar",
+    description: "Cambia la posición de capa del objeto seleccionado.",
     shortcuts: [
       {
         id: "bring-forward",
-        label: "Bring forward",
-        description: "Move the selected object forward by one layer.",
+        label: "Traer adelante",
+        description: "Adelanta una capa el objeto seleccionado.",
         chords: [["Alt", "K"]],
       },
       {
         id: "bring-to-front",
-        label: "Bring to front",
-        description: "Move the selected object above every other object.",
+        label: "Traer al frente",
+        description: "Coloca el objeto seleccionado por encima de todos los demás.",
         chords: [["Shift", "Alt", "K"]],
       },
       {
         id: "send-backward",
-        label: "Send backward",
-        description: "Move the selected object backward by one layer.",
+        label: "Enviar atrás",
+        description: "Retrasa una capa el objeto seleccionado.",
         chords: [["Alt", "J"]],
       },
       {
         id: "send-to-back",
-        label: "Send to back",
-        description: "Move the selected object behind every other object.",
+        label: "Enviar al fondo",
+        description: "Coloca el objeto seleccionado detrás de todos los demás.",
         chords: [["Shift", "Alt", "J"]],
       },
     ],
   },
   {
     id: "navigation",
-    title: "Slide navigation",
-    description: "Move between slides without leaving the canvas.",
+    title: "Navegación entre diapositivas",
+    description: "Muévete entre diapositivas sin salir del lienzo.",
     shortcuts: [
       {
         id: "previous-slide",
-        label: "Previous slide",
-        description: "Open the slide before the active slide.",
+        label: "Diapositiva anterior",
+        description: "Abre la diapositiva anterior a la activa.",
         chords: [["ArrowLeft"], ["ArrowUp"]],
       },
       {
         id: "next-slide",
-        label: "Next slide",
-        description: "Open the slide after the active slide.",
+        label: "Diapositiva siguiente",
+        description: "Abre la diapositiva posterior a la activa.",
         chords: [["ArrowRight"], ["ArrowDown"]],
       },
     ],
   },
   {
     id: "help",
-    title: "Help",
-    description: "Quickly return to this reference.",
+    title: "Ayuda",
+    description: "Vuelve rápidamente a esta referencia.",
     shortcuts: [
       {
         id: "shortcut-help",
-        label: "Keyboard shortcuts",
-        description: "Open this keyboard-shortcuts guide.",
+        label: "Atajos de teclado",
+        description: "Abre esta guía de atajos de teclado.",
         chords: [["?"]],
       },
     ],
@@ -187,9 +187,12 @@ export function shortcutKeyLabel(
 ) {
   const arrowLabel = ARROW_KEY_LABELS[key];
   if (arrowLabel) return arrowLabel;
+  if (key === "Click") return "Clic";
 
   if (!applePlatform) {
     if (key === "Mod") return "Ctrl";
+    if (key === "Shift") return "Mayús";
+    if (key === "Delete") return "Supr";
     return key;
   }
 

@@ -88,7 +88,7 @@ def community_upstream_http_error(
     payload: Any = None,
     *,
     not_found_message: str = (
-        "The requested community presentation was not found or is no longer shared."
+        "La presentación de la comunidad solicitada no se ha encontrado o ya no está compartida."
     ),
 ) -> HTTPException:
     upstream_message = extract_community_upstream_message(payload)
@@ -105,7 +105,7 @@ def community_upstream_http_error(
             upstream_status,
             code="community_request_rejected",
             message=upstream_message
-            or "The Community service could not process this request.",
+            or "El servicio de la comunidad no ha podido procesar esta solicitud.",
             retryable=False,
         )
     if upstream_status == 429:
@@ -113,7 +113,7 @@ def community_upstream_http_error(
             429,
             code="community_rate_limited",
             message=upstream_message
-            or "The Community service is receiving too many requests. Please try again shortly.",
+            or "El servicio de la comunidad está recibiendo demasiadas solicitudes. Inténtalo de nuevo en breve.",
             retryable=True,
         )
     if upstream_status in {401, 403}:
@@ -121,8 +121,8 @@ def community_upstream_http_error(
             502,
             code="community_service_authentication_failed",
             message=(
-                "The Community service rejected the server connection. "
-                "Please check the Community service configuration."
+                "El servicio de la comunidad ha rechazado la conexión del servidor. "
+                "Revisa la configuración del servicio de la comunidad."
             ),
             retryable=False,
         )
@@ -131,8 +131,8 @@ def community_upstream_http_error(
             503,
             code="community_service_unavailable",
             message=(
-                f"The Community service is temporarily unavailable "
-                f"(upstream status {upstream_status}). Please try again later."
+                f"El servicio de la comunidad no está disponible temporalmente "
+                f"(estado de origen {upstream_status}). Inténtalo de nuevo más tarde."
             ),
             retryable=True,
         )
@@ -140,8 +140,8 @@ def community_upstream_http_error(
         502,
         code="community_upstream_error",
         message=(
-            f"The Community service returned an unexpected response "
-            f"(upstream status {upstream_status}). Please try again."
+            f"El servicio de la comunidad ha devuelto una respuesta inesperada "
+            f"(estado de origen {upstream_status}). Inténtalo de nuevo."
         ),
         retryable=True,
     )
@@ -152,7 +152,7 @@ def require_community_enabled() -> None:
         raise community_http_error(
             404,
             code="community_disabled",
-            message="Community is disabled for this deployment.",
+            message="La comunidad está desactivada en este despliegue.",
             retryable=False,
         )
 
@@ -181,12 +181,12 @@ def normalize_community_ids(values: Sequence[int] | None) -> list[int]:
         except (TypeError, ValueError) as exc:
             raise HTTPException(
                 status_code=422,
-                detail="Community reference IDs must be positive integers",
+                detail="Los ID de referencia de la comunidad deben ser números enteros positivos",
             ) from exc
         if community_id <= 0:
             raise HTTPException(
                 status_code=422,
-                detail="Community reference IDs must be positive integers",
+                detail="Los ID de referencia de la comunidad deben ser números enteros positivos",
             )
         if community_id not in normalized:
             normalized.append(community_id)
@@ -195,8 +195,8 @@ def normalize_community_ids(values: Sequence[int] | None) -> list[int]:
         raise HTTPException(
             status_code=422,
             detail=(
-                f"A maximum of {MAX_COMMUNITY_REFERENCES} community references "
-                "can be used"
+                f"Se puede usar un máximo de {MAX_COMMUNITY_REFERENCES} "
+                "referencias de la comunidad"
             ),
         )
     return normalized
@@ -208,7 +208,7 @@ async def _cloud_get(path: str, params: dict[str, Any] | None = None) -> Any:
         raise community_http_error(
             422,
             code="community_presentation_id_invalid",
-            message="The community presentation ID must be a positive integer.",
+            message="El ID de la presentación de la comunidad debe ser un número entero positivo.",
             retryable=False,
         )
     url = f"{get_community_api_url()}{path}"
@@ -225,8 +225,8 @@ async def _cloud_get(path: str, params: dict[str, Any] | None = None) -> Any:
                         502,
                         code="community_redirect_not_allowed",
                         message=(
-                            "The Community service redirected this request. "
-                            "Configure its final API URL in PRESENTON_COMMUNITY_API_URL."
+                            "El servicio de la comunidad ha redirigido esta solicitud. "
+                            "Configura su URL final de la API en PRESENTON_COMMUNITY_API_URL."
                         ),
                         retryable=False,
                     )
@@ -235,12 +235,12 @@ async def _cloud_get(path: str, params: dict[str, Any] | None = None) -> Any:
                         response.status,
                         await response.read(),
                         not_found_message=(
-                            "The requested community presentation was not found "
-                            "or is no longer shared."
+                            "La presentación de la comunidad solicitada no se ha encontrado "
+                            "o ya no está compartida."
                             if path
                             else (
-                                "The Community gallery endpoint was not found. "
-                                "Check PRESENTON_COMMUNITY_API_URL."
+                                "No se ha encontrado el endpoint de la galería de la comunidad. "
+                                "Revisa PRESENTON_COMMUNITY_API_URL."
                             )
                         ),
                     )
@@ -252,8 +252,8 @@ async def _cloud_get(path: str, params: dict[str, Any] | None = None) -> Any:
                         502,
                         code="community_invalid_response",
                         message=(
-                            "The Community service returned an unreadable response. "
-                            "Please try again."
+                            "El servicio de la comunidad ha devuelto una respuesta ilegible. "
+                            "Inténtalo de nuevo."
                         ),
                         retryable=True,
                     ) from exc
@@ -264,8 +264,8 @@ async def _cloud_get(path: str, params: dict[str, Any] | None = None) -> Any:
             500,
             code="community_service_url_invalid",
             message=(
-                "The Community service URL is invalid. "
-                "Check PRESENTON_COMMUNITY_API_URL."
+                "La URL del servicio de la comunidad no es válida. "
+                "Revisa PRESENTON_COMMUNITY_API_URL."
             ),
             retryable=False,
         ) from exc
@@ -274,8 +274,8 @@ async def _cloud_get(path: str, params: dict[str, Any] | None = None) -> Any:
             504,
             code="community_service_timeout",
             message=(
-                "The Community service did not respond within 30 seconds. "
-                "Please try again."
+                "El servicio de la comunidad no ha respondido en 30 segundos. "
+                "Inténtalo de nuevo."
             ),
             retryable=True,
         ) from exc
@@ -284,8 +284,8 @@ async def _cloud_get(path: str, params: dict[str, Any] | None = None) -> Any:
             503,
             code="community_service_unreachable",
             message=(
-                "Could not connect to the Community service. "
-                "Check this server's network access and Community service URL."
+                "No se ha podido conectar con el servicio de la comunidad. "
+                "Revisa el acceso a la red de este servidor y la URL del servicio de la comunidad."
             ),
             retryable=True,
         ) from exc
@@ -294,8 +294,8 @@ async def _cloud_get(path: str, params: dict[str, Any] | None = None) -> Any:
             502,
             code="community_request_failed",
             message=(
-                "The request to the Community service failed before a valid "
-                "response was received. Please try again."
+                "La solicitud al servicio de la comunidad ha fallado antes de recibir "
+                "una respuesta válida. Inténtalo de nuevo."
             ),
             retryable=True,
         ) from exc
@@ -342,8 +342,8 @@ async def list_community_presentations(
             502,
             code="community_invalid_list_response",
             message=(
-                "The Community service returned an invalid presentation list. "
-                "Please try again."
+                "El servicio de la comunidad ha devuelto una lista de presentaciones no válida. "
+                "Inténtalo de nuevo."
             ),
             retryable=True,
         )
@@ -356,7 +356,7 @@ async def get_community_presentation(community_id: int) -> dict[str, Any]:
         raise community_http_error(
             422,
             code="community_presentation_id_invalid",
-            message="The community presentation ID must be a positive integer.",
+            message="El ID de la presentación de la comunidad debe ser un número entero positivo.",
             retryable=False,
         )
     payload = await _cloud_get(f"/{community_id}")
@@ -365,8 +365,8 @@ async def get_community_presentation(community_id: int) -> dict[str, Any]:
             502,
             code="community_invalid_presentation_response",
             message=(
-                "The Community service returned invalid presentation data. "
-                "Please try again."
+                "El servicio de la comunidad ha devuelto datos de presentación no válidos. "
+                "Inténtalo de nuevo."
             ),
             retryable=True,
         )
@@ -391,8 +391,8 @@ async def load_community_references(
                 422,
                 code="community_reference_has_no_slides",
                 message=(
-                    f"Community presentation {community_id} does not contain "
-                    "usable slide designs. Choose another presentation."
+                    f"La presentación de la comunidad {community_id} no contiene "
+                    "diseños de diapositiva utilizables. Elige otra presentación."
                 ),
                 retryable=False,
             )

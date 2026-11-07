@@ -49,26 +49,26 @@ import { ChartColorPaletteCard } from "@/components/slide-editor/charts/ChartCol
 import { TemplateV2ChartJsElement } from "@/components/slide-editor/charts/TemplateV2ChartJsElement";
 
 const CHART_TYPES: Array<{ label: string; value: ChartType }> = [
-  { label: "Bar Chart", value: "bar" },
-  { label: "Horizontal Bar", value: "horizontal_bar" },
-  { label: "Stacked Bar", value: "stacked_bar" },
-  { label: "Horizontal Stack Bar", value: "horizontal_stacked_bar" },
-  { label: "Line Chart", value: "line" },
-  { label: "Area Chart", value: "area" },
-  { label: "Pie Chart", value: "pie" },
-  { label: "Donut Chart", value: "donut" },
-  { label: "Scatter Chart", value: "scatter" },
-  { label: "Radar Chart", value: "radar" },
-  { label: "Polar Area", value: "polar_area" },
+  { label: "Gráfico de barras", value: "bar" },
+  { label: "Barras horizontales", value: "horizontal_bar" },
+  { label: "Barras apiladas", value: "stacked_bar" },
+  { label: "Barras apiladas horizontales", value: "horizontal_stacked_bar" },
+  { label: "Gráfico de líneas", value: "line" },
+  { label: "Gráfico de áreas", value: "area" },
+  { label: "Gráfico circular", value: "pie" },
+  { label: "Gráfico de anillo", value: "donut" },
+  { label: "Gráfico de dispersión", value: "scatter" },
+  { label: "Gráfico de radar", value: "radar" },
+  { label: "Área polar", value: "polar_area" },
 ];
 const DATA_LABEL_TABS: Array<{
   label: string;
   value: DataLabelPosition;
 }> = [
   { label: "Base", value: "base" },
-  { label: "Middle", value: "mid" },
-  { label: "Top", value: "top" },
-  { label: "Outside", value: "outside" },
+  { label: "Centro", value: "mid" },
+  { label: "Arriba", value: "top" },
+  { label: "Fuera", value: "outside" },
 ];
 const DATA_MODAL_CHART_PREVIEW_WIDTH = 215;
 const DATA_MODAL_CHART_PREVIEW_HEIGHT = 180;
@@ -97,12 +97,12 @@ export function ChartEditorContent({
       >
         <div className="mb-6 flex items-center justify-between gap-4">
           <h3 className="text-[15px] font-semibold leading-5 text-[#101323]">
-            Edit Charts
+            Editar gráficos
           </h3>
           {onClose ? (
             <button
               type="button"
-              aria-label="Close chart editor"
+              aria-label="Cerrar editor de gráficos"
               className="grid h-8 w-8 place-items-center rounded-full text-[#191919] transition hover:bg-[#F5F5F7]"
               onClick={onClose}
             >
@@ -112,7 +112,7 @@ export function ChartEditorContent({
         </div>
 
         <label className="mb-2 block text-[12px] font-medium text-[#686873]">
-          Chart type
+          Tipo de gráfico
         </label>
         <ChartTypeSelect
           value={chart.chart_type}
@@ -131,7 +131,7 @@ export function ChartEditorContent({
                 }`}
               onClick={() => setTab("data")}
             >
-              Data
+              Datos
             </button>
             <button
               type="button"
@@ -141,7 +141,7 @@ export function ChartEditorContent({
                 }`}
               onClick={() => setTab("customize")}
             >
-              Customize
+              Personalizar
             </button>
           </div>
 
@@ -181,7 +181,7 @@ function ChartTypeSelect({
     <div className="relative">
       <BarChart3 className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#191919]" />
       <select
-        aria-label="Chart type"
+        aria-label="Tipo de gráfico"
         className={`${compact ? "h-9 rounded-lg pl-10 pr-9 text-[12px]" : "h-12 rounded-xl pl-11 pr-10 text-[13px]"} w-full appearance-none border border-[#E6E6EA] bg-white font-medium text-[#191919] outline-none transition focus:border-[#7C51F8]`}
         value={value}
         onChange={(event) => onChange(event.target.value as ChartType)}
@@ -228,16 +228,16 @@ function DataLabelsControl({
   return (
     <div className="space-y-2">
       <div className="flex min-h-6 items-center justify-between gap-3 text-[12px] font-medium text-[#191919]">
-        <span>Data labels</span>
+        <span>Etiquetas de datos</span>
         <CompactSwitch
           checked={enabled}
-          label="Data labels"
+          label="Etiquetas de datos"
           onChange={setEnabled}
         />
       </div>
       <div
         role="tablist"
-        aria-label="Data label position"
+        aria-label="Posición de las etiquetas de datos"
         className={`grid grid-cols-4 rounded-lg bg-[#F3F4F7] p-1 transition ${enabled ? "" : "opacity-55"}`}
       >
         {DATA_LABEL_TABS.map((item) => {
@@ -284,7 +284,7 @@ function ChartDataPanel({
         onClick={onOpenDataModal}
       >
         <Pencil size={15} strokeWidth={2} />
-        Edit data
+        Editar datos
       </button>
     </div>
   );
@@ -372,16 +372,16 @@ function ChartCustomizePanel({
         compact={compact}
         defaultOpen={defaultTextOpen}
         icon={<Type size={17} />}
-        label="Text"
+        label="Texto"
       >
         <TextField
-          label="Title"
-          placeholder="Chart title"
+          label="Título"
+          placeholder="Título del gráfico"
           value={chart.title ?? ""}
           onChange={(title) => onChange({ ...chart, title: title || null })}
         />
         <ColorRow
-          label="Title color"
+          label="Color del título"
           value={chart.title_color ?? "344054"}
           onChange={(titleColor) =>
             onChange({ ...chart, title_color: titleColor })
@@ -400,16 +400,16 @@ function ChartCustomizePanel({
           <AccordionSection
             compact={compact}
             icon={<BarChart3 size={17} />}
-            label="X Axis"
+            label="Eje X"
           >
             <ToggleRow
               checked={chart.x_axis ?? true}
-              label="Show axis"
+              label="Mostrar eje"
               onChange={(xAxis) => onChange({ ...chart, x_axis: xAxis })}
             />
             <TextField
-              label="Title"
-              placeholder="X-axis title"
+              label="Título"
+              placeholder="Título del eje X"
               value={chart.x_axis_title ?? ""}
               onChange={(xAxisTitle) =>
                 onChange({ ...chart, x_axis_title: xAxisTitle || null })
@@ -417,7 +417,7 @@ function ChartCustomizePanel({
             />
             <ToggleRow
               checked={chart.x_axis_grid ?? true}
-              label="Show grid"
+              label="Mostrar cuadrícula"
               onChange={(xAxisGrid) =>
                 onChange({ ...chart, x_axis_grid: xAxisGrid })
               }
@@ -426,16 +426,16 @@ function ChartCustomizePanel({
           <AccordionSection
             compact={compact}
             icon={<BarChart3 size={17} />}
-            label="Y Axis"
+            label="Eje Y"
           >
             <ToggleRow
               checked={chart.y_axis ?? true}
-              label="Show axis"
+              label="Mostrar eje"
               onChange={(yAxis) => onChange({ ...chart, y_axis: yAxis })}
             />
             <TextField
-              label="Title"
-              placeholder="Y-axis title"
+              label="Título"
+              placeholder="Título del eje Y"
               value={chart.y_axis_title ?? ""}
               onChange={(yAxisTitle) =>
                 onChange({ ...chart, y_axis_title: yAxisTitle || null })
@@ -443,7 +443,7 @@ function ChartCustomizePanel({
             />
             <ToggleRow
               checked={chart.y_axis_grid ?? true}
-              label="Show grid"
+              label="Mostrar cuadrícula"
               onChange={(yAxisGrid) =>
                 onChange({ ...chart, y_axis_grid: yAxisGrid })
               }
@@ -457,16 +457,16 @@ function ChartCustomizePanel({
           <AccordionSection
             compact={compact}
             icon={<BarChart3 size={17} />}
-            label="X Axis"
+            label="Eje X"
           >
             <ToggleRow
               checked={chart.x_axis ?? true}
-              label="Category labels"
+              label="Etiquetas de categoría"
               onChange={(xAxis) => onChange({ ...chart, x_axis: xAxis })}
             />
             <ToggleRow
               checked={chart.x_axis_grid ?? true}
-              label="Spokes"
+              label="Radios"
               onChange={(xAxisGrid) =>
                 onChange({ ...chart, x_axis_grid: xAxisGrid })
               }
@@ -475,16 +475,16 @@ function ChartCustomizePanel({
           <AccordionSection
             compact={compact}
             icon={<BarChart3 size={17} />}
-            label="Y Axis"
+            label="Eje Y"
           >
             <ToggleRow
               checked={chart.y_axis ?? true}
-              label="Value labels"
+              label="Etiquetas de valor"
               onChange={(yAxis) => onChange({ ...chart, y_axis: yAxis })}
             />
             <ToggleRow
               checked={chart.y_axis_grid ?? true}
-              label="Rings"
+              label="Anillos"
               onChange={(yAxisGrid) =>
                 onChange({ ...chart, y_axis_grid: yAxisGrid })
               }
@@ -496,16 +496,16 @@ function ChartCustomizePanel({
       <AccordionSection
         compact={compact}
         icon={<Settings size={17} />}
-        label="Settings"
+        label="Ajustes"
       >
         <ToggleRow
           checked={showLegend}
-          label="Show legend"
+          label="Mostrar leyenda"
           onChange={(legend) => onChange({ ...chart, legend })}
         />
         {showLegend ? (
           <ColorRow
-            label="Legend color"
+            label="Color de la leyenda"
             value={chart.legend_color ?? "475467"}
             onChange={(legendColor) =>
               onChange({ ...chart, legend_color: legendColor })
@@ -516,14 +516,14 @@ function ChartCustomizePanel({
         {hasAxes ? (
           <>
             <ColorRow
-              label="Axis color"
+              label="Color de los ejes"
               value={chart.axis_color ?? "9AA7BD"}
               onChange={(axisColor) =>
                 onChange({ ...chart, axis_color: axisColor })
               }
             />
             <ColorRow
-              label="Grid color"
+              label="Color de la cuadrícula"
               value={chart.grid_color ?? chart.axis_color ?? "D0D5DD"}
               onChange={(gridColor) =>
                 onChange({ ...chart, grid_color: gridColor })
@@ -570,7 +570,7 @@ function ChartSeriesColorControls({
           <button
             type="button"
             key={`${target.mode}-${target.index}`}
-            aria-label={`Change chart color ${target.index + 1}`}
+            aria-label={`Cambiar color del gráfico ${target.index + 1}`}
             className={`grid h-8 w-8 place-items-center rounded-full border bg-white p-1 transition ${paletteAnchor?.index === target.index
               ? "border-[#7C51F8] ring-2 ring-[#E9E2FF]"
               : "border-[#E6E6EA] hover:border-[#B8A3F8]"
@@ -582,7 +582,7 @@ function ChartSeriesColorControls({
                 swatchRefs.current.delete(target.index);
               }
             }}
-            title={`Chart color ${target.index + 1}`}
+            title={`Color del gráfico ${target.index + 1}`}
             onClick={() =>
               setPaletteAnchor((current) => {
                 if (current?.index === target.index) return null;
@@ -603,9 +603,9 @@ function ChartSeriesColorControls({
         {targets.length < 12 ? (
           <button
             type="button"
-            aria-label="Add chart color"
+            aria-label="Añadir color al gráfico"
             className="grid h-8 w-8 place-items-center rounded-full border border-dashed border-[#B8A3F8] bg-white text-[#7C51F8] transition hover:bg-[#F7F3FF]"
-            title="Add chart color"
+            title="Añadir color al gráfico"
             onClick={() => onChange(appendChartColorTarget(chart))}
           >
             <Plus size={15} strokeWidth={2.2} />
@@ -961,10 +961,10 @@ function ChartDataModal({
           <header className="flex h-[70px] shrink-0 items-center justify-between border-b border-[#ECECF1] px-5">
             <div>
               <h2 className="text-[15px] font-semibold text-[#191919]">
-                Edit Data Table
+                Editar tabla de datos
               </h2>
               <p className="mt-1 text-[11px] text-[#8B8B94]">
-                Edit Data Table
+                Edita los valores y categorías del gráfico
               </p>
             </div>
             <div className="flex items-center gap-2">
@@ -978,7 +978,7 @@ function ChartDataModal({
                 }
               >
                 <Trash2 size={14} strokeWidth={2} />
-                Clear data
+                Borrar datos
               </button>
               <button
                 type="button"
@@ -988,7 +988,7 @@ function ChartDataModal({
                   onClose();
                 }}
               >
-                Save
+                Guardar
               </button>
             </div>
           </header>
@@ -996,7 +996,7 @@ function ChartDataModal({
           <div className="flex min-h-0 flex-1 overflow-hidden">
             <aside className="min-h-0 w-[255px] shrink-0 overflow-y-auto overscroll-contain border-r border-[#ECECF1] px-4 py-4 hide-scrollbar">
               <label className="mb-2 block text-[12px] font-medium text-[#191919]">
-                Charts
+                Gráficos
               </label>
               <ChartTypeSelect
                 compact
@@ -1072,7 +1072,7 @@ function ChartDataModal({
         </div>
         <button
           type="button"
-          aria-label="Close data editor"
+          aria-label="Cerrar editor de datos"
           className="absolute -right-14 top-0 grid h-11 w-11 place-items-center rounded-full bg-white text-[#191919] shadow-sm transition hover:bg-[#F7F7FA]"
           onClick={onClose}
         >
@@ -1307,7 +1307,7 @@ function EditableDataTable({
           />
           <button
             type="button"
-            aria-label="Delete selected series"
+            aria-label="Eliminar serie seleccionada"
             className="grid h-7 w-7 shrink-0 place-items-center border-l border-[#ECECF1] text-[#191919] disabled:cursor-not-allowed disabled:opacity-30"
             disabled={safeSeries.length <= 1}
             onClick={() => deleteSeries(selectedSeriesIndex)}
@@ -1317,7 +1317,7 @@ function EditableDataTable({
           <button
             type="button"
             aria-expanded={columnMenuOpen}
-            aria-label="More column actions"
+            aria-label="Más acciones de columna"
             className="grid h-7 w-5 shrink-0 place-items-center text-[#191919]"
             onClick={() => setColumnMenuOpen((current) => !current)}
           >
@@ -1333,7 +1333,7 @@ function EditableDataTable({
         >
           <ColumnMenuItem
             icon={<Trash2 size={16} />}
-            label="Delete Row"
+            label="Eliminar fila"
             disabled={safeCategories.length <= 1}
             onClick={() => {
               deleteRow(selectedRowIndex);
@@ -1342,13 +1342,13 @@ function EditableDataTable({
           />
           <ColumnMenuItem
             icon={<Trash2 size={16} />}
-            label="Delete Column"
+            label="Eliminar columna"
             disabled={safeSeries.length <= 1}
             onClick={() => deleteSeries(selectedSeriesIndex)}
           />
           <ColumnMenuItem
             icon={<Plus size={16} />}
-            label="Add Row"
+            label="Añadir fila"
             onClick={() => {
               addRow();
               setColumnMenuOpen(false);
@@ -1356,7 +1356,7 @@ function EditableDataTable({
           />
           <ColumnMenuItem
             icon={<Plus size={16} />}
-            label="Add Column"
+            label="Añadir columna"
             disabled={!allowMultipleSeries}
             onClick={() => {
               addSeries();
@@ -1366,13 +1366,13 @@ function EditableDataTable({
           <div className="my-2 h-px bg-[#ECECF1]" />
           <ColumnMenuItem
             icon={<ChevronRight size={16} />}
-            label="Move Column Right"
+            label="Mover columna a la derecha"
             disabled={selectedSeriesIndex >= safeSeries.length - 1}
             onClick={() => moveSeries(selectedSeriesIndex, 1)}
           />
           <ColumnMenuItem
             icon={<ChevronLeft size={16} />}
-            label="Move Column Left"
+            label="Mover columna a la izquierda"
             disabled={selectedSeriesIndex <= 0}
             onClick={() => moveSeries(selectedSeriesIndex, -1)}
           />
@@ -1514,7 +1514,7 @@ function EditableDataTable({
                 <div className="sticky right-0 grid place-items-center border-b border-[#E8E8EC] bg-[#F3F4F6] px-1">
                   <button
                     type="button"
-                    aria-label={`Delete ${category || `row ${rowIndex + 1}`}`}
+                    aria-label={`Eliminar ${category || `fila ${rowIndex + 1}`}`}
                     className="grid h-7 w-7 place-items-center rounded-md text-[#8E8E98] transition hover:bg-white hover:text-[#191919] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-[#8E8E98]"
                     disabled={safeCategories.length <= 1}
                     onClick={() => deleteRow(rowIndex)}

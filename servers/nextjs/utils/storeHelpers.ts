@@ -109,7 +109,7 @@ export const getLLMConfigValidationError = (
   const llmConfig = normalizeLLMConfig(inputConfig);
 
   if (!llmConfig.LLM) {
-    return "Select a text provider.";
+    return "Selecciona un proveedor de texto.";
   }
 
   const llm = llmConfig.LLM;
@@ -125,185 +125,185 @@ export const getLLMConfigValidationError = (
       !Number.isInteger(maxOutputTokens) ||
       maxOutputTokens <= 0)
   ) {
-    return "Max output tokens must be a whole number greater than zero.";
+    return "El número máximo de tokens de salida debe ser un número entero mayor que cero.";
   }
 
   if (!llmConfig.DISABLE_IMAGE_GENERATION && !llmConfig.IMAGE_PROVIDER) {
-    return "Select an image provider, or turn off image generation.";
+    return "Selecciona un proveedor de imágenes o desactiva la generación de imágenes.";
   }
 
   if (llm === "openai") {
     if (!isProvided(llmConfig.OPENAI_API_KEY)) {
-      return "OpenAI API key is required.";
+      return "La clave de API de OpenAI es obligatoria.";
     }
     if (!isProvided(llmConfig.OPENAI_MODEL)) {
-      return "Enter or select an OpenAI chat model ID on the Text Provider tab.";
+      return "Introduce o selecciona un ID de modelo de chat de OpenAI en la pestaña Proveedor de texto.";
     }
   } else if (llm === "deepseek") {
     if (!isProvided(llmConfig.DEEPSEEK_API_KEY)) {
-      return "DeepSeek API key is required.";
+      return "La clave de API de DeepSeek es obligatoria.";
     }
     if (!isProvided(llmConfig.DEEPSEEK_MODEL)) {
-      return "Enter or select a DeepSeek model ID.";
+      return "Introduce o selecciona un ID de modelo de DeepSeek.";
     }
   } else if (llm === "google") {
     if (!isProvided(llmConfig.GOOGLE_API_KEY)) {
-      return "Google API key is required.";
+      return "La clave de API de Google es obligatoria.";
     }
     if (!isProvided(llmConfig.GOOGLE_MODEL)) {
-      return "Enter or select a Google model ID.";
+      return "Introduce o selecciona un ID de modelo de Google.";
     }
   } else if (llm === "vertex") {
     const hasApiKey = isProvided(llmConfig.VERTEX_API_KEY);
     const hasProject = isProvided(llmConfig.VERTEX_PROJECT);
     const hasLocation = isProvided(llmConfig.VERTEX_LOCATION);
     if (!hasApiKey && !hasProject) {
-      return "Vertex AI requires either a Vertex API key or a GCP project.";
+      return "Vertex AI requiere una clave de API de Vertex o un proyecto de GCP.";
     }
     if (hasApiKey && (hasProject || hasLocation)) {
-      return "Use either Vertex API key mode or project/location mode, not both.";
+      return "Usa el modo de clave de API de Vertex o el modo de proyecto/ubicación, pero no ambos.";
     }
     if (!isProvided(llmConfig.VERTEX_MODEL)) {
-      return "Vertex model is required.";
+      return "El modelo de Vertex es obligatorio.";
     }
   } else if (llm === "azure") {
     if (!isProvided(llmConfig.AZURE_OPENAI_API_KEY)) {
-      return "Azure OpenAI API key is required.";
+      return "La clave de API de Azure OpenAI es obligatoria.";
     }
 
     if (!isProvided(llmConfig.AZURE_OPENAI_ENDPOINT)) {
-      return "Azure endpoint is required.";
+      return "El endpoint de Azure es obligatorio.";
     }
 
     if (!isProvided(llmConfig.AZURE_OPENAI_API_VERSION)) {
-      return "Azure OpenAI API version is required.";
+      return "La versión de la API de Azure OpenAI es obligatoria.";
     }
 
     if (!isProvided(llmConfig.AZURE_OPENAI_MODEL)) {
-      return "Azure model name is required.";
+      return "El nombre del modelo de Azure es obligatorio.";
     }
   } else if (llm === "bedrock") {
     if (!isProvided(llmConfig.BEDROCK_MODEL)) {
-      return "Bedrock model is required.";
+      return "El modelo de Bedrock es obligatorio.";
     }
     const hasApiKey = isProvided(llmConfig.BEDROCK_API_KEY);
     const hasAwsAccess = isProvided(llmConfig.BEDROCK_AWS_ACCESS_KEY_ID);
     const hasAwsSecret = isProvided(llmConfig.BEDROCK_AWS_SECRET_ACCESS_KEY);
     if (!hasApiKey && !(hasAwsAccess && hasAwsSecret)) {
-      return "Provide Bedrock API key, or AWS access key ID + secret key.";
+      return "Proporciona una clave de API de Bedrock, o un ID de clave de acceso de AWS + clave secreta.";
     }
   } else if (llm === "openrouter") {
     if (!isProvided(llmConfig.OPENROUTER_API_KEY)) {
-      return "OpenRouter API key is required.";
+      return "La clave de API de OpenRouter es obligatoria.";
     }
     if (!isProvided(llmConfig.OPENROUTER_MODEL)) {
-      return "Select or enter an OpenRouter model id.";
+      return "Selecciona o introduce un ID de modelo de OpenRouter.";
     }
   } else if (llm === "cerebras") {
     if (!isProvided(llmConfig.CEREBRAS_API_KEY)) {
-      return "Cerebras API key is required.";
+      return "La clave de API de Cerebras es obligatoria.";
     }
     if (!isProvided(llmConfig.CEREBRAS_MODEL)) {
-      return "Select or enter a Cerebras model id.";
+      return "Selecciona o introduce un ID de modelo de Cerebras.";
     }
   } else if (llm === "fireworks") {
     if (!isProvided(llmConfig.FIREWORKS_API_KEY)) {
-      return "Fireworks API key is required.";
+      return "La clave de API de Fireworks es obligatoria.";
     }
     if (!isProvided(llmConfig.FIREWORKS_MODEL)) {
-      return "Select or enter a Fireworks model id.";
+      return "Selecciona o introduce un ID de modelo de Fireworks.";
     }
   } else if (llm === "together") {
     if (!isProvided(llmConfig.TOGETHER_API_KEY)) {
-      return "Together API key is required.";
+      return "La clave de API de Together es obligatoria.";
     }
     if (!isProvided(llmConfig.TOGETHER_MODEL)) {
-      return "Select or enter a Together model id.";
+      return "Selecciona o introduce un ID de modelo de Together.";
     }
   } else if (llm === "anthropic") {
     if (!isProvided(llmConfig.ANTHROPIC_API_KEY)) {
-      return "Anthropic API key is required.";
+      return "La clave de API de Anthropic es obligatoria.";
     }
     if (!isProvided(llmConfig.ANTHROPIC_MODEL)) {
-      return "Enter or select an Anthropic model ID.";
+      return "Introduce o selecciona un ID de modelo de Anthropic.";
     }
   } else if (llm === "ollama") {
     if (!isProvided(llmConfig.OLLAMA_URL?.trim())) {
-      return 'Ollama URL is required. Enter your Ollama server URL, or click "Check models" to fill the reachable default.';
+      return 'La URL de Ollama es obligatoria. Introduce la URL de tu servidor de Ollama o haz clic en "Comprobar modelos" para rellenar la predeterminada disponible.';
     }
     if (!isProvided(llmConfig.OLLAMA_MODEL)) {
-      return "Select an Ollama model. If none appear, confirm Ollama is running and reachable.";
+      return "Selecciona un modelo de Ollama. Si no aparece ninguno, comprueba que Ollama está en ejecución y es accesible.";
     }
   } else if (llm === "custom") {
     if (!isProvided(llmConfig.CUSTOM_LLM_URL)) {
-      return "Enter your custom LLM endpoint URL (OpenAI-compatible).";
+      return "Introduce la URL de tu endpoint de LLM personalizado (compatible con OpenAI).";
     }
     if (!isProvided(llmConfig.CUSTOM_MODEL)) {
-      return "Enter a model ID or alias for your custom endpoint.";
+      return "Introduce un ID de modelo o un alias para tu endpoint personalizado.";
     }
   } else if (llm === "litellm") {
     if (!isProvided(llmConfig.LITELLM_BASE_URL)) {
-      return "LiteLLM base URL is required.";
+      return "La URL base de LiteLLM es obligatoria.";
     }
     if (!isProvided(llmConfig.LITELLM_MODEL)) {
-      return "Enter or select a LiteLLM model ID or alias.";
+      return "Introduce o selecciona un ID de modelo o un alias de LiteLLM.";
     }
   } else if (llm === "lmstudio") {
     if (!isProvided(llmConfig.LMSTUDIO_MODEL)) {
-      return "Enter or select an LM Studio model ID.";
+      return "Introduce o selecciona un ID de modelo de LM Studio.";
     }
   } else if (llm === "codex" || llm === "chatgpt") {
     if (!isProvided(llmConfig.CODEX_MODEL)) {
-      return "Select a Codex model.";
+      return "Selecciona un modelo de Codex.";
     }
     if (!isSupportedCodexModel(llmConfig.CODEX_MODEL)) {
-      return "Select a supported Codex model.";
+      return "Selecciona un modelo de Codex compatible.";
     }
   } else {
-    return "Unsupported or unknown text provider.";
+    return "Proveedor de texto no compatible o desconocido.";
   }
 
   if (!llmConfig.DISABLE_IMAGE_GENERATION) {
     switch (llmConfig.IMAGE_PROVIDER) {
       case "pexels":
         if (!isProvided(llmConfig.PEXELS_API_KEY)) {
-          return "Pexels API key is required.";
+          return "La clave de API de Pexels es obligatoria.";
         }
         break;
       case "pixabay":
         if (!isProvided(llmConfig.PIXABAY_API_KEY)) {
-          return "Pixabay API key is required.";
+          return "La clave de API de Pixabay es obligatoria.";
         }
         break;
       case "gpt-image-2":
         if (!isProvided(llmConfig.OPENAI_API_KEY)) {
-          return "OpenAI API key is required for GPT Image 2.";
+          return "La clave de API de OpenAI es obligatoria para GPT Image 2.";
         }
         break;
       case "gpt-image-2.5-flare":
       case "gpt-image-2.5-sunburst":
         if (!isProvided(llmConfig.OPENAI_API_KEY)) {
-          return "OpenAI API key is required for GPT Image 2.5.";
+          return "La clave de API de OpenAI es obligatoria para GPT Image 2.5.";
         }
         break;
       case "gemini_flash":
         if (!isProvided(llmConfig.GOOGLE_API_KEY)) {
-          return "Google API key is required for Gemini Flash image generation.";
+          return "La clave de API de Google es obligatoria para generar imágenes con Gemini Flash.";
         }
         break;
       case "nanobanana_pro":
         if (!isProvided(llmConfig.GOOGLE_API_KEY)) {
-          return "Google API key is required for NanoBanana Pro.";
+          return "La clave de API de Google es obligatoria para NanoBanana Pro.";
         }
         break;
       case "comfyui":
         if (!isProvided(llmConfig.COMFYUI_URL)) {
-          return "ComfyUI server URL is required.";
+          return "La URL del servidor de ComfyUI es obligatoria.";
         }
         break;
       case "open_webui":
         if (!isProvided(llmConfig.OPEN_WEBUI_IMAGE_URL)) {
-          return "Open WebUI URL is required.";
+          return "La URL de Open WebUI es obligatoria.";
         }
         break;
       case "openai_compatible":
@@ -312,43 +312,43 @@ export const getLLMConfigValidationError = (
           !isProvided(llmConfig.OPENAI_COMPAT_IMAGE_API_KEY?.trim()) ||
           !isProvided(llmConfig.OPENAI_COMPAT_IMAGE_MODEL?.trim())
         ) {
-          return "OpenAI-compatible image API requires base URL, API key, and model.";
+          return "La API de imágenes compatible con OpenAI requiere URL base, clave de API y modelo.";
         }
         break;
       default:
-        return "Select a valid image provider.";
+        return "Selecciona un proveedor de imágenes válido.";
     }
   }
 
   if (llmConfig.WEB_GROUNDING) {
     if (!isProvided(llmConfig.WEB_SEARCH_PROVIDER)) {
-      return "Select a web search provider, or turn off web search.";
+      return "Selecciona un proveedor de búsqueda web o desactiva la búsqueda web.";
     }
     switch (llmConfig.WEB_SEARCH_PROVIDER) {
       case "searxng":
         if (!isProvided(llmConfig.SEARXNG_BASE_URL)) {
-          return "SearXNG base URL is required.";
+          return "La URL base de SearXNG es obligatoria.";
         }
         break;
       case "tavily":
         if (!isProvided(llmConfig.TAVILY_API_KEY)) {
-          return "Tavily API key is required.";
+          return "La clave de API de Tavily es obligatoria.";
         }
         break;
       case "exa":
         if (!isProvided(llmConfig.EXA_API_KEY)) {
-          return "Exa API key is required.";
+          return "La clave de API de Exa es obligatoria.";
         }
         break;
       case "brave":
         if (!isProvided(llmConfig.BRAVE_SEARCH_API_KEY)) {
-          return "Brave Search API key is required.";
+          return "La clave de API de Brave Search es obligatoria.";
         }
         break;
       case "auto":
         break;
       default:
-        return "Select a valid web search provider.";
+        return "Selecciona un proveedor de búsqueda web válido.";
     }
   }
 
@@ -422,7 +422,7 @@ export const handleSaveLLMConfig = async (llmConfig: LLMConfig) => {
     body: JSON.stringify(normalizedConfig),
   });
   if (!response.ok) {
-    throw new Error(`Unable to save user configuration (${response.status})`);
+    throw new Error(`No se ha podido guardar la configuración del usuario (${response.status})`);
   }
 
   store.dispatch(setLLMConfig(normalizedConfig));

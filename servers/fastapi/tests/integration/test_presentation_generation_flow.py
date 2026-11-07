@@ -464,7 +464,7 @@ def test_create_blank_presentation_is_template_free_and_editable():
 
     assert presentation.version == PresentationVersion.V2_STANDARD
     assert presentation.content == ""
-    assert presentation.title == "Untitled Presentation"
+    assert presentation.title == "Presentación sin título"
     assert presentation.n_slides == 1
     assert presentation.layout is None
     assert presentation.fonts is None
@@ -651,7 +651,7 @@ def test_check_api_request_rejects_missing_custom_prefixed_template_id(
         )
 
     assert exc.value.status_code == 400
-    assert exc.value.detail == "Template not found. Please use a valid template."
+    assert exc.value.detail == "Plantilla no encontrada. Usa una plantilla válida."
 
 
 def test_prepare_presentation_preserves_payload_icon_weight():
@@ -779,7 +779,7 @@ def test_prepare_presentation_rejects_too_many_outlines():
     assert exc_info.value.status_code == 400
     assert (
         exc_info.value.detail
-        == f"Number of outlines cannot be greater than {MAX_NUMBER_OF_SLIDES}"
+        == f"El número de elementos del esquema no puede ser mayor que {MAX_NUMBER_OF_SLIDES}"
     )
 
 
@@ -804,7 +804,7 @@ def test_check_api_request_rejects_too_many_slides_markdown(fake_async_session):
     assert exc_info.value.status_code == 400
     assert (
         exc_info.value.detail
-        == f"Number of slides cannot be greater than {MAX_NUMBER_OF_SLIDES}"
+        == f"El número de diapositivas no puede ser mayor que {MAX_NUMBER_OF_SLIDES}"
     )
 
 
@@ -1203,7 +1203,7 @@ def test_generate_presentation_sync_rejects_invalid_slide_count(fake_async_sessi
         )
 
     assert exc.value.status_code == 400
-    assert "Number of slides must be greater than 0" in exc.value.detail
+    assert "El número de diapositivas debe ser mayor que 0" in exc.value.detail
 
 
 def test_generate_presentation_handler_rejects_invalid_llm_json(fake_async_session):
@@ -1242,7 +1242,7 @@ def test_generate_presentation_handler_rejects_invalid_llm_json(fake_async_sessi
             )
 
     assert exc.value.status_code == 400
-    assert "Failed to generate presentation outlines" in exc.value.detail
+    assert "No se ha podido generar el esquema de la presentación" in exc.value.detail
 
 
 def test_generate_presentation_handler_rejects_too_few_outlines(fake_async_session):
@@ -1286,7 +1286,7 @@ def test_generate_presentation_handler_rejects_too_few_outlines(fake_async_sessi
             )
 
     assert exc.value.status_code == 400
-    assert "requested" in exc.value.detail
+    assert "solicitado" in exc.value.detail
 
 
 def test_generate_presentation_handler_trims_extra_outlines():

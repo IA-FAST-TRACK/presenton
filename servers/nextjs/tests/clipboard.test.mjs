@@ -160,7 +160,7 @@ test("reports a failure when neither copy mechanism is available", async () => {
   try {
     await assert.rejects(
       copyTextToClipboard("secret-key"),
-      /Clipboard access is not available/,
+      /El acceso al portapapeles no está disponible/,
     );
   } finally {
     restoreDocument();

@@ -111,8 +111,8 @@ def _get_codex_access_token() -> str:
         raise HTTPException(
             status_code=401,
             detail=(
-                f"{CHATGPT_AUTH_REQUIRED_PREFIX} ChatGPT authentication is required. "
-                "Please sign in again from Settings."
+                f"{CHATGPT_AUTH_REQUIRED_PREFIX} Es necesario autenticarse con ChatGPT. "
+                "Vuelve a iniciar sesión desde Configuración."
             ),
             headers=CHATGPT_AUTH_REQUIRED_HEADERS,
         )
@@ -128,8 +128,8 @@ def _get_codex_access_token() -> str:
                     raise HTTPException(
                         status_code=401,
                         detail=(
-                            f"{CHATGPT_AUTH_REQUIRED_PREFIX} Your ChatGPT session expired. "
-                            "Please sign in again from Settings."
+                            f"{CHATGPT_AUTH_REQUIRED_PREFIX} Tu sesión de ChatGPT ha caducado. "
+                            "Vuelve a iniciar sesión desde Configuración."
                         ),
                         headers=CHATGPT_AUTH_REQUIRED_HEADERS,
                     )
@@ -146,8 +146,8 @@ def _get_codex_access_token() -> str:
                     raise HTTPException(
                         status_code=401,
                         detail=(
-                            f"{CHATGPT_AUTH_REQUIRED_PREFIX} Your ChatGPT session expired. "
-                            "Please sign in again from Settings."
+                            f"{CHATGPT_AUTH_REQUIRED_PREFIX} Tu sesión de ChatGPT ha caducado. "
+                            "Vuelve a iniciar sesión desde Configuración."
                         ),
                         headers=CHATGPT_AUTH_REQUIRED_HEADERS,
                     )
@@ -172,7 +172,7 @@ def _optional_int(value: str | None) -> int | None:
     try:
         return int(value)
     except ValueError:
-        raise HTTPException(status_code=400, detail=f"Invalid integer value: {value}")
+        raise HTTPException(status_code=400, detail=f"Valor entero no válido: {value}")
 
 
 def has_explicit_reasoning_settings() -> bool:
@@ -193,7 +193,7 @@ def get_generation_defaults() -> GenerationDefaults:
     except ValueError as error:
         raise HTTPException(
             status_code=400,
-            detail=f"Invalid LLM_GENERATION_PROFILE: {profile_value}",
+            detail=f"LLM_GENERATION_PROFILE no válido: {profile_value}",
         ) from error
 
     reasoning = ReasoningConfig()
@@ -206,7 +206,7 @@ def get_generation_defaults() -> GenerationDefaults:
     elif mode == "disabled":
         reasoning.enabled = False
     elif mode not in {"", "auto"}:
-        raise HTTPException(status_code=400, detail=f"Invalid LLM_REASONING_MODE: {mode}")
+        raise HTTPException(status_code=400, detail=f"LLM_REASONING_MODE no válido: {mode}")
 
     if effort not in {"", "default"}:
         try:
@@ -214,13 +214,13 @@ def get_generation_defaults() -> GenerationDefaults:
         except ValueError as error:
             raise HTTPException(
                 status_code=400,
-                detail=f"Invalid LLM_REASONING_EFFORT: {effort}",
+                detail=f"LLM_REASONING_EFFORT no válido: {effort}",
             ) from error
     if budget is not None:
         if budget < 0:
             raise HTTPException(
                 status_code=400,
-                detail="LLM_REASONING_BUDGET_TOKENS cannot be negative",
+                detail="LLM_REASONING_BUDGET_TOKENS no puede ser negativo",
             )
         reasoning.budget_tokens = budget
 
@@ -235,7 +235,7 @@ def get_generation_defaults() -> GenerationDefaults:
     if max_output_tokens is not None and max_output_tokens <= 0:
         raise HTTPException(
             status_code=400,
-            detail="LLM_MAX_OUTPUT_TOKENS must be greater than zero",
+            detail="LLM_MAX_OUTPUT_TOKENS debe ser mayor que cero",
         )
     return GenerationDefaults(
         profile=profile,
@@ -251,7 +251,7 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
         case LLMProvider.OPENAI:
             api_key = get_openai_api_key_env()
             if not api_key:
-                raise HTTPException(status_code=400, detail="OpenAI API Key is not set")
+                raise HTTPException(status_code=400, detail="La clave API de OpenAI no está configurada")
             return OpenAIClientConfig(
                 api_key=api_key,
                 api_type=(
@@ -263,7 +263,7 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
         case LLMProvider.DEEPSEEK:
             api_key = get_deepseek_api_key_env()
             if not api_key:
-                raise HTTPException(status_code=400, detail="DeepSeek API Key is not set")
+                raise HTTPException(status_code=400, detail="La clave API de DeepSeek no está configurada")
             base_url = get_deepseek_base_url_env()
             return DeepSeekClientConfig(
                 api_key=api_key,
@@ -272,7 +272,7 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
         case LLMProvider.GOOGLE:
             api_key = get_google_api_key_env()
             if not api_key:
-                raise HTTPException(status_code=400, detail="Google API Key is not set")
+                raise HTTPException(status_code=400, detail="La clave API de Google no está configurada")
             return GoogleClientConfig(api_key=api_key)
         case LLMProvider.VERTEX:
             api_key = get_vertex_api_key_env()
@@ -284,8 +284,8 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
                 raise HTTPException(
                     status_code=400,
                     detail=(
-                        "Vertex configuration is ambiguous. Configure either "
-                        "VERTEX_API_KEY or VERTEX_PROJECT/VERTEX_LOCATION, not both."
+                        "La configuración de Vertex es ambigua. Configura "
+                        "VERTEX_API_KEY o VERTEX_PROJECT/VERTEX_LOCATION, pero no ambos."
                     ),
                 )
 
@@ -299,8 +299,8 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
                 raise HTTPException(
                     status_code=400,
                     detail=(
-                        "Vertex configuration is incomplete. Set VERTEX_API_KEY "
-                        "or VERTEX_PROJECT (optionally with VERTEX_LOCATION)."
+                        "La configuración de Vertex está incompleta. Configura VERTEX_API_KEY "
+                        "o VERTEX_PROJECT (opcionalmente con VERTEX_LOCATION)."
                     ),
                 )
 
@@ -319,19 +319,19 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
             if not api_key:
                 raise HTTPException(
                     status_code=400,
-                    detail="Azure OpenAI API Key is not set",
+                    detail="La clave API de Azure OpenAI no está configurada",
                 )
             if not api_version:
                 raise HTTPException(
                     status_code=400,
-                    detail="Azure OpenAI API Version is not set",
+                    detail="La versión de la API de Azure OpenAI no está configurada",
                 )
             if not endpoint and not base_url:
                 raise HTTPException(
                     status_code=400,
                     detail=(
-                        "Azure OpenAI endpoint is not set. "
-                        "Configure AZURE_OPENAI_ENDPOINT or AZURE_OPENAI_BASE_URL."
+                        "El endpoint de Azure OpenAI no está configurado. "
+                        "Configura AZURE_OPENAI_ENDPOINT o AZURE_OPENAI_BASE_URL."
                     ),
                 )
 
@@ -365,8 +365,8 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
                 raise HTTPException(
                     status_code=400,
                     detail=(
-                        "Bedrock auth is incomplete. Set BEDROCK_API_KEY, or "
-                        "set BEDROCK_AWS_ACCESS_KEY_ID and "
+                        "La autenticación de Bedrock está incompleta. Configura BEDROCK_API_KEY, o "
+                        "configura BEDROCK_AWS_ACCESS_KEY_ID y "
                         "BEDROCK_AWS_SECRET_ACCESS_KEY."
                     ),
                 )
@@ -376,7 +376,7 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
             if not api_key:
                 raise HTTPException(
                     status_code=400,
-                    detail="Anthropic API Key is not set",
+                    detail="La clave API de Anthropic no está configurada",
                 )
             return AnthropicClientConfig(api_key=api_key)
         case LLMProvider.OPENROUTER:
@@ -384,7 +384,7 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
             if not api_key:
                 raise HTTPException(
                     status_code=400,
-                    detail="OpenRouter API Key is not set",
+                    detail="La clave API de OpenRouter no está configurada",
                 )
             base_url = get_openrouter_base_url_env()
             return OpenRouterClientConfig(
@@ -396,7 +396,7 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
             if not api_key:
                 raise HTTPException(
                     status_code=400,
-                    detail="Fireworks API Key is not set",
+                    detail="La clave API de Fireworks no está configurada",
                 )
             base_url = (get_fireworks_base_url_env() or "").strip()
             return FireworksClientConfig(
@@ -408,7 +408,7 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
             if not api_key:
                 raise HTTPException(
                     status_code=400,
-                    detail="Together API Key is not set",
+                    detail="La clave API de Together no está configurada",
                 )
             base_url = (get_together_base_url_env() or "").strip()
             return TogetherAIClientConfig(
@@ -420,7 +420,7 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
             if not api_key:
                 raise HTTPException(
                     status_code=400,
-                    detail="Cerebras API Key is not set",
+                    detail="La clave API de Cerebras no está configurada",
                 )
             base_url = get_cerebras_base_url_env()
             return CerebrasClientConfig(
@@ -434,7 +434,7 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
             if not base_url:
                 raise HTTPException(
                     status_code=400,
-                    detail="LiteLLM base URL is not set (LITELLM_BASE_URL).",
+                    detail="La URL base de LiteLLM no está configurada (LITELLM_BASE_URL).",
                 )
             lk = (get_litellm_api_key_env() or "").strip()
             return LiteLLMClientConfig(
@@ -458,7 +458,7 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
             if not base_url:
                 raise HTTPException(
                     status_code=400,
-                    detail="Custom LLM URL is not set",
+                    detail="La URL del LLM personalizado no está configurada",
                 )
             return OpenAIClientConfig(
                 base_url=base_url,
@@ -473,9 +473,9 @@ def _get_llm_config(*, use_openai_responses_api: bool = False) -> ClientConfig:
             raise HTTPException(
                 status_code=400,
                 detail=(
-                    "LLM Provider must be either openai, deepseek, google, vertex, azure, "
+                    "El proveedor de LLM debe ser uno de los siguientes: openai, deepseek, google, vertex, azure, "
                     "bedrock, openrouter, fireworks, together, cerebras, "
-                    "anthropic, litellm, lmstudio, ollama, custom, or codex"
+                    "anthropic, litellm, lmstudio, ollama, custom o codex"
                 ),
             )
 

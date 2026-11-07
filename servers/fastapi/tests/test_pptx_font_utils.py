@@ -149,7 +149,7 @@ def test_check_fonts_in_pptx_rejects_100mb_file_from_upload_size():
         asyncio.run(fonts_and_slides_preview.check_fonts_in_pptx_handler(upload))
 
     assert exc_info.value.status_code == 413
-    assert exc_info.value.detail == "File size must be less than 100MB."
+    assert exc_info.value.detail == "El tamaño del archivo debe ser inferior a 100 MB."
 
 
 def test_check_fonts_in_pptx_rejects_oversize_after_read_when_size_missing(
@@ -164,7 +164,7 @@ def test_check_fonts_in_pptx_rejects_oversize_after_read_when_size_missing(
         asyncio.run(fonts_and_slides_preview.check_fonts_in_pptx_handler(upload))
 
     assert exc_info.value.status_code == 413
-    assert exc_info.value.detail == "File size must be less than 100MB."
+    assert exc_info.value.detail == "El tamaño del archivo debe ser inferior a 100 MB."
 
 
 def test_check_fonts_in_pptx_rejects_corrupted_pptx():
@@ -1156,7 +1156,7 @@ async def test_render_pptx_slides_to_images_rejects_image_count_mismatch(monkeyp
         )
 
     assert exc_info.value.status_code == 500
-    assert "expected 2, got 1" in exc_info.value.detail
+    assert "se esperaban 2, se obtuvieron 1" in exc_info.value.detail
 
 
 @pytest.mark.anyio

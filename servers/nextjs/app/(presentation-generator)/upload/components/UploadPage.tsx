@@ -167,7 +167,7 @@ const UploadPage = ({
   );
   const [config, setConfig] = useState<PresentationConfig>({
     slides: null,
-    language: LanguageType.Auto,
+    language: LanguageType.Spanish,
     prompt: "",
     tone: ToneType.Default,
     verbosity: VerbosityType.Standard,
@@ -214,7 +214,7 @@ const UploadPage = ({
         .catch((loadError) => {
           if (!active) return;
           notify.error(
-            "Could not select the community design",
+            "No se ha podido seleccionar el diseño de la comunidad",
             loadError instanceof Error ? loadError.message : undefined
           );
         });
@@ -363,9 +363,9 @@ const UploadPage = ({
       return true;
     } catch (error: any) {
       notify.error(
-        "Image provider unavailable",
+        "Proveedor de imágenes no disponible",
         error?.message ||
-        `Unable to reach ${selectedProvider} right now. Please check your API key/settings and try again.`
+        `No se puede conectar con ${selectedProvider} en este momento. Revisa tu clave de API o la configuración e inténtalo de nuevo.`
       );
       return false;
     }
@@ -378,13 +378,13 @@ const UploadPage = ({
   const validateConfiguration = (): boolean => {
     if (!config.language) {
       trackUploadValidationFailure("language_missing");
-      notify.warning("Language required", "Please select a language.");
+      notify.warning("Idioma obligatorio", "Selecciona un idioma.");
       return false;
     }
 
     if (files.length > 0 && config.language === LanguageType.Auto) {
       trackUploadValidationFailure("language_auto_with_documents");
-      notify.warning("Language required", "Please choose a language before processing uploaded documents.");
+      notify.warning("Idioma obligatorio", "Elige un idioma antes de procesar los documentos subidos.");
       return false;
     }
 
@@ -395,10 +395,10 @@ const UploadPage = ({
     ) {
       trackUploadValidationFailure("prompt_or_document_missing");
       notify.warning(
-        "Input required",
+        "Contenido obligatorio",
         communityEnabled
-          ? "Provide a prompt, upload a document, or select a community reference."
-          : "Provide a prompt or upload a document."
+          ? "Escribe unas instrucciones, sube un documento o selecciona una referencia de la comunidad."
+          : "Escribe unas instrucciones o sube un documento."
       );
       return false;
     }
@@ -445,10 +445,10 @@ const UploadPage = ({
   const handleDocumentProcessing = async () => {
     setLoadingState({
       isLoading: true,
-      message: "Processing documents...",
+      message: "Procesando documentos...",
       showProgress: true,
       duration: 90,
-      extra_info: files.length > 0 ? "It might take a few minutes for large documents." : "",
+      extra_info: files.length > 0 ? "Puede tardar unos minutos con documentos grandes." : "",
     });
 
     let documents = [];
@@ -477,8 +477,8 @@ const UploadPage = ({
       isLoading: true,
       message:
         generationMode === "smart"
-          ? "Starting Smart presentation..."
-          : "Generating presentation outline...",
+          ? "Iniciando la presentación en modo inteligente..."
+          : "Generando el esquema de la presentación...",
       showProgress: true,
       duration: 40,
       extra_info: "",
@@ -538,8 +538,8 @@ const UploadPage = ({
       isLoading: true,
       message:
         generationMode === "smart"
-          ? "Starting Smart presentation..."
-          : "Preparing outline generation...",
+          ? "Iniciando la presentación en modo inteligente..."
+          : "Preparando la generación del esquema...",
       showProgress: true,
       duration: 30,
     });
@@ -602,8 +602,8 @@ const UploadPage = ({
       showProgress: false,
     });
     notify.error(
-      "Generation failed",
-      error.message || "Something went wrong while starting your presentation."
+      "Error en la generación",
+      error.message || "Algo ha salido mal al iniciar tu presentación."
     );
   };
 
@@ -628,14 +628,14 @@ const UploadPage = ({
           <div className="flex flex-col gap-2">
             <button type="button" onClick={() => setModeDialogOpen(true)} className="inline-flex items-center gap-1.5 self-start font-syne text-[13px] leading-[18px] text-[#4C4C4C] hover:text-[#7A5AF8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8]">
               <Image src="/generate/mode-info.svg" alt="" width={16} height={16} />
-              Presentation Mode
+              Modo de presentación
               <Image src="/generate/mode-arrow.svg" alt="" width={14} height={14} />
             </button>
-            <div role="group" aria-label="Presentation mode" data-selection={generationMode === "standard" ? "1" : "0"} className="motion-segments inline-flex h-9 w-[188px] items-center rounded-xl border border-[#EDEEEF] bg-white p-1 font-manrope text-[13px] font-medium text-[#191919] [--motion-segment-inset:4px]">
+            <div role="group" aria-label="Modo de presentación" data-selection={generationMode === "standard" ? "1" : "0"} className="motion-segments inline-flex h-9 w-[188px] items-center rounded-xl border border-[#EDEEEF] bg-white p-1 font-manrope text-[13px] font-medium text-[#191919] [--motion-segment-inset:4px]">
               <span aria-hidden="true" className="motion-segment-indicator rounded-lg bg-[#F6F6F9]" />
               {(["smart", "standard"] as const).map((mode) => (
                 <button key={mode} type="button" aria-pressed={generationMode === mode} disabled={!isGenerationModeAvailable(presentationGenerationMode, mode)} onClick={() => handleGenerationModeChange(mode)} className={`h-7 flex-1 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A5AF8] disabled:cursor-not-allowed disabled:opacity-40 ${generationMode === mode ? "" : "hover:bg-[#FAFAFC]"}`}>
-                  {mode === "smart" ? "Smart" : "Standard"}
+                  {mode === "smart" ? "Inteligente" : "Estándar"}
                 </button>
               ))}
             </div>
@@ -653,7 +653,7 @@ const UploadPage = ({
           variant={generationMode}
           references={
             communityEnabled && generationMode === "smart" && communityReference
-              ? [{ id: String(communityReference.id), label: communityReference.title || "Community design" }]
+              ? [{ id: String(communityReference.id), label: communityReference.title || "Diseño de la comunidad" }]
               : []
           }
           onRemoveReference={() =>

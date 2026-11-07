@@ -34,7 +34,7 @@ def _url_parts(value: str) -> tuple[tuple[str, str, int], str]:
         host = parsed.hostname.encode("idna").decode("ascii").lower()
         return (parsed.scheme, host, port), path
     except (ValueError, UnicodeError) as error:
-        raise HTTPException(status_code=400, detail="Invalid OpenRouter discovery URL") from error
+        raise HTTPException(status_code=400, detail="URL de detección de OpenRouter no válida") from error
 
 
 def _approved_api_roots():
@@ -50,7 +50,7 @@ def _select_api_root(requested: str | None) -> str:
         if target == _url_parts(approved):
             # Return server-owned configuration, never the request-supplied URL.
             return approved
-    raise HTTPException(status_code=400, detail="OpenRouter base URL must match the default or server-configured OPENROUTER_BASE_URL")
+    raise HTTPException(status_code=400, detail="La URL base de OpenRouter debe coincidir con la predeterminada o con la OPENROUTER_BASE_URL configurada en el servidor")
 
 
 def _validated_discovery_url(url: str) -> str:
@@ -65,7 +65,7 @@ def _validated_discovery_url(url: str) -> str:
             model_path = path[len(prefix) + 1:]
             if _MODEL_DISCOVERY_PATH.fullmatch(model_path):
                 return f"{approved}/{quote(model_path, safe='/')}"
-    raise HTTPException(status_code=400, detail="Invalid OpenRouter discovery endpoint")
+    raise HTTPException(status_code=400, detail="Endpoint de detección de OpenRouter no válido")
 
 
 class OpenRouterProviderOption(BaseModel):
@@ -107,7 +107,7 @@ async def _get_json(
     destination = _validated_discovery_url(url)
     async with session.get(destination, allow_redirects=False) as response:
         if 300 <= response.status < 400:
-            raise HTTPException(status_code=502, detail="OpenRouter discovery redirects are not allowed; configure the final API URL")
+            raise HTTPException(status_code=502, detail="No se permiten redirecciones en la detección de OpenRouter; configura la URL final de la API")
         try:
             payload = await response.json(content_type=None)
         except Exception:
@@ -126,9 +126,9 @@ async def get_available_openrouter_providers(
     model = model.strip()
     api_key = api_key.strip()
     if not model:
-        raise HTTPException(status_code=400, detail="OpenRouter model is required")
+        raise HTTPException(status_code=400, detail="Se requiere el modelo de OpenRouter")
     if not api_key:
-        raise HTTPException(status_code=400, detail="OpenRouter API key is required")
+        raise HTTPException(status_code=400, detail="Se requiere la clave API de OpenRouter")
 
     api_root = _select_api_root(base_url)
     headers = {"Authorization": f"Bearer {api_key}"}
@@ -153,7 +153,7 @@ async def get_available_openrouter_providers(
             if status >= 400:
                 raise HTTPException(
                     status_code=400 if status < 500 else 502,
-                    detail="OpenRouter could not list providers for this model",
+                    detail="OpenRouter no ha podido listar los proveedores de este modelo",
                 )
             data = payload.get("data", []) if isinstance(payload, dict) else payload
             if isinstance(data, list):

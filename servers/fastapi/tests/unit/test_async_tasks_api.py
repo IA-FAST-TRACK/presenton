@@ -127,7 +127,7 @@ def test_check_async_task_status_returns_404_for_missing_task():
         )
 
     assert exc.value.status_code == 404
-    assert exc.value.detail == "No async task found"
+    assert exc.value.detail == "No se ha encontrado la tarea asíncrona"
 
 
 def test_check_async_task_status_qualifies_mcp_result_links(monkeypatch):

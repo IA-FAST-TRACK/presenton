@@ -64,7 +64,7 @@ const Toaster = ({ icons, ...props }: ToasterProps) => {
     info: <NeutralToastIcon />,
     warning: <TriangleAlert aria-hidden="true" />,
     loading: <Loader2 aria-hidden="true" className="animate-spin" />,
-    close: <span aria-hidden="true">Got it!</span>,
+    close: <span aria-hidden="true">¡Entendido!</span>,
   }
 
   return (
@@ -323,7 +323,7 @@ const Toaster = ({ icons, ...props }: ToasterProps) => {
         closeButton
         toastOptions={{
           closeButton: true,
-          closeButtonAriaLabel: "Dismiss notification",
+          closeButtonAriaLabel: "Descartar notificación",
           classNames: {
             toast: "group toast",
             description: "group-[.toast]:text-muted-foreground",

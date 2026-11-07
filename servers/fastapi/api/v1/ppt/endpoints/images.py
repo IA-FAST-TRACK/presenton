@@ -77,7 +77,7 @@ async def test_image_provider(config: ImageProviderTestConfig):
     }
     for field in required_fields[settings["IMAGE_PROVIDER"]]:
         if not settings[field].strip():
-            raise HTTPException(status_code=400, detail=f"{field} is required")
+            raise HTTPException(status_code=400, detail=f"{field} es obligatorio")
     if settings["IMAGE_PROVIDER"] == "comfyui":
         try:
             workflow = json.loads(settings["COMFYUI_WORKFLOW"])
@@ -86,7 +86,7 @@ async def test_image_provider(config: ImageProviderTestConfig):
         except ValueError:
             raise HTTPException(
                 status_code=400,
-                detail="Enter a valid ComfyUI workflow JSON object",
+                detail="Introduce un objeto JSON de flujo de trabajo de ComfyUI válido",
             )
 
     try:
@@ -124,13 +124,13 @@ async def test_image_provider(config: ImageProviderTestConfig):
             else:
                 raise HTTPException(
                     status_code=502,
-                    detail="The provider did not return an image. Check its configuration and try again.",
+                    detail="El proveedor no ha devuelto ninguna imagen. Revisa su configuración e inténtalo de nuevo.",
                 )
             return {"image_url": image_url}
     except TimeoutError:
         raise HTTPException(
             status_code=504,
-            detail="The image test timed out after 3 minutes. Check that your provider is reachable and try again.",
+            detail="La prueba de imagen ha superado el tiempo límite de 3 minutos. Comprueba que el proveedor sea accesible e inténtalo de nuevo.",
         )
     except HTTPException:
         raise
@@ -145,19 +145,19 @@ async def _read_validated_image_upload(file: UploadFile) -> bytes:
         accepted = ", ".join(sorted(ALLOWED_UPLOAD_IMAGE_EXTENSIONS))
         raise HTTPException(
             status_code=400,
-            detail=f"Invalid image file type. Accepted types: {accepted}",
+            detail=f"Tipo de archivo de imagen no válido. Tipos aceptados: {accepted}",
         )
 
     content = await file.read()
     if not content:
-        raise HTTPException(status_code=400, detail="Uploaded image file is empty")
+        raise HTTPException(status_code=400, detail="El archivo de imagen subido está vacío")
 
     try:
         with Image.open(BytesIO(content)) as image:
             if image.format not in ALLOWED_UPLOAD_IMAGE_FORMATS:
                 raise HTTPException(
                     status_code=400,
-                    detail="Uploaded image format is not supported",
+                    detail="El formato de la imagen subida no es compatible",
                 )
             image.verify()
     except HTTPException:
@@ -170,7 +170,7 @@ async def _read_validated_image_upload(file: UploadFile) -> bytes:
         ValueError,
     ):
         raise HTTPException(
-            status_code=400, detail="Uploaded file is not a valid image"
+            status_code=400, detail="El archivo subido no es una imagen válida"
         )
 
     return content
@@ -186,7 +186,7 @@ def _normalize_stock_provider(provider: str | None) -> str:
             return normalized_provider
         raise HTTPException(
             status_code=400,
-            detail="provider must be either 'pexels' or 'pixabay'",
+            detail="el proveedor debe ser 'pexels' o 'pixabay'",
         )
 
     selected_provider = get_selected_image_provider()
@@ -219,7 +219,7 @@ async def search_stock_images(
     if normalized_provider == "pexels":
         api_key = _resolve_stock_api_key(x_provider_api_key, get_pexels_api_key_env())
         if strict_api_key and not api_key:
-            raise HTTPException(status_code=401, detail="Pexels API key is required")
+            raise HTTPException(status_code=401, detail="Se requiere la clave API de Pexels")
 
         # Pexels can return cached public responses for common queries.
         # Use a nonce query in strict mode to force a real auth check.
@@ -242,7 +242,7 @@ async def search_stock_images(
 
     api_key = _resolve_stock_api_key(x_provider_api_key, get_pixabay_api_key_env())
     if strict_api_key and not api_key:
-        raise HTTPException(status_code=401, detail="Pixabay API key is required")
+        raise HTTPException(status_code=401, detail="Se requiere la clave API de Pixabay")
 
     images = await image_generation_service.get_image_from_pixabay(
         query,
@@ -266,7 +266,7 @@ async def generate_image(
         for value in (width, height)
     ):
         raise HTTPException(
-            status_code=422, detail="width and height must both be positive"
+            status_code=422, detail="el ancho y el alto deben ser positivos"
         )
     images_directory = get_images_directory()
     image_prompt = ImagePrompt(
@@ -306,7 +306,7 @@ async def get_generated_images(sql_session: AsyncSession = Depends(get_async_ses
         return [_image_asset_api_dict(a) for a in images_result]
     except Exception as e:
         raise HTTPException(
-            status_code=500, detail=f"Failed to retrieve generated images: {str(e)}"
+            status_code=500, detail=f"No se han podido obtener las imágenes generadas: {str(e)}"
         )
 
 
@@ -336,7 +336,7 @@ async def upload_image(
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to upload image: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"No se ha podido subir la imagen: {str(e)}")
 
 
 @IMAGES_ROUTER.get("/uploaded")
@@ -350,7 +350,7 @@ async def get_uploaded_images(sql_session: AsyncSession = Depends(get_async_sess
         return [_image_asset_api_dict(a) for a in images_result]
     except Exception as e:
         raise HTTPException(
-            status_code=500, detail=f"Failed to retrieve uploaded images: {str(e)}"
+            status_code=500, detail=f"No se han podido obtener las imágenes subidas: {str(e)}"
         )
 
 
@@ -362,7 +362,7 @@ async def delete_uploaded_image_by_id(
         # Fetch the asset to get its actual file path
         image = await sql_session.get(ImageAsset, id)
         if not image:
-            raise HTTPException(status_code=404, detail="Image not found")
+            raise HTTPException(status_code=404, detail="Imagen no encontrada")
 
         os.remove(image.path)
 
@@ -370,4 +370,4 @@ async def delete_uploaded_image_by_id(
         await sql_session.commit()
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to delete image: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"No se ha podido eliminar la imagen: {str(e)}")

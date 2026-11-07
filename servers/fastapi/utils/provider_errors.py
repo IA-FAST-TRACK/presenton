@@ -58,7 +58,7 @@ def is_provider_failure(error: Exception) -> bool:
 
 
 def normalize_provider_error(
-    error: Exception, *, provider: str = "AI provider",
+    error: Exception, *, provider: str = "Proveedor de IA",
     operation: str = "API request", source: str = "llm",
 ) -> ProviderHTTPException:
     if isinstance(error, ProviderHTTPException):

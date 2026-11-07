@@ -279,16 +279,16 @@ class PresentationChatService:
         attachments: list[ChatAttachment] | None = None,
     ) -> tuple[uuid.UUID, list[Message], str]:
         if not (user_message or "").strip():
-            raise HTTPException(status_code=400, detail="Message is required")
+            raise HTTPException(status_code=400, detail="Se requiere un mensaje")
 
         presentation = await self._sql_session.get(PresentationModel, self._presentation_id)
         if not presentation:
-            raise HTTPException(status_code=404, detail="Presentation not found")
+            raise HTTPException(status_code=404, detail="Presentación no encontrada")
         if presentation.generation_mode != self._presentation_type:
             raise HTTPException(
                 status_code=400,
                 detail=(
-                    "Presentation type does not match the stored generation mode."
+                    "El tipo de presentación no coincide con el modo de generación guardado."
                 ),
             )
 

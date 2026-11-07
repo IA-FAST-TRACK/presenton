@@ -157,8 +157,8 @@ function UploadPanel({
 
   return (
     <main className="mx-auto mt-7 w-full max-w-[742px] px-4 pb-12 font-syne">
-      <section aria-label="Upload PowerPoint" aria-busy={isProcessing} className="rounded-xl border border-[#DBDBDB99] bg-white px-[9px] py-[11px] shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
-        <input ref={inputRef} type="file" accept=".pptx" aria-label="PowerPoint file" className="hidden" disabled={isProcessing} onChange={(event) => { onFileInput(event); event.target.value = ""; }} />
+      <section aria-label="Subir PowerPoint" aria-busy={isProcessing} className="rounded-xl border border-[#DBDBDB99] bg-white px-[9px] py-[11px] shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+        <input ref={inputRef} type="file" accept=".pptx" aria-label="Archivo de PowerPoint" className="hidden" disabled={isProcessing} onChange={(event) => { onFileInput(event); event.target.value = ""; }} />
         <div
           className={`relative flex h-[127px] items-center overflow-hidden rounded-[10px] ${isDragging ? "bg-[#F3EFFF] ring-2 ring-[#7A5AF8]" : "bg-[#F9F9FA]"}`}
           onDragOver={(event) => { event.preventDefault(); if (!isProcessing) setIsDragging(true); }}
@@ -168,18 +168,18 @@ function UploadPanel({
           {selectedFile ? <>
             <div className="flex h-full min-w-0 flex-1 flex-col justify-center gap-2.5 bg-[#F6F6F9] pl-5">
               <p className="truncate text-base text-[#191919]">{selectedFile.name}</p>
-              <p className="text-xs text-[#666] [font-family:var(--font-manrope)]">{formatFileSize(selectedFile.size)}<span className="px-2">·</span>{isProcessing ? "Processing" : "Ready"}</p>
+              <p className="text-xs text-[#666] [font-family:var(--font-manrope)]">{formatFileSize(selectedFile.size)}<span className="px-2">·</span>{isProcessing ? "Procesando" : "Listo"}</p>
             </div>
             <div className="flex h-full w-[62px] shrink-0 items-center justify-center rounded-lg border-4 border-[#F6F6F9] bg-white">
-              <button type="button" onClick={onRemove} disabled={isProcessing} aria-label="Remove file" className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F6F6F9] focus-visible:ring-2 focus-visible:ring-[#7A5AF8] disabled:opacity-50"><img src="/custom-template/processing-imgFrame.svg" alt="" /></button>
+              <button type="button" onClick={onRemove} disabled={isProcessing} aria-label="Quitar archivo" className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F6F6F9] focus-visible:ring-2 focus-visible:ring-[#7A5AF8] disabled:opacity-50"><img src="/custom-template/processing-imgFrame.svg" alt="" /></button>
             </div>
-          </> : <button type="button" onClick={chooseFile} className="flex h-full w-full flex-col items-center justify-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7A5AF8]"><UploadIllustration /><span className="text-sm text-[#808080]">Drag &amp; Drop your files here</span></button>}
+          </> : <button type="button" onClick={chooseFile} className="flex h-full w-full flex-col items-center justify-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7A5AF8]"><UploadIllustration /><span className="text-sm text-[#808080]">Arrastra y suelta aquí tus archivos</span></button>}
         </div>
         <div className="mt-2.5 flex items-center justify-between gap-3">
           <AttachmentButton onClick={chooseFile} disabled={isProcessing} />
           <div className="flex items-center gap-3.5">
-            {isProcessing && <ProcessingStatus label="Processing..." />}
-            <ContinueButton onClick={selectedFile ? onStart : chooseFile} disabled={isProcessing} label={selectedFile ? "Analyze PowerPoint" : "Choose PowerPoint file"} />
+            {isProcessing && <ProcessingStatus label="Procesando..." />}
+            <ContinueButton onClick={selectedFile ? onStart : chooseFile} disabled={isProcessing} label={selectedFile ? "Analizar PowerPoint" : "Elegir archivo de PowerPoint"} />
           </div>
         </div>
       </section>
@@ -188,7 +188,7 @@ function UploadPanel({
 }
 
 function chipLabel(font: FontItem): string {
-  return font.name || font.family_name || font.original_name || "Unknown font";
+  return font.name || font.family_name || font.original_name || "Fuente desconocida";
 }
 
 function uniqueFontChips(fontsData: FontData): FontItem[] {
@@ -338,7 +338,7 @@ function FontFallbackPicker({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          aria-label={`Fallback font for ${fontName}`}
+          aria-label={`Fuente alternativa para ${fontName}`}
           disabled={disabled}
           className="h-11 w-full justify-between rounded-lg border-[#DADDE6] bg-white px-3 font-syne text-sm font-medium text-[#282A32] shadow-none hover:border-[#B8BCC8] hover:bg-white"
         >
@@ -350,7 +350,7 @@ function FontFallbackPicker({
                   : undefined
               }
             >
-              {selectedOption?.family ?? "Choose fallback"}
+              {selectedOption?.family ?? "Elegir alternativa"}
             </span>
           </span>
           <ChevronDown className="h-4 w-4 shrink-0 text-[#61646F]" />
@@ -364,7 +364,7 @@ function FontFallbackPicker({
           <CommandInput
             value={query}
             onValueChange={setQuery}
-            placeholder="Search fonts"
+            placeholder="Buscar fuentes"
             className="font-syne text-sm"
           />
           <CommandList
@@ -375,7 +375,7 @@ function FontFallbackPicker({
           >
             {filteredOptions.length === 0 ? (
               <CommandEmpty>
-                {options.length === 0 ? "Loading fonts..." : "No fonts found"}
+                {options.length === 0 ? "Cargando fuentes..." : "No se han encontrado fuentes"}
               </CommandEmpty>
             ) : (
               <CommandGroup
@@ -468,9 +468,9 @@ function AnalyzePanel({
 
   return (
     <main className="mx-auto mt-7 w-full max-w-[742px] px-4 pb-12 font-syne">
-      <section aria-label="Analyze fonts" aria-busy={isUploading || isAutoContinuing}>
+      <section aria-label="Analizar fuentes" aria-busy={isUploading || isAutoContinuing}>
         <div className="rounded-xl border border-[#DBDBDB99] bg-white px-[9px] py-[11px] shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
-          <p className="sr-only">Select a highlighted font to upload its original file or choose a replacement. Selected replacement fonts will be used when you continue.</p>
+          <p className="sr-only">Selecciona una fuente resaltada para subir su archivo original o elegir una sustituta. Las fuentes sustitutas seleccionadas se usarán al continuar.</p>
           <div className="grid min-h-[127px] grid-cols-2 items-start gap-3 sm:grid-cols-4">
             {fontChips.length > 0 ? (
               fontChips.map((font, index) => {
@@ -494,7 +494,7 @@ function AnalyzePanel({
                         : "border-[#FDDCAB] bg-[#FFFAF5] text-[#C4320A] hover:border-[#E8AA5D]"
                       : "border-[#EDEEEF] bg-white text-[#191919]"
                       } disabled:cursor-default`}
-                    title={isMissing ? `${label}: upload the original font or choose a replacement` : label}
+                    title={isMissing ? `${label}: sube la fuente original o elige una sustituta` : label}
                   >
                     <span className="line-clamp-2 text-xs">{label}</span>
                     {isMissing ? (
@@ -512,7 +512,7 @@ function AnalyzePanel({
               })
             ) : (
               <div className="col-span-full flex min-h-[140px] items-center justify-center rounded-xl border border-[#E8EAF0] bg-white text-sm font-medium text-[#686C78]">
-                No fonts detected
+                No se han detectado fuentes
               </div>
             )}
           </div>
@@ -520,8 +520,8 @@ function AnalyzePanel({
           <div className="mt-2.5 flex items-center justify-between gap-3">
             <AttachmentButton onClick={onReplaceFile} disabled={isUploading || isAutoContinuing} />
             <div className="flex items-center gap-5">
-              <ProcessingStatus label={isUploading || isAutoContinuing ? "Preparing preview..." : missingFonts.some((font) => !uploadedFontNames.has(font.name)) ? "Review missing fonts" : "Fonts ready"} />
-              <ContinueButton onClick={onContinue} disabled={isUploading || isAutoContinuing} label="Continue to slide preview" />
+              <ProcessingStatus label={isUploading || isAutoContinuing ? "Preparando la vista previa..." : missingFonts.some((font) => !uploadedFontNames.has(font.name)) ? "Revisa las fuentes que faltan" : "Fuentes listas"} />
+              <ContinueButton onClick={onContinue} disabled={isUploading || isAutoContinuing} label="Continuar a la vista previa de diapositivas" />
             </div>
           </div>
         </div>
@@ -532,7 +532,7 @@ function AnalyzePanel({
               <button
                 type="button"
                 onClick={() => setResolvingFont(null)}
-                aria-label="Close"
+                aria-label="Cerrar"
                 className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#20222B] shadow-sm"
               >
                 <X className="h-6 w-6" />
@@ -541,10 +541,10 @@ function AnalyzePanel({
               <div className="flex items-center justify-between gap-4 border-b border-[#EEF0F5] px-5 py-4 pr-14">
                 <div className="min-w-0">
                   <h3 className=" text-lg font-semibold text-[#191919]">
-                    Resolve Missing Font
+                    Resolver fuente que falta
                   </h3>
                   <p className="mt-1 text-xs text-[#808080]">
-                    {resolvingFontName} is missing.
+                    Falta la fuente {resolvingFontName}.
                   </p>
                 </div>
                 <button
@@ -553,14 +553,14 @@ function AnalyzePanel({
                   className="h-9 rounded-full px-5 text-sm font-medium text-white"
                   style={{ background: pillGradient }}
                 >
-                  Save
+                  Guardar
                 </button>
               </div>
 
               <div className="space-y-4 px-5 py-4">
                 <div>
                   <p className="mb-2 text-xs font-semibold text-[#30323A]">
-                    Upload original font file
+                    Subir el archivo de fuente original
                   </p>
                   <input
                     ref={(node) => {
@@ -584,19 +584,19 @@ function AnalyzePanel({
                         <Upload className="h-4 w-4" />
                       )}
                     </span>
-                    {resolvingFontUploaded ? "Font file uploaded" : "Upload .ttf / .otf"}
+                    {resolvingFontUploaded ? "Archivo de fuente subido" : "Subir .ttf / .otf"}
                   </button>
                 </div>
 
                 <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3">
                   <span className="h-px bg-[#EEF0F5]" />
-                  <span className="text-xs font-medium text-[#686C78]">or</span>
+                  <span className="text-xs font-medium text-[#686C78]">o</span>
                   <span className="h-px bg-[#EEF0F5]" />
                 </div>
 
                 <div>
                   <p className="mb-2 text-xs font-semibold text-[#30323A]">
-                    Fallback font
+                    Fuente alternativa
                   </p>
                   <FontFallbackPicker
                     fontName={resolvingFontName}
@@ -730,7 +730,7 @@ function GeneratingSlidesOverlay() {
         <span aria-hidden className="generating-slides-background absolute" />
         <span className="relative z-10 flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-[#9034EA]" />
-          Updating slides...
+          Actualizando diapositivas...
         </span>
       </span>
     </div>
@@ -857,7 +857,7 @@ function ThumbnailStrip({
         <button
           type="button"
           onClick={() => scrollThumbnails(-1)}
-          aria-label="Scroll thumbnails left"
+          aria-label="Desplazar miniaturas a la izquierda"
           className={`absolute left-0 top-1/2 z-10 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#E6E7ED] bg-white/95 text-black shadow-[0_2px_10px_rgba(16,24,40,0.14)] transition sm:h-9 sm:w-9 ${canScrollLeft ? "opacity-100" : "pointer-events-none opacity-0"}`}
         >
           <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -905,7 +905,7 @@ function ThumbnailStrip({
         <button
           type="button"
           onClick={() => scrollThumbnails(1)}
-          aria-label="Scroll thumbnails right"
+          aria-label="Desplazar miniaturas a la derecha"
           className={`absolute right-0 top-1/2 z-10 flex h-8 w-8 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#E6E7ED] bg-white/95 text-black shadow-[0_2px_10px_rgba(16,24,40,0.14)] transition sm:h-9 sm:w-9 ${canScrollRight ? "opacity-100" : "pointer-events-none opacity-0"}`}
         >
           <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -956,7 +956,7 @@ function ReviewSlideCanvas({
     return (
       <ScaledScreenshotSlide
         src={slide.screenshot_url}
-        alt={`Slide ${slide.slide_number}`}
+        alt={`Diapositiva ${slide.slide_number}`}
       />
     );
   }
@@ -964,7 +964,7 @@ function ReviewSlideCanvas({
   return (
     <ResponsiveSlideViewport className="border border-[#E8E8EF] bg-[#F7F7FA]">
       <div className="flex h-full w-full items-center justify-center text-sm text-[#777985] 2xl:text-base">
-        {slide.processing ? "Generating slide..." : "Slide unavailable"}
+        {slide.processing ? "Generando diapositiva..." : "Diapositiva no disponible"}
       </div>
     </ResponsiveSlideViewport>
   );
@@ -1004,7 +1004,7 @@ function PreviewPanel({
   return (
     <main className="mx-auto mt-7 w-full max-w-[1312px] px-4 pb-24 font-syne">
       <div className="relative aspect-video w-full overflow-hidden rounded-[10px] border border-[#EDEEEF] bg-[#F9F8F8] shadow-[0_0_14px_rgba(0,0,0,0.14)]">
-        {selectedUrl ? <img src={resolveBackendAssetUrl(selectedUrl)} alt={`Slide ${selectedIndex + 1}`} className="absolute inset-0 block h-full w-full object-contain" draggable={false} /> : <div className="flex h-full items-center justify-center text-sm text-[#777985]">Preview unavailable</div>}
+        {selectedUrl ? <img src={resolveBackendAssetUrl(selectedUrl)} alt={`Diapositiva ${selectedIndex + 1}`} className="absolute inset-0 block h-full w-full object-contain" draggable={false} /> : <div className="flex h-full items-center justify-center text-sm text-[#777985]">Vista previa no disponible</div>}
       </div>
       <ThumbnailStrip urls={previewUrls} selectedIndex={selectedIndex} onSelect={onSelect} inline />
     </main>
@@ -1058,7 +1058,7 @@ function ReviewPanel({
                     disabled={!selectedSlide || selectedSlide.processing}
                     className="h-8 rounded-[4px] px-2.5 text-[12px] font-medium text-black transition hover:bg-[#F6F6F9] disabled:cursor-not-allowed disabled:opacity-50 2xl:h-9 2xl:px-3 2xl:text-sm"
                   >
-                    Re-Construct
+                    Reconstruir
                   </button>
                   <span className="h-6 w-px bg-[#E8E8EE] 2xl:h-7" />
                   <button
@@ -1066,7 +1066,7 @@ function ReviewPanel({
                     onClick={handleDelete}
                     disabled={!isReady}
                     className="flex h-8 w-8 items-center justify-center rounded-[4px] text-black transition hover:bg-[#F6F6F9] disabled:cursor-not-allowed disabled:opacity-50 2xl:h-9 2xl:w-9"
-                    aria-label="Delete slide"
+                    aria-label="Eliminar diapositiva"
                   >
                     <Trash2 className="h-4 w-4 2xl:h-[18px] 2xl:w-[18px]" />
                   </button>
@@ -1097,9 +1097,9 @@ function SaveTemplateModal({
   isOpen,
   defaultName,
   isSaving,
-  title = "Save Template",
-  subtitle = "Give your template a name.",
-  submitLabel = "Save",
+  title = "Guardar plantilla",
+  subtitle = "Ponle un nombre a tu plantilla.",
+  submitLabel = "Guardar",
   onClose,
   onSave,
 }: {
@@ -1137,7 +1137,7 @@ function SaveTemplateModal({
           type="button"
           onClick={onClose}
           disabled={isSaving}
-          aria-label="Close"
+          aria-label="Cerrar"
           className="absolute right-3 top-5 flex h-8 w-8 items-center justify-center rounded-full bg-white text-black shadow-sm disabled:opacity-50"
         >
           <X className="h-6 w-6 2xl:h-7 2xl:w-7" />
@@ -1161,25 +1161,25 @@ function SaveTemplateModal({
         <div className="space-y-4 2xl:space-y-5 px-[18px] 2xl:px-6 pb-[18px] 2xl:pb-6 pt-5 2xl:pt-6">
           <label className="block">
             <span className="mb-2 2xl:mb-2.5 block text-[12px] 2xl:text-sm font-medium text-[#25272F]">
-              Template Name
+              Nombre de la plantilla
             </span>
             <input
               value={name}
               onChange={(event) => setName(event.target.value)}
               disabled={isSaving}
-              placeholder="e.g. Modern Tech Pitch Deck"
+              placeholder="p. ej., Presentación moderna para inversores tecnológicos"
               className="h-9 2xl:h-10 w-full rounded-[5px] border border-[#E1E2E8] bg-white px-3 2xl:px-4 text-[13px] 2xl:text-[15px] text-black outline-none placeholder:text-[#8C8E96] focus:border-[#B9ABFF]"
             />
           </label>
           <label className="block">
             <span className="mb-2 2xl:mb-2.5 block text-[12px] 2xl:text-sm font-medium text-[#25272F]">
-              Description
+              Descripción
             </span>
             <textarea
               value={description}
               onChange={(event) => setDescription(event.target.value)}
               disabled={isSaving}
-              placeholder="Briefly describe when or how this template should be used."
+              placeholder="Describe brevemente cuándo o cómo debe usarse esta plantilla."
               rows={4}
               className="h-[86px] 2xl:h-[100px] w-full resize-none rounded-[5px] border border-[#E1E2E8] bg-white px-3 2xl:px-4 py-3 2xl:py-3.5 text-[13px] 2xl:text-[15px] text-black outline-none placeholder:text-[#8C8E96] focus:border-[#B9ABFF]"
             />
@@ -1446,7 +1446,7 @@ const CustomTemplatePage = () => {
   const handleCreateTemplate = useCallback(
     async (name: string, description: string) => {
       if (!state.previewData) {
-        notify.error("Preview unavailable", "Create the slide preview before continuing.");
+        notify.error("Vista previa no disponible", "Crea la vista previa de las diapositivas antes de continuar.");
         return;
       }
 
@@ -1467,15 +1467,15 @@ const CustomTemplatePage = () => {
           description: description || null,
         });
         notify.success(
-          "Template generation started",
-          "You can track the template status from the Templates page.",
+          "Se ha iniciado la generación de la plantilla",
+          "Puedes seguir el estado de la plantilla desde la página Plantillas.",
         );
         setTemplateModalMode(null);
         router.push("/templates?tab=custom");
       } catch (error) {
         notify.error(
-          "Failed to create template",
-          error instanceof Error ? error.message : "An unexpected error occurred",
+          "No se ha podido crear la plantilla",
+          error instanceof Error ? error.message : "Se ha producido un error inesperado",
         );
       } finally {
         setIsSubmittingTemplate(false);
@@ -1487,7 +1487,7 @@ const CustomTemplatePage = () => {
   const handleSaveTemplate = useCallback(
     async (name: string, description: string) => {
       if (!state.templateId) {
-        notify.error("Template unavailable", "Generate the template before saving.");
+        notify.error("Plantilla no disponible", "Genera la plantilla antes de guardarla.");
         return;
       }
 
@@ -1497,13 +1497,13 @@ const CustomTemplatePage = () => {
           name,
           description: description || null,
         });
-        notify.success("Template saved", "The template was saved successfully.");
+        notify.success("Plantilla guardada", "La plantilla se ha guardado correctamente.");
         setTemplateModalMode(null);
         router.push(`/template-preview?templateV2Id=${encodeURIComponent(state.templateId)}`);
       } catch (error) {
         notify.error(
-          "Failed to save template",
-          error instanceof Error ? error.message : "An unexpected error occurred",
+          "No se ha podido guardar la plantilla",
+          error instanceof Error ? error.message : "Se ha producido un error inesperado",
         );
       } finally {
         setIsSubmittingTemplate(false);
@@ -1535,7 +1535,7 @@ const CustomTemplatePage = () => {
           disabled={state.isLoading || isSubmittingTemplate}
           fullWidth
         >
-          {isSubmittingTemplate ? "Creating Template..." : "Generate Template"}
+          {isSubmittingTemplate ? "Creando plantilla..." : "Generar plantilla"}
         </GradientPillButton>
       );
     }
@@ -1547,7 +1547,7 @@ const CustomTemplatePage = () => {
           disabled={!generatedSlidesReady || state.isLoading || isSubmittingTemplate}
           fullWidth
         >
-          {generatedSlidesReady ? "Save as Template" : "Generating Template"}
+          {generatedSlidesReady ? "Guardar como plantilla" : "Generando plantilla"}
         </GradientPillButton>
       );
     }
@@ -1623,13 +1623,13 @@ const CustomTemplatePage = () => {
         isOpen={isTemplateModalOpen}
         defaultName={defaultTemplateName}
         isSaving={isSubmittingTemplate}
-        title={isCreateTemplateModal ? "Create Template" : "Save Template"}
+        title={isCreateTemplateModal ? "Crear plantilla" : "Guardar plantilla"}
         subtitle={
           isCreateTemplateModal
-            ? "Name this template before generation starts."
-            : "Give your template a name."
+            ? "Ponle nombre a esta plantilla antes de que empiece la generación."
+            : "Ponle un nombre a tu plantilla."
         }
-        submitLabel={isCreateTemplateModal ? "Create" : "Save"}
+        submitLabel={isCreateTemplateModal ? "Crear" : "Guardar"}
         onClose={() => {
           if (!isSubmittingTemplate) setTemplateModalMode(null);
         }}

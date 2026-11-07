@@ -49,7 +49,7 @@ def test_mcp_file_upload_rejects_invalid_base64():
         files=[McpEncodedFileUpload(filename="brief.txt", content_base64="not-base64")]
     )
 
-    with pytest.raises(HTTPException, match="Invalid base64 content") as exc_info:
+    with pytest.raises(HTTPException, match="Contenido base64 no válido") as exc_info:
         asyncio.run(upload_files_for_mcp(request))
 
     assert exc_info.value.status_code == 400
@@ -67,5 +67,5 @@ def test_mcp_file_upload_reuses_file_type_validation(tmp_path, monkeypatch):
 def test_mcp_file_upload_rejects_oversized_combined_payload(monkeypatch):
     monkeypatch.setattr(files_endpoint, "MCP_FILES_UPLOAD_MAX_BASE64_CHARS", 4)
 
-    with pytest.raises(ValidationError, match="Combined file upload exceeds 100 MiB"):
+    with pytest.raises(ValidationError, match="El total de archivos subidos supera los 100 MiB"):
         _request("brief.txt", b"five bytes")

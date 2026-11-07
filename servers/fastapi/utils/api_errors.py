@@ -16,7 +16,7 @@ from utils.provider_errors import ProviderHTTPException, is_provider_failure, no
 
 
 LOGGER = logging.getLogger(__name__)
-SERVER_ERROR_MESSAGE = "The server could not complete this request. Please try again. If it keeps failing, contact your administrator."
+SERVER_ERROR_MESSAGE = "El servidor no ha podido completar esta solicitud. Inténtalo de nuevo. Si el problema persiste, contacta con tu administrador."
 STATUS_CODES = {
     400: "invalid_request", 401: "authentication_required", 403: "permission_denied",
     404: "not_found", 409: "conflict", 413: "request_too_large",

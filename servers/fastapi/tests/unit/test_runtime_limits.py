@@ -102,7 +102,7 @@ def test_electron_export_requires_pinned_chromium(monkeypatch, tmp_path):
         assert False, "Expected the Electron Chromium guard to reject a missing browser"
     except HTTPException as exc:
         assert exc.status_code == 500
-        assert "Refusing to download" in exc.detail
+        assert "No se descargará" in exc.detail
 
 
 def test_electron_export_preserves_valid_pinned_chromium(monkeypatch, tmp_path):
@@ -190,7 +190,7 @@ def test_render_html_to_image_sends_html_task_payload(monkeypatch, tmp_path):
         "width": 320,
         "height": 180,
     }
-    assert "HTML-to-image" in captured["response_error_detail"]
+    assert "HTML a imagen" in captured["response_error_detail"]
 
 
 def test_render_json_to_image_sends_json_task_payload(monkeypatch, tmp_path):
@@ -225,7 +225,7 @@ def test_render_json_to_image_sends_json_task_payload(monkeypatch, tmp_path):
         "height": 720,
         "fonts": {"Inter": "https://example.com/inter.css"},
     }
-    assert "JSON-to-image" in captured["response_error_detail"]
+    assert "JSON a imagen" in captured["response_error_detail"]
 
 
 def test_render_json_to_image_embeds_protected_local_assets(monkeypatch, tmp_path):
@@ -321,7 +321,7 @@ def test_render_jsons_to_images_sends_localized_batch_payload(monkeypatch, tmp_p
         "data:image/svg+xml;base64,"
     )
     assert layouts[0]["elements"][0]["data"].startswith("/app_data/")
-    assert "JSON-to-images" in captured["response_error_detail"]
+    assert "JSON a imágenes" in captured["response_error_detail"]
 
 
 def test_render_htmls_to_images_sends_batch_task_payload(monkeypatch, tmp_path):
@@ -350,7 +350,7 @@ def test_render_htmls_to_images_sends_batch_task_payload(monkeypatch, tmp_path):
         "width": 320,
         "height": 180,
     }
-    assert "HTML-to-images" in captured["response_error_detail"]
+    assert "HTML a imágenes" in captured["response_error_detail"]
 
 
 def test_render_htmls_to_images_falls_back_for_older_runtime(tmp_path):

@@ -178,7 +178,7 @@ async def poll_codex_auth_status(session_id: str):
     """
     session = _sessions.get(session_id)
     if not session:
-        raise HTTPException(status_code=404, detail="Session not found or already consumed")
+        raise HTTPException(status_code=404, detail="Sesión no encontrada o ya utilizada")
 
     server: OAuthCallbackServer = session["server"]
 
@@ -223,17 +223,17 @@ async def exchange_codex_code(body: ExchangeRequest):
     """
     session = _sessions.get(body.session_id)
     if not session:
-        raise HTTPException(status_code=404, detail="Session not found or already consumed")
+        raise HTTPException(status_code=404, detail="Sesión no encontrada o ya utilizada")
 
     parsed = parse_authorization_input(body.code)
     code = parsed.get("code")
     incoming_state = parsed.get("state")
 
     if not code:
-        raise HTTPException(status_code=400, detail="Could not extract authorization code from input")
+        raise HTTPException(status_code=400, detail="No se ha podido extraer el código de autorización de la entrada")
 
     if incoming_state and incoming_state != session["state"]:
-        raise HTTPException(status_code=400, detail="State mismatch — possible CSRF")
+        raise HTTPException(status_code=400, detail="El estado no coincide: posible ataque CSRF")
 
     verifier: str = session["verifier"]
     server: OAuthCallbackServer = session["server"]
@@ -244,11 +244,11 @@ async def exchange_codex_code(body: ExchangeRequest):
     _sessions.pop(body.session_id, None)
 
     if not isinstance(result, TokenSuccess):
-        raise HTTPException(status_code=502, detail=f"Token exchange failed: {result.reason}")
+        raise HTTPException(status_code=502, detail=f"Error en el intercambio del token: {result.reason}")
 
     profile = _store_token(result)
     if not profile.account_id:
-        raise HTTPException(status_code=502, detail="Token exchanged but could not extract account ID")
+        raise HTTPException(status_code=502, detail="Token intercambiado, pero no se ha podido extraer el ID de la cuenta")
 
     return ExchangeResponse(
         account_id=profile.account_id,
@@ -270,8 +270,8 @@ async def refresh_codex_token():
         raise HTTPException(
             status_code=401,
             detail=(
-                f"{CHATGPT_AUTH_REQUIRED_PREFIX} ChatGPT authentication is required. "
-                "Please sign in again from Settings."
+                f"{CHATGPT_AUTH_REQUIRED_PREFIX} Es necesario autenticarse con ChatGPT. "
+                "Vuelve a iniciar sesión desde Configuración."
             ),
             headers=CHATGPT_AUTH_REQUIRED_HEADERS,
         )
@@ -281,8 +281,8 @@ async def refresh_codex_token():
         raise HTTPException(
             status_code=401,
             detail=(
-                f"{CHATGPT_AUTH_REQUIRED_PREFIX} Your ChatGPT session expired. "
-                "Please sign in again from Settings."
+                f"{CHATGPT_AUTH_REQUIRED_PREFIX} Tu sesión de ChatGPT ha caducado. "
+                "Vuelve a iniciar sesión desde Configuración."
             ),
             headers=CHATGPT_AUTH_REQUIRED_HEADERS,
         )
@@ -293,7 +293,7 @@ async def refresh_codex_token():
         username=profile.username,
         email=profile.email,
         is_pro=profile.is_pro,
-        detail="Token refreshed successfully",
+        detail="Token actualizado correctamente",
     )
 
 
@@ -306,7 +306,7 @@ async def get_codex_auth_status():
 
     access_token = get_codex_access_token_env()
     if not access_token:
-        return StatusResponse(status="not_authenticated", detail="No access token stored")
+        return StatusResponse(status="not_authenticated", detail="No hay ningún token de acceso guardado")
 
     expires_str = get_codex_token_expires_env()
     if expires_str:
@@ -314,7 +314,7 @@ async def get_codex_auth_status():
             expires_ms = int(expires_str)
             now_ms = int(time.time() * 1000)
             if now_ms >= expires_ms:
-                return StatusResponse(status="expired", detail="Access token has expired — call /refresh")
+                return StatusResponse(status="expired", detail="El token de acceso ha caducado: llama a /refresh")
         except (ValueError, TypeError):
             pass
 

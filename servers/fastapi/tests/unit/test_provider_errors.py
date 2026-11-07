@@ -55,7 +55,7 @@ def test_llmai_wrapped_dns_cause_is_preserved_and_not_logged(caplog):
     error = handle_llm_client_exceptions(wrapped)
     assert error.error_code == "provider_dns_error"
     assert "secret" not in caplog.text
-    assert "hostname" in error.detail
+    assert "nombre de host" in error.detail
 
 
 def test_codex_reauth_keeps_action_header_and_hides_provider_message(monkeypatch):

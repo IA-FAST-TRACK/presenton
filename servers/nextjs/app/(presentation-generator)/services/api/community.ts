@@ -84,7 +84,7 @@ async function fetchCommunity<T>(
       throw error;
     }
     throw new ApiResponseError(
-      "Could not reach the Presenton server while loading Community. Check your connection and try again.",
+      "No se ha podido conectar con el servidor de Presenton al cargar la comunidad. Comprueba tu conexión e inténtalo de nuevo.",
       {
         status: 0,
         code: "community_backend_unreachable",
@@ -122,7 +122,7 @@ export class CommunityPresentationApi {
         cache: "no-cache",
         signal,
       },
-      "Failed to load community references"
+      "No se han podido cargar las referencias de la comunidad"
     );
   }
 
@@ -130,7 +130,7 @@ export class CommunityPresentationApi {
     return fetchCommunity<CommunityPresentation>(
       getApiUrl(`/api/v1/ppt/community/presentations/${id}`),
       { headers: getHeader(), cache: "no-cache" },
-      "Failed to load the community reference"
+      "No se ha podido cargar la referencia de la comunidad"
     );
   }
 }
@@ -138,7 +138,7 @@ export class CommunityPresentationApi {
 export function getCommunityPresentationTitle(
   presentation: CommunityPresentation
 ) {
-  return presentation.title?.trim() || "Untitled presentation";
+  return presentation.title?.trim() || "Presentación sin título";
 }
 
 export function getCommunityPresentationAuthor(

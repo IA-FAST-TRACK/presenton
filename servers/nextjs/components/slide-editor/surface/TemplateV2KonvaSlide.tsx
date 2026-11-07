@@ -2666,7 +2666,7 @@ function TemplateV2KonvaSlideComponent({
             error_message: "Invalid image file type",
           }),
         });
-        notify.warning("Invalid file", "Please upload an image file.");
+        notify.warning("Archivo no válido", "Sube un archivo de imagen.");
         return;
       }
       if (file.size > 5 * 1024 * 1024) {
@@ -2676,7 +2676,7 @@ function TemplateV2KonvaSlideComponent({
             error_message: "Image file too large",
           }),
         });
-        notify.warning("File too large", "Image files must be smaller than 5MB.");
+        notify.warning("Archivo demasiado grande", "Los archivos de imagen deben pesar menos de 5 MB.");
         return;
       }
 
@@ -2684,7 +2684,7 @@ function TemplateV2KonvaSlideComponent({
         setIsUploadingImage(true);
         const uploaded = await ImagesApi.uploadImage(file);
         const imageUrl = resolveBackendAssetSource(uploaded);
-        if (!imageUrl) throw new Error("Upload did not return an image URL.");
+        if (!imageUrl) throw new Error("La subida no ha devuelto la URL de la imagen.");
         updateElement(target, (element) => ({
           ...element,
           data: imageUrl,
@@ -2698,7 +2698,7 @@ function TemplateV2KonvaSlideComponent({
             file_size_bucket: bucketFileSize(file.size),
           }),
         });
-        notify.success("Image updated", "The selected image was replaced.");
+        notify.success("Imagen actualizada", "Se ha sustituido la imagen seleccionada.");
       } catch (error) {
         trackEvent(MixpanelEvent.Editor_Image_Replace_Failed, {
           ...editorAnalyticsProps({
@@ -2709,10 +2709,10 @@ function TemplateV2KonvaSlideComponent({
           }),
         });
         notify.error(
-          "Upload failed",
+          "Error al subir",
           error instanceof Error
             ? error.message
-            : "Failed to upload image. Please try again.",
+            : "No se ha podido subir la imagen. Inténtalo de nuevo.",
         );
       } finally {
         pendingImageUploadRef.current = null;
@@ -2926,7 +2926,7 @@ function TemplateV2KonvaSlideComponent({
     return (
       <div className="flex h-full aspect-video flex-col items-center justify-center rounded-lg bg-gray-100">
         <Loader2 className="mb-2 h-4 w-4 animate-spin" />
-        <p className="text-center text-sm text-gray-600">Loading slide layout...</p>
+        <p className="text-center text-sm text-gray-600">Cargando el diseño de la diapositiva...</p>
       </div>
     );
   }
@@ -3388,7 +3388,7 @@ function TemplateV2KonvaSlideComponent({
         <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-white/35">
           <div className="flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-medium text-[#191919] shadow-md">
             <Loader2 className="h-4 w-4 animate-spin" />
-            Uploading image...
+            Subiendo imagen...
           </div>
         </div>
       ) : null}

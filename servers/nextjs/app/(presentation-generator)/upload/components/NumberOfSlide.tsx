@@ -26,7 +26,7 @@ const NumberOfSlide = ({ value, onValueChange }: { value: string, onValueChange:
                 className="w-[180px] font-manrope font-medium bg-blue-100 border-blue-200 focus-visible:ring-blue-300"
                 data-testid="slides-select"
             >
-                <SelectValue placeholder="Select Slides" />
+                <SelectValue placeholder="Selecciona las diapositivas" />
             </SelectTrigger>
             <SelectContent className="font-manrope">
                 {/* Sticky custom input at the top */}
@@ -59,14 +59,14 @@ const NumberOfSlide = ({ value, onValueChange }: { value: string, onValueChange:
                             placeholder="--"
                             className="h-8 w-16 px-2 text-sm"
                         />
-                        <span className="text-sm font-medium">slides</span>
+                        <span className="text-sm font-medium">diapositivas</span>
                     </div>
                 </div>
 
                 {/* Hidden item to allow SelectValue to render custom selection */}
                 {value && !SLIDE_OPTIONS.includes(value) && (
                     <SelectItem value={value} className="hidden">
-                        {value} slides
+                        {value} diapositivas
                     </SelectItem>
                 )}
 
@@ -77,7 +77,7 @@ const NumberOfSlide = ({ value, onValueChange }: { value: string, onValueChange:
                         className="font-manrope text-sm font-medium"
                         role="option"
                     >
-                        {option} slides
+                        {option} diapositivas
                     </SelectItem>
                 ))}
             </SelectContent>

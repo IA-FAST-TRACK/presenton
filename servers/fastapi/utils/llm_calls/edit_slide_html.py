@@ -79,7 +79,7 @@ async def get_edited_slide_html(
         )
         response_text = extract_text(response.content)
         if response_text is None:
-            raise HTTPException(status_code=400, detail="LLM did not return any content")
+            raise HTTPException(status_code=400, detail="El LLM no ha devuelto ningún contenido")
         return extract_html_from_response(response_text) or html
     except Exception as e:
         raise handle_llm_client_exceptions(e)

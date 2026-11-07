@@ -103,7 +103,7 @@ export function resolveReadableLocalFile(
   scope?: FileOwnerScope,
 ): string {
   if (typeof filePath !== "string" || filePath.trim().length === 0) {
-    throw new LocalFileAccessError("Invalid file path", 400);
+    throw new LocalFileAccessError("Ruta de archivo no válida", 400);
   }
 
   const requestedPath = path.resolve(filePath);
@@ -121,7 +121,7 @@ export function resolveReadableLocalFile(
   try {
     resolvedPath = fs.realpathSync(requestedPath);
   } catch {
-    throw new LocalFileAccessError("File not found", 404);
+    throw new LocalFileAccessError("Archivo no encontrado", 404);
   }
 
   assertNotAnotherUsersFile(resolvedPath, scope);

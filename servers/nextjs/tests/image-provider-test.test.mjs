@@ -51,7 +51,7 @@ test("preserves provider failure detail for inline feedback", async () => {
 
 test("rejects a successful response that contains no image", async () => {
   globalThis.fetch = async () => Response.json({});
-  await assert.rejects(ImagesApi.testProvider({ IMAGE_PROVIDER: "gpt-image-2" }), /did not return a sample image/);
+  await assert.rejects(ImagesApi.testProvider({ IMAGE_PROVIDER: "gpt-image-2" }), /no ha devuelto ninguna imagen de muestra/);
 });
 
 test("preserves request aborts so stale tests cannot update the form", async () => {

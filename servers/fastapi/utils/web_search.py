@@ -48,7 +48,7 @@ def get_selected_web_search_provider() -> WebSearchProvider:
     except ValueError as exc:
         raise HTTPException(
             status_code=400,
-            detail=f"Unsupported web search provider: {value}",
+            detail=f"Proveedor de búsqueda web no compatible: {value}",
         ) from exc
 
 
@@ -106,7 +106,7 @@ async def search_web(query: str, max_results: int | None = None) -> list[WebSear
     if provider is None:
         raise HTTPException(
             status_code=400,
-            detail="Web search is disabled unless an external provider is selected",
+            detail="La búsqueda web está desactivada salvo que se seleccione un proveedor externo",
         )
     started_at = time.monotonic()
     safe_log(LOGGER, logging.INFO,
@@ -134,7 +134,7 @@ async def search_web(query: str, max_results: int | None = None) -> list[WebSear
             else:
                 raise HTTPException(
                     status_code=400,
-                    detail=f"Unsupported web search provider: {provider.value}",
+                    detail=f"Proveedor de búsqueda web no compatible: {provider.value}",
                 )
     except Exception:
         safe_log_exception(LOGGER,
@@ -204,7 +204,7 @@ def _clean_outline_web_text(value: Any) -> str:
 def _required(value: str | None, label: str) -> str:
     if value and value.strip():
         return value.strip()
-    raise HTTPException(status_code=400, detail=f"{label} is not configured")
+    raise HTTPException(status_code=400, detail=f"{label} no está configurado")
 
 
 def _get_searxng_search_url() -> str:
@@ -229,7 +229,7 @@ def _redact_url_credentials(value: str) -> str:
 async def _json_response(response: aiohttp.ClientResponse) -> dict[str, Any]:
     if response.status >= 400:
         detail = (await response.text())[:500]
-        raise HTTPException(response.status, detail=f"Web search request failed: {detail}")
+        raise HTTPException(response.status, detail=f"La solicitud de búsqueda web ha fallado: {detail}")
     payload = await response.json(content_type=None)
     return payload if isinstance(payload, dict) else {}
 

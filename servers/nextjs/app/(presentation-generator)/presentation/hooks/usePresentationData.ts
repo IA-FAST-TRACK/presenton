@@ -32,8 +32,8 @@ export const usePresentationData = (
 
       if (data?.version === "v1-standard") {
         notify.warning(
-          "Unsupported presentation",
-          "This deck was created in an older Presenton version. Downgrade to a compatible version to open it."
+          "Presentación no compatible",
+          "Esta presentación se creó con una versión anterior de Presenton. Instala una versión compatible para abrirla."
         );
         setLoading(false);
         router.replace("/dashboard");
@@ -78,7 +78,7 @@ export const usePresentationData = (
       return normalizedData;
     } catch (error) {
       setError(true);
-      notify.error("Failed to load presentation", "The presentation could not be loaded. Please try again.");
+      notify.error("No se ha podido cargar la presentación", "No se ha podido cargar la presentación. Inténtalo de nuevo.");
       console.error("Error fetching user slides:", error);
       setLoading(false);
       return undefined;

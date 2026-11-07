@@ -11,10 +11,10 @@ export default function GenerateUserGuide({ mode, communityEnabled }: { mode: Ge
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
   const steps = [
-    { target: "setup", title: "Choose how your slides are designed", description: "Smart creates layouts around your content. Standard uses your chosen template. Set the slide count, language, and advanced settings beside the mode switch." },
-    { target: "prompt", title: "Write your presentation brief", description: "Describe your topic, audience, and key points. Use the paperclip to attach supporting documents. Choose a language when working with documents." },
-    ...(mode === "smart" && communityEnabled ? [{ target: "designs", title: "Choose an optional design reference", description: "Search Community designs, preview them with the eye button, then choose Use. The menu also lets you reuse a prompt. Browse All opens the full community library." }] : []),
-    { target: "prompt", title: "Generate your presentation", description: "Select the purple arrow, or press Command/Ctrl + Enter in your brief. Smart opens your generated presentation; Standard starts with an outline and template selection. Press ? on this page to reopen this guide." },
+    { target: "setup", title: "Elige cómo se diseñan tus diapositivas", description: "El modo Inteligente crea diseños en torno a tu contenido. El modo Estándar usa la plantilla que elijas. Configura el número de diapositivas, el idioma y la configuración avanzada junto al selector de modo." },
+    { target: "prompt", title: "Escribe el resumen de tu presentación", description: "Describe el tema, el público y los puntos clave. Usa el clip para adjuntar documentos de apoyo. Elige un idioma cuando trabajes con documentos." },
+    ...(mode === "smart" && communityEnabled ? [{ target: "designs", title: "Elige una referencia de diseño opcional", description: "Busca diseños de la comunidad, obtén una vista previa con el botón del ojo y luego elige Usar. El menú también te permite reutilizar unas instrucciones. Ver todo abre la biblioteca completa de la comunidad." }] : []),
+    { target: "prompt", title: "Genera tu presentación", description: "Pulsa la flecha morada o pulsa Comando/Ctrl + Intro en tu resumen. El modo Inteligente abre la presentación generada; el modo Estándar empieza con un esquema y la selección de plantilla. Pulsa ? en esta página para volver a abrir esta guía." },
   ];
   const current = steps[Math.min(step, steps.length - 1)];
 
@@ -51,14 +51,14 @@ export default function GenerateUserGuide({ mode, communityEnabled }: { mode: Ge
   return (
     <Dialog open={open} onOpenChange={(next) => { if (!next) close(); }}>
       <DialogContent overlayClassName="bg-black/15 backdrop-blur-none" className="top-auto bottom-4 max-w-[440px] translate-y-0 rounded-xl border-[#EDEEEF] bg-white p-6 font-syne sm:bottom-6">
-        <p className="text-xs text-[#7A5AF8]">User guide · {Math.min(step + 1, steps.length)} of {steps.length}</p>
+        <p className="text-xs text-[#7A5AF8]">Guía de uso · {Math.min(step + 1, steps.length)} de {steps.length}</p>
         <DialogTitle className="pr-4 text-lg text-[#191919]">{current.title}</DialogTitle>
         <DialogDescription className="text-sm leading-6 text-[#666666]">{current.description}</DialogDescription>
         <div className="flex items-center justify-between gap-3">
-          <button type="button" onClick={close} className="text-xs text-[#808080] hover:text-[#191919]">Skip guide</button>
+          <button type="button" onClick={close} className="text-xs text-[#808080] hover:text-[#191919]">Omitir guía</button>
           <div className="flex gap-2">
-            {step > 0 && <Button variant="outline" onClick={() => setStep((value) => value - 1)}>Back</Button>}
-            <Button className="bg-[#7A5AF8] text-white hover:bg-[#6847E8]" onClick={() => step >= steps.length - 1 ? close() : setStep((value) => value + 1)}>{step >= steps.length - 1 ? "Get started" : "Next"}</Button>
+            {step > 0 && <Button variant="outline" onClick={() => setStep((value) => value - 1)}>Atrás</Button>}
+            <Button className="bg-[#7A5AF8] text-white hover:bg-[#6847E8]" onClick={() => step >= steps.length - 1 ? close() : setStep((value) => value + 1)}>{step >= steps.length - 1 ? "Empezar" : "Siguiente"}</Button>
           </div>
         </div>
       </DialogContent>

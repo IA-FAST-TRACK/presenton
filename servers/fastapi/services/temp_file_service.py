@@ -27,7 +27,7 @@ class TempFileService:
         if not owner_dir.startswith(f"{root_dir}{os.sep}"):
             raise HTTPException(
                 status_code=400,
-                detail="Directory path must stay within the temp directory",
+                detail="La ruta del directorio debe permanecer dentro del directorio temporal",
             )
         os.makedirs(owner_dir, exist_ok=True)
         return owner_dir
@@ -44,17 +44,17 @@ class TempFileService:
         normalized_name = (file_name or "").replace("\\", "/")
         safe_name = os.path.basename(normalized_name).strip()
         if not safe_name or safe_name in {".", ".."}:
-            raise HTTPException(status_code=400, detail="Invalid filename")
+            raise HTTPException(status_code=400, detail="Nombre de archivo no válido")
         return safe_name
 
     def resolve_temp_path(self, file_path: str, must_exist: bool = False) -> str:
         if not isinstance(file_path, str) or not file_path.strip():
-            raise HTTPException(status_code=400, detail="Invalid file path")
+            raise HTTPException(status_code=400, detail="Ruta de archivo no válida")
 
         try:
             resolved_path = os.path.realpath(os.path.abspath(file_path))
         except OSError as exc:
-            raise HTTPException(status_code=404, detail="File not found") from exc
+            raise HTTPException(status_code=404, detail="Archivo no encontrado") from exc
 
         base_dir = self._owner_base_dir_realpath()
         if not (
@@ -63,11 +63,11 @@ class TempFileService:
         ):
             raise HTTPException(
                 status_code=400,
-                detail="File path must stay within the temp directory",
+                detail="La ruta del archivo debe permanecer dentro del directorio temporal",
             )
 
         if must_exist and not os.path.exists(resolved_path):
-            raise HTTPException(status_code=404, detail="File not found")
+            raise HTTPException(status_code=404, detail="Archivo no encontrado")
 
         return resolved_path
 
@@ -85,7 +85,7 @@ class TempFileService:
         temp_dir = os.path.join(base_dir, temp_dir_name)
         temp_dir = os.path.realpath(temp_dir)
         self._assert_within_base_dir(
-            temp_dir, "Directory path must stay within the temp directory"
+            temp_dir, "La ruta del directorio debe permanecer dentro del directorio temporal"
         )
         os.makedirs(temp_dir, exist_ok=True)
         return temp_dir
@@ -102,13 +102,13 @@ class TempFileService:
         safe_name = self.sanitize_upload_filename(file_path)
         resolved_dir = os.path.realpath(dir_path)
         self._assert_within_base_dir(
-            resolved_dir, "Directory path must stay within the temp directory"
+            resolved_dir, "La ruta del directorio debe permanecer dentro del directorio temporal"
         )
 
         full_path = os.path.join(resolved_dir, safe_name)
         full_path = os.path.realpath(full_path)
         self._assert_within_base_dir(
-            full_path, "File path must stay within the temp directory"
+            full_path, "La ruta del archivo debe permanecer dentro del directorio temporal"
         )
 
         os.makedirs(os.path.dirname(full_path), exist_ok=True)
@@ -133,7 +133,7 @@ class TempFileService:
         if not (file_path == base_dir or file_path.startswith(f"{base_dir}{os.sep}")):
             raise HTTPException(
                 status_code=400,
-                detail="File path must stay within the temp directory",
+                detail="La ruta del archivo debe permanecer dentro del directorio temporal",
             )
         mode = "rb" if binary else "r"
         with open(file_path, mode) as f:
@@ -141,17 +141,17 @@ class TempFileService:
 
     async def update_temp_file_from_upload(self, file_path: str, upload_file) -> None:
         if not isinstance(file_path, str) or not file_path.strip():
-            raise HTTPException(status_code=400, detail="Invalid file path")
+            raise HTTPException(status_code=400, detail="Ruta de archivo no válida")
 
         base_dir = self._owner_base_dir_realpath()
         normalized_path = os.path.realpath(os.path.abspath(file_path))
         if not normalized_path.startswith(base_dir):
             raise HTTPException(
                 status_code=400,
-                detail="File path must stay within the temp directory",
+                detail="La ruta del archivo debe permanecer dentro del directorio temporal",
             )
         self._assert_within_base_dir(
-            normalized_path, "File path must stay within the temp directory"
+            normalized_path, "La ruta del archivo debe permanecer dentro del directorio temporal"
         )
 
         with open(normalized_path, "wb") as f:
