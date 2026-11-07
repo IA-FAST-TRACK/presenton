@@ -5,7 +5,7 @@ import { getServerAuthStatus } from '@/utils/serverAuth'
 import { getSettingsView } from '@/utils/settingsAccess'
 
 export const metadata = {
-  title: 'Ajustes | Presenton',
+  title: 'Ajustes | AI Fast Track Presentaciones',
   description: 'Página de ajustes',
 }
 const page = async () => {

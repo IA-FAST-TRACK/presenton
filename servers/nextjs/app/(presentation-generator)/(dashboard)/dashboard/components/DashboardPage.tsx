@@ -314,33 +314,7 @@ function DashboardHeader() {
               }
             >
               <Image
-                src={dashboardHeaderAsset("discord.svg")}
-                alt=""
-                aria-hidden="true"
-                width={18}
-                height={18}
-                className="h-[17.6px] w-[17.6px] shrink-0"
-              />
-              <span className="font-syne text-sm font-normal leading-normal tracking-[-0.14px] text-[#191919]">
-                Únete a Discord
-              </span>
-            </Link>
-            <DashboardHeaderDivider />
-            <Link
-              href={GITHUB_REPOSITORY_URL}
-              target="_blank"
-              rel="noreferrer"
-              className={`${dashboardHeaderPill} h-[29.6px] gap-[8.8px] p-1.5`}
-              onClick={() =>
-                trackEvent(MixpanelEvent.Navigation, {
-                  from: pathname,
-                  to: GITHUB_REPOSITORY_URL,
-                  source: "dashboard_header_github",
-                })
-              }
-            >
-              <Image
-                src={dashboardHeaderAsset("github.svg")}
+                src="/aifasttrack-mark.svg"
                 alt=""
                 aria-hidden="true"
                 width={18}

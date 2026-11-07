@@ -84,7 +84,7 @@ async function fetchCommunity<T>(
       throw error;
     }
     throw new ApiResponseError(
-      "No se ha podido conectar con el servidor de Presenton al cargar la comunidad. Comprueba tu conexión e inténtalo de nuevo.",
+      "No se ha podido conectar con el servidor de Fast Track Presentaciones al cargar la comunidad. Comprueba tu conexión e inténtalo de nuevo.",
       {
         status: 0,
         code: "community_backend_unreachable",

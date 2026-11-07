@@ -72,7 +72,7 @@ const PrivacySettings = () => {
           Analítica de uso
         </h4>
         <p className="text-xs text-[#6B7280] mb-6 leading-relaxed max-w-lg">
-          Comparte datos de uso anónimos para ayudarnos a mejorar Presenton. No se recopila información personal ni el contenido de tus presentaciones.
+          Comparte datos de uso anónimos para ayudarnos a mejorar Fast Track Presentaciones. No se recopila información personal ni el contenido de tus presentaciones.
         </p>
 
         <div className="flex items-center justify-between gap-4 rounded-[10px] bg-white border border-[#EDEEEF] p-4">

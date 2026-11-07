@@ -46,7 +46,7 @@ const Header = () => {
             <Link href="/dashboard" onClick={() => trackEvent(MixpanelEvent.Navigation, { from: pathname, to: "/dashboard" })}>
               <img
                 src="/logo-with-bg.png"
-                alt="Logotipo de Presenton"
+                alt="Logotipo de AI Fast Track"
                 className="h-[40px] w-[40px]"
               />
             </Link>

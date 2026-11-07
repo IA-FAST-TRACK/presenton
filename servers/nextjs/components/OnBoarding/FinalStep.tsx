@@ -95,7 +95,7 @@ const FinalStep = () => {
         <div className='fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center'>
             <div className='flex flex-col items-center justify-center'>
 
-                <img src="/final_onboarding.png" alt="Presenton" className='w-[118px] h-[98px]  object-contain' />
+                <img src="/final_onboarding.png" alt="" className='w-[118px] h-[98px]  object-contain' />
                 <h1 className='text-black text-[30px] font-normal font-syne py-2.5'>¡Te damos la bienvenida!</h1>
                 <p className='text-[#000000CC] text-xl font-normal font-syne'>Ya está todo listo. Vamos a crear tu primera presentación.</p>
 
@@ -103,7 +103,7 @@ const FinalStep = () => {
                     <div className='flex items-center gap-3 mt-8 px-5 py-3.5 rounded-[10px] border border-[#EDEEEF] bg-white'>
                         <div>
                             <p className='text-sm font-medium text-[#191919] font-syne'>Analítica de uso</p>
-                            <p className='text-[11px] text-[#9CA3AF] font-syne leading-tight mt-0.5'>Ayuda a mejorar Presenton compartiendo datos de uso anónimos.</p>
+                            <p className='text-[11px] text-[#9CA3AF] font-syne leading-tight mt-0.5'>Ayuda a mejorar Fast Track Presentaciones compartiendo datos de uso anónimos.</p>
                         </div>
                         <Switch
                             checked={trackingEnabled}

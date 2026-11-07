@@ -130,7 +130,7 @@ export const PresentationCard = ({
         suppressHydrationWarning={true}
         onClick={handlePreview}
         aria-disabled={isUnsupported}
-        title={isUnsupported ? "No compatible con esta versión de Presenton" : undefined}
+        title={isUnsupported ? "No compatible con esta versión de Fast Track Presentaciones" : undefined}
         className={`bg-[#F8FBFB] font-syne relative shadow-none sm:shadow-none presentation-card rounded-[12px] p-0 group slide-theme overflow-hidden flex flex-col ${
           isUnsupported
             ? "cursor-not-allowed border-[#EDEEEF]"

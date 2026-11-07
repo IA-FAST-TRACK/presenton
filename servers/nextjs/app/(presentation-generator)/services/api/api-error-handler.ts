@@ -41,7 +41,7 @@ export async function apiFetch(input: RequestInfo | URL, init?: RequestInit): Pr
     throw new ApiResponseError(
       timeout
         ? "La solicitud ha tardado demasiado en completarse. Inténtalo de nuevo."
-        : "No se ha podido conectar con Presenton. Comprueba tu conexión y que el servidor esté en marcha, y vuelve a intentarlo.",
+        : "No se ha podido conectar con Fast Track Presentaciones. Comprueba tu conexión y que el servidor esté en marcha, y vuelve a intentarlo.",
       { status: timeout ? 504 : 0, code: timeout ? "request_timeout" : "backend_unreachable", retryable: true },
     );
   }
@@ -58,7 +58,7 @@ export class ApiResponseHandler {
         // Invalid JSON must not become an empty successful object that causes
         // an unrelated rendering failure later.
         throw new ApiResponseError(
-          "Presenton ha devuelto una respuesta incompleta o no válida. Inténtalo de nuevo.",
+          "Fast Track Presentaciones ha devuelto una respuesta incompleta o no válida. Inténtalo de nuevo.",
           { status: 502, code: "invalid_response", retryable: true },
         );
       }

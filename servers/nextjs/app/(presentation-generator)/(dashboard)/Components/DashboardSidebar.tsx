@@ -41,8 +41,8 @@ const DashboardSidebar = ({
             <div>
 
                 <Link href={`/dashboard`} className="flex items-center  pb-6 border-b border-[#E1E1E5]   gap-2    ">
-                    <div className="bg-[#FFDB05] rounded-full cursor-pointer p-1 flex justify-center items-center mx-auto">
-                        <img src="/logo-with-bg.png" alt="Logotipo de Presenton" className="h-[40px] object-contain w-full" />
+                    <div className="bg-[#0A0A0A] rounded-full cursor-pointer p-1 flex justify-center items-center mx-auto">
+                        <img src="/logo-with-bg.png" alt="Logotipo de AI Fast Track" className="h-[40px] object-contain w-full" />
                     </div>
                 </Link>
                 <nav className="pt-6 font-syne" aria-label="Secciones del panel">
@@ -115,7 +115,7 @@ const DashboardSidebar = ({
                 </Link>
                 <div className="py-2"/>
                 <Link
-                    href="https://docs.presenton.ai/help"
+                    href="https://aifasttrack.tech"
                     aria-label="Ayuda"
                     target="_blank"
                     className="flex flex-col items-center gap-2 transition-colors"

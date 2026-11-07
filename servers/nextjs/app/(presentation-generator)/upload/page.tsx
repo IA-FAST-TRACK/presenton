@@ -7,40 +7,9 @@ import { normalizePresentationGenerationMode } from "@/utils/presentationGenerat
 import { isCommunityEnabled } from "@/utils/community";
 
 export const metadata: Metadata = {
-  title: "Presenton | Generador de presentaciones con IA de código abierto",
-  description:
-    "Generador de presentaciones con IA de código abierto con diseños personalizados, compatibilidad con varios modelos (OpenAI, Gemini, Ollama) y exportación a PDF/PPTX. Una alternativa gratuita a Gamma.",
-  alternates: {
-    canonical: "https://presenton.ai/create",
-  },
-  keywords: [
-    "presentation generator",
-    "AI presentations",
-    "data visualization",
-    "automatic presentation maker",
-    "professional slides",
-    "data-driven presentations",
-    "document to presentation",
-    "presentation automation",
-    "smart presentation tool",
-    "business presentations",
-  ],
-  openGraph: {
-    title: "Crear presentación de datos | PresentOn",
-    description:
-      "Generador de presentaciones con IA de código abierto con diseños personalizados, compatibilidad con varios modelos (OpenAI, Gemini, Ollama) y exportación a PDF/PPTX. Una alternativa gratuita a Gamma.",
-    type: "website",
-    url: "https://presenton.ai/create",
-    siteName: "PresentOn",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Crear presentación de datos | PresentOn",
-    description:
-      "Generador de presentaciones con IA de código abierto con diseños personalizados, compatibilidad con varios modelos (OpenAI, Gemini, Ollama) y exportación a PDF/PPTX. Una alternativa gratuita a Gamma.",
-    site: "@presenton_ai",
-    creator: "@presenton_ai",
-  },
+  // Description, Open Graph and Twitter metadata are inherited from the
+  // root layout (AI Fast Track branding).
+  title: "AI Fast Track Presentaciones",
 };
 
 const page = () => {

@@ -146,7 +146,7 @@ export function statusErrorMessage(status: number, fallback: string): string {
     case 428: return "Esta instalación necesita una configuración inicial. Pide a un administrador que la complete.";
     case 429: return "Demasiadas solicitudes. Espera un momento e inténtalo de nuevo.";
     case 500: return "El servidor no ha podido completar la solicitud. Inténtalo de nuevo.";
-    case 502: return "Presenton ha recibido una respuesta no válida de un servicio. Inténtalo de nuevo en unos instantes.";
+    case 502: return "Fast Track Presentaciones ha recibido una respuesta no válida de un servicio. Inténtalo de nuevo en unos instantes.";
     case 503: return "El servicio no está disponible temporalmente. Inténtalo de nuevo en unos instantes.";
     case 408:
     case 504: return "La solicitud ha tardado demasiado en completarse. Inténtalo de nuevo.";

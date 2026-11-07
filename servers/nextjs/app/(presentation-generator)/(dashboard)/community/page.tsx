@@ -7,7 +7,7 @@ import CommunityPage from "./components/CommunityPage";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Comunidad | Presenton",
+  title: "Comunidad | AI Fast Track Presentaciones",
   description: "Explora diseños de presentaciones y prompts de la comunidad.",
 };
 

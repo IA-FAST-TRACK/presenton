@@ -297,7 +297,7 @@ const DocumentsPreviewPage: React.FC = () => {
             onClick={handleCreatePresentation}
             className="motion-press group flex items-center gap-2 px-8 py-6 rounded-sm text-md text-[#0A0A0A] bg-[#FFDB05] hover:bg-[#FFDB05]/90"
           >
-            <span className="text-white font-semibold">Siguiente</span>
+            <span className="text-[#0A0A0A] font-semibold">Siguiente</span>
             <ChevronRight className="motion-arrow" />
           </Button>
         </div>

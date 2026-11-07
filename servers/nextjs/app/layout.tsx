@@ -13,46 +13,39 @@ const BRAND_DESCRIPTION =
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://presenton.ai"),
-  title: "Presenton - Generador de presentaciones con IA de código abierto",
-  description:
-    "Generador de presentaciones con IA de código abierto, con diseños personalizados, compatibilidad con varios modelos (OpenAI, Gemini, Ollama) y exportación a PDF/PPTX. Una alternativa gratuita a Gamma.",
+  ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
+  title: BRAND_NAME,
+  description: BRAND_DESCRIPTION,
+  applicationName: BRAND_NAME,
+  authors: [{ name: "AI Fast Track", url: "https://aifasttrack.tech" }],
+  publisher: "AI Fast Track",
   keywords: [
-    "generador de presentaciones con IA",
-    "storytelling con datos",
-    "herramienta de visualización de datos",
-    "presentación de datos con IA",
+    "AI Fast Track",
+    "presentaciones con IA",
     "generador de presentaciones",
-    "de datos a presentación",
-    "presentaciones interactivas",
-    "diapositivas profesionales",
+    "PPTX",
+    "PDF",
   ],
   openGraph: {
-    title: "Presenton - Generador de presentaciones con IA de código abierto",
-    description:
-      "Generador de presentaciones con IA de código abierto, con diseños personalizados, compatibilidad con varios modelos (OpenAI, Gemini, Ollama) y exportación a PDF/PPTX. Una alternativa gratuita a Gamma.",
-    url: "https://presenton.ai",
-    siteName: "Presenton",
+    title: BRAND_NAME,
+    description: BRAND_DESCRIPTION,
+    siteName: BRAND_NAME,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Logotipo de Presenton",
+        alt: "AI Fast Track",
       },
     ],
     type: "website",
     locale: "es_ES",
   },
-  alternates: {
-    canonical: "https://presenton.ai",
-  },
   twitter: {
     card: "summary_large_image",
-    title: "Presenton - Generador de presentaciones con IA de código abierto",
-    description:
-      "Generador de presentaciones con IA de código abierto, con diseños personalizados, compatibilidad con varios modelos (OpenAI, Gemini, Ollama) y exportación a PDF/PPTX. Una alternativa gratuita a Gamma.",
-    images: ["https://presenton.ai/presenton-feature-graphics.png"],
+    title: BRAND_NAME,
+    description: BRAND_DESCRIPTION,
+    images: ["/og-image.png"],
   },
 };
 

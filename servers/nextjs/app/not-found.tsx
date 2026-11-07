@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Página no encontrada | Presenton",
+  title: "Página no encontrada | AI Fast Track Presentaciones",
 };
 
 /**
@@ -35,7 +35,7 @@ export default function NotFound() {
 
         <div className="mb-8 flex flex-col justify-center gap-3 sm:flex-row sm:space-x-4">
           <Link href="/dashboard" className="inline-flex sm:flex-1 sm:justify-center">
-            <Button className="w-full rounded-md bg-indigo-600 px-6 py-2 text-white hover:bg-indigo-700 sm:w-auto">
+            <Button className="w-full rounded-md bg-[#0A0A0A] px-6 py-2 text-white hover:bg-[#242424] sm:w-auto">
               Ir a la página de inicio
             </Button>
           </Link>

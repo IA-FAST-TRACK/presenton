@@ -148,7 +148,7 @@ export default function OllamaConfig({
         notify.success(
           "Usando Ollama dentro del contenedor",
           requestedUrl
-            ? "host.docker.internal no ha respondido, así que Presenton ha cambiado la URL de Ollama a localhost."
+            ? "host.docker.internal no ha respondido, así que Fast Track Presentaciones ha cambiado la URL de Ollama a localhost."
             : "host.docker.internal no ha respondido, así que esta comprobación ha usado localhost."
         );
       }

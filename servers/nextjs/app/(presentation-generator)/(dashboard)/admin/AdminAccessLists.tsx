@@ -90,7 +90,7 @@ function EmptyList({
         {filtered
           ? "Prueba con otra búsqueda o quita los filtros para ver todos los resultados."
           : noun === "users"
-            ? "Añade un usuario para darle su propio espacio de trabajo privado en Presenton."
+            ? "Añade un usuario para darle su propio espacio de trabajo privado en Fast Track Presentaciones."
             : "Genera una clave para conectar un cliente de la API REST o MCP al espacio de trabajo de un usuario."}
       </p>
       {filtered && <button type="button" onClick={onClearFilters}>Quitar filtros</button>}

@@ -87,7 +87,7 @@ export function TemplateEditorHeader({
         <button onClick={onBack} aria-label="Panel" type="button">
           <img
             src="/logo-with-bg.png"
-            alt="AI Fast Track Presentaciones"
+            alt="Logotipo de AI Fast Track"
             className="h-10 w-10 cursor-pointer object-contain"
           />
         </button>
