@@ -1,4 +1,21 @@
 -------------------------------------
+AI FAST TRACK PRESENTACIONES
+-------------------------------------
+This product is a modified version of Presenton (https://github.com/presenton/presenton),
+rebranded by AI Fast Track (https://aifasttrack.tech).
+Presenton is licensed under the Apache License, Version 2.0 (see LICENSE).
+All copyright for the original Presenton code remains with its authors; the
+modifications consist of branding (name, logos, colours and typography).
+
+The AI Fast Track names and logos are trademarks of AI Fast Track and are not
+covered by the Apache License.
+
+Bundled brand fonts (servers/nextjs/public/fonts/aifasttrack):
+  Space Grotesk - Copyright The Space Grotesk Project Authors - SIL Open Font License 1.1
+  Inter - Copyright The Inter Project Authors - SIL Open Font License 1.1
+  JetBrains Mono - Copyright The JetBrains Mono Project Authors - SIL Open Font License 1.1
+
+-------------------------------------
 PYTHON PACKAGES
 -------------------------------------
 aioquic
