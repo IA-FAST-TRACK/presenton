@@ -3,6 +3,7 @@ import { setLLMConfig } from "@/store/slices/userConfig";
 import { store } from "@/store/store";
 import { LLMConfig } from "@/types/llm_config";
 import { isSupportedCodexModel } from "@/utils/codexModels";
+import { PRESENTON_CLOUD_ENABLED } from "@/utils/featureFlags";
 
 function isProvided(value: unknown): boolean {
   return value !== "" && value !== null && value !== undefined;
@@ -28,6 +29,10 @@ function parseOptionalBool(value: unknown): boolean | undefined {
 
 export const normalizeLLMConfig = (llmConfig: LLMConfig): LLMConfig => {
   const normalizedConfig: LLMConfig = { ...llmConfig };
+  // AI Fast Track: Presenton Cloud está oculto; una selección previa obliga a elegir otro proveedor.
+  if (!PRESENTON_CLOUD_ENABLED && normalizedConfig.LLM === "presenton") {
+    normalizedConfig.LLM = "";
+  }
   if (normalizedConfig.IMAGE_PROVIDER === "dall-e-3") {
     normalizedConfig.IMAGE_PROVIDER = "gpt-image-2";
     normalizedConfig.GPT_IMAGE_2_QUALITY ||= (

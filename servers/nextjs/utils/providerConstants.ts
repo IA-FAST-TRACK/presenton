@@ -1,3 +1,5 @@
+import { PRESENTON_CLOUD_ENABLED } from "@/utils/featureFlags";
+
 export interface ModelOption {
   value: string;
   label: string;
@@ -189,7 +191,7 @@ export const IMAGE_PROVIDERS: Record<string, ImageProviderOption> = {
   },
 };
 
-export const LLM_PROVIDERS: Record<string, LLMProviderOption> = {
+const ALL_LLM_PROVIDERS: Record<string, LLMProviderOption> = {
   presenton: {
     value: "presenton",
     label: "Presenton",
@@ -313,6 +315,14 @@ export const LLM_PROVIDERS: Record<string, LLMProviderOption> = {
   },
 
 };
+
+// AI Fast Track: Presenton Cloud se oculta salvo que se active explícitamente.
+export const LLM_PROVIDERS: Record<string, LLMProviderOption> =
+  PRESENTON_CLOUD_ENABLED
+    ? ALL_LLM_PROVIDERS
+    : Object.fromEntries(
+        Object.entries(ALL_LLM_PROVIDERS).filter(([key]) => key !== "presenton")
+      );
 
 export const GPT_IMAGE_2_QUALITY_OPTIONS = [
   {

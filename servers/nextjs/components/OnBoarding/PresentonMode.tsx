@@ -29,6 +29,7 @@ import OllamaConfig from '../OllamaConfig';
 import OnboardingPresentonAccount from './OnboardingPresentonAccount';
 import CreatableModelInput from '@/components/CreatableModelInput';
 import AdvancedTextProviderSettings from '@/components/AdvancedTextProviderSettings';
+import { PRESENTON_CLOUD_ENABLED } from '@/utils/featureFlags';
 
 const MANUAL_MODEL_PROVIDERS = new Set(["vertex", "azure", "bedrock"]);
 const LOCAL_PROVIDERS = ["ollama", "lmstudio"];
@@ -835,7 +836,7 @@ const PresentonMode = ({
 
     const handleContinue = async () => {
         if (providerStep === 1) {
-            if (llmConfig.LLM === "presenton") {
+            if (PRESENTON_CLOUD_ENABLED && llmConfig.LLM === "presenton") {
                 await handlePresentonContinue();
                 return;
             }
@@ -1099,14 +1100,16 @@ const PresentonMode = ({
                 </h2>
                 <p className='text-[#000000CC] text-xl font-normal font-syne'>
                     {providerStep === 1
-                        ? "Usa tu cuenta de Presenton o configura tus propios proveedores de IA."
+                        ? (PRESENTON_CLOUD_ENABLED
+                            ? "Usa tu cuenta de Presenton o configura tus propios proveedores de IA."
+                            : "Configura tus propios proveedores de IA.")
                         : providerStep === 2
                             ? "Elige cómo crea Presenton los elementos visuales o continúa sin generación de imágenes."
                             : "Añade contexto web actual a las presentaciones o continúa con la búsqueda web desactivada."}
                 </p>
             </div>
 
-            {providerStep === 1 ? (
+            {providerStep === 1 && PRESENTON_CLOUD_ENABLED ? (
                 <div className="mt-10">
                     <OnboardingPresentonAccount onContinue={handlePresentonContinue} />
                     <div className="my-8 flex items-center gap-4" aria-hidden="true">
@@ -1121,7 +1124,7 @@ const PresentonMode = ({
 
             <div className={cn(
                 'flex items-center gap-2 bg-[#F0F3F9B2] rounded-[8px] px-6 py-2.5',
-                providerStep === 1 ? 'mb-6' : 'my-[54px]'
+                providerStep === 1 ? (PRESENTON_CLOUD_ENABLED ? 'mb-6' : 'mt-10 mb-6') : 'my-[54px]'
             )}>
                 <Info className='w-4 h-4 shrink-0 fill-[#003399] stroke-white' />
                 <p className='text-sm text-[#5F6062] font-medium'>Las claves de tus proveedores y la configuración de generación local se quedan en este equipo.</p>
